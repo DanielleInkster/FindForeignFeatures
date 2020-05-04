@@ -1,7 +1,9 @@
 import React from 'react';
 import './App.css';
 
-
+const Intro = (props) => (
+  <p className ="App-Intro">Practice Component</p>
+)
 
 function App() {
   return (
@@ -10,15 +12,8 @@ function App() {
         <p>
          TV Series List
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <Intro />
     </div>
   );
 }
