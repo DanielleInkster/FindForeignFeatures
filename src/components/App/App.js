@@ -2,23 +2,12 @@ import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser'; 
 import 'whatwg-fetch'
 import Intro from '../Intro'
+import Series from '../../containers/Series'
 import './App.css';
 
-class App extends Component{
-  state = {
-    series:[],
-    rating:[]
-  }
-  componentDidMount(){
-    fetch('http://api.tvmaze.com/search/shows?q=steven-universe')
-      .then((response) => {
-        return response.json();
-      }).then((data) => {
-        this.setState({ series: data[0].show.summary})
-        this.setState({rating: data[0].show.rating.average })
-        })
-  }
 
+class App extends Component{
+ 
   render(){
     return (
     <div className="App">
@@ -27,10 +16,9 @@ class App extends Component{
          TV Series List
         </p>
       </header>
-      <Intro message ="Here you can find all of your most loved series."/>
+      <Intro message ="Here you can find all of your most-loved series."/>
       <br/>
-      { ReactHtmlParser (this.state.series) }
-      { ReactHtmlParser (this.state.rating) }
+      < Series />
     </div>
   );
     }
