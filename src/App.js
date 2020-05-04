@@ -3,6 +3,9 @@ import Intro from './components/Intro'
 import './App.css';
 
 function App() {
+  state ={
+    series:[]
+  }
   return (
     <div className="App">
       <header className="App-header">
