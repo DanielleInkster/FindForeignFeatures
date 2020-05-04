@@ -6,6 +6,13 @@ class App extends Component{
   state = {
     series:[]
   }
+  componentDidMount(){
+    const series =["WestWorld", "Steven Universe"]
+    setTimeout(()=>{
+        this.setState({ series: series});
+    }, 2000)
+  }
+
   render(){
     return (
     <div className="App">
@@ -16,7 +23,7 @@ class App extends Component{
       </header>
       <Intro message ="Here you can find all of your most loved series."/>
       <br/>
-      -The length of series array = {this.state.series.length}
+      The length of series array = {this.state.series.length}
     </div>
   );
     }
