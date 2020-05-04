@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactHtmlParser from 'react-html-parser'; 
 import 'whatwg-fetch'
 import Intro from '../Intro'
 import './App.css';
@@ -12,7 +13,7 @@ class App extends Component{
       .then((response) => {
         return response.json();
       }).then((data) => {
-          this.setState({series: data[0].show.summary})
+        this.setState({ series: data[0].show.summary})
         })
   }
 
@@ -26,7 +27,7 @@ class App extends Component{
       </header>
       <Intro message ="Here you can find all of your most loved series."/>
       <br/>
-      "{this.state.series}"
+      { ReactHtmlParser (this.state.series) }
     </div>
   );
     }
