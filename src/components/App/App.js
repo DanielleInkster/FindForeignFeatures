@@ -1,12 +1,13 @@
-import React from 'react';
-import Intro from './components/Intro'
+import React, { Component } from 'react';
+import Intro from '../Intro'
 import './App.css';
 
-function App() {
-  state ={
+class App extends Component{
+  state = {
     series:[]
   }
-  return (
+  render(){
+    return (
     <div className="App">
       <header className="App-header">
         <p>
@@ -14,8 +15,11 @@ function App() {
         </p>
       </header>
       <Intro message ="Here you can find all of your most loved series."/>
+      <br/>
+      -The length of series array = {this.state.series.length}
     </div>
   );
+    }
 }
 
 export default App;
