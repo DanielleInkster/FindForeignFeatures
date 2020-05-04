@@ -12,7 +12,7 @@ class App extends Component{
       .then((response) => {
         return response.json();
       }).then((data) => {
-          console.log(data[0].show.name)
+          this.setState({series: data[0].show.summary})
         })
   }
 
@@ -26,7 +26,7 @@ class App extends Component{
       </header>
       <Intro message ="Here you can find all of your most loved series."/>
       <br/>
-      The length of series array = {this.state.series.length}
+      "{this.state.series}"
     </div>
   );
     }
