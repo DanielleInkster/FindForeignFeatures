@@ -1,9 +1,6 @@
 import React from 'react';
+import Intro from './components/Intro'
 import './App.css';
-
-const Intro = (props) => (
-  <p className ="App-Intro">Practice Component</p>
-)
 
 function App() {
   return (
@@ -13,7 +10,7 @@ function App() {
          TV Series List
         </p>
       </header>
-      <Intro />
+      <Intro message ="Here you can find all of your most loved series."/>
     </div>
   );
 }
