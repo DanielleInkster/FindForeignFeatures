@@ -9,7 +9,7 @@ class App extends Component{
   componentDidMount(){
     const series =["WestWorld", "Steven Universe"]
     setTimeout(()=>{
-        this.setState({ series: series});
+        this.setState({ series});
     }, 2000)
   }
 
