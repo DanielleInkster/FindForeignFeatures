@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactHtmlParser from 'react-html-parser'; 
 import 'whatwg-fetch'
 import Intro from '../Intro'
 import Series from '../../containers/Series'

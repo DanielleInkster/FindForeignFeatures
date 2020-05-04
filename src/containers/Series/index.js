@@ -5,13 +5,15 @@ class Series extends Component{
     
         state = {
             image: [],
-            series: []
+            series: [],
+            rating: []
         }
         componentDidMount(){
             fetch('http://api.tvmaze.com/search/shows?q=steven-universe')
                 .then((response) => {
                     return response.json();
                 }).then((data) => {
+                    this.setState({ image: data[0].show.image.medium })
                     this.setState({ series: data[0].show.summary })
                     this.setState({ rating: data[0].show.rating.average })
                 })
@@ -19,8 +21,11 @@ class Series extends Component{
     render() {
         return (
             <div>   
-                {ReactHtmlParser(this.state.series)}
-                {ReactHtmlParser(this.state.rating)}
+                <br/>
+                <img src={this.state.image}/>
+                <br/>
+                Summary: {ReactHtmlParser(this.state.series)}
+                Rating: <b>{ReactHtmlParser(this.state.rating)}</b>
             </div>
         )
     };
