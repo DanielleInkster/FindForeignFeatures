@@ -30,7 +30,7 @@ class App extends Component{
       <Intro message ="Here you can find all of your most loved series."/>
       <br/>
       { ReactHtmlParser (this.state.series) }
-      { ReactHtmlParser(this.state.rating) }
+      { ReactHtmlParser (this.state.rating) }
     </div>
   );
     }
