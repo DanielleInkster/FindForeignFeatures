@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch'
 import Intro from '../Intro'
-import SeriesList from '../SeriesList'
 import Series from '../../containers/Series'
 import './App.css';
 
@@ -21,7 +20,6 @@ class App extends Component{
       <br/>
       < Series />
         <br />
-        <SeriesList />
     </div>
   );
     }

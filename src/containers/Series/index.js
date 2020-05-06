@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import SeriesList from '../../components/SeriesList'
 import ReactHtmlParser from 'react-html-parser'; 
 
 class Series extends Component{
@@ -26,6 +27,8 @@ class Series extends Component{
                 <br/>
                 Summary: {ReactHtmlParser(this.state.series)}
                 Rating: <b>{ReactHtmlParser(this.state.rating)}</b>
+
+                <SeriesList />
             </div>
         )
     };
