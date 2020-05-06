@@ -19,8 +19,9 @@ class App extends Component{
         <br />
       <Intro message ="Here you can find all of your most-loved series."/>
       <br/>
-      <br />
       < Series />
+        <br />
+        <SeriesList />
     </div>
   );
     }
