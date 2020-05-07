@@ -31,6 +31,7 @@ class App extends Component{
         <br />
       <Intro message ="Here you can find all of your most-loved series."/>
       <br/>
+      <br />
         < Form handleData={this.handleFormData}/>
         <br />
         <Series form={this.state.form} />
