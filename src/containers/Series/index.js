@@ -3,13 +3,15 @@ import SeriesList from '../../components/SeriesList'
 
 
 class Series extends Component{
-    
-        state = {
+    constructor(props) {
+    super(props);
 
-            series: [],
-        
-        }
+    this.state =  { series:[] }
+
+    }
+
         componentDidMount(){
+            console.log(this.props.form)
             fetch('http://api.tvmaze.com/search/shows?q=steven-universe')
                 .then((response) => {
                     return response.json();
@@ -20,11 +22,13 @@ class Series extends Component{
     render() {
         return (
             <div>   
+                {this.props.form}
                 <br/>
                 <SeriesList list = {this.state.series}/>
             </div>
         )
     };
+    
 }
 
 export default Series;

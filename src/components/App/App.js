@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch'
 import Intro from '../Intro'
+import Form from '../Form'
 import Series from '../../containers/Series'
 import './App.css';
 
 
 class App extends Component{
+
+  constructor() {
+    super();
+    this.state = {
+      name: 'React',
+      form: ''
+    };
+  }
+  handleFormData = (e) => {
+    this.setState({ form: e })
+   
+  }
  
   render(){
     return (
@@ -18,8 +31,9 @@ class App extends Component{
         <br />
       <Intro message ="Here you can find all of your most-loved series."/>
       <br/>
-      < Series />
+        < Form handleData={this.handleFormData}/>
         <br />
+        <Series form={this.state.form} />
     </div>
   );
     }
