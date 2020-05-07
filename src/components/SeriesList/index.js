@@ -11,12 +11,11 @@ const SeriesList = (props) =>{
             <li>
                 <img src={imageUrl(series.show.image) } />
                 <br/>
-                {series.show.name}
-                <br />
+                <h3><b>{series.show.name}</b></h3>
                 {ReactHtmlParser(series.show.summary)}
-                <br />
                 Rating: 
                 <b>{series.show.rating.average}</b>
+                <br />
                 <br />
             </li>)}
         </div>
