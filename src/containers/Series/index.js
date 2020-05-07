@@ -10,19 +10,18 @@ class Series extends Component{
 
     }
 
-        componentDidMount(){
-            console.log(this.props.form)
-            fetch('http://api.tvmaze.com/search/shows?q=steven-universe')
+        componentDidUpdate(){
+            fetch(`http://api.tvmaze.com/search/shows?q=${this.props.form}`)
                 .then((response) => {
                     return response.json();
                 }).then((data) => {
                     this.setState({ series: data})
                 })
+            
         }
     render() {
         return (
             <div>   
-                {this.props.form}
                 <br/>
                 <SeriesList list = {this.state.series}/>
             </div>
