@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 
+ const imageUrl = (img) =>  {
+     return img != null ? img.medium : null
+}
+
 const SeriesList = (props) =>{
     return(
         <div> {props.list.map(series =>
             <li>
-                <img src={series.show.image.medium} />
+                <img src={imageUrl(series.show.image) } />
                 <br/>
                 {series.show.name}
                 <br />
