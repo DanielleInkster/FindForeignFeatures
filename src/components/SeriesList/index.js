@@ -8,7 +8,7 @@ import ReactHtmlParser from 'react-html-parser';
 const SeriesList = (props) =>{
     return(
         <div> {props.list.map(series =>
-            <li>
+            <li style={{ listStyleType: "none" }}>
                 <img src={imageUrl(series.show.image) } />
                 <br/>
                 <h3><b>{series.show.name}</b></h3>
