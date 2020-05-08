@@ -23,13 +23,16 @@ class Series extends Component{
     }
 
     componentDidUpdate(){
-        console.log(slugify(this.props.form))
         fetch(`https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}`+
             `&language=en-US&page=1&query=${slugify(this.props.form)}&include_adult=false`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
+                if(data.results.length>0){
                 this.setState({ series: data.results.slice(0, 3)})
+                } else {
+                    this.setState({ series: null})
+                }
             })
             
     }

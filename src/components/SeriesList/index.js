@@ -9,7 +9,12 @@ const nonEnglishName = (name)=>{
     if (name.name != name.original_name) return `Engligh Title: ${name.name}` 
 }
 
+const checkForNull = (props) =>{
+    return props.list === null ? true : false
+}
+
 const SeriesList = (props) =>{
+    if (checkForNull(props) === false) {
     return(
         <div> {props.list.map(series =>
             <li style={{ listStyleType: "none" }}>
@@ -26,5 +31,12 @@ const SeriesList = (props) =>{
             </li>)}
         </div>
     )
+    } else {
+        return (
+        <div>
+            <h1>No results found. Please try another series.</h1>
+        </div>
+        )
+    }
 }
 export default SeriesList;
