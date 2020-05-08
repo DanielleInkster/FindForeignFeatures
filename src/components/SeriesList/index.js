@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 
  const imageUrl = (img) =>  {
-     return img != null ? img.medium : null
+     return img != null ? img.medium : 'https://upload.wikimedia.org/wikipedia/en/6/60/No_Picture.jpg'
 }
 
 const SeriesList = (props) =>{
@@ -13,6 +13,7 @@ const SeriesList = (props) =>{
                 <br/>
                 <h3><b>{series.show.name}</b></h3>
                 {ReactHtmlParser(series.show.summary)}
+                <br/>
                 Rating: 
                 <b>{series.show.rating.average}</b>
                 <br />

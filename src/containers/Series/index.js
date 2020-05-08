@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import 'whatwg-fetch'
 import SeriesList from '../../components/SeriesList'
 
 function slugify(text) {
@@ -19,16 +20,17 @@ class Series extends Component{
 
     }
 
-        componentDidUpdate(){
-            console.log(slugify(this.props.form))
-            fetch(`http://api.tvmaze.com/search/shows?q=${slugify(this.props.form)}`)
-                .then((response) => {
-                    return response.json();
-                }).then((data) => {
-                    this.setState({ series: data.slice(0, 3)})
-                })
+    componentDidUpdate(){
+        console.log(slugify(this.props.form))
+        fetch(`http://api.tvmaze.com/search/shows?q=${slugify(this.props.form)}`)
+            .then((response) => {
+                return response.json();
+            }).then((data) => {
+                this.setState({ series: data.slice(0, 3)})
+            })
             
-        }
+    }
+    
     render() {
         return (
             <div>   

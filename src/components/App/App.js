@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'whatwg-fetch'
 import Intro from '../Intro'
 import Form from '../Form'
 import Series from '../../containers/Series'
