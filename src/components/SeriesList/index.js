@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
+import ISO6391 from 'iso-639-1';
 
- const imageUrl = (img) =>  {
-     return img != null ? `https://image.tmdb.org/t/p/w500/${img}` : 'https://upload.wikimedia.org/wikipedia/en/6/60/No_Picture.jpg'
+const imageUrl = (img) =>  {
+    return img != null ? `https://image.tmdb.org/t/p/w500/${img}` : 'https://upload.wikimedia.org/wikipedia/en/6/60/No_Picture.jpg'
 }
 
 const nonEnglishName = (name)=>{
@@ -25,7 +26,7 @@ const SeriesList = (props) =>{
                 {ReactHtmlParser(series.overview)}
                 <br/>
                 <br />
-                {ReactHtmlParser(`Original language: <b>${series.original_language}</b>`)}
+                {ReactHtmlParser(`Original language: <b>${ISO6391.getName(series.original_language)}</b>`)}
                 <br />
                 <br />
             </li>)}
