@@ -4,6 +4,7 @@ import Form from '../Form'
 import Series from '../../containers/Series'
 import './App.css';
 
+const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
 class App extends Component{
 
@@ -15,6 +16,7 @@ class App extends Component{
     };
   }
   handleFormData = (e) => {
+    console.log(API_KEY) 
     this.setState({ form: e })
    
   }

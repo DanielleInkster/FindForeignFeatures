@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import 'whatwg-fetch'
 import SeriesList from '../../components/SeriesList'
 
+const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
+
 function slugify(text) {
     return text.toString().toLowerCase()
         .replace(/\s+/g, '-')           // Replace spaces with -
@@ -22,11 +24,12 @@ class Series extends Component{
 
     componentDidUpdate(){
         console.log(slugify(this.props.form))
-        fetch(`http://api.tvmaze.com/search/shows?q=${slugify(this.props.form)}`)
+        fetch(`https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}`+
+            `&language=en-US&page=1&query=${slugify(this.props.form)}&include_adult=false`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                this.setState({ series: data.slice(0, 3)})
+                this.setState({ series: data.results.slice(0, 3)})
             })
             
     }
