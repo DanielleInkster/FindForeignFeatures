@@ -24,8 +24,8 @@ const SeriesList = (props) =>{
                 <h4>{nonEnglishName(series)}</h4>
                 {ReactHtmlParser(series.overview)}
                 <br/>
-                Rating: 
-                <b>{series.vote_average}</b>
+                <br />
+                {ReactHtmlParser(`Original language: <b>${series.original_language}</b>`)}
                 <br />
                 <br />
             </li>)}
