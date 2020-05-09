@@ -26,8 +26,8 @@ class Form extends Component {
             <div>
                 <form onSubmit={this.handleSubmit.bind(this)}>
                 <label>
-                    Series Name:
-          <input type="text" value={this.state.TextBoxValue} onChange={this.handleChange.bind(this)} />
+                Series Name:
+                <input type="text" value={this.state.TextBoxValue} onChange={this.handleChange.bind(this)} />
                 </label>
                 <input type="submit" value="Submit" />
             </form>

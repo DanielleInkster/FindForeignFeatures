@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import ISO6391 from 'iso-639-1';
 
@@ -14,10 +14,20 @@ const checkForNull = (props) =>{
     return props.list === null ? true : false
 }
 
-const SeriesList = (props) =>{
-    if (checkForNull(props) === false) {
+class SeriesList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            genres: [],
+            rating:''
+        }
+    }
+
+    render(){
+
+    if (checkForNull(this.props.list) === false) {
     return(
-        <div> {props.list.map(series =>
+        <div> {this.props.list.map(series =>
             <li style={{ listStyleType: "none" }}>
                 <img src={imageUrl(series.poster_path)} alt={series.original_name+" poster."} width="20%" height="40%"/>
                 <br/>
@@ -29,6 +39,7 @@ const SeriesList = (props) =>{
                 {ReactHtmlParser(`Original language: <b>${ISO6391.getName(series.original_language)}</b>`)}
                 <br />
                 <br />
+                <input type="submit" value="Submit" />
             </li>)}
         </div>
     )
@@ -39,5 +50,7 @@ const SeriesList = (props) =>{
         </div>
         )
     }
+    }
+
 }
 export default SeriesList;
