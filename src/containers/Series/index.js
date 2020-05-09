@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import 'whatwg-fetch'
 import SeriesList from '../../components/SeriesList'
+import Recommmendation from '../Recommendation';
 
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
@@ -29,7 +30,7 @@ class Series extends Component{
                 return response.json();
             }).then((data) => {
                 if(data.results.length>0){
-                this.setState({ series: data.results.slice(0, 3)})
+                    this.setState({ series: data.results.slice(0, 3)})
                 } else {
                     this.setState({ series: null})
                 }

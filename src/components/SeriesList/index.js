@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Recommendation from '../../containers/Recommendation'
 import ReactHtmlParser from 'react-html-parser';
 import ISO6391 from 'iso-639-1';
 
@@ -17,11 +18,9 @@ const checkForNull = (props) =>{
 class SeriesList extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            genres: [],
-            rating:''
-        }
+     
     }
+
 
     render(){
 
@@ -39,18 +38,18 @@ class SeriesList extends Component {
                 {ReactHtmlParser(`Original language: <b>${ISO6391.getName(series.original_language)}</b>`)}
                 <br />
                 <br />
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Submit"  />
+                <Recommendation data={series} />
             </li>)}
         </div>
     )
     } else {
         return (
         <div>
-            <h1>No results found. Please try another series.</h1>
+            <h1>No results found. Please try another title.</h1>
         </div>
         )
+        }
     }
-    }
-
 }
 export default SeriesList;
