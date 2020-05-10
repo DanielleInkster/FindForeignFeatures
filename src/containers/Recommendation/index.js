@@ -20,21 +20,20 @@ class Recommmendation extends Component {
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                this.setState({ keywords: [data.results] })
+                this.setState({ keywords: data.results })
                 this.setState({ seriesSelection: this.props.data })
                 this.setState({ rating: this.props.data.vote_average })
                 this.setState({ genres: this.props.data.genre_ids })
             })
-            console.log("hi there!")
+            console.log("Series data gathered")
         }
 
     }
     
-
-
     render() {
         return (
-          <p>{this.state.genres}</p>
+      
+            null
         )
     };
 

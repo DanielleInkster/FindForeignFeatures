@@ -4,13 +4,11 @@ import Form from '../Form'
 import Series from '../../containers/Series'
 import './App.css';
 
-
 class App extends Component{
 
   constructor() {
     super();
     this.state = {
-      // name: 'React',
       form: ''
     };
   }

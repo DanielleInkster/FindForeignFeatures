@@ -7,7 +7,6 @@ class Form extends Component {
             TextBoxValue: '',
             showing: true
         }
-
     }
 
     handleSubmit = (e) => {
@@ -20,7 +19,6 @@ class Form extends Component {
         this.setState({ TextBoxValue: e.target.value })
     }
   
-
     render() {
         const { showing } = this.state;
         return (
