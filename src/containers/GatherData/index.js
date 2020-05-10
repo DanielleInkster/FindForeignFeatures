@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
-class Recommmendation extends Component {
+class GatherData extends Component {
     constructor(props) {
         super(props);
 
@@ -32,11 +32,10 @@ class Recommmendation extends Component {
     
     render() {
         return (
-      
             null
         )
     };
 
 }
 
-export default Recommmendation;
+export default GatherData;

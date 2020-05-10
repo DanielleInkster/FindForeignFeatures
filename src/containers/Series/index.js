@@ -13,7 +13,6 @@ function slugify(text) {
         .replace(/-+$/, '');            // Trim - from end of text
 }
 
-
 class Series extends Component{
     constructor(props) {
     super(props);

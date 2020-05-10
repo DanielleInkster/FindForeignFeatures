@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import ISO6391 from 'iso-639-1';
-import Recommmendation from '../../containers/Recommendation';
+import GatherData from '../../containers/GatherData';
 
 const imageUrl = (img) =>  {
     return img != null ? `https://image.tmdb.org/t/p/w500/${img}` : 'https://upload.wikimedia.org/wikipedia/en/6/60/No_Picture.jpg'
@@ -54,7 +54,7 @@ class SeriesList extends Component {
                 </li>)}
             </div>
             <div style={{ display: (!showing ? 'block' : 'none') }}> 
-                <Recommmendation data = {this.state.seriesSelection} />
+                <GatherData data = {this.state.seriesSelection} />
             </div>
         </div>
     )
