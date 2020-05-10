@@ -15,7 +15,7 @@ class App extends Component{
     };
   }
   handleFormData = (e) => {
-    this.setState({ form: e })
+    e.length > 0 ? this.setState({ form: e }) : alert("Please enter a series name")
   }
  
   render(){

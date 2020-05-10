@@ -13,9 +13,8 @@ const nonEnglishName = (name)=>{
 }
 
 const checkForNull = (props) =>{
-    return props.list === null ? true : false
+    return props === null ? true : false
 }
-
 
 class SeriesList extends Component {
     constructor(props) {
@@ -32,7 +31,7 @@ class SeriesList extends Component {
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                this.setState({ keywords: data })
+                this.setState({ keywords: data.results })
                 console.log(this.state.keywords)
                 console.log(this.state.seriesSelection)
             })
@@ -51,24 +50,26 @@ class SeriesList extends Component {
     if (checkForNull(this.props.list) === false) {
     return(
         <div>
-        <div style={{ display: (showing ? 'block' : 'none') }}> {this.props.list.map(series =>
-            <li style={{ listStyleType: "none" }}>
-                <img src={imageUrl(series.poster_path)} alt={series.original_name+" poster."} width="20%" height="40%"/>
-                <br/>
-                <h2><b>{series.original_name}</b></h2>
-                <h4>{nonEnglishName(series)}</h4>
-                {ReactHtmlParser(series.overview)}
-                <br/>
-                <br />
-                {ReactHtmlParser(`Original language: <b>${ISO6391.getName(series.original_language)}</b>`)}
-                <br />
-                <br />
-                <input type="submit" value="Find more like this!" onClick={() => { this.handleSeriesSubmit(series) }} />
-                <br />
-                <br />
-            </li>)}
-        </div>
-        <div style={{ display: (!showing ? 'block' : 'none') }}> This is visible</div>
+            <div style={{ display: (showing ? 'block' : 'none') }}> {this.props.list.map(series =>
+                <li style={{ listStyleType: "none" }}>
+                    <img src={imageUrl(series.poster_path)} alt={series.original_name+" poster."} width="20%" height="40%"/>
+                    <br/>
+                    <h2><b>{series.original_name}</b></h2>
+                    <h4>{nonEnglishName(series)}</h4>
+                    {ReactHtmlParser(series.overview)}
+                    <br/>
+                    <br />
+                    {ReactHtmlParser(`Original language: <b>${ISO6391.getName(series.original_language)}</b>`)}
+                    <br />
+                    <br />
+                    <input type="submit" value="Find more like this!" onClick={() => { this.handleSeriesSubmit(series) }} />
+                    <br />
+                    <br />
+                </li>)}
+            </div>
+            <div style={{ display: (!showing ? 'block' : 'none') }}> 
+                This is visible
+            </div>
         </div>
     )
     } else {
@@ -77,7 +78,7 @@ class SeriesList extends Component {
             <h1>No results found. Please try another title.</h1>
         </div>
         )
-        }
+    }
     }
 }
 export default SeriesList;
