@@ -12,15 +12,8 @@ class Recommmendation extends Component {
 
     }
 
-    componentDidMount() {
-        
-        fetch(`https://api.themoviedb.org/3/tv/${this.props.data.id}/keywords?api_key=${API_KEY}`) 
-            .then((response) => {
-                return response.json();
-            }).then((data) => {
-                    this.setState({ keywords: data.results})
-
-        })
+    componentDidUpdate() {
+        console.log(`Gathered Data for ${this.props.data}`)
     }
     
 

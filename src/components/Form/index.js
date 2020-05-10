@@ -13,6 +13,7 @@ class Form extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.handleData(this.state.TextBoxValue)
+        this.refs.btn.setAttribute("disabled", "disabled")
         this.setState(this.initialState)
     }
 
@@ -29,7 +30,7 @@ class Form extends Component {
                 Series Name:
                 <input type="text" value={this.state.TextBoxValue} onChange={this.handleChange.bind(this)} />
                 </label>
-                <input type="submit" value="Submit" />
+                <input type="submit" ref ="btn" value="Submit" />
             </form>
             </div>
         );

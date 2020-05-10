@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Recommendation from '../../containers/Recommendation'
 import ReactHtmlParser from 'react-html-parser';
 import ISO6391 from 'iso-639-1';
+const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`;
 
 const imageUrl = (img) =>  {
     return img != null ? `https://image.tmdb.org/t/p/w500/${img}` : 'https://upload.wikimedia.org/wikipedia/en/6/60/No_Picture.jpg'
@@ -15,14 +16,31 @@ const checkForNull = (props) =>{
     return props.list === null ? true : false
 }
 
+
 class SeriesList extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            seriesSelection:[],
+            keywords:[]
+        }
      
     }
+    gatherData = (series) => {
+        fetch(`https://api.themoviedb.org/3/tv/${series.id}/keywords?api_key=${API_KEY}`)
+            .then((response) => {
+                return response.json();
+            }).then((data) => {
+                this.setState({ keywords: data })
+                console.log(this.state.keywords)
+                console.log(this.state.seriesSelection)
+            })
+        
+    }
 
-    gatherData=()=>{
-        alert("DATA GATHERED!")
+    handleSeriesSubmit = (series) => {
+        this.setState({seriesSelection: series})
+        this.gatherData(series)
     }
 
     render(){
@@ -41,10 +59,9 @@ class SeriesList extends Component {
                 {ReactHtmlParser(`Original language: <b>${ISO6391.getName(series.original_language)}</b>`)}
                 <br />
                 <br />
-                <input type="submit" value="Find me something similar!" onClick ={this.gatherData} />
+                <input type="submit" value="Find more like this!" onClick={()=>{this.handleSeriesSubmit(series)}} />
                 <br />
                 <br />
-                <Recommendation data={series} />
             </li>)}
         </div>
     )
