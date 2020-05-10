@@ -4,7 +4,7 @@ import ISO6391 from 'iso-639-1';
 import GatherData from '../../containers/GatherData';
 
 const imageUrl = (img) =>  {
-    return img != null ? `https://image.tmdb.org/t/p/w500/${img}` : 'https://upload.wikimedia.org/wikipedia/en/6/60/No_Picture.jpg'
+    return img !== null ? `https://image.tmdb.org/t/p/w500/${img}` : 'https://upload.wikimedia.org/wikipedia/en/6/60/No_Picture.jpg'
 }
 
 const nonEnglishName = (name)=>{

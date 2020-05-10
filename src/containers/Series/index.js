@@ -6,11 +6,11 @@ const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
 function slugify(text) {
     return text.toString().toLowerCase()
-        .replace(/\s+/g, '-')           // Replace spaces with -
-        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-        .replace(/^-+/, '')             // Trim - from start of text
-        .replace(/-+$/, '');            // Trim - from end of text
+        .replace(/\s+/g, '-')           
+        .replace(/[^\w\-]+/g, '')       
+        .replace(/\-\-+/g, '-')         
+        .replace(/^-+/, '')           
+        .replace(/-+$/, '');            
 }
 
 class Series extends Component{
@@ -22,7 +22,7 @@ class Series extends Component{
     }
 
     componentDidUpdate(){
-        if (this.state.series != null && this.state.series.length === 0){
+        if (this.state.series !== null && this.state.series.length === 0){
         fetch(`https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}`+
             `&language=en-US&page=1&query=${slugify(this.props.form)}&include_adult=false`)
             .then((response) => {
