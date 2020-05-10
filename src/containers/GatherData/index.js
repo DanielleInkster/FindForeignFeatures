@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import GatherRecommendations from '../GatherRecommendations';
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
 class GatherData extends Component {
@@ -32,7 +33,7 @@ class GatherData extends Component {
     
     render() {
         return (
-            null
+            <GatherRecommendations data={this.state} />
         )
     };
 
