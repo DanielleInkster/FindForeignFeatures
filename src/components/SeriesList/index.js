@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import Recommendation from '../../containers/Recommendation'
 import ReactHtmlParser from 'react-html-parser';
 import ISO6391 from 'iso-639-1';
-const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`;
+import Recommmendation from '../../containers/Recommendation';
 
 const imageUrl = (img) =>  {
     return img != null ? `https://image.tmdb.org/t/p/w500/${img}` : 'https://upload.wikimedia.org/wikipedia/en/6/60/No_Picture.jpg'
@@ -20,28 +19,15 @@ class SeriesList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            seriesSelection:[],
-            keywords:[],
-            showing: true
+            seriesSelection : [],
+            showing: true,
         }
      
     }
-    gatherData = (series) => {
-        fetch(`https://api.themoviedb.org/3/tv/${series.id}/keywords?api_key=${API_KEY}`)
-            .then((response) => {
-                return response.json();
-            }).then((data) => {
-                this.setState({ keywords: data.results })
-                console.log(this.state.keywords)
-                console.log(this.state.seriesSelection)
-            })
-        
-    }
 
     handleSeriesSubmit = (series) => {
-        this.setState({seriesSelection: series})
-        this.gatherData(series)
-        this.setState({ showing: false })
+        this.setState({seriesSelection: series});
+        this.setState({ showing: false });
     }
 
     render(){
@@ -68,7 +54,7 @@ class SeriesList extends Component {
                 </li>)}
             </div>
             <div style={{ display: (!showing ? 'block' : 'none') }}> 
-                This is visible
+                <Recommmendation data = {this.state.seriesSelection} />
             </div>
         </div>
     )

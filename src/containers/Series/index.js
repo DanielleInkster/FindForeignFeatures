@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import 'whatwg-fetch'
 import SeriesList from '../../components/SeriesList'
-import Recommmendation from '../Recommendation';
 
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
@@ -24,6 +23,7 @@ class Series extends Component{
     }
 
     componentDidUpdate(){
+        if(this.state.series.length === 0){
         fetch(`https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}`+
             `&language=en-US&page=1&query=${slugify(this.props.form)}&include_adult=false`)
             .then((response) => {
@@ -33,8 +33,10 @@ class Series extends Component{
                     this.setState({ series: data.results.slice(0, 3)})
                 } else {
                     this.setState({ series: null})
-                }
+                } 
             })
+            console.log("hello")
+        }
             
     }
     
