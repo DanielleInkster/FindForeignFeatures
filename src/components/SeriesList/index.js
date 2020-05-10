@@ -22,7 +22,8 @@ class SeriesList extends Component {
         super(props);
         this.state = {
             seriesSelection:[],
-            keywords:[]
+            keywords:[],
+            showing: true
         }
      
     }
@@ -41,13 +42,16 @@ class SeriesList extends Component {
     handleSeriesSubmit = (series) => {
         this.setState({seriesSelection: series})
         this.gatherData(series)
+        this.setState({ showing: false })
     }
 
     render(){
+    const { showing } = this.state;
 
     if (checkForNull(this.props.list) === false) {
     return(
-        <div> {this.props.list.map(series =>
+        <div>
+        <div style={{ display: (showing ? 'block' : 'none') }}> {this.props.list.map(series =>
             <li style={{ listStyleType: "none" }}>
                 <img src={imageUrl(series.poster_path)} alt={series.original_name+" poster."} width="20%" height="40%"/>
                 <br/>
@@ -59,10 +63,12 @@ class SeriesList extends Component {
                 {ReactHtmlParser(`Original language: <b>${ISO6391.getName(series.original_language)}</b>`)}
                 <br />
                 <br />
-                <input type="submit" value="Find more like this!" onClick={()=>{this.handleSeriesSubmit(series)}} />
+                <input type="submit" value="Find more like this!" onClick={() => { this.handleSeriesSubmit(series) }} />
                 <br />
                 <br />
             </li>)}
+        </div>
+        <div style={{ display: (!showing ? 'block' : 'none') }}> This is visible</div>
         </div>
     )
     } else {

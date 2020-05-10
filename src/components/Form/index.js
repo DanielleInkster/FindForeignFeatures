@@ -13,7 +13,6 @@ class Form extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.handleData(this.state.TextBoxValue)
-        this.refs.btn.setAttribute("disabled", "disabled")
         this.setState(this.initialState)
     }
 
