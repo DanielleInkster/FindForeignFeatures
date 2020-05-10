@@ -8,27 +8,26 @@ class Recommmendation extends Component {
         this.state = { genres: [this.props.data.genre_ids],
                        rating: this.props.data.vote_average,
                        keywords:[],
-                         }
+                    }
 
     }
 
-    componentDidUpdate() {
+    componentDidMount() {
+        
         fetch(`https://api.themoviedb.org/3/tv/${this.props.data.id}/keywords?api_key=${API_KEY}`) 
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                    console.log(data.results)
-                    this.setState({ keywords: data.results.slice(0, 3) })
-                })
-            }
+                    this.setState({ keywords: data.results})
+
+        })
+    }
     
 
 
     render() {
         return (
-            <div>
-               Hello
-            </div>
+            null
         )
     };
 

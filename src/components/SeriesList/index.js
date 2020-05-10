@@ -21,6 +21,9 @@ class SeriesList extends Component {
      
     }
 
+    gatherData=()=>{
+        alert("DATA GATHERED!")
+    }
 
     render(){
 
@@ -38,7 +41,9 @@ class SeriesList extends Component {
                 {ReactHtmlParser(`Original language: <b>${ISO6391.getName(series.original_language)}</b>`)}
                 <br />
                 <br />
-                <input type="submit" value="Submit"  />
+                <input type="submit" value="Find me something similar!" onClick ={this.gatherData} />
+                <br />
+                <br />
                 <Recommendation data={series} />
             </li>)}
         </div>
