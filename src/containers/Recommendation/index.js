@@ -25,6 +25,7 @@ class Recommmendation extends Component {
                 this.setState({ rating: this.props.data.vote_average })
                 this.setState({ genres: this.props.data.genre_ids })
             })
+            console.log("hi there!")
         }
 
     }

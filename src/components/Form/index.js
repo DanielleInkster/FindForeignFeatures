@@ -3,17 +3,17 @@ import React, { Component } from 'react';
 class Form extends Component {
     constructor(props) {
         super(props);
-        this.initialState = {
+        this.state = {
             TextBoxValue: '',
+            showing: true
         }
 
-        this.state = this.initialState
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.handleData(this.state.TextBoxValue)
-        this.setState(this.initialState)
+        this.setState({showing: false})
     }
 
     handleChange = (e) => {
@@ -22,8 +22,9 @@ class Form extends Component {
   
 
     render() {
+        const { showing } = this.state;
         return (
-            <div>
+            <div style={{ display: (showing ? 'block' : 'none') }}>
                 <form onSubmit={this.handleSubmit.bind(this)}>
                 <label>
                 Series Name:
