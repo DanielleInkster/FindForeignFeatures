@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import CheckBox from './CheckBox';
-// const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
 class GatherRecommendations extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            keywordRecommendations: [],
+            chosenKeywords: [],
             genreRecommendations: [],
             options:[],
-            choices:[]
         }
-
     }
 
     componentDidUpdate() {
@@ -33,21 +30,26 @@ class GatherRecommendations extends Component {
         
     }
 
-    // handleAllChecked = (event) => {
-    //     let options = this.state.options
-    //     options.forEach(entry => entry.isChecked = event.target.checked)
-    //     this.setState({ options: options })
-    // }
-
-    handleCheckChildElement = (event) => {
+    handleCheckChildElement = (e) => {
         let options = this.state.options
         options.forEach(entry => {
-            if (entry.value === event.target.value)
-                entry.isChecked = event.target.checked
-                console.log(entry)
+            if (entry.value === e.target.value)
+                entry.isChecked = e.target.checked
         })
-        this.setState({ choices: options })
-        console.log(this.state.choices)
+        this.setState({ options: options })
+    }
+
+    handleSubmit = (e)=>{
+        e.preventDefault();
+        let options = this.state.options
+        let arr = []
+        options.forEach(entry => {
+            if(entry.isChecked=== true){
+                arr.push(entry.id)
+            }
+        })
+        console.log(arr)
+        this.setState({ chosenKeywords: arr })
     }
 
 
@@ -62,9 +64,8 @@ class GatherRecommendations extends Component {
                         this.state.options.map((entry) => {
                             return (<CheckBox handleCheckChildElement={this.handleCheckChildElement}  {...entry} />)
                         })
-                    
-                }
-                    < input type="submit" value="Submit" />
+                    }
+                    < input type="submit" value="Submit" onClick={this.handleSubmit}/>
                 </ul>             
             </div>
             )
