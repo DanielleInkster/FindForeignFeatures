@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
+import CheckBox from './CheckBox';
+// const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
 class GatherRecommendations extends Component {
     constructor(props) {
@@ -8,7 +9,8 @@ class GatherRecommendations extends Component {
         this.state = {
             keywordRecommendations: [],
             genreRecommendations: [],
-            options:[]
+            options:[],
+            choices:[]
         }
 
     }
@@ -31,6 +33,23 @@ class GatherRecommendations extends Component {
         
     }
 
+    // handleAllChecked = (event) => {
+    //     let options = this.state.options
+    //     options.forEach(entry => entry.isChecked = event.target.checked)
+    //     this.setState({ options: options })
+    // }
+
+    handleCheckChildElement = (event) => {
+        let options = this.state.options
+        options.forEach(entry => {
+            if (entry.value === event.target.value)
+                entry.isChecked = event.target.checked
+                console.log(entry)
+        })
+        this.setState({ choices: options })
+        // console.log(this.state.choices)
+    }
+
 
     render() {
         if (this.props.data.keywords != null && this.props.data.keywords.length > 3){
@@ -38,13 +57,20 @@ class GatherRecommendations extends Component {
             <div>Wow! There are a lot of keywords associated with this series. 
                 In order to create the best recommendations for you, please select the 
                 three that are most interesting to you.  
-                {console.log(this.state.options)}               
+                <ul style={{ listStyleType: "none" }}>
+                    {
+                        this.state.options.map((entry) => {
+                            return (<CheckBox handleCheckChildElement={this.handleCheckChildElement}  {...entry} />)
+                        })
+                    }
+                </ul>             
             </div>
             )
         } else {
             return(
-                <div>Hello!</div>
-
+                <div>Hello!
+                { console.log(this.state.options) } 
+                </div>
             )
         }
     };
