@@ -47,7 +47,7 @@ class GatherRecommendations extends Component {
                 console.log(entry)
         })
         this.setState({ choices: options })
-        // console.log(this.state.choices)
+        console.log(this.state.choices)
     }
 
 
@@ -62,7 +62,9 @@ class GatherRecommendations extends Component {
                         this.state.options.map((entry) => {
                             return (<CheckBox handleCheckChildElement={this.handleCheckChildElement}  {...entry} />)
                         })
-                    }
+                    
+                }
+                    < input type="submit" value="Submit" />
                 </ul>             
             </div>
             )
