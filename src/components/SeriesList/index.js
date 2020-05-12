@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
-import HtmlParser from '../HtmlParser';
-import ISO6391 from 'iso-639-1';
 import GatherData from '../../containers/GatherData';
-import ImageUrl from '../ImageUrl';
-import NonEnglishName from '../NonEnglishName';
+import ListItem from '../ListItem';
 import Button from '../Button';
 
 const CheckForNull = (item) => {
@@ -35,14 +32,7 @@ class SeriesList extends Component {
         <div>
             <div style={{ display: (showing ? 'block' : 'none') }}> {this.props.list.map(series =>
                 <li style={{ listStyleType: "none" }} key={series.id}>
-                    <ImageUrl series={series} />
-                    <br/>
-                    <h2><b>{series.original_name}</b></h2>
-                    <h4>{<NonEnglishName series ={series}/>}</h4>
-                    {<HtmlParser text={series.overview}/>}
-                    <br/><br />
-                    {<HtmlParser text={`Original language: <b>${ISO6391.getName(series.original_language)}</b>`} />}
-                    <br /><br />
+                    <ListItem series = {series} />
                     <Button value="Find more like this!" onClick={() => {this.handleSeriesSubmit(series)}} />
                     <br /><br />
                 </li>)}
