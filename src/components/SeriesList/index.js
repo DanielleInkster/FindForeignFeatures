@@ -13,8 +13,7 @@ class SeriesList extends Component {
         this.state = {
             seriesSelection : [],
             showing: true,
-        }
-     
+        } 
     }
 
     handleSeriesSubmit = (series) => {
@@ -24,7 +23,6 @@ class SeriesList extends Component {
 
     render(){
     const { showing } = this.state;
-    
     
     if (CheckForNull(this.props.list) === false) {
         

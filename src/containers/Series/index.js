@@ -16,9 +16,7 @@ function Slugify(text) {
 class Series extends Component{
     constructor(props) {
     super(props);
-
     this.state =  { series:[] }
-
     }
 
     componentDidUpdate(){
@@ -36,7 +34,6 @@ class Series extends Component{
             })
             console.log("Series title submitted")
         }
-            
     }
     
     render() {

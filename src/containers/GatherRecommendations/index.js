@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CheckBox from './CheckBox';
+import CheckBox from '../../components/CheckBox';
 
 class GatherRecommendations extends Component {
     constructor(props) {
