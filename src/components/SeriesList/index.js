@@ -2,17 +2,11 @@ import React, {Component} from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import ISO6391 from 'iso-639-1';
 import GatherData from '../../containers/GatherData';
+import ImageUrl from '../ImageUrl';
+import NonEnglishName from '../NonEnglishName';
 
-const imageUrl = (img) =>  {
-    return img !== null ? `https://image.tmdb.org/t/p/w500/${img}` : 'https://upload.wikimedia.org/wikipedia/en/6/60/No_Picture.jpg'
-}
-
-const nonEnglishName = (name)=>{
-    if (name.name !== name.original_name) return `Engligh Title: ${name.name}` 
-}
-
-const checkForNull = (props) =>{
-    return props === null ? true : false
+const CheckForNull = (item) => {
+    return (item === null) ? true : false
 }
 
 class SeriesList extends Component {
@@ -32,16 +26,21 @@ class SeriesList extends Component {
 
     render(){
     const { showing } = this.state;
-
-    if (checkForNull(this.props.list) === false) {
+    
+    
+    if (CheckForNull(this.props.list) === false) {
+        
     return(
+
         <div>
+
+            {console.log(this.props.list)}
             <div style={{ display: (showing ? 'block' : 'none') }}> {this.props.list.map(series =>
                 <li style={{ listStyleType: "none" }} key={series.id}>
-                    <img src={imageUrl(series.poster_path)} alt={series.original_name+" poster."} width="20%" height="40%"/>
+                    <ImageUrl series={series} />
                     <br/>
                     <h2><b>{series.original_name}</b></h2>
-                    <h4>{nonEnglishName(series)}</h4>
+                    <h4>{<NonEnglishName series ={series}/>}</h4>
                     {ReactHtmlParser(series.overview)}
                     <br/><br />
                     {ReactHtmlParser(`Original language: <b>${ISO6391.getName(series.original_language)}</b>`)}
