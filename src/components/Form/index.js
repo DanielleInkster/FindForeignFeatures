@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from '../Button';
 
 class Form extends Component {
     constructor(props) {
@@ -23,12 +24,12 @@ class Form extends Component {
         const { showing } = this.state;
         return (
             <div style={{ display: (showing ? 'block' : 'none') }}>
-                <form onSubmit={this.handleSubmit.bind(this)}>
+                <form>
                 <label>
                 Series Name:
-                <input type="text" value={this.state.TextBoxValue} onChange={this.handleChange.bind(this)} />
+                    <input type="text" value={this.state.TextBoxValue} onChange={this.handleChange.bind(this)} />
                 </label>
-                <input type="submit" ref ="btn" value="Submit" />
+                    <Button value="Search" onClick={this.handleSubmit.bind(this)} />
             </form>
             </div>
         );

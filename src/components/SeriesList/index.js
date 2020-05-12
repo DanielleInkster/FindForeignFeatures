@@ -4,6 +4,7 @@ import ISO6391 from 'iso-639-1';
 import GatherData from '../../containers/GatherData';
 import ImageUrl from '../ImageUrl';
 import NonEnglishName from '../NonEnglishName';
+import Button from '../Button';
 
 const CheckForNull = (item) => {
     return (item === null) ? true : false
@@ -33,7 +34,6 @@ class SeriesList extends Component {
     return(
 
         <div>
-
             {console.log(this.props.list)}
             <div style={{ display: (showing ? 'block' : 'none') }}> {this.props.list.map(series =>
                 <li style={{ listStyleType: "none" }} key={series.id}>
@@ -45,7 +45,7 @@ class SeriesList extends Component {
                     <br/><br />
                     {ReactHtmlParser(`Original language: <b>${ISO6391.getName(series.original_language)}</b>`)}
                     <br /><br />
-                    <input type="submit" value="Find more like this!" onClick={() => { this.handleSeriesSubmit(series) }} />
+                    <Button value="Find more like this!" onClick={() => {this.handleSeriesSubmit(series)}} />
                     <br /><br />
                 </li>)}
             </div>
