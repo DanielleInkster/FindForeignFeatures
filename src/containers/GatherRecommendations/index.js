@@ -28,20 +28,17 @@ class GatherRecommendations extends Component {
          this.setState({ options: arr }) 
     }
 
-    handleCheckChildElement = (e) => {
-        let options = this.state.options
-        options.forEach(entry => {
-            if (entry.value === e.target.value)
-                entry.isChecked = e.target.checked
+    handleCheckChildElement = (e) => { 
+        this.state.options.forEach(entry => {
+            if (entry.value === e.target.value) {entry.isChecked = e.target.checked}
         })
-        this.setState({ options: options })
+        this.setState({ options: this.state.options })
     }
 
     handleSubmit = (e)=>{
         e.preventDefault();
-        let options = this.state.options
         let arr = []
-        options.forEach(entry => {
+        this.state.options.forEach(entry => {
             if (entry.isChecked=== true) {arr.push(entry.id)}
         })
         arr.length > 3 ? alert('Please select no more than three options') : this.setState({ chosenKeywords: arr })
