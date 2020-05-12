@@ -18,11 +18,12 @@ class App extends Component{
  
   render(){
     let input  = "Here you can find all of your most-loved series."
+
     return (
       <div className="App">
         <header className="App-header">
           <p>
-          TV Series List
+          Find Foreign Features
           </p>
         </header>
         <br />
