@@ -8,7 +8,7 @@ const imageUrl = (img) =>  {
 }
 
 const nonEnglishName = (name)=>{
-    if (name.name != name.original_name) return `Engligh Title: ${name.name}` 
+    if (name.name !== name.original_name) return `Engligh Title: ${name.name}` 
 }
 
 const checkForNull = (props) =>{
@@ -37,20 +37,17 @@ class SeriesList extends Component {
     return(
         <div>
             <div style={{ display: (showing ? 'block' : 'none') }}> {this.props.list.map(series =>
-                <li style={{ listStyleType: "none" }}>
+                <li style={{ listStyleType: "none" }} key={series.id}>
                     <img src={imageUrl(series.poster_path)} alt={series.original_name+" poster."} width="20%" height="40%"/>
                     <br/>
                     <h2><b>{series.original_name}</b></h2>
                     <h4>{nonEnglishName(series)}</h4>
                     {ReactHtmlParser(series.overview)}
-                    <br/>
-                    <br />
+                    <br/><br />
                     {ReactHtmlParser(`Original language: <b>${ISO6391.getName(series.original_language)}</b>`)}
-                    <br />
-                    <br />
+                    <br /><br />
                     <input type="submit" value="Find more like this!" onClick={() => { this.handleSeriesSubmit(series) }} />
-                    <br />
-                    <br />
+                    <br /><br />
                 </li>)}
             </div>
             <div style={{ display: (!showing ? 'block' : 'none') }}> 

@@ -17,7 +17,6 @@ class GatherRecommendations extends Component {
             this.createOptions()
             console.log("Gathering Recommendations")
         }
-
     }
    
      createOptions = () => {
@@ -26,8 +25,7 @@ class GatherRecommendations extends Component {
             this.props.data.keywords.map(entry=>
            arr.push({ id: entry.id, value: entry.name, isChecked: false })
         )}
-         this.setState({ options: arr })
-        
+         this.setState({ options: arr }) 
     }
 
     handleCheckChildElement = (e) => {
@@ -44,36 +42,31 @@ class GatherRecommendations extends Component {
         let options = this.state.options
         let arr = []
         options.forEach(entry => {
-            if(entry.isChecked=== true){
-                arr.push(entry.id)
-            }
+            if (entry.isChecked=== true) {arr.push(entry.id)}
         })
         console.log(arr)
         this.setState({ chosenKeywords: arr })
     }
 
-
     render() {
+        
         if (this.props.data.keywords != null && this.props.data.keywords.length > 3){
         return (
             <div>Wow! There are a lot of keywords associated with this series. 
-                In order to create the best recommendations for you, please select the 
-                three that are most interesting to you.  
-                <ul style={{ listStyleType: "none" }}>
-                    {
-                        this.state.options.map((entry) => {
+                In order to create the best recommendations for you, please select up to 
+                three that are most interesting to you. 
+                <ul style={{ listStyleType: "none" }} >
+                    { this.state.options.map((entry) => {
                             return (<CheckBox handleCheckChildElement={this.handleCheckChildElement}  {...entry} />)
                         })
                     }
                     < input type="submit" value="Submit" onClick={this.handleSubmit}/>
-                </ul>             
+                </ul>         
             </div>
             )
         } else {
             return(
-                <div>Hello!
-                { console.log(this.state.options) } 
-                </div>
+               null
             )
         }
     };
