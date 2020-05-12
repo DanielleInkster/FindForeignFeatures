@@ -44,8 +44,7 @@ class GatherRecommendations extends Component {
         options.forEach(entry => {
             if (entry.isChecked=== true) {arr.push(entry.id)}
         })
-        console.log(arr)
-        this.setState({ chosenKeywords: arr })
+        arr.length > 3 ? alert('Please select no more than three options') : this.setState({ chosenKeywords: arr })
     }
 
     render() {
