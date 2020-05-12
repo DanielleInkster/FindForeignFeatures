@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ReactHtmlParser from 'react-html-parser';
+import HtmlParser from '../HtmlParser';
 import ISO6391 from 'iso-639-1';
 import GatherData from '../../containers/GatherData';
 import ImageUrl from '../ImageUrl';
@@ -32,18 +32,16 @@ class SeriesList extends Component {
     if (CheckForNull(this.props.list) === false) {
         
     return(
-
         <div>
-            {console.log(this.props.list)}
             <div style={{ display: (showing ? 'block' : 'none') }}> {this.props.list.map(series =>
                 <li style={{ listStyleType: "none" }} key={series.id}>
                     <ImageUrl series={series} />
                     <br/>
                     <h2><b>{series.original_name}</b></h2>
                     <h4>{<NonEnglishName series ={series}/>}</h4>
-                    {ReactHtmlParser(series.overview)}
+                    {<HtmlParser text={series.overview}/>}
                     <br/><br />
-                    {ReactHtmlParser(`Original language: <b>${ISO6391.getName(series.original_language)}</b>`)}
+                    {<HtmlParser text={`Original language: <b>${ISO6391.getName(series.original_language)}</b>`} />}
                     <br /><br />
                     <Button value="Find more like this!" onClick={() => {this.handleSeriesSubmit(series)}} />
                     <br /><br />

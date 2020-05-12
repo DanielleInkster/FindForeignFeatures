@@ -4,7 +4,7 @@ import SeriesList from '../../components/SeriesList'
 
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
-function slugify(text) {
+function Slugify(text) {
     return text.toString().toLowerCase()
         .replace(/\s+/g, '-')           
         .replace(/[^\w\-]+/g, '')       
@@ -24,7 +24,7 @@ class Series extends Component{
     componentDidUpdate(){
         if (this.state.series !== null && this.state.series.length === 0){
         fetch(`https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}`+
-            `&language=en-US&page=1&query=${slugify(this.props.form)}&include_adult=false`)
+            `&language=en-US&page=1&query=${Slugify(this.props.form)}&include_adult=false`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
