@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Message from '../../components/Message';
 import CheckBoxList from '../../components/CheckBoxList';
 import Button from '../../components/Button';
-// import GatherRecommendations from '../GatherRecommendations';
+import GatherRecommendations from '../GatherRecommendations';
 
 class SelectKeywords extends Component {
     constructor(props) {
@@ -12,6 +12,7 @@ class SelectKeywords extends Component {
             selectedKeywords: [],
             selectedSeries: [],
             options:[],
+            showing: true
         }
     }
 
@@ -46,12 +47,13 @@ class SelectKeywords extends Component {
             if (entry.isChecked=== true) {arr.push(entry.id)}
         })
         arr.length > 3 ? alert('Please select no more than three options') : this.setState({ selectedKeywords: arr })
+        this.setState({ showing: false})
     }
 
-    conditionalRender =(input)=>{
+    selectKeywords =(input, showing)=>{
         while (this.props.data.keywords != null && this.props.data.keywords.length > 3) {
             return (
-                <div>
+                <div style={{ display: (showing ? 'block' : 'none') }}>
                     <Message text={input} />
                     <CheckBoxList options={this.state.options} handleChildElement={this.handleCheckChildElement} />
                     <Button value="Submit" onClick={this.handleSubmit} />
@@ -61,14 +63,15 @@ class SelectKeywords extends Component {
     }
 
     render(){
-
+        const {showing} = this.state
         let input = "Wow! There are a lot of keywords associated with this series. "+ 
         "In order to create the best recommendations for you, please select up to "+
         "three that are most interesting to you."
         
         return (
             <div>
-            {this.conditionalRender(input)}
+            {this.selectKeywords(input, showing)}
+            <GatherRecommendations data = {this.state.selectedSeries} keywords = {this.state.selectedKeywords}/>
             </div>
         )
     };
