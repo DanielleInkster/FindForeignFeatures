@@ -8,7 +8,6 @@ const ListItem =(props)=>{
     return(
     <div>
     <ImageUrl series={props.series} />
-        <br />
         <h2><b>{props.series.original_name}</b></h2>
             <h4>{<NonEnglishName series={props.series} />}</h4>
             {<HtmlParser text={props.series.overview} /> }

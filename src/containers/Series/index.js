@@ -38,10 +38,7 @@ class Series extends Component{
     
     render() {
         return (
-            <div>   
-                <br/>
-                <SeriesList list = {this.state.series}/>
-            </div>
+            <SeriesList list = {this.state.series}/>
         )
     };
     

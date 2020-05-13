@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Message from '../../components/Message';
 import CheckBox from '../../components/CheckBox';
+import Button from '../../components/Button';
 
-class GatherRecommendations extends Component {
+class SelectKeywords extends Component {
     constructor(props) {
         super(props);
 
@@ -20,13 +21,13 @@ class GatherRecommendations extends Component {
         }
     }
    
-     createOptions = () => {
-         let arr = []
+    createOptions = () => {
+        let arr = []
        if(this.props.data.keywords !== null){
             this.props.data.keywords.map(entry=>
-           arr.push({ id: entry.id, value: entry.name, isChecked: false })
+            arr.push({ id: entry.id, value: entry.name, isChecked: false })
         )}
-         this.setState({ options: arr }) 
+        this.setState({ options: arr }) 
     }
 
     handleCheckChildElement = (e) => { 
@@ -59,7 +60,7 @@ class GatherRecommendations extends Component {
                             return (<CheckBox handleCheckChildElement={this.handleCheckChildElement}  {...entry} />)
                         })
                     }
-                    < input type="submit" value="Submit" onClick={this.handleSubmit}/>
+                    <Button value="Submit" onClick={this.handleSubmit} />
                 </ul>         
             </div>
             )
@@ -68,8 +69,9 @@ class GatherRecommendations extends Component {
                null
             )
         }
+        
     };
 
 }
 
-export default GatherRecommendations;
+export default SelectKeywords;
