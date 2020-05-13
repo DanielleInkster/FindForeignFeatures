@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import Message from '../../components/Message';
-import CheckBox from '../../components/CheckBox';
+import CheckBoxList from '../../components/CheckBoxList';
 import Button from '../../components/Button';
+// import GatherRecommendations from '../GatherRecommendations';
 
 class SelectKeywords extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            chosenKeywords: [],
-            genreRecommendations: [],
+            selectedKeywords: [],
+            selectedSeries: [],
             options:[],
         }
     }
@@ -17,6 +18,7 @@ class SelectKeywords extends Component {
     componentDidUpdate() {
         if (this.state.options.length === 0 && this.props.data.keywords.length > 3 ) {
             this.createOptions()
+            this.setState({ selectedSeries: this.props.data }) 
             console.log("Gathering Recommendations")
         }
     }
@@ -43,33 +45,32 @@ class SelectKeywords extends Component {
         this.state.options.forEach(entry => {
             if (entry.isChecked=== true) {arr.push(entry.id)}
         })
-        arr.length > 3 ? alert('Please select no more than three options') : this.setState({ chosenKeywords: arr })
+        arr.length > 3 ? alert('Please select no more than three options') : this.setState({ selectedKeywords: arr })
     }
 
-    render() {
+    conditionalRender =(input)=>{
+        while (this.props.data.keywords != null && this.props.data.keywords.length > 3) {
+            return (
+                <div>
+                    <Message text={input} />
+                    <CheckBoxList options={this.state.options} handleChildElement={this.handleCheckChildElement} />
+                    <Button value="Submit" onClick={this.handleSubmit} />
+                </div>
+            )
+        } 
+    }
+
+    render(){
+
         let input = "Wow! There are a lot of keywords associated with this series. "+ 
         "In order to create the best recommendations for you, please select up to "+
         "three that are most interesting to you."
         
-        if (this.props.data.keywords != null && this.props.data.keywords.length > 3){
         return (
             <div>
-                <Message text = {input}/>
-                <ul style={{ listStyleType: "none" }} >
-                    { this.state.options.map((entry) => {
-                            return (<CheckBox handleCheckChildElement={this.handleCheckChildElement}  {...entry} />)
-                        })
-                    }
-                    <Button value="Submit" onClick={this.handleSubmit} />
-                </ul>         
+            {this.conditionalRender(input)}
             </div>
-            )
-        } else {
-            return(
-               null
-            )
-        }
-        
+        )
     };
 
 }

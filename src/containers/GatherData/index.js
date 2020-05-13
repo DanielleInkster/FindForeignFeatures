@@ -8,8 +8,6 @@ class GatherData extends Component {
 
         this.state = { 
                        seriesSelection: [],
-                       genres: [],
-                       rating: '',
                        keywords: [0],
                     }
 
@@ -23,8 +21,6 @@ class GatherData extends Component {
             }).then((data) => {
                 this.setState({ keywords: data.results })
                 this.setState({ seriesSelection: this.props.data })
-                this.setState({ rating: this.props.data.vote_average })
-                this.setState({ genres: this.props.data.genre_ids })
             })
             console.log("Series data gathered")
         }
