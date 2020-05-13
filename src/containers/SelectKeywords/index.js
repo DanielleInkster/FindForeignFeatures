@@ -21,6 +21,10 @@ class SelectKeywords extends Component {
             this.createOptions()
             this.setState({ selectedSeries: this.props.data }) 
             console.log("Gathering Recommendations")
+        } 
+        else if (this.state.selectedSeries.length === 0 && this.props.data.keywords.length <= 3){
+            this.setState({ selectedSeries: this.props.data }) 
+            this.setState({ selectedKeywords: this.props.data.keywords }) 
         }
     }
    
