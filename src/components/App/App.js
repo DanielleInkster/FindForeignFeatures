@@ -4,13 +4,6 @@ import Series from '../../containers/Series'
 import './App.css';
 
 class App extends Component{
-
-  constructor() {
-    super();
-    this.state = {
-      form: ''
-    };
-  }
   
   render(){
     let input  = "Here you can find all of your most-loved series."
@@ -22,9 +15,7 @@ class App extends Component{
           Find Foreign Features
           </p>
         </header>
-        <br />
-          <Message text = {input}/>
-        <br/>
+          <br/><br/>
           <Series/>
       </div>
   );

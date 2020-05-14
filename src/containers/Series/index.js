@@ -3,6 +3,7 @@ import 'whatwg-fetch'
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import SeriesList from '../../components/SeriesList'
+import Message from '../../components/Message'
 
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
@@ -20,9 +21,24 @@ class Series extends Component{
     super(props);
     this.state =  { 
         series:[],
-        inputValue:'', 
+        inputValue:'',
+        isFetching: false, 
         showing: true
     }
+    }
+
+    createMessage = (length, value, showing)=>{
+        let input = ''
+        if(this.state.series.length === 0 && this.state.inputValue.trim() === ''){
+            input = "Please enter the name of an English series you enjoy." 
+        } else if (this.state.series.length === 0 && this.state.inputValue.trim() != '' && this.state.showing === false){
+            input = "No series found."
+        } else if(this.state.isFetching === true){
+            input = "Loading..."
+        } else {
+            input = ""
+        }
+        return input
     }
 
     createFetch=(value)=>{
@@ -32,12 +48,14 @@ class Series extends Component{
                 return response.json();
             }).then((data) => {
                 this.setState({ series: data.results.slice(0, 3)})
+                this.setState({ isFetching: false })
             }) 
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
         this.setState({ inputValue: e.target.value })
+        this.setState({ isFetching: true })
         this.createFetch(this.state.inputValue)
         this.setState({ showing: false })
     }
@@ -50,6 +68,7 @@ class Series extends Component{
         const { showing } = this.state;
         return (
             <div>
+            <h1><Message text={this.createMessage(this.state)}/></h1>
             <div style={{ display: (showing ? 'block' : 'none') }}>
                 <Input onChange={this.handleChange}/>
                 <Button value="Search" onClick={this.handleSubmit.bind(this)} />

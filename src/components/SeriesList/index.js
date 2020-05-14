@@ -23,8 +23,6 @@ class SeriesList extends Component {
 
     render(){
     const { showing } = this.state;
-    
-    if (this.props.list.length != 0) {
         
     return(
         <div>
@@ -39,14 +37,7 @@ class SeriesList extends Component {
                 <GatherData data = {this.state.seriesSelection} />
             </div>
         </div>
-    )
-    } else {
-        return (
-        <div>
-            <h1>No results found. Please try another title.</h1>
-        </div>
-        )
-    }
+    ) 
     }
 }
 export default SeriesList;
