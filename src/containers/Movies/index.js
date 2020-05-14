@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import 'whatwg-fetch'
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-import SeriesList from '../../components/SeriesList'
+import MoviesList from '../../components/MoviesList'
 import Message from '../../components/Message'
 import Loading from '../../components/Loading'
 
@@ -17,11 +17,11 @@ function Slugify(text) {
         .replace(/-+$/, '');            
 }
 
-class Series extends Component{
+class Movies extends Component{
     constructor(props) {
     super(props);
     this.state =  { 
-        series:[],
+        movie:[],
         inputValue:'',
         isFetching: false, 
         showing: true
@@ -30,11 +30,11 @@ class Series extends Component{
 
     createMessage = ()=>{
         let input = ''
-        if(this.state.series.length === 0 && this.state.inputValue.trim() === ''){
-            input = "Please enter the name of an English series you enjoy."
+        if (this.state.movie.length === 0 && this.state.inputValue.trim() === ''){
+            input = "Please enter the name of an English movie you enjoy."
         } else if (this.state.isFetching === true) {
             input = "Loading..." 
-        } else if (this.state.series.length === 0 && this.state.inputValue.trim() != '' && this.state.showing === false){
+        } else if (this.state.movie.length === 0 && this.state.inputValue.trim() != '' && this.state.showing === false){
             input = "No series found."
         } else {
             input = ""
@@ -43,12 +43,12 @@ class Series extends Component{
     }
 
     createFetch=(value)=>{
-        fetch(`https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}`+
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}`+
             `&language=en-US&page=1&query=${Slugify(value)}&include_adult=false`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                this.setState({ series: data.results.slice(0, 3)})
+                this.setState({ movie: data.results.slice(0, 5)})
                 this.setState({ isFetching: false })
             }) 
     }
@@ -75,11 +75,11 @@ class Series extends Component{
                 <Input onChange={this.handleChange}/>
                 <Button value="Search" onClick={this.handleSubmit.bind(this)} />
             </div>
-                <SeriesList list={this.state.series} />
+                <MoviesList list={this.state.movie} />
             </div>
         )
     };
     
 }
 
-export default Series;
+export default Movies;

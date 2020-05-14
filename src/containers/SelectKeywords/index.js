@@ -10,7 +10,7 @@ class SelectKeywords extends Component {
 
         this.state = {
             selectedKeywords: [],
-            selectedSeries: [],
+            selectedMovie: [],
             options:[],
             showing: true
         }
@@ -46,7 +46,7 @@ class SelectKeywords extends Component {
             if (entry.isChecked=== true) {arr.push(entry.id)}
         })
         arr.length > 3 ? alert('Please select no more than three options') : this.setState({ selectedKeywords: arr })
-        this.setState({ selectedSeries: this.props.data }) 
+        this.setState({ selectedMovie: this.props.data }) 
         this.setState({ showing: false})
     }
 
@@ -64,14 +64,14 @@ class SelectKeywords extends Component {
 
     render(){
         const {showing} = this.state
-        let input = "Wow! There are a lot of keywords associated with this series. "+ 
+        let input = "Wow! There are a lot of keywords associated with this movie. "+ 
         "In order to create the best recommendations for you, please select up to "+
         "three that are most interesting to you."
         
         return (
             <div>
             {this.selectKeywords(input, showing)}
-            <GatherRecommendations data = {this.state.selectedSeries} keywords = {this.state.selectedKeywords}/>
+                <GatherRecommendations data={this.state.selectedMovie} keywords = {this.state.selectedKeywords}/>
             </div>
         )
     };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Series from '../../containers/Series'
+import Movies from '../../containers/Movies'
 import './App.css';
 
 class App extends Component{
@@ -14,7 +14,7 @@ class App extends Component{
           </p>
         </header>
           <br/><br/>
-          <Series/>
+          <Movies/>
       </div>
   );
     }
