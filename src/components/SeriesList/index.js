@@ -3,9 +3,9 @@ import GatherData from '../../containers/GatherData';
 import ListItem from '../ListItem';
 import Button from '../Button';
 
-const CheckForNull = (item) => {
-    return (item === null) ? true : false
-}
+// const CheckForNull = (item) => {
+//     return (item === null) ? true : false
+// }
 
 class SeriesList extends Component {
     constructor(props) {
@@ -24,7 +24,7 @@ class SeriesList extends Component {
     render(){
     const { showing } = this.state;
     
-    if (CheckForNull(this.props.list) === false) {
+    if (this.props.list.length != 0) {
         
     return(
         <div>

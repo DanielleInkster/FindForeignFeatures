@@ -53,7 +53,6 @@ class Series extends Component{
             <div style={{ display: (showing ? 'block' : 'none') }}>
                 <Input onChange={this.handleChange}/>
                 <Button value="Search" onClick={this.handleSubmit.bind(this)} />
-                {console.log(this.state.series)}
             </div>
                 <SeriesList list={this.state.series} />
             </div>
