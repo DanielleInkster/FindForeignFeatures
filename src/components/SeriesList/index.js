@@ -1,23 +1,33 @@
 import React, {Component} from 'react';
-import GatherData from '../../containers/GatherData';
 import ListItem from '../ListItem';
 import Button from '../Button';
+import SelectKeywords from '../../containers/SelectKeywords';
+const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
-// const CheckForNull = (item) => {
-//     return (item === null) ? true : false
-// }
 
 class SeriesList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             seriesSelection : [],
+            keywords:[],
             showing: true,
         } 
     }
 
+    findKeywordsFetch = (value) => {
+        fetch(`https://api.themoviedb.org/3/tv/${value}/keywords?api_key=${API_KEY}`)
+            .then((response) => {
+                return response.json();
+            }).then((data) => {
+                this.setState({ keywords: data.results })
+            })
+    }
+
+
     handleSeriesSubmit = (series) => {
         this.setState({seriesSelection: series});
+        this.findKeywordsFetch(series.id)
         this.setState({ showing: false });
     }
 
@@ -34,7 +44,7 @@ class SeriesList extends Component {
                 </li>)}
             </div>
             <div style={{ display: (!showing ? 'block' : 'none') }}> 
-                <GatherData data = {this.state.seriesSelection} />
+                <SelectKeywords data={this.state} />
             </div>
         </div>
     ) 
