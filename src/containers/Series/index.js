@@ -31,11 +31,12 @@ class Series extends Component{
         let input = ''
         if(this.state.series.length === 0 && this.state.inputValue.trim() === ''){
             input = "Please enter the name of an English series you enjoy." 
+        } else if (this.state.isFetching === true) {
+            input = "Loading..."
         } else if (this.state.series.length === 0 && this.state.inputValue.trim() != '' && this.state.showing === false){
             input = "No series found."
-        } else if(this.state.isFetching === true){
-            input = "Loading..."
-        } else {
+        }
+        else {
             input = ""
         }
         return input
