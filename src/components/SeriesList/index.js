@@ -24,7 +24,6 @@ class SeriesList extends Component {
             })
     }
 
-
     handleSeriesSubmit = (series) => {
         this.setState({seriesSelection: series});
         this.findKeywordsFetch(series.id)
