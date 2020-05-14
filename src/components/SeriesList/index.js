@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ListItem from '../ListItem';
 import Button from '../Button';
+import Loading from '../../components/Loading'
 import SelectKeywords from '../../containers/SelectKeywords';
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
@@ -11,6 +12,7 @@ class SeriesList extends Component {
         this.state = {
             seriesSelection : [],
             keywords:[],
+            isFetching: false,
             showing: true,
         } 
     }
@@ -21,11 +23,13 @@ class SeriesList extends Component {
                 return response.json();
             }).then((data) => {
                 this.setState({ keywords: data.results })
+                this.setState({ isFetching: false })
             })
     }
 
     handleSeriesSubmit = (series) => {
         this.setState({seriesSelection: series});
+        this.setState({ isFetching: true })
         this.findKeywordsFetch(series.id)
         this.setState({ showing: false });
     }
@@ -43,7 +47,8 @@ class SeriesList extends Component {
                 </li>)}
             </div>
             <div style={{ display: (!showing ? 'block' : 'none') }}> 
-                <SelectKeywords data={this.state} />
+                {this.state.isFetching && <Loading />}
+                {this.state.keywords.length > 3 && <SelectKeywords data={this.state} />}
             </div>
         </div>
     ) 

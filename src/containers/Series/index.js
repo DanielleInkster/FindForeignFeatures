@@ -4,6 +4,7 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 import SeriesList from '../../components/SeriesList'
 import Message from '../../components/Message'
+import Loading from '../../components/Loading'
 
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
@@ -24,19 +25,18 @@ class Series extends Component{
         inputValue:'',
         isFetching: false, 
         showing: true
-    }
+        }
     }
 
-    createMessage = (length, value, showing)=>{
+    createMessage = ()=>{
         let input = ''
         if(this.state.series.length === 0 && this.state.inputValue.trim() === ''){
-            input = "Please enter the name of an English series you enjoy." 
+            input = "Please enter the name of an English series you enjoy."
         } else if (this.state.isFetching === true) {
-            input = "Loading..."
+            input = "Loading..." 
         } else if (this.state.series.length === 0 && this.state.inputValue.trim() != '' && this.state.showing === false){
             input = "No series found."
-        }
-        else {
+        } else {
             input = ""
         }
         return input
@@ -69,7 +69,8 @@ class Series extends Component{
         const { showing } = this.state;
         return (
             <div>
-            <h1><Message text={this.createMessage(this.state)}/></h1>
+                {this.state.isFetching && <Loading/>}
+            <h1><Message text={this.createMessage()}/></h1>
             <div style={{ display: (showing ? 'block' : 'none') }}>
                 <Input onChange={this.handleChange}/>
                 <Button value="Search" onClick={this.handleSubmit.bind(this)} />
