@@ -19,13 +19,8 @@ class SelectKeywords extends Component {
     componentDidUpdate() {
         if (this.state.options.length === 0 && this.props.data.keywords.length > 3 ) {
             this.createOptions()
-            this.setState({ selectedSeries: this.props.data }) 
             console.log("Gathering Recommendations")
         } 
-        else if (this.state.selectedSeries.length === 0 && this.props.data.keywords.length <= 3){
-            this.setState({ selectedSeries: this.props.data }) 
-            this.setState({ selectedKeywords: this.props.data.keywords }) 
-        }
     }
    
     createOptions = () => {
@@ -51,6 +46,7 @@ class SelectKeywords extends Component {
             if (entry.isChecked=== true) {arr.push(entry.id)}
         })
         arr.length > 3 ? alert('Please select no more than three options') : this.setState({ selectedKeywords: arr })
+        this.setState({ selectedSeries: this.props.data }) 
         this.setState({ showing: false})
     }
 

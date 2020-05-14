@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import 'whatwg-fetch'
+import Button from '../../components/Button';
+import Input from '../../components/Input';
 import SeriesList from '../../components/SeriesList'
 
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
@@ -16,29 +18,45 @@ function Slugify(text) {
 class Series extends Component{
     constructor(props) {
     super(props);
-    this.state =  { series:[] }
+    this.state =  { 
+        series:[],
+        inputValue:'', 
+        showing: true
+    }
     }
 
-    componentDidUpdate(){
-        if (this.state.series !== null && this.state.series.length === 0){
+    createFetch=(value)=>{
         fetch(`https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}`+
-            `&language=en-US&page=1&query=${Slugify(this.props.form)}&include_adult=false`)
+            `&language=en-US&page=1&query=${Slugify(value)}&include_adult=false`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                if(data.results.length>0){
-                    this.setState({ series: data.results.slice(0, 3)})
-                } else {
-                    this.setState({ series: null})
-                } 
-            })
-            console.log("Series title submitted")
-        }
+                this.setState({ series: data.results.slice(0, 3)})
+            }) 
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.setState({ inputValue: e.target.value })
+        this.createFetch(this.state.inputValue)
+        this.setState({ showing: false })
+    }
+
+    handleChange = (e) => {
+        this.setState({ inputValue: e.target.value })
     }
     
     render() {
+        const { showing } = this.state;
         return (
-            <SeriesList list = {this.state.series}/>
+            <div>
+            <div style={{ display: (showing ? 'block' : 'none') }}>
+                <Input onChange={this.handleChange}/>
+                <Button value="Search" onClick={this.handleSubmit.bind(this)} />
+                {console.log(this.state.series)}
+            </div>
+                <SeriesList list={this.state.series} />
+            </div>
         )
     };
     

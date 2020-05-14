@@ -22,7 +22,6 @@ class GatherRecommendations extends Component {
     render(){
         return(
            <div> "hello"
-             {console.log(this.props.keywords)}
             </div>
         )
     }
