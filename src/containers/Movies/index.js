@@ -35,7 +35,7 @@ class Movies extends Component{
         } else if (this.state.isFetching === true) {
             input = "Loading..." 
         } else if (this.state.movie.length === 0 && this.state.inputValue.trim() != '' && this.state.showing === false){
-            input = "No series found."
+            input = "Movie not found."
         } else {
             input = ""
         }

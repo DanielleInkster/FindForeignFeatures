@@ -10,7 +10,7 @@ class App extends Component{
       <div className="App">
         <header className="App-header">
           <p>
-          Find Foreign Features
+          Find Foreign Films
           </p>
         </header>
           <br/><br/>
