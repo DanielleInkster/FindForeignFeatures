@@ -10,8 +10,6 @@ class KeywordRecommendations extends Component {
         }
     }
 
-
-
     render(){
         return(
            this.props.keywords
