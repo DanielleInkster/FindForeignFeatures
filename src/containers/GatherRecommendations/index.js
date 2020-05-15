@@ -10,14 +10,14 @@ class GatherRecommendations extends Component {
         }
     }
 
-    componentDidUpdate() {
-        if (Number.isInteger(this.props.data.id) &&this.state.keywordRecommendations[0] === 0)  {
-            console.log("hello!")
-        }
-        if (Number.isInteger(this.props.data.id)&& this.state.genreRecommendations[0] === 0){
-            console.log("hello!")
-        }
-    }
+    // componentDidUpdate() {
+    //     if (Number.isInteger(this.props.data.id) &&this.state.keywordRecommendations[0] === 0)  {
+    //         console.log("hello!")
+    //     }
+    //     if (Number.isInteger(this.props.data.id)&& this.state.genreRecommendations[0] === 0){
+    //         console.log("hello!")
+    //     }
+    // }
 
     render(){
         return(

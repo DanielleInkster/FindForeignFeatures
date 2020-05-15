@@ -2,22 +2,20 @@ import React, { Component } from 'react';
 import Message from '../../components/Message';
 import CheckBoxList from '../../components/CheckBoxList';
 import Button from '../../components/Button';
-import GatherRecommendations from '../GatherRecommendations';
+
 
 class SelectKeywords extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            selectedKeywords: [],
-            selectedMovie: [],
             options:[],
             showing: true
         }
     }
 
     componentDidUpdate() {
-        if (this.state.options.length === 0 && this.props.data.keywords.length > 3 ) {
+        if (this.state.options.length === 0 && this.props.keywords.length > 3 ) {
             this.createOptions()
             console.log("Gathering Recommendations")
         } 
@@ -25,8 +23,8 @@ class SelectKeywords extends Component {
    
     createOptions = () => {
         let arr = []
-       if(this.props.data.keywords !== null){
-            this.props.data.keywords.map(entry=>
+       if(this.props.keywords !== null){
+            this.props.keywords.map(entry=>
             arr.push({ id: entry.id, value: entry.name, isChecked: false })
         )}
         this.setState({ options: arr }) 
@@ -45,13 +43,13 @@ class SelectKeywords extends Component {
         this.state.options.forEach(entry => {
             if (entry.isChecked=== true) {arr.push(entry.id)}
         })
-        arr.length > 3 ? alert('Please select no more than three options') : this.setState({ selectedKeywords: arr })
-        this.setState({ selectedMovie: this.props.data }) 
+        arr.length > 3 ? alert('Please select no more than three options') : this.props.handler(arr)
+        console.log(arr)
         this.setState({ showing: false})
     }
 
     selectKeywords =(input, showing)=>{
-        while (this.props.data.keywords != null && this.props.data.keywords.length > 3) {
+        while (this.props.keywords != null && this.props.keywords.length > 3) {
             return (
                 <div style={{ display: (showing ? 'block' : 'none') }}>
                     <Message text={input} />
@@ -69,10 +67,7 @@ class SelectKeywords extends Component {
         "three that are most interesting to you."
         
         return (
-            <div>
-            {this.selectKeywords(input, showing)}
-                <GatherRecommendations data={this.state.selectedMovie} keywords = {this.state.selectedKeywords}/>
-            </div>
+            this.selectKeywords(input, showing)  
         )
     };
 

@@ -3,6 +3,7 @@ import ListItem from '../ListItem';
 import Button from '../Button';
 import Loading from '../Loading'
 import SelectKeywords from '../../containers/SelectKeywords';
+import GatherRecommendations from '../../containers/GatherRecommendations';
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
 
@@ -34,6 +35,11 @@ class MoviesList extends Component {
         this.setState({ showing: false });
     }
 
+    handler = (results)=>{
+        this.setState({ keywords: results });
+        console.log(results)
+    }
+
     render(){
     const { showing } = this.state;
         
@@ -48,7 +54,8 @@ class MoviesList extends Component {
             </div>
             <div style={{ display: (!showing ? 'block' : 'none') }}> 
                 {this.state.isFetching && <Loading />}
-                {this.state.keywords.length > 3 && <SelectKeywords data={this.state} />}
+                {this.state.keywords.length > 3 && <SelectKeywords keywords={this.state.keywords} handler = {this.handler} />}
+                {this.state.keywords.length < 4 && <GatherRecommendations keywords={this.state.keywords} />}
             </div>
         </div>
     ) 

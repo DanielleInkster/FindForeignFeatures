@@ -21,7 +21,7 @@ class Movies extends Component{
     constructor(props) {
     super(props);
     this.state =  { 
-        movie:[],
+        movies:[],
         inputValue:'',
         isFetching: false, 
         showing: true
@@ -30,11 +30,11 @@ class Movies extends Component{
 
     createMessage = ()=>{
         let input = ''
-        if (this.state.movie.length === 0 && this.state.inputValue.trim() === ''){
+        if (this.state.movies.length === 0 && this.state.inputValue.trim() === ''){
             input = "Please enter the name of an English movie you enjoy."
         } else if (this.state.isFetching === true) {
             input = "Loading..." 
-        } else if (this.state.movie.length === 0 && this.state.inputValue.trim() != '' && this.state.showing === false){
+        } else if (this.state.movies.length === 0 && this.state.inputValue.trim() != '' && this.state.showing === false){
             input = "Movie not found."
         } else {
             input = ""
@@ -48,7 +48,7 @@ class Movies extends Component{
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                this.setState({ movie: data.results.slice(0, 5)})
+                this.setState({ movies: data.results.slice(0, 5)})
                 this.setState({ isFetching: false })
             }) 
     }
@@ -75,7 +75,7 @@ class Movies extends Component{
                 <Input onChange={this.handleChange}/>
                 <Button value="Search" onClick={this.handleSubmit.bind(this)} />
             </div>
-                <MoviesList list={this.state.movie} />
+                <MoviesList list={this.state.movies} />
             </div>
         )
     };
