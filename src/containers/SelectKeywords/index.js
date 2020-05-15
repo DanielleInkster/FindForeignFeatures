@@ -40,11 +40,8 @@ class SelectKeywords extends Component {
     handleSubmit = (e)=>{
         e.preventDefault();
         let arr = []
-        this.state.options.forEach(entry => {
-            if (entry.isChecked=== true) {arr.push(entry.id)}
-        })
+        this.state.options.forEach(entry => {if (entry.isChecked=== true) {arr.push(entry.id)}})
         arr.length > 3 ? alert('Please select no more than three options') : this.props.handler(arr)
-        console.log(arr)
         this.setState({ showing: false})
     }
 
