@@ -67,6 +67,7 @@ class MoviesList extends Component {
                 {this.state.isFetching && <Loading />}
                 {this.state.keywords.length > 3 && <SelectKeywords keywords={this.state.keywords} handler = {this.handler} />}
                 {this.state.keywords.length < 4 && <KeywordRecommendations keywords={this.state.keywords} />}
+                {console.log(this.state.keywords)}
             </div>
         </div>
     ) 
