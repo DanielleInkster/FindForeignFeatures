@@ -40,10 +40,7 @@ class KeywordRecommendations extends Component {
         return(
             <div>{this.props.keywords.length >0 && this.state.rawKeywordRecommendations.length === 0 &&
                 this.createKeywordFetch()}
-                {this.state.rawKeywordRecommendations.length !== 0 &&
-                console.log(this.state.rawKeywordRecommendations)}
-                
-                </div>
+            </div>
         )
     }
 }
