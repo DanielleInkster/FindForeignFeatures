@@ -75,7 +75,7 @@ class Movies extends Component{
                 <Input onChange={this.handleChange}/>
                 <Button value="Search" onClick={this.handleSubmit.bind(this)} />
             </div>
-                <MoviesList list={this.state.movies} />
+                <MoviesList list={this.state.movies} handleResults={this.props.handleResults} handleFetchState={this.props.handleFetchState} />
             </div>
         )
     };

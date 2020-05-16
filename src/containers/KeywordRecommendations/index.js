@@ -38,8 +38,11 @@ class KeywordRecommendations extends Component {
 
     render(){
         return(
-            <div>{this.props.keywords.length >0 && this.state.rawKeywordRecommendations.length === 0 &&
+            <div>
+                {this.props.keywords.length > 0 && this.state.rawKeywordRecommendations.length === 0 &&
                 this.createKeywordFetch()}
+                {console.log(this.state.rawKeywordRecommendations)}
+            
             </div>
         )
     }
