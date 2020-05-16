@@ -10,7 +10,7 @@ class KeywordRecommendations extends Component {
         }
     }
 
-    createKeywordFetch =()=>{
+    createKeywordFetch =()=>{ 
         this.props.keywords.forEach(num =>{ 
             fetch(`https://api.themoviedb.org/3/keyword/${num}/movies?api_key=${API_KEY}`+
             `&language=en-US&include_adult=false`)
@@ -36,13 +36,22 @@ class KeywordRecommendations extends Component {
         })
     }
 
+    getRecommendations(){
+        this.props.rawKeywordHandler(this.state.rawKeywordRecommendations)
+    }
+
+    returnRecommendations(){
+        this.createKeywordFetch()
+        setTimeout(() => {this.getRecommendations()}, 1500);
+    }
+
     render(){
         return(
             <div>
                 {this.props.keywords.length > 0 && this.state.rawKeywordRecommendations.length === 0 &&
-                this.createKeywordFetch()}
-                {console.log(this.state.rawKeywordRecommendations)}
-            
+                this.returnRecommendations()
+                }
+                {console.log(this.state.rawKeywordRecommendations.length)}
             </div>
         )
     }

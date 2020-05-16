@@ -51,7 +51,8 @@ class Keywords extends Component {
             <div>
                 { this.state.isFetching === true && <Loading />}
                 {this.state.keywords.length > 3 && <SelectKeywords keywords={this.state.keywords} handler={this.handler} /> }
-                {this.state.isFetching === false && this.state.keywords.length < 4 && <KeywordRecommendations keywords={this.state.keywords} /> }
+                {this.state.isFetching === false && this.state.keywords.length < 4 && 
+                <KeywordRecommendations keywords={this.state.keywords} rawKeywordHandler = {this.props.rawKeywordHandler}/> }
             </div>
         )
     }
