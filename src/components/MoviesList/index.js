@@ -13,6 +13,7 @@ class MoviesList extends Component {
         this.state = {
             movieSelection : [],
             keywords:[],
+            genres:[],
             isFetching: false,
             showing: true,
         } 
@@ -66,7 +67,7 @@ class MoviesList extends Component {
             <div style={{ display: (!showing ? 'block' : 'none') }}> 
                 {this.state.isFetching && <Loading />}
                 {this.state.keywords.length > 3 && <SelectKeywords keywords={this.state.keywords} handler = {this.handler} />}
-                {this.state.keywords.length < 4 && <KeywordRecommendations keywords={this.state.keywords} />}
+                {this.state.keywords.length < 4 && <KeywordRecommendations keywords={this.state.keywords} /> }
                 {console.log(this.state.keywords)}
             </div>
         </div>

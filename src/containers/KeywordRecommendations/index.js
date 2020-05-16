@@ -7,29 +7,29 @@ class KeywordRecommendations extends Component {
 
         this.state = {
             rawKeywordRecommendations: [],
-            keywords: []
         }
     }
 
-    createFetch =(props)=>{
+    createKeywordFetch =()=>{
         this.props.keywords.forEach(num =>{ 
-        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&`+
-        `sort_by=popularity.desc&include_adult=false&include_video=false&with_keywords=${num}`)
+            fetch(`https://api.themoviedb.org/3/keyword/${num}/movies?api_key=${API_KEY}`+
+            `&language=en-US&include_adult=false`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
                 let i;
-                let page = data.total_pages < 5 ? data.total_pages : 5
-                for (i = 1; i < page ; i++) {
+                let pages = data.total_pages < 20 ? data.total_pages : 20
+                for (i = 1; i <= pages; i++) {
                     fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&` +
-                        `sort_by=popularity.desc&include_adult=false&include_video=false&page=${data.total_pages }&with_keywords=${num}`)
+                        `sort_by=popularity.desc&include_adult=false&include_video=false&page=${i}&with_keywords=${num}`)
                     .then((response) => {
                         return response.json();
                     }).then((data) => {
                         data.results.forEach(movie => {
-                            if (movie.original_language !== "en") this.setState({ rawKeywordRecommendations: [...this.state.rawKeywordRecommendations, movie] })
-                        console.log(this.state.rawKeywordRecommendations)
-                    })
+                            if (movie.original_language !== "en") this.setState(previousState => ({
+                                rawKeywordRecommendations: [...previousState.rawKeywordRecommendations, movie]
+                            }))
+                         })
                     })
                 }
             })
@@ -38,8 +38,12 @@ class KeywordRecommendations extends Component {
 
     render(){
         return(
-            <div>{this.props.keywords.length >0 && this.state.rawKeywordRecommendations.length ===0 &&
-                this.createFetch()}</div>
+            <div>{this.props.keywords.length >0 && this.state.rawKeywordRecommendations.length === 0 &&
+                this.createKeywordFetch()}
+                {this.state.rawKeywordRecommendations.length !== 0 &&
+                console.log(this.state.rawKeywordRecommendations)}
+                
+                </div>
         )
     }
 }
