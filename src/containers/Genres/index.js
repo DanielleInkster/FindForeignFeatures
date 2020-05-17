@@ -5,7 +5,7 @@ class Genres extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            genres: '',
+            genres: [],
             isFetching: this.props.isFetching,
         }
     }
@@ -17,12 +17,12 @@ class Genres extends Component {
     }
 
     getGenreIDString = (movie) => {
-        this.setState({ genres: movie.genre_ids.join('|')})
+        this.setState({ genres: movie.genre_ids})
     }
 
     render() {
         return (
-            <GenreRecommendations genres={this.state.genres} rawGenreHandler={this.rawGenreHandler}/>
+            <GenreRecommendations genres={this.state.genres} rawGenreHandler={this.props.rawGenreHandler}/>
         )
     }
 }

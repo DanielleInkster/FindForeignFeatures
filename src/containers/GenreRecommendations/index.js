@@ -9,19 +9,18 @@ class GenreRecommendations extends Component {
             rawGenreRecommendations: [],
         }
     }
+    
 
     createGenreFetch = () => {
-        this.props.keywords.forEach(num => {
-            fetch(`https://api.themoviedb.org/3/keyword/${num}/movies?api_key=${API_KEY}` +
-                `&language=en-US&include_adult=false`)
+        this.props.genres.forEach(num => {
+            fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${num}`)
                 .then((response) => {
                     return response.json();
                 }).then((data) => {
                     let i;
-                    let pages = data.total_pages < 20 ? data.total_pages : 20
+                    let pages = data.total_pages < 100 ? data.total_pages : 100
                     for (i = 1; i <= pages; i++) {
-                        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&` +
-                            `sort_by=popularity.desc&include_adult=false&include_video=false&page=${i}&with_keywords=${num}`)
+                        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&page=${i}&with_genres=${num}`)
                             .then((response) => {
                                 return response.json();
                             }).then((data) => {
@@ -36,19 +35,21 @@ class GenreRecommendations extends Component {
         })
     }
 
+        
+             
     getRecommendations() {
         this.props.rawGenreHandler(this.state.rawGenreRecommendations)
     }
 
     returnRecommendations() {
         this.createGenreFetch()
-        setTimeout(() => { this.getRecommendations() }, 1500);
+        setTimeout(() => { this.getRecommendations() }, 3000);
     }
 
     render() {
         return (
             <div>
-                {this.props.keywords.length > 0 && this.state.rawGenreRecommendations.length === 0 &&
+                {this.props.genres.length !==0 && this.state.rawGenreRecommendations.length === 0 &&
                     this.returnRecommendations()}
             </div>
         )
