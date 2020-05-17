@@ -1,8 +1,8 @@
 import React from 'react';
 
 const NonEnglishName = (props)=>{
-   if (props.movie.name !== props.movie.original_name){
-         return `Engligh Title: ${props.movie.name}`
+   if (props.movie.title !== props.movie.original_title){
+         return `Engligh Title: ${props.movie.title}`
    } else {
        return null
    }
