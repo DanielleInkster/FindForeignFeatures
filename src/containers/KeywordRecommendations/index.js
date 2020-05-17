@@ -49,9 +49,7 @@ class KeywordRecommendations extends Component {
         return(
             <div>
                 {this.props.keywords.length > 0 && this.state.rawKeywordRecommendations.length === 0 &&
-                this.returnRecommendations()
-                }
-                {console.log(this.state.rawKeywordRecommendations.length)}
+                this.returnRecommendations()}
             </div>
         )
     }
