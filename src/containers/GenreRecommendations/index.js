@@ -27,8 +27,9 @@ class GenreRecommendations extends Component {
                                 data.results.forEach(movie => {
                                     if (movie.original_language !== "en") this.setState(previousState => ({
                                         rawGenreRecommendations: [...previousState.rawGenreRecommendations, movie]
+                        
                                     }))
-                                })
+                                }) 
                             })
                     }
                 })
