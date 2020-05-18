@@ -25,7 +25,7 @@ class SelectKeywords extends Component {
         let arr = []
        if(this.props.keywords !== null){
             this.props.keywords.map(entry=>
-            arr.push({ id: entry.id, value: entry.name, isChecked: false })
+            arr.push({ key: entry.id, id: entry.id, value: entry.name, isChecked: false })
         )}
         this.setState({ options: arr }) 
     }
