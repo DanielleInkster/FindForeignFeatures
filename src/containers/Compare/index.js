@@ -20,10 +20,23 @@ class Compare extends Component {
         return arr
     }
 
-    counter=(arr)=>{
+    countReturns=(arr)=>{
         let counts = {};
-        arr.forEach(function (x) { counts[x.id] = (counts[x.id] || 0) + 1; })
-        console.log(counts)
+        arr.forEach(function (x) { x.returns = (counts[x.id] = (counts[x.id] || 0) + 1) })
+        return arr
+    }
+
+    identifyUnique=(value, index, self)=>{
+        return self.indexOf(value) === index;
+    }
+
+    returnUnique =(arr) =>{
+        return arr.filter(this.identifyUnique)
+    }
+
+
+    getRecommendations() {
+        this.props.comparedHandler(this.state.comparedRecommendations)
     }
 
     getRecommendations() {
@@ -31,12 +44,11 @@ class Compare extends Component {
     }
 
     returnRecommendations() {
-        console.log(this.props.keywordRecs)
-        console.log(this.props.genres)
         let arr = this.compareWithGenres()
-        this.counter(arr)
-        this.setState({ comparedRecommendations: arr })
-        // setTimeout(() => { this.getRecommendations() }, 3000);
+        let returnArr = this.countReturns(arr)
+        let filteredArr = this.returnUnique(returnArr)
+        this.setState({ comparedRecommendations: filteredArr })
+        setTimeout(() => { this.getRecommendations() }, 3000);
     }
 
     render() {

@@ -18,25 +18,9 @@ class Recommendations extends Component {
 
     comparedHandler = (results) => {
         this.setState({ comparedRecommendations: results });
-        // console.log(results.length)
+        console.log(results)
     }
 
-    // joinResults=(arr1, arr2)=>{
-    //     return arr1.concat(arr2)
-    // }
-
-    // count =(arr)=>{
-    //     var counts = {};
-    //     arr.forEach(function (x) { counts[x.id] = (counts[x.id] || 0) + 1; })
-    //     console.log(counts)
-    // }
-
-    // countResults(arr1, arr2){
-    //     let arr = this.joinResults(arr1,arr2)
-    //     this.count(arr)
-    //     console.log(arr.length)
-    //     this.setState({conCatRecommendations: arr})
-    // }
 
 
 
