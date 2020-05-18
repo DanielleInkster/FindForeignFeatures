@@ -9,9 +9,7 @@ const FindYear =(props) =>{
         year = "[Unknown]" 
     }
     return(
-        <div>
-        {<HtmlParser text ={`Year of Release: <b>${year}</b>`}/>} 
-        </div>
+        <HtmlParser text ={`Year of Release: <b>${year}</b>`}/>
     )
 }
 

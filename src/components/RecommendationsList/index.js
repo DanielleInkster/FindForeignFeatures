@@ -7,6 +7,7 @@ class RecommendationsList extends Component {
      
         return (
             <div>
+                
                 <div> {this.props.list.map(movie =>
                     <li style={{ listStyleType: "none" }} key={movie.id}>
                         <ListItem movie={movie} />

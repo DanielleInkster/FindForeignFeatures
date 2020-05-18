@@ -1,6 +1,6 @@
 import React from 'react';
 import HtmlParser from '../HtmlParser';
-import ISO6391 from 'iso-639-1';
+import ConvertISO from '../ConvertISO';
 import ImageUrl from '../ImageUrl';
 import NonEnglishName from '../NonEnglishName';
 import FindYear from '../FindYear'
@@ -14,7 +14,7 @@ const ListItem =(props)=>{
         <p><NonEnglishName movie={props.movie} /></p>
         <p><HtmlParser text={props.movie.overview} /></p> 
         <p><FindYear movie={props.movie} /></p>
-        <p><HtmlParser text={`Original language: <b>${ISO6391.getName(props.movie.original_language)}</b>`} /></p>
+        <p><ConvertISO language={props.movie.original_language} /></p>
     </div>
     )
 }
