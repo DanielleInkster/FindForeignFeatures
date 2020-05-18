@@ -12,7 +12,7 @@ class Compare extends Component {
     componentDidUpdate(prevProps) {
         if (this.props.keywordRecs !== prevProps.keywordRecs) {
             this.returnRecommendations()
-            console.log("Compare works")
+
         }
     }
 
@@ -22,7 +22,6 @@ class Compare extends Component {
             this.props.genres.forEach(num => {
                 if(item.genre_ids.includes(num)) arr.push(item)
             })
-            
         })
         return arr
     }
@@ -33,15 +32,9 @@ class Compare extends Component {
         return arr
     }
 
-
     returnUnique =(arr) =>{
         let t;
         return arr.filter((t = {}, a => !(t[a.id] = a.id in t)))
-    }
-
-
-    getRecommendations() {
-        this.props.comparedHandler(this.state.comparedRecommendations)
     }
 
     getRecommendations() {
@@ -58,7 +51,7 @@ class Compare extends Component {
 
     render() {
         return (
-               null
+            null
         )
     }
 }

@@ -38,11 +38,15 @@ class SelectKeywords extends Component {
     }
 
     handleSubmit = (e)=>{
+        if(this.state.options.length > 5){
+            alert('Please select no more than five options')
+        } else {
         e.preventDefault();
         let arr = []
-        this.state.options.forEach(entry => {if (entry.isChecked=== true) {arr.push(entry.id)}})
-        arr.length > 5 ? alert('Please select no more than five options') : this.props.handler(arr)
+        this.state.options.forEach(entry => { if (entry.isChecked === true) { arr.push(entry.id) } })
+        this.props.handler(arr)
         this.setState({ showing: false})
+        }
     }
 
     selectKeywords =(input, showing)=>{

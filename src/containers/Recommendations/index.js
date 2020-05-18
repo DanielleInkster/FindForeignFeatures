@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Keywords from '../Keywords';
 import Genres from '../Genres';
+import Message from '../../components/Message';
 import RecommendationsList from '../../components/RecommendationsList';
 
 class Recommendations extends Component {
@@ -10,23 +11,25 @@ class Recommendations extends Component {
             rawKeywordRecommendations:[],
             comparedRecommendations: [],
             sortedRecommendations: [],
+            noResults: false,
             sorted: false,
         }
     }
 
     componentDidUpdate() {
         if (this.state.comparedRecommendations.length !== 0 && this.state.sorted === false) {
-            console.log("sorting!")
             this.returnSortedResults(this.state.comparedRecommendations)
         }
     }
 
     rawKeywordHandler = (results) => {
-        this.setState({ rawKeywordRecommendations: results });
+        console.log(results.length)
+        results.length !== 0 ? this.setState({ rawKeywordRecommendations: results }) : this.setState({ noResults: true })
+        
     }
 
     comparedHandler = (results) => {
-        this.setState({ comparedRecommendations: results });
+        this.setState({ comparedRecommendations: results }) 
     }
 
     sortResults=(arr)=>{
@@ -40,14 +43,21 @@ class Recommendations extends Component {
         this.setState({ sorted: true })
     }
     
-
     render(){
+        let input = "Some things are one of a kind! No similar films were found."
+        let input2 = "Try using different keywords or search for another film."
+
         return(
             <div>
                 <Keywords movie = {this.props.movie} isFetching = {this.props.isFetching} rawKeywordHandler ={this.rawKeywordHandler}/>
+                {this.state.noResults === false &&
                 <Genres movie={this.props.movie} isFetching={this.props.isFetching} comparedHandler={this.comparedHandler} keywordRecs = {this.state.rawKeywordRecommendations}/>
-                {this.state.sortedRecommendations.length !==0 &&
-                    <RecommendationsList list={this.state.sortedRecommendations}/>}
+                }
+                {this.state.noResults === true &&
+                    <h1><Message text={input} /></h1> &&
+                    <h3><Message text={input2} /></h3>}
+                {this.state.sortedRecommendations.length !==0 && this.state.noResults === false &&
+                    <RecommendationsList list={this.state.sortedRecommendations.slice(0,50)}/>}
             </div >  
         )
     }
