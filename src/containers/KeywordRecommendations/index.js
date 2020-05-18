@@ -42,7 +42,7 @@ class KeywordRecommendations extends Component {
 
     returnRecommendations(){
         this.createKeywordFetch()
-        setTimeout(() => {this.getRecommendations()}, 5000);
+        setTimeout(() => {this.getRecommendations()}, 2000);
     }
 
     render(){
