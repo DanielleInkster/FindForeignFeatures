@@ -26,7 +26,7 @@ class MoviesList extends Component {
                     <li style={{ listStyleType: "none" }} key={movie.id}>
                         <ListItem movie={movie} />
                         <Button value="Find more like this!" onClick={() => { this.handleMovieSubmit(movie)}} />
-                        <br /><br />
+                        <h2><br /></h2>
                     </li>)}
                 </div>
             </div>

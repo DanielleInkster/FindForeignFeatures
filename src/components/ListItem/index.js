@@ -11,12 +11,10 @@ const ListItem =(props)=>{
     <div>
         <ImageUrl movie={props.movie} />
         <h2><b>{props.movie.original_title}</b></h2>
-        <FindYear movie ={props.movie} />
-        <h4><NonEnglishName movie={props.movie} /></h4>
-        <HtmlParser text={props.movie.overview} /> 
-          <br /> <br />
-        <HtmlParser text={`Original language: <b>${ISO6391.getName(props.movie.original_language)}</b>`} />
-          <br /> <br />
+        <p><NonEnglishName movie={props.movie} /></p>
+        <p><HtmlParser text={props.movie.overview} /></p> 
+        <p><FindYear movie={props.movie} /></p>
+        <p><HtmlParser text={`Original language: <b>${ISO6391.getName(props.movie.original_language)}</b>`} /></p>
     </div>
     )
 }
