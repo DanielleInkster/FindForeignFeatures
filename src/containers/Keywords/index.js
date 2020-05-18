@@ -23,7 +23,7 @@ class Keywords extends Component {
     handleData = (data) => {
         if (data.keywords === null) {
             return []
-        } else if (data.keywords.length < 4) {
+        } else if (data.keywords.length < 6) {
             let arr = []
             data.keywords.forEach(entry => { arr.push(entry.id) })
             return arr
@@ -50,8 +50,8 @@ class Keywords extends Component {
         return(
             <div>
                 { this.state.isFetching === true && <Loading />}
-                {this.state.keywords.length > 3 && <SelectKeywords keywords={this.state.keywords} handler={this.handler} /> }
-                {this.state.isFetching === false && this.state.keywords.length < 4 && 
+                {this.state.keywords.length > 5 && <SelectKeywords keywords={this.state.keywords} handler={this.handler} /> }
+                {this.state.isFetching === false && this.state.keywords.length < 6 && 
                 <KeywordRecommendations keywords={this.state.keywords} rawKeywordHandler = {this.props.rawKeywordHandler}/> }
             </div>
         )
