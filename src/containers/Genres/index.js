@@ -18,6 +18,7 @@ class Genres extends Component {
 
     getGenreIDString = (movie) => {
         this.setState({ genres: movie.genre_ids})
+        console.log(movie.genre_ids)
     }
 
     render() {

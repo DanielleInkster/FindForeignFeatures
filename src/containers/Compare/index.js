@@ -9,6 +9,13 @@ class Compare extends Component {
         }
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.keywordRecs !== prevProps.keywordRecs) {
+            this.returnRecommendations()
+            console.log("Compare works")
+        }
+    }
+
     compareWithGenres=()=>{
         let arr =[]
         this.props.keywordRecs.forEach(item =>{
@@ -53,14 +60,7 @@ class Compare extends Component {
 
     render() {
         return (
-            <div>
-                {this.props.keywordRecs.length === 0 &&
-                    null
-                }
-                {this.props.keywordRecs.length !== 0 && this.state.comparedRecommendations.length === 0 &&
-            this.returnRecommendations()
-                }
-            </div>
+               null
         )
     }
 }
