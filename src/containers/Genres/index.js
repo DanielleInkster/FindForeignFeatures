@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GenreRecommendations from '../GenreRecommendations';
+import Compare from '../Compare';
 
 class Genres extends Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class Genres extends Component {
 
     render() {
         return (
-            <GenreRecommendations genres={this.state.genres} rawGenreHandler={this.props.rawGenreHandler}/>
+            <Compare genres={this.state.genres} comparedHandler={this.props.comparedHandler} keywordRecs ={this.props.keywordRecs}/>
         )
     }
 }
