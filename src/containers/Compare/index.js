@@ -33,12 +33,10 @@ class Compare extends Component {
         return arr
     }
 
-    identifyUnique=(value, index, self)=>{
-        return self.indexOf(value) === index;
-    }
 
     returnUnique =(arr) =>{
-        return arr.filter(this.identifyUnique)
+        let t;
+        return arr.filter((t = {}, a => !(t[a.id] = a.id in t)))
     }
 
 
