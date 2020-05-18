@@ -41,12 +41,12 @@ class SelectKeywords extends Component {
         e.preventDefault();
         let arr = []
         this.state.options.forEach(entry => {if (entry.isChecked=== true) {arr.push(entry.id)}})
-        arr.length > 3 ? alert('Please select no more than three options') : this.props.handler(arr)
+        arr.length > 5 ? alert('Please select no more than five options') : this.props.handler(arr)
         this.setState({ showing: false})
     }
 
     selectKeywords =(input, showing)=>{
-        while (this.props.keywords != null && this.props.keywords.length > 3) {
+        while (this.props.keywords != null && this.props.keywords.length > 5) {
             return (
                 <div style={{ display: (showing ? 'block' : 'none') }}>
                     <Message text={input} />
@@ -61,7 +61,7 @@ class SelectKeywords extends Component {
         const {showing} = this.state
         let input = "Wow! There are a lot of keywords associated with this movie. "+ 
         "In order to create the best recommendations for you, please select up to "+
-        "three that are most interesting to you."
+        "five that are most interesting to you."
         
         return (
             this.selectKeywords(input, showing)  
