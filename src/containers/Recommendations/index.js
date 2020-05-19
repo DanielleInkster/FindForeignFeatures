@@ -69,6 +69,7 @@ class Recommendations extends Component {
                     isLoading={this.state.isLoading}  
                     rawKeywordHandler={this.rawKeywordHandler} 
                     handleLoadState={this.handleLoadState} 
+                    type={this.props.type} 
                     />
 
                 {this.state.noResults === false &&
@@ -76,10 +77,11 @@ class Recommendations extends Component {
                     isFetching={this.props.isFetching} 
                     comparedHandler={this.comparedHandler} 
                     keywordRecs = {this.state.rawKeywordRecommendations}
+                    type={this.props.type} 
                     />
                 }
                 {this.state.sortedRecommendations.length !== 0 && this.state.noResults === false &&
-                    <RecommendationsList list={this.state.sortedRecommendations.slice(0, 50)} />
+                    <RecommendationsList list={this.state.sortedRecommendations.slice(0, 50)} type ={this.props.type} />
                     }
                 {this.noMatchesFound(input, input2)}
             </div >  

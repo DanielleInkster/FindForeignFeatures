@@ -35,10 +35,18 @@ class App extends Component{
         </header>
           <br/>
         <ChooseMedia handleMediaSelection = {this.handleMediaSelection}/>
+
         {this.state.mediaSelection.trim() !== '' &&
-        <Movies handleResults={this.handleResults} handleFetchState={this.handleFetchState} type ={this.state.mediaSelection}  />
+        <Movies handleResults={this.handleResults} 
+        handleFetchState={this.handleFetchState} 
+        type ={this.state.mediaSelection}  
+        />
         }
-        <Recommendations movie={this.state.movieSelection} isFetching={this.state.isFetching} handleFetchState={this.handleFetchState}/>
+        <Recommendations movie={this.state.movieSelection} 
+        isFetching={this.state.isFetching} 
+        handleFetchState={this.handleFetchState}
+        type={this.state.mediaSelection} 
+        />
       </div>
     );
     }

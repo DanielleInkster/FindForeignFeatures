@@ -13,7 +13,7 @@ const ListItem =(props)=>{
         <h2><b>{props.movie.original_title}</b></h2>
         <p><NonEnglishName movie={props.movie} /></p>
         <p><HtmlParser text={props.movie.overview} /></p> 
-        <p><FindYear movie={props.movie} /></p>
+        <p><FindYear movie={props.movie} type = {props.type}/></p>
         <p><ConvertISO language={props.movie.original_language} /></p>
     </div>
     )

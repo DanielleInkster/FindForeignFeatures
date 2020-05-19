@@ -20,23 +20,25 @@ class Keywords extends Component {
     }
 
     handleData = (data) => {
-        if (data.keywords === null) {
+        if (data=== null) {
             return []
-        } else if (data.keywords.length < 4) {
+        } else if (data.length < 4) {
             let arr = []
-            data.keywords.forEach(entry => { arr.push(entry.id) })
+            data.forEach(entry => {arr.push(entry.id) })
             return arr
         } else {
-            return data.keywords
+            return data
         }
     }
 
     findKeywordsFetch = (value) => {
-        fetch(`https://api.themoviedb.org/3/movie/${value}/keywords?api_key=${API_KEY}`)
+        fetch(`https://api.themoviedb.org/3/${this.props.type}/${value}/keywords?api_key=${API_KEY}`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                data.length > 0 ? this.setState({ keywords: this.handleData(data) }) : this.props.rawKeywordHandler([])
+                let searchTerm = ''
+                this.props.type === 'tv' ? searchTerm = 'results' : searchTerm = 'keywords'
+                data[searchTerm].length > 0 ? this.setState({ keywords: this.handleData(data[searchTerm]) }) : this.props.rawKeywordHandler([])
                 this.setState({ isFetching: false })
             })
     }
@@ -48,15 +50,18 @@ class Keywords extends Component {
     render(){
         return(
             <div>
-                {this.state.keywords.length > 4 && 
-                <SelectKeywords keywords={this.state.keywords} handler={this.handler} /> 
+                {this.state.keywords.length >= 4 && 
+                <SelectKeywords keywords={this.state.keywords} 
+                handler={this.handler} 
+                type={this.props.type} /> 
                 }
 
                 {this.state.isFetching === false && this.state.keywords.length < 4 &&  
                     <KeywordRecommendations keywords={this.state.keywords} 
                     rawKeywordHandler={this.props.rawKeywordHandler}
                     isLoading={this.props.isLoading} 
-                    handleLoadState={this.props.handleLoadState}/> 
+                    handleLoadState={this.props.handleLoadState}
+                    type={this.props.type} /> 
                 }
             </div>
         )
