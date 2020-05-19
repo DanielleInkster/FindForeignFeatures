@@ -7,10 +7,10 @@ class RecommendationsList extends Component {
      
         return (
             <div>
-                
+                {console.log(this.props.list)}
                 <div> {this.props.list.map(movie =>
                     <li style={{ listStyleType: "none" }} key={movie.id}>
-                        <ListItem movie={movie} />
+                        <ListItem movie={movie} type = {this.props.type}/>
                         <br /><br />
                     </li>)}
                 </div>

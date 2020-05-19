@@ -29,13 +29,15 @@ class Movies extends Component{
     }
 
     createMessage = ()=>{
+        let type = ''
+        this.props.type === 'tv' ? type = 'TV Series' : type ='film'
         let input = ''
         if (this.state.movies.length === 0 && this.state.inputValue.trim() === ''){
-            input = "Please enter the name of an English movie you enjoy."
+            input = `Please enter the name of an English ${type} you enjoy.`
         } else if (this.state.isFetching === true) {
             input = "Searching..." 
         } else if (this.state.movies.length === 0 && this.state.inputValue.trim() !== '' && this.state.showing === false){
-            input = "Movie not found."
+            input = "No results found."
         } else {
             input = ""
         }
@@ -43,7 +45,7 @@ class Movies extends Component{
     }
 
     createFetch=(value)=>{
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}`+
+        fetch(`https://api.themoviedb.org/3/search/${this.props.type}?api_key=${API_KEY}`+
             `&language=en-US&page=1&query=${Slugify(value)}&include_adult=false`)
             .then((response) => {
                 return response.json();
@@ -81,7 +83,11 @@ class Movies extends Component{
                 <Input onChange={this.handleChange}/>
                 <Button value="Search" onClick={this.handleSubmit.bind(this)} />
             </div>
-                <MoviesList list={this.state.movies.slice(0,5)} handleResults={this.props.handleResults} handleFetchState={this.props.handleFetchState} />
+                <MoviesList list={this.state.movies.slice(0,5)} 
+                handleResults={this.props.handleResults} 
+                handleFetchState={this.props.handleFetchState}
+                type = {this.props.type} 
+                />
             </div>
         )
     };

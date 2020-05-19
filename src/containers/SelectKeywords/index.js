@@ -18,6 +18,12 @@ class SelectKeywords extends Component {
             this.createOptions()
         } 
     }
+
+    mediaType(){
+        let type = ''
+        this.props.type === 'tv' ? type = 'TV Series' : type = 'film'
+        return type
+    }
    
     createOptions = () => {
         let arr = []
@@ -68,7 +74,7 @@ class SelectKeywords extends Component {
 
     render(){
         const {showing} = this.state
-        let input = "Wow! There are a lot of keywords associated with this movie. "+ 
+        let input = `Wow! There are a lot of keywords associated with this ${this.mediaType()}. `+ 
         "In order to create the best recommendations for you, please select up to "+
         "five that are most interesting to you."
         

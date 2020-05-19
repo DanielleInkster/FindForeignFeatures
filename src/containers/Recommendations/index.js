@@ -46,9 +46,21 @@ class Recommendations extends Component {
         this.setState({ sorted: true })
         this.setState({ isLoading: false })
     }
+
+    noMatchesFound(input, input2){
+        if(this.state.noResults === true){
+            return(
+            <div>
+                <h1><Message text={input} /></h1>
+                <p><Message text={input2} /></p>  
+            </div>
+            )
+        }
+    }
     
     render(){
-        let input = "Some things are one of a kind! No matches were found."
+        let input = "Some things are one of a kind!"
+        let input2 = "No matches were found."
 
         return(
             <div>
@@ -57,6 +69,7 @@ class Recommendations extends Component {
                     isLoading={this.state.isLoading}  
                     rawKeywordHandler={this.rawKeywordHandler} 
                     handleLoadState={this.handleLoadState} 
+                    type={this.props.type} 
                     />
 
                 {this.state.noResults === false &&
@@ -64,14 +77,13 @@ class Recommendations extends Component {
                     isFetching={this.props.isFetching} 
                     comparedHandler={this.comparedHandler} 
                     keywordRecs = {this.state.rawKeywordRecommendations}
+                    type={this.props.type} 
                     />
                 }
                 {this.state.sortedRecommendations.length !== 0 && this.state.noResults === false &&
-                    <RecommendationsList list={this.state.sortedRecommendations.slice(0, 50)} />
+                    <RecommendationsList list={this.state.sortedRecommendations.slice(0, 50)} type ={this.props.type} />
                     }
-                {this.state.noResults === true &&
-                    <h1><Message text={input} /></h1> 
-                }
+                {this.noMatchesFound(input, input2)}
             </div >  
         )
     }

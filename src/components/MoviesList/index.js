@@ -24,7 +24,7 @@ class MoviesList extends Component {
             <div>
                 <div style={{ display: (showing ? 'block' : 'none') }}> {this.props.list.map(movie =>
                     <li style={{ listStyleType: "none" }} key={movie.id}>
-                        <ListItem movie={movie} />
+                        <ListItem movie={movie} type = {this.props.type}/>
                         <Button value="Find more like this!" onClick={() => { this.handleMovieSubmit(movie)}} />
                         <h2><br /></h2>
                     </li>)}

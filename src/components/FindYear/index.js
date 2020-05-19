@@ -2,9 +2,12 @@ import React from 'react';
 import HtmlParser from '../HtmlParser';
 
 const FindYear =(props) =>{
+    let searchTerm =''
+    props.type === 'tv' ? searchTerm = "first_air_date" : searchTerm = "release_date"
+
     let year =''
-    if(props.movie.hasOwnProperty("release_date") && props.movie.release_date !== ""){
-        year = props.movie.release_date.slice(0, 4)
+    if (props.movie.hasOwnProperty(searchTerm) && props.movie[searchTerm] !== ""){
+        year = props.movie[searchTerm].slice(0, 4)
     } else {
         year = "[Unknown]" 
     }
