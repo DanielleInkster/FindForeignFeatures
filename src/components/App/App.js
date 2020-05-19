@@ -31,7 +31,7 @@ class App extends Component{
         </header>
           <br/><br/>
           <Movies handleResults={this.handleResults} handleFetchState={this.handleFetchState}  />
-          <Recommendations movie={this.state.movieSelection} isFetching = {this.state.isFetching} />
+        <Recommendations movie={this.state.movieSelection} isFetching={this.state.isFetching} handleFetchState={this.handleFetchState}/>
       </div>
   );
     }

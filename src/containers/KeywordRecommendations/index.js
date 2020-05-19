@@ -11,6 +11,10 @@ class KeywordRecommendations extends Component {
         }
     }
 
+    componentDidMount() {
+            this.props.handleLoadState(true)
+    }
+
     createKeywordFetch =()=>{ 
         this.props.keywords.forEach(num =>{ 
             fetch(`https://api.themoviedb.org/3/keyword/${num}/movies?api_key=${API_KEY}`+
@@ -51,6 +55,9 @@ class KeywordRecommendations extends Component {
             <div>
                 {this.props.keywords.length > 0 && this.state.rawKeywordRecommendations.length === 0 && 
                 this.returnRecommendations()}
+                {this.props.keywords.length > 0 && this.state.rawKeywordRecommendations.length !== 0 &&
+                this.props.isLoading &&
+                    <Loading/>}
             </div>
         )
     }

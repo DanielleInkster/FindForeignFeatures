@@ -11,6 +11,7 @@ class Recommendations extends Component {
             rawKeywordRecommendations:[],
             comparedRecommendations: [],
             sortedRecommendations: [],
+            isLoading:false,
             noResults: false,
             sorted: false,
         }
@@ -20,6 +21,10 @@ class Recommendations extends Component {
         if (this.state.comparedRecommendations.length !== 0 && this.state.sorted === false) {
             this.returnSortedResults(this.state.comparedRecommendations)
         }
+    }
+
+    handleLoadState = (results) => {
+        this.setState({ isLoading: results });
     }
 
     rawKeywordHandler = (results) => {
@@ -39,23 +44,33 @@ class Recommendations extends Component {
         let sorted = this.sortResults(arr)
         this.setState({ sortedRecommendations: sorted });
         this.setState({ sorted: true })
+        this.setState({ isLoading: false })
     }
     
     render(){
-        let input = "Some things are one of a kind! No similar films were found."
-        let input2 = "Try using different keywords or search for another film."
+        let input = "Some things are one of a kind! No matches were found."
 
         return(
             <div>
-                <Keywords movie = {this.props.movie} isFetching = {this.props.isFetching} rawKeywordHandler ={this.rawKeywordHandler}/>
-                {this.state.noResults === false && 
-                <Genres movie={this.props.movie} isFetching={this.props.isFetching} comparedHandler={this.comparedHandler} keywordRecs = {this.state.rawKeywordRecommendations}/>
+                <Keywords movie={this.props.movie} 
+                    isFetching={this.props.isFetching}
+                    isLoading={this.state.isLoading}  
+                    rawKeywordHandler={this.rawKeywordHandler} 
+                    handleLoadState={this.handleLoadState} 
+                    />
+
+                {this.state.noResults === false &&
+                <Genres movie={this.props.movie} 
+                    isFetching={this.props.isFetching} 
+                    comparedHandler={this.comparedHandler} 
+                    keywordRecs = {this.state.rawKeywordRecommendations}
+                    />
                 }
                 {this.state.sortedRecommendations.length !== 0 && this.state.noResults === false &&
                     <RecommendationsList list={this.state.sortedRecommendations.slice(0, 50)} />}
                 {this.state.noResults === true &&
-                    <h1><Message text={input} /></h1> &&
-                    <h3><Message text={input2} /></h3>}
+                    <h1><Message text={input} /></h1> 
+                }
             </div >  
         )
     }

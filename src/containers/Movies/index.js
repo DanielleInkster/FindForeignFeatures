@@ -34,7 +34,7 @@ class Movies extends Component{
             input = "Please enter the name of an English movie you enjoy."
         } else if (this.state.isFetching === true) {
             input = "Loading..." 
-        } else if (this.state.movies.length === 0 && this.state.inputValue.trim() != '' && this.state.showing === false){
+        } else if (this.state.movies.length === 0 && this.state.inputValue.trim() !== '' && this.state.showing === false){
             input = "Movie not found."
         } else {
             input = ""
@@ -75,7 +75,7 @@ class Movies extends Component{
         const { showing } = this.state;
         return (
             <div>
-                {this.state.isFetching && <Loading/>}
+                {this.state.isFetching===true && <Loading/>}
             <h1><Message text={this.createMessage()}/></h1>
             <div style={{ display: (showing ? 'block' : 'none') }}>
                 <Input onChange={this.handleChange}/>

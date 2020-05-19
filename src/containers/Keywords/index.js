@@ -48,9 +48,14 @@ class Keywords extends Component {
     render(){
         return(
             <div>
-                {this.state.keywords.length > 4 && <SelectKeywords keywords={this.state.keywords} handler={this.handler} /> }
+                {this.state.keywords.length > 4 && 
+                <SelectKeywords keywords={this.state.keywords} handler={this.handler} /> }
+
                 {this.state.isFetching === false && this.state.keywords.length < 4 &&  
-                <KeywordRecommendations keywords={this.state.keywords} rawKeywordHandler = {this.props.rawKeywordHandler}/> }
+                    <KeywordRecommendations keywords={this.state.keywords} 
+                    rawKeywordHandler={this.props.rawKeywordHandler}
+                    isLoading={this.props.isLoading} 
+                    handleLoadState={this.props.handleLoadState}/> }
             </div>
         )
     }
