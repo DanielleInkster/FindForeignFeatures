@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Movies from '../../containers/Movies'
 import Recommendations from '../../containers/Recommendations'
-import './App.css';
 import ChooseMedia from '../ChooseMedia';
+import Message from '../Message';
+import './App.css';
+
 
 class App extends Component{
   constructor(props) {
@@ -26,17 +28,32 @@ class App extends Component{
     this.setState({ isFetching: results });
   }
 
-  render(){
+  homeScreen(input, input2){
+    if (this.state.mediaSelection.trim() === ''){
+      return( 
+      <div>
+          <h2><Message text={input} /></h2>
+          <p><Message text={input2} /></p>
+          <ChooseMedia handleMediaSelection={this.handleMediaSelection} />
+      </div>
+      )
+    }
 
+  }
+
+  render(){
+    let input = "Welcome to Find Foreign Features, the site that recommends foreign "+
+                "films and tv series based on the English ones you already love."
+    let input2 = "What are you looking for today?" 
+      
     return (
       <div className="App">
         <header className="App-header">
           <h1> Find Foreign Features </h1>
         </header>
           <br/>
-        <ChooseMedia handleMediaSelection = {this.handleMediaSelection}/>
-
-        {this.state.mediaSelection.trim() !== '' &&
+        {this.homeScreen(input,input2)}
+        { this.state.mediaSelection.trim() !== '' &&
         <Movies handleResults={this.handleResults} 
         handleFetchState={this.handleFetchState} 
         type ={this.state.mediaSelection}  
