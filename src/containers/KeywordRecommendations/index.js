@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Loading from '../../components/Loading';
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
 class KeywordRecommendations extends Component {
@@ -48,7 +49,7 @@ class KeywordRecommendations extends Component {
     render(){
         return(
             <div>
-                {this.props.keywords.length > 0 && this.state.rawKeywordRecommendations.length === 0 &&
+                {this.props.keywords.length > 0 && this.state.rawKeywordRecommendations.length === 0 && 
                 this.returnRecommendations()}
             </div>
         )

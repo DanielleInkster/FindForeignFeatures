@@ -3,7 +3,6 @@ import Message from '../../components/Message';
 import CheckBoxList from '../../components/CheckBoxList';
 import Button from '../../components/Button';
 
-
 class SelectKeywords extends Component {
     constructor(props) {
         super(props);
@@ -17,7 +16,6 @@ class SelectKeywords extends Component {
     componentDidUpdate() {
         if (this.state.options.length === 0 && this.props.keywords.length > 3 ) {
             this.createOptions()
-            console.log("Gathering Recommendations")
         } 
     }
    
@@ -39,9 +37,9 @@ class SelectKeywords extends Component {
 
     checkSubmissionLength=(arr)=>{
         var i =0
-            arr.forEach(entry => { if (entry.isChecked === true) { i++ } })
-            return i
-        }
+        arr.forEach(entry => { if (entry.isChecked === true) { i++ } })
+        return i
+    }
     
     createSubmit = (e)=>{
         e.preventDefault();
@@ -51,14 +49,13 @@ class SelectKeywords extends Component {
         this.setState({ showing: false })
     }
 
-
     handleSubmit = (e)=>{
        let num =  this.checkSubmissionLength(this.state.options)
-       num < 6 ? this.createSubmit(e) : alert("Please choose no more than 5 keywords")   
+       num < 4 ? this.createSubmit(e) : alert("Please choose no more than 3 keywords")   
     }
 
     selectKeywords =(input, showing)=>{
-        while (this.props.keywords != null && this.props.keywords.length > 5) {
+        while (this.props.keywords != null && this.props.keywords.length > 3) {
             return (
                 <div style={{ display: (showing ? 'block' : 'none') }}>
                     <Message text={input} />

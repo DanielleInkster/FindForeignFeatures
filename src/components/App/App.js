@@ -25,9 +25,9 @@ class App extends Component{
     return (
       <div className="App">
         <header className="App-header">
-          <p>
-          Find Foreign Films
-          </p>
+          <h1>
+          Find Foreign Features
+          </h1>
         </header>
           <br/><br/>
           <Movies handleResults={this.handleResults} handleFetchState={this.handleFetchState}  />

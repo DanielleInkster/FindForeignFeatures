@@ -23,9 +23,7 @@ class Recommendations extends Component {
     }
 
     rawKeywordHandler = (results) => {
-        console.log(results.length)
         results.length !== 0 ? this.setState({ rawKeywordRecommendations: results }) : this.setState({ noResults: true })
-        
     }
 
     comparedHandler = (results) => {
@@ -50,14 +48,14 @@ class Recommendations extends Component {
         return(
             <div>
                 <Keywords movie = {this.props.movie} isFetching = {this.props.isFetching} rawKeywordHandler ={this.rawKeywordHandler}/>
-                {this.state.noResults === false &&
+                {this.state.noResults === false && 
                 <Genres movie={this.props.movie} isFetching={this.props.isFetching} comparedHandler={this.comparedHandler} keywordRecs = {this.state.rawKeywordRecommendations}/>
                 }
+                {this.state.sortedRecommendations.length !== 0 && this.state.noResults === false &&
+                    <RecommendationsList list={this.state.sortedRecommendations.slice(0, 50)} />}
                 {this.state.noResults === true &&
                     <h1><Message text={input} /></h1> &&
                     <h3><Message text={input2} /></h3>}
-                {this.state.sortedRecommendations.length !==0 && this.state.noResults === false &&
-                    <RecommendationsList list={this.state.sortedRecommendations.slice(0,50)}/>}
             </div >  
         )
     }

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Loading from '../../components/Loading'
 import SelectKeywords from '../SelectKeywords';
 import KeywordRecommendations from '../KeywordRecommendations';
 
@@ -17,13 +16,13 @@ class Keywords extends Component {
     componentDidUpdate(prevProps){
         if (this.props.isFetching !== prevProps.isFetching){
             this.findKeywordsFetch(this.props.movie.id)
-        }
+        } 
     }
 
     handleData = (data) => {
         if (data.keywords === null) {
             return []
-        } else if (data.keywords.length < 6) {
+        } else if (data.keywords.length < 4) {
             let arr = []
             data.keywords.forEach(entry => { arr.push(entry.id) })
             return arr
@@ -49,9 +48,8 @@ class Keywords extends Component {
     render(){
         return(
             <div>
-                { this.state.isFetching === true && <Loading />}
-                {this.state.keywords.length > 5 && <SelectKeywords keywords={this.state.keywords} handler={this.handler} /> }
-                {this.state.isFetching === false && this.state.keywords.length < 6 && 
+                {this.state.keywords.length > 4 && <SelectKeywords keywords={this.state.keywords} handler={this.handler} /> }
+                {this.state.isFetching === false && this.state.keywords.length < 4 &&  
                 <KeywordRecommendations keywords={this.state.keywords} rawKeywordHandler = {this.props.rawKeywordHandler}/> }
             </div>
         )

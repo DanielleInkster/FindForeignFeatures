@@ -48,9 +48,15 @@ class Movies extends Component{
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                this.setState({ movies: data.results.slice(0, 5)})
-                this.setState({ isFetching: false })
-            }) 
+                data.results.forEach(movie => {
+                    if (movie.original_language === "en") this.setState(previousState => ({
+                        movies: [...previousState.movies, movie]
+                    }) 
+                    ) 
+                    this.setState({ isFetching: false })
+                })
+            })
+
     }
 
     handleSubmit = (e) => {
@@ -75,7 +81,7 @@ class Movies extends Component{
                 <Input onChange={this.handleChange}/>
                 <Button value="Search" onClick={this.handleSubmit.bind(this)} />
             </div>
-                <MoviesList list={this.state.movies} handleResults={this.props.handleResults} handleFetchState={this.props.handleFetchState} />
+                <MoviesList list={this.state.movies.slice(0,5)} handleResults={this.props.handleResults} handleFetchState={this.props.handleFetchState} />
             </div>
         )
     };
