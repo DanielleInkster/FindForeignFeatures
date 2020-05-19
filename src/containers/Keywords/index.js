@@ -36,7 +36,7 @@ class Keywords extends Component {
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                this.setState({ keywords: this.handleData(data) })
+                data.length > 0 ? this.setState({ keywords: this.handleData(data) }) : this.props.rawKeywordHandler([])
                 this.setState({ isFetching: false })
             })
     }

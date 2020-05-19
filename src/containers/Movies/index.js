@@ -33,7 +33,7 @@ class Movies extends Component{
         if (this.state.movies.length === 0 && this.state.inputValue.trim() === ''){
             input = "Please enter the name of an English movie you enjoy."
         } else if (this.state.isFetching === true) {
-            input = "Loading..." 
+            input = "Searching..." 
         } else if (this.state.movies.length === 0 && this.state.inputValue.trim() !== '' && this.state.showing === false){
             input = "Movie not found."
         } else {

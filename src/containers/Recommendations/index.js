@@ -67,7 +67,8 @@ class Recommendations extends Component {
                     />
                 }
                 {this.state.sortedRecommendations.length !== 0 && this.state.noResults === false &&
-                    <RecommendationsList list={this.state.sortedRecommendations.slice(0, 50)} />}
+                    <RecommendationsList list={this.state.sortedRecommendations.slice(0, 50)} />
+                    }
                 {this.state.noResults === true &&
                     <h1><Message text={input} /></h1> 
                 }

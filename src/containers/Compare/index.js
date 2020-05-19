@@ -46,7 +46,7 @@ class Compare extends Component {
         let returnArr = this.countReturns(arr)
         let filteredArr = this.returnUnique(returnArr)
         this.setState({ comparedRecommendations: filteredArr })
-        setTimeout(() => { this.getRecommendations() }, 1500);
+        setTimeout(() => { this.getRecommendations() }, 2000);
     }
 
     render() {
