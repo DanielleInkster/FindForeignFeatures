@@ -1,21 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ListItem from '../ListItem';
 
-class RecommendationsList extends Component {
-
-    render() {
-     
+const RecommendationsList =(props) => {
         return (
             <div>
-                {console.log(this.props.list)}
-                <div> {this.props.list.map(movie =>
-                    <li style={{ listStyleType: "none" }} key={movie.id}>
-                        <ListItem movie={movie} type = {this.props.type}/>
+                <div> {props.list.map(item =>
+                    <li style={{ listStyleType: "none" }} key={item.id}>
+                        <ListItem item={item} type = {props.type}/>
                         <br /><br />
                     </li>)}
                 </div>
             </div>
         )
-    }
+    
 }
 export default RecommendationsList;

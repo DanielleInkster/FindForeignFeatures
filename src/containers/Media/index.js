@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import 'whatwg-fetch'
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-import MoviesList from '../../components/MoviesList'
+import MediaList from '../../components/MediaList'
 import Message from '../../components/Message'
 import Loading from '../../components/Loading'
 
@@ -17,26 +17,30 @@ function Slugify(text) {
         .replace(/-+$/, '');            
 }
 
-class Movies extends Component{
+class Media extends Component{
     constructor(props) {
     super(props);
     this.state =  { 
-        movies:[],
+        options:[],
         inputValue:'',
         isFetching: false, 
         showing: true
         }
     }
 
+    determineType = (type) => {
+        let searchTerm = type === 'tv' ? 'TV series' : 'film'
+        return searchTerm
+    }
+
     createMessage = ()=>{
-        let type = ''
-        this.props.type === 'tv' ? type = 'TV Series' : type ='film'
         let input = ''
-        if (this.state.movies.length === 0 && this.state.inputValue.trim() === ''){
+        let type = this.determineType(this.props.type)
+        if (this.state.options.length === 0 && this.state.inputValue.trim() === ''){
             input = `Please enter the name of an English ${type} you enjoy.`
         } else if (this.state.isFetching === true) {
             input = "Searching..." 
-        } else if (this.state.movies.length === 0 && this.state.inputValue.trim() !== '' && this.state.showing === false){
+        } else if (this.state.options.length === 0 && this.state.inputValue.trim() !== '' && this.state.showing === false){
             input = "No results found."
         } else {
             input = ""
@@ -50,14 +54,14 @@ class Movies extends Component{
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                data.results.forEach(movie => {
-                    if (movie.original_language === "en") this.setState(previousState => ({
-                        movies: [...previousState.movies, movie]
+                this.setState({ isFetching: false })
+                data.results.forEach(item => {
+                    if (item.original_language === "en") this.setState(previousState => ({
+                        options: [...previousState.options, item]
                     }) 
-                    ) 
-                    this.setState({ isFetching: false })
-                })
+                ) 
             })
+        })
 
     }
 
@@ -83,7 +87,7 @@ class Movies extends Component{
                 <Input onChange={this.handleChange}/>
                 <Button value="Search" onClick={this.handleSubmit.bind(this)} />
             </div>
-                <MoviesList list={this.state.movies.slice(0,5)} 
+                <MediaList list={this.state.options.slice(0,5)} 
                 handleResults={this.props.handleResults} 
                 handleFetchState={this.props.handleFetchState}
                 type = {this.props.type} 
@@ -94,4 +98,4 @@ class Movies extends Component{
     
 }
 
-export default Movies;
+export default Media;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Movies from '../../containers/Movies'
+import Media from '../../containers/Media'
 import Recommendations from '../../containers/Recommendations'
 import ChooseMedia from '../ChooseMedia';
 import Message from '../Message';
@@ -20,12 +20,13 @@ class App extends Component{
     this.setState({ movieSelection: results });
   }
 
-  handleMediaSelection  = (results) => {
-    this.setState({ mediaSelection: results });
-  }
-
   handleFetchState = (results) => {
     this.setState({ isFetching: results });
+  }
+
+  onClick = (e) => {
+    e.target.value === 'Film' ? this.setState({ mediaSelection: 'movie' }) : this.setState({ mediaSelection: 'tv' })
+    this.setState({ showing: false })
   }
 
   homeScreen(input, input2){
@@ -34,7 +35,7 @@ class App extends Component{
       <div>
           <h2><Message text={input} /></h2>
           <p><Message text={input2} /></p>
-          <ChooseMedia handleMediaSelection={this.handleMediaSelection} />
+          <ChooseMedia onClick ={this.onClick} />
       </div>
       )
     }
@@ -43,7 +44,7 @@ class App extends Component{
 
   render(){
     let input = "Welcome to Find Foreign Features, the site that recommends foreign "+
-                "films and tv series based on the English ones you already love."
+                "films and tv series based on English ones you already love."
     let input2 = "What are you looking for today?" 
       
     return (
@@ -54,12 +55,12 @@ class App extends Component{
           <br/>
         {this.homeScreen(input,input2)}
         { this.state.mediaSelection.trim() !== '' &&
-        <Movies handleResults={this.handleResults} 
+        <Media handleResults={this.handleResults} 
         handleFetchState={this.handleFetchState} 
         type ={this.state.mediaSelection}  
         />
         }
-        <Recommendations movie={this.state.movieSelection} 
+        <Recommendations item={this.state.movieSelection} 
         isFetching={this.state.isFetching} 
         handleFetchState={this.handleFetchState}
         type={this.state.mediaSelection} 

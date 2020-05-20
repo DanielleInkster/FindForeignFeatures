@@ -64,7 +64,7 @@ class Recommendations extends Component {
 
         return(
             <div>
-                <Keywords movie={this.props.movie} 
+                <Keywords item={this.props.item} 
                     isFetching={this.props.isFetching}
                     isLoading={this.state.isLoading}  
                     rawKeywordHandler={this.rawKeywordHandler} 
@@ -73,7 +73,7 @@ class Recommendations extends Component {
                     />
 
                 {this.state.noResults === false &&
-                <Genres movie={this.props.movie} 
+                <Genres item={this.props.item} 
                     isFetching={this.props.isFetching} 
                     comparedHandler={this.comparedHandler} 
                     keywordRecs = {this.state.rawKeywordRecommendations}

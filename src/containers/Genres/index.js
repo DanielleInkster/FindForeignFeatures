@@ -12,12 +12,12 @@ class Genres extends Component {
 
     componentDidUpdate(prevProps) {
         if (this.props.isFetching !== prevProps.isFetching) {
-            this.getGenreIDString (this.props.movie)
+            this.getGenreIDString(this.props.item)
         }
     }
 
-    getGenreIDString = (movie) => {
-        this.setState({ genres: movie.genre_ids})
+    getGenreIDString = (item) => {
+        this.setState({ genres: item.genre_ids})
     }
 
     render() {

@@ -12,7 +12,6 @@ class Compare extends Component {
     componentDidUpdate(prevProps) {
         if (this.props.keywordRecs !== prevProps.keywordRecs) {
             this.returnRecommendations()
-
         }
     }
 

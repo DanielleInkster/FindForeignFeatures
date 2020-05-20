@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ListItem from '../ListItem';
 import Button from '../Button';
 
-class MoviesList extends Component {
+class MediaList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,8 +10,8 @@ class MoviesList extends Component {
         } 
     }
 
-    handleMovieSubmit = (movie) => {
-        this.props.handleResults(movie)
+    handleMovieSubmit = (item) => {
+        this.props.handleResults(item)
         this.setState({ isFetching: true })
         this.props.handleFetchState(true)
         this.setState({ showing: false });
@@ -22,10 +22,10 @@ class MoviesList extends Component {
         
         return(
             <div>
-                <div style={{ display: (showing ? 'block' : 'none') }}> {this.props.list.map(movie =>
-                    <li style={{ listStyleType: "none" }} key={movie.id}>
-                        <ListItem movie={movie} type = {this.props.type}/>
-                        <Button value="Find more like this!" onClick={() => { this.handleMovieSubmit(movie)}} />
+                <div style={{ display: (showing ? 'block' : 'none') }}> {this.props.list.map(item =>
+                    <li style={{ listStyleType: "none" }} key={item.id}>
+                        <ListItem item={item} type = {this.props.type}/>
+                        <Button value="Find more like this!" onClick={() => { this.handleMovieSubmit(item)}} />
                         <h2><br /></h2>
                     </li>)}
                 </div>
@@ -33,4 +33,4 @@ class MoviesList extends Component {
         ) 
     }
 }
-export default MoviesList;
+export default MediaList;

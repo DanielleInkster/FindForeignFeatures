@@ -15,8 +15,14 @@ class Keywords extends Component {
 
     componentDidUpdate(prevProps){
         if (this.props.isFetching !== prevProps.isFetching){
-            this.findKeywordsFetch(this.props.movie.id)
+            let searchTerm = this.determineType(this.props.type)
+            this.findKeywordsFetch(this.props.item.id, searchTerm)
         } 
+    }
+
+    determineType=(type)=>{
+        let searchTerm = type === 'tv' ?  'results' :  'keywords'
+        return searchTerm
     }
 
     handleData = (data) => {
@@ -31,16 +37,14 @@ class Keywords extends Component {
         }
     }
 
-    findKeywordsFetch = (value) => {
+    findKeywordsFetch = (value, searchTerm) => {
         fetch(`https://api.themoviedb.org/3/${this.props.type}/${value}/keywords?api_key=${API_KEY}`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                let searchTerm = ''
-                this.props.type === 'tv' ? searchTerm = 'results' : searchTerm = 'keywords'
                 data[searchTerm].length > 0 ? this.setState({ keywords: this.handleData(data[searchTerm]) }) : this.props.rawKeywordHandler([])
                 this.setState({ isFetching: false })
-            })
+        })
     }
 
     handler = (results) => {
@@ -51,9 +55,9 @@ class Keywords extends Component {
         return(
             <div>
                 {this.state.keywords.length >= 4 && 
-                <SelectKeywords keywords={this.state.keywords} 
-                handler={this.handler} 
-                type={this.props.type} /> 
+                    <SelectKeywords keywords={this.state.keywords} 
+                    handler={this.handler} 
+                    type={this.props.type} /> 
                 }
 
                 {this.state.isFetching === false && this.state.keywords.length < 4 &&  

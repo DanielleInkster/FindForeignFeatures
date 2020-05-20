@@ -1,9 +1,8 @@
 import React from 'react';
 
 const Title =(props)=>{
-    let searchTerm = ''
-    props.type === 'tv' ? searchTerm = "original_name" : searchTerm = "original_title"
-    return props.movie[searchTerm] 
+    let searchTerm = props.type === 'tv' ? "original_name" : "original_title"
+    return props.item[searchTerm] 
 }
 
 export default Title
