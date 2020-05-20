@@ -55,14 +55,10 @@ class App extends Component{
           <br/>
         {this.homeScreen(input,input2)}
         { this.state.mediaSelection.trim() !== '' &&
-        <Media handleResults={this.handleResults} 
-        handleFetchState={this.handleFetchState} 
-        type ={this.state.mediaSelection}  
+        <Media handleResults={this.handleResults} handleFetchState={this.handleFetchState} type ={this.state.mediaSelection}  
         />
         }
-        <Recommendations item={this.state.movieSelection} 
-        isFetching={this.state.isFetching} 
-        handleFetchState={this.handleFetchState}
+        <Recommendations item={this.state.movieSelection} isFetching={this.state.isFetching} handleFetchState={this.handleFetchState} 
         type={this.state.mediaSelection} 
         />
       </div>

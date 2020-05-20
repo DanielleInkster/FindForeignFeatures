@@ -64,20 +64,14 @@ class Recommendations extends Component {
 
         return(
             <div>
-                <Keywords item={this.props.item} 
-                    isFetching={this.props.isFetching}
-                    isLoading={this.state.isLoading}  
-                    rawKeywordHandler={this.rawKeywordHandler} 
-                    handleLoadState={this.handleLoadState} 
+                <Keywords item={this.props.item} isFetching={this.props.isFetching} isLoading={this.state.isLoading}  
+                    rawKeywordHandler={this.rawKeywordHandler} handleLoadState={this.handleLoadState} 
                     type={this.props.type} 
                     />
 
                 {this.state.noResults === false &&
-                <Genres item={this.props.item} 
-                    isFetching={this.props.isFetching} 
-                    comparedHandler={this.comparedHandler} 
-                    keywordRecs = {this.state.rawKeywordRecommendations}
-                    type={this.props.type} 
+                <Genres item={this.props.item} isFetching={this.props.isFetching} comparedHandler={this.comparedHandler} 
+                    keywordRecs = {this.state.rawKeywordRecommendations} type={this.props.type} 
                     />
                 }
                 {this.state.sortedRecommendations.length !== 0 && this.state.noResults === false &&

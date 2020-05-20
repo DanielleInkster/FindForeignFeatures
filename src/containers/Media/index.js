@@ -83,14 +83,13 @@ class Media extends Component{
             <div>
                 {this.state.isFetching===true && <Loading/>}
             <h1><Message text={this.createMessage()}/></h1>
+            
             <div style={{ display: (showing ? 'block' : 'none') }}>
                 <Input onChange={this.handleChange}/>
                 <Button value="Search" onClick={this.handleSubmit.bind(this)} />
             </div>
-                <MediaList list={this.state.options.slice(0,5)} 
-                handleResults={this.props.handleResults} 
-                handleFetchState={this.props.handleFetchState}
-                type = {this.props.type} 
+                <MediaList list={this.state.options.slice(0,5)} handleResults={this.props.handleResults} 
+                handleFetchState={this.props.handleFetchState} type = {this.props.type} 
                 />
             </div>
         )
