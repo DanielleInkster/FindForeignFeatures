@@ -12,11 +12,11 @@
   min-height: 6vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  font-family: Lobster, monospace
+  font-family: Lobster, monospace;
+  text-align: left;
+  padding-left:1.5em;
 }
 
 .App-link {
