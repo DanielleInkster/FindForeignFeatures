@@ -10,7 +10,6 @@ import FindYear from '../FindYear'
 const ListItem =(props)=>{
     return(
         <div>
-            {console.log(props.item)}
             <ImageUrl item={props.item} />
             <h2><Title item={props.item} type={props.type}/></h2>
             <hr/>

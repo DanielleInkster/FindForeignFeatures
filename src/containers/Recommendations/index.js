@@ -45,12 +45,7 @@ class Recommendations extends Component {
         return sorted
     }
 
-    checkForNull=(arr)=>{
-        if (arr === []) this.setState({ isLoading: false })  
-    }
-
     returnSortedResults = (arr)=>{
-        this.checkForNull(arr)
         let sorted = this.sortResults(arr)
         this.setState({ sortedRecommendations: sorted });
         this.setState({ sorted: true })
