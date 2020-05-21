@@ -32,7 +32,12 @@ class Recommendations extends Component {
     }
 
     comparedHandler = (results) => {
-        results.length !== 0 ? this.setState({ comparedRecommendation: results }) : this.setState({ noResults: true }) 
+        if (results.length !== 0 ){
+            this.setState({ comparedRecommendation: results })
+         }else{
+            this.setState({ isLoading: false })
+            this.setState({ noResults: true })
+         } 
     }
 
     sortResults=(arr)=>{
@@ -71,7 +76,7 @@ class Recommendations extends Component {
 
                 {this.state.noResults === false &&
                 <Genres item={this.props.item} isFetching={this.props.isFetching} comparedHandler={this.comparedHandler} 
-                        keywordRecs={this.state.rawKeywordRecommendations} type={this.props.type} handleLoadState={this.handleLoadState} 
+                        keywordRecs={this.state.rawKeywordRecommendations} type={this.props.type}
                     />
                 }
                 {this.state.sortedRecommendations.length !== 0 && this.state.noResults === false &&
