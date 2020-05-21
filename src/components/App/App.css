@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  /* font-family: Quicksand, sans-serif; */
 }
 
 .App-logo {
@@ -19,15 +20,7 @@
   padding-left:1.5em;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+
+

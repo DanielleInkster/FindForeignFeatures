@@ -43,8 +43,8 @@ class App extends Component{
   }
 
   render(){
-    let input = "Welcome to Find Foreign Features, the site that recommends foreign "+
-                "films and tv series based on English ones you already love."
+    let input = "Welcome to <u><span id='Lobster'>Find Foreign Features</span></u>, the site that recommends foreign "+
+                "films and TV series based on the English ones you already love."
     let input2 = "What are you looking for today?" 
       
     return (
