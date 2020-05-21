@@ -22,7 +22,8 @@ class Genres extends Component {
 
     render() {
         return (
-            <Compare genres={this.state.genres} comparedHandler={this.props.comparedHandler} keywordRecs ={this.props.keywordRecs}/>
+            <Compare genres={this.state.genres} comparedHandler={this.props.comparedHandler} keywordRecs={this.props.keywordRecs} 
+            handleLoadState={this.props.handleLoadState} />
         )
     }
 }

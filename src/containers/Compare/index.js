@@ -22,6 +22,7 @@ class Compare extends Component {
                 if(item.genre_ids.includes(num)) arr.push(item)
             })
         })
+        if(arr.length === 0) this.props.handleLoadState(false)
         return arr
     }
 

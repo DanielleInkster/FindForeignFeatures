@@ -3,6 +3,7 @@ import Media from '../../containers/Media'
 import Recommendations from '../../containers/Recommendations'
 import ChooseMedia from '../ChooseMedia';
 import Message from '../Message';
+import Icon from '../Icon';
 import './App.css';
 
 
@@ -50,7 +51,8 @@ class App extends Component{
     return (
       <div className="App">
         <header className="App-header">
-          <h1> Find Foreign Features </h1>
+          <span id="Icon"><Icon /></span>
+          <h1 id="SiteTitle"> Find Foreign Features </h1>
         </header>
           <br/>
         {this.homeScreen(input,input2)}

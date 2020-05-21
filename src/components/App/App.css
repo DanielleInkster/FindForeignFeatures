@@ -10,14 +10,27 @@
 
 .App-header {
   background-color: #00acee;
-  min-height: 6vw;
+  min-height: 7vw;
+  max-height: 8vw;
   display: flex;
   flex-direction: column;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  font-family: Lobster, monospace;
+  padding: 1%;
+}
+
+
+#Icon{
   text-align: left;
-  padding-left:1.5em;
+  max-height:25% ;
+}
+
+#SiteTitle{
+   color: white;
+   text-align: left;
+   font-size: 300%;
+   font-family: Lobster, monospace;
+   /* position: absolute; */
+   padding-left: 7%;
+   padding-bottom: 10%
 }
 
 
