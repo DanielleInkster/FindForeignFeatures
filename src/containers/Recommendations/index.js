@@ -32,12 +32,12 @@ class Recommendations extends Component {
     }
 
     comparedHandler = (results) => {
-        if (results.length !== 0 ){
-            this.setState({ comparedRecommendation: results })
+        if(results.length !== 0){
+            this.setState({ comparedRecommendations: results })
          }else{
-            this.setState({ isLoading: false })
-            this.setState({ noResults: true })
-         } 
+              this.setState({ noResults: true }) 
+              this.setState({ isLoading: false }) 
+         }
     }
 
     sortResults=(arr)=>{
@@ -45,7 +45,12 @@ class Recommendations extends Component {
         return sorted
     }
 
+    checkForNull=(arr)=>{
+        if (arr === []) this.setState({ isLoading: false })  
+    }
+
     returnSortedResults = (arr)=>{
+        this.checkForNull(arr)
         let sorted = this.sortResults(arr)
         this.setState({ sortedRecommendations: sorted });
         this.setState({ sorted: true })
