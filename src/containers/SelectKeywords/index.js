@@ -55,7 +55,7 @@ class SelectKeywords extends Component {
 
     handleSubmit = (e)=>{
        let num =  this.checkSubmissionLength(this.state.options)
-       num < 4 ? this.createSubmit(e) : alert("Please choose no more than 3 keywords")   
+       0 < num && num < 4 ? this.createSubmit(e) : alert("Please choose between one and three keywords")   
     }
 
     selectKeywords =(input, showing)=>{

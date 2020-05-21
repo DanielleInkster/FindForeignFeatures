@@ -65,12 +65,15 @@ class Media extends Component{
 
     }
 
+    searchForMedia=(data)=>{
+        this.createFetch(data)
+        this.setState({ isFetching: true })
+        this.setState({ showing: false })
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
-        this.setState({ inputValue: e.target.value })
-        this.setState({ isFetching: true })
-        this.createFetch(this.state.inputValue)
-        this.setState({ showing: false })
+        this.state.inputValue.trim() === '' ? alert("Please enter a title.") : this.searchForMedia(this.state.inputValue)
     }
 
     handleChange = (e) => {
@@ -86,7 +89,7 @@ class Media extends Component{
             
             <div style={{ display: (showing ? 'block' : 'none') }}>
                 <Input onChange={this.handleChange}/>
-                <Button value="Search" onClick={this.handleSubmit.bind(this)} />
+                <Button value="Search" onClick={this.handleSubmit} />
             </div>
                 <MediaList list={this.state.options.slice(0,5)} handleResults={this.props.handleResults} 
                 handleFetchState={this.props.handleFetchState} type = {this.props.type} 
