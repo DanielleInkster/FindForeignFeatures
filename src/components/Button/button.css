@@ -1,9 +1,8 @@
 .Button {
   text-align: center;
-  font-family: Lobster, sans-serif;
-  height: 3em;
+  min-height: 3em;
   padding: .7em;
   margin: 1em;
-  width: 10em;
+  min-width: 10em;
   font-size:1em
 }

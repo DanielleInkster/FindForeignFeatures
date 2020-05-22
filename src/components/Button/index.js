@@ -1,8 +1,8 @@
 import React from 'react';
-import './index.css';
+import './button.css';
 
 const Button = (props) => {
-    return <input className="Button" type="submit" value={props.value} onClick={ props.onClick } />
+    return <input className="Button" id="Lobster" type="submit" value={props.value} onClick={ props.onClick } />
 }
 
 

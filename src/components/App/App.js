@@ -33,7 +33,7 @@ class App extends Component{
   homeScreen(input, input2){
     if (this.state.mediaSelection.trim() === ''){
       return( 
-      <div>
+      <div className="homeScreen">
           <h2><Message text={input} /></h2>
           <p><Message text={input2} /></p>
           <ChooseMedia onClick ={this.onClick} />
@@ -51,11 +51,15 @@ class App extends Component{
     return (
       <div className="App">
         <header className="App-header">
-          <span id="Icon"><Icon /></span>
-          <h1 id="SiteTitle"> Find Foreign Features </h1>
+          <div class="Container">
+          <span className="Icon"><Icon /></span>
+          <p className="SiteTitle" id="Lobster"> Find Foreign Features </p>
+          </div>
         </header>
-          <br/>
+        <br />
+        <div>
         {this.homeScreen(input,input2)}
+          <br />
         { this.state.mediaSelection.trim() !== '' &&
         <Media handleResults={this.handleResults} handleFetchState={this.handleFetchState} type ={this.state.mediaSelection}  
         />
@@ -63,6 +67,7 @@ class App extends Component{
         <Recommendations item={this.state.movieSelection} isFetching={this.state.isFetching} handleFetchState={this.handleFetchState} 
         type={this.state.mediaSelection} 
         />
+        </div>
       </div>
     );
     }

@@ -8,15 +8,6 @@ import Loading from '../../components/Loading'
 
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
-function Slugify(text) {
-    return text.toString().toLowerCase()
-        .replace(/\s+/g, '-')           
-        .replace(/[^\w\-]+/g, '')       
-        .replace(/\-\-+/g, '-')         
-        .replace(/^-+/, '')           
-        .replace(/-+$/, '');            
-}
-
 class Media extends Component{
     constructor(props) {
     super(props);
@@ -34,7 +25,7 @@ class Media extends Component{
     }
 
     createMessage = ()=>{
-        let input = ''
+        let input = ""
         let type = this.determineType(this.props.type)
         if (this.state.options.length === 0 && this.state.inputValue.trim() === ''){
             input = `Please enter the name of an English ${type} you enjoy.`
@@ -50,7 +41,7 @@ class Media extends Component{
 
     createFetch=(value)=>{
         fetch(`https://api.themoviedb.org/3/search/${this.props.type}?api_key=${API_KEY}`+
-            `&language=en-US&page=1&query=${Slugify(value)}&include_adult=false`)
+            `&language=en-US&page=1&query=${value}&include_adult=false`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
