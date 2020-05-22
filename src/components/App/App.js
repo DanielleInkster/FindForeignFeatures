@@ -52,7 +52,7 @@ class App extends Component{
       <div className="App">
         <header className="App-header">
           <div class="Container">
-          <span className="Icon"><Icon /></span>
+          <span id="Icon"><Icon /></span>
           <p className="SiteTitle" id="Lobster"> Find Foreign Features </p>
           </div>
         </header>
