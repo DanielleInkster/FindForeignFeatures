@@ -61,8 +61,8 @@ class SelectKeywords extends Component {
     selectKeywords =(input, showing)=>{
         while (this.props.keywords != null && this.props.keywords.length > 3) {
             return (
-                <div style={{ display: (showing ? 'block' : 'none') }}>
-                    <Message text={input} />
+                <div style={{ display: (showing ? 'block' : 'none') }} className="text">
+                    <Message text={input}/>
                     <CheckBoxList options={this.state.options} handleChildElement={this.handleCheckChildElement} />
                     <Button value="Submit" onClick={this.handleSubmit} />
                 </div>

@@ -35,7 +35,7 @@ class App extends Component{
       return( 
       <div className="homeScreen">
           <h2><Message text={input} /></h2>
-          <p><Message text={input2} /></p>
+          <p className="text"><Message text={input2} /></p>
           <ChooseMedia onClick ={this.onClick} />
       </div>
       )
@@ -51,7 +51,7 @@ class App extends Component{
     return (
       <div className="App">
         <header className="App-header">
-          <div class="Container">
+          <div className="Container">
           <span id="Icon"><Icon /></span>
           <p className="SiteTitle" id="Lobster"> Find Foreign Features </p>
           </div>
