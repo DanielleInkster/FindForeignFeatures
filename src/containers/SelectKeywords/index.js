@@ -62,7 +62,7 @@ class SelectKeywords extends Component {
     selectKeywords =(input, showing)=>{
         while (this.props.keywords != null && this.props.keywords.length > 3) {
             return (
-                <div style={{ display: (showing ? 'block' : 'none') }}>
+                <div style={{ display: (showing ? 'block' : 'none') }}className = 'heading'>
                     <Message text={input}/>
                     <CheckBoxList options={this.state.options} handleChildElement={this.handleCheckChildElement} />
                     <Button value="Submit" onClick={this.handleSubmit} />
@@ -73,9 +73,9 @@ class SelectKeywords extends Component {
 
     render(){
         const {showing} = this.state
-        let input = `<div id='wow'>Wow!</div> <br/><div>There are a lot of keywords associated with this ${this.mediaType()}. `+ 
+        let input = `<div id='wow'>Wow!</div> <br/>There are a lot of keywords associated with this ${this.mediaType()}. `+ 
         "In order to create the best recommendations for you, please select up to "+
-        "three that are most interesting to you. </div>"
+        "three that are most interesting to you. "
         
         return (
             this.selectKeywords(input, showing)  

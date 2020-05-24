@@ -2,3 +2,8 @@
     font-family: Lobster, sans-serif;
     font-size: calc(16px + 2vw) !important;
 }
+
+.heading{
+  font-size: calc(18px + 1vw);
+  font-family: Questrial, sans-serif
+}
