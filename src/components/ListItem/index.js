@@ -9,7 +9,7 @@ import FindYear from '../FindYear'
 
 const ListItem =(props)=>{
     return(
-        <div>
+        <div id = "text">
             <ImageUrl item={props.item} />
             <h2><Title item={props.item} type={props.type}/></h2>
             <hr/>

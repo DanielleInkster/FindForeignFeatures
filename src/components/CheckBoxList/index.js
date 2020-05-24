@@ -1,9 +1,10 @@
 import React from 'react';
 import CheckBox from '../CheckBox';
+import './CheckBoxList.css';
 
 const CheckBoxList = (props) =>{
     return(
-    <ul style={{ listStyleType: "none" }} >
+    <ul >
         {props.options.map((entry) => {
             return (<CheckBox handleCheckChildElement={props.handleChildElement}  {...entry} />)
         })

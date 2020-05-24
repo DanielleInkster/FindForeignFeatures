@@ -64,8 +64,8 @@ class Recommendations extends Component {
     }
     
     render(){
-        let input = "Some things are one of a kind!"
-        let input2 = "No matches were found."
+        let input = "<div id='wow'>Some things are one of a kind!</div>"
+        let input2 = "<div id ='text'>No matches were found.</div>"
 
         return(
             <div>

@@ -1,14 +1,21 @@
 body {
-  margin: 20 px;
-  font-family: Questrial, sans-serif;
+  margin: 1%;
 }
 
-#Lobster{
-  font-family: Lobster, sans-serif;
+.heading{
+  font-size: calc(18px + 1vw);
+  font-family: Questrial, sans-serif
 }
 
-#Questrial{
-  font-family: Questrial, sans-serif;
+#wow{
+    font-family: Lobster, sans-serif;
+    font-size: calc(16px + 2vw) !important;
+}
+
+
+#text{
+  font-size: calc(15px + .5vw);
+  font-family: Questrial, sans-serif
 }
 
 code {

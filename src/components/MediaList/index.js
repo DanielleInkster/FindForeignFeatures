@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ListItem from '../ListItem';
 import Button from '../Button';
+import './MediaList.css'
 
 class MediaList extends Component {
     constructor(props) {
@@ -21,15 +22,18 @@ class MediaList extends Component {
     const { showing } = this.state;
         
         return(
-            <div>
-                <div style={{ display: (showing ? 'block' : 'none') }}> {this.props.list.map(item =>
+                <div style={{ display: (showing ? 'block' : 'none') }}className='row'> {this.props.list.map(item =>
                     <li style={{ listStyleType: "none" }} key={item.id}>
-                        <ListItem item={item} type = {this.props.type}/>
-                        <Button value="Find more like this!" onClick={() => { this.handleMovieSubmit(item)}} />
-                        <h2><br /></h2>
+                        <div className ="column">
+                            <div className='card'>
+                                <ListItem item={item} type = {this.props.type}/>
+                                <Button value="Find more like this!" onClick={() => { this.handleMovieSubmit(item)}} />
+                                <br/>
+                            </div>
+                        </div>
                     </li>)}
                 </div>
-            </div>
+            
         ) 
     }
 }

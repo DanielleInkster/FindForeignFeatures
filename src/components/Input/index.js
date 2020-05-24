@@ -1,8 +1,8 @@
 import React from 'react';
-import './input.css'
+import './Input.css'
 
 const Input = (props)=>{
-   return <input class="Input" id="Questrial" type="text" value={props.value} onChange={props.onChange} />
+   return <input className="Input" type="text" value={props.value} onChange={props.onChange} />
 }
 
 export default Input;
