@@ -7,8 +7,13 @@ body {
   font-family: Questrial, sans-serif
 }
 
+#wow{
+    font-family: Lobster, sans-serif;
+    font-size: calc(16px + 2vw) !important;
+}
 
-.text{
+
+#text{
   font-size: calc(15px + .5vw);
   font-family: Questrial, sans-serif
 }

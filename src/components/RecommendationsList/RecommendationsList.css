@@ -8,15 +8,31 @@ body {
 
 /* Float four columns side by side */
 .column {
-
+  float: center;
+  width: 33%;
+  padding: 0 10px;
+  /* align-items: stretch; */
+ 
 }
 
 /* Remove extra left and right margins, due to padding in columns */
 .row {
+  width: 100%;
   display: flex;
-  
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content: center;
+  align-items: stretch;
+  margin: 0 -5px;
+
 }
 
+Clear floats after the columns */
+/* .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 /* Style the counter cards */
 .card {
@@ -24,6 +40,8 @@ body {
   padding: 16px;
   text-align: center;
   background-color: #f1f1f1;
+  align-items: stretch;
+  
 }
 
 @media screen and (max-width: 700px) {

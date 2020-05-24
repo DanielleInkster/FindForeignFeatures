@@ -67,8 +67,8 @@ class KeywordRecommendations extends Component {
     }
 
     render(){
-        let input  = "Searching..."
-        let input2 = "This can take up to 10 seconds."
+        let input  = "<div id='wow'>Searching...</div>"
+        let input2 = "<div id = 'text'>This can take up to 10 seconds.</div>"
         return(
             <div>
                 {this.returnRecommendations()}

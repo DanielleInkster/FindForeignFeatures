@@ -30,7 +30,7 @@ class Media extends Component{
         if (this.state.options.length === 0 && this.state.inputValue.trim() === ''){
             input = `Please enter the name of an English ${type} you enjoy.`
         } else if (this.state.isFetching === true) {
-            input = "Searching..." 
+            input = "<div id = 'wow'>Searching...</div>" 
         } else if (this.state.options.length === 0 && this.state.inputValue.trim() !== '' && this.state.showing === false){
             input = "No results found."
         } else {
@@ -82,7 +82,7 @@ class Media extends Component{
                 <Input onChange={this.handleChange}/>
                 <Button value="Search" onClick={this.handleSubmit} />
             </div>
-                <MediaList list={this.state.options.slice(0,5)} handleResults={this.props.handleResults} 
+                <MediaList list={this.state.options.slice(0,6)} handleResults={this.props.handleResults} 
                 handleFetchState={this.props.handleFetchState} type = {this.props.type} 
                 />
             </div>

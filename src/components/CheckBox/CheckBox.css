@@ -1,3 +1,6 @@
 #CheckBox{
     text-transform: capitalize;
+    font-size: calc(14px + .5vw);
+    font-family: Questrial, sans-serif;
+    
 }
