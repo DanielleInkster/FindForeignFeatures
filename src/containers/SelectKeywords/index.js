@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Message from '../../components/Message';
 import CheckBoxList from '../../components/CheckBoxList';
 import Button from '../../components/Button';
+import './SelectKeywords.css'
 
 class SelectKeywords extends Component {
     constructor(props) {
@@ -61,7 +62,7 @@ class SelectKeywords extends Component {
     selectKeywords =(input, showing)=>{
         while (this.props.keywords != null && this.props.keywords.length > 3) {
             return (
-                <div style={{ display: (showing ? 'block' : 'none') }} className="text">
+                <div style={{ display: (showing ? 'block' : 'none') }} className='text'>
                     <Message text={input}/>
                     <CheckBoxList options={this.state.options} handleChildElement={this.handleCheckChildElement} />
                     <Button value="Submit" onClick={this.handleSubmit} />
@@ -72,9 +73,9 @@ class SelectKeywords extends Component {
 
     render(){
         const {showing} = this.state
-        let input = `Wow! There are a lot of keywords associated with this ${this.mediaType()}. `+ 
+        let input = `<div id='wow'>Wow!</div> <br/><div>There are a lot of keywords associated with this ${this.mediaType()}. `+ 
         "In order to create the best recommendations for you, please select up to "+
-        "three that are most interesting to you."
+        "three that are most interesting to you. </div>"
         
         return (
             this.selectKeywords(input, showing)  

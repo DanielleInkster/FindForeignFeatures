@@ -1,5 +1,6 @@
 import React from 'react';
-import loaderSrc from '../../Images/loading.gif'
+import loaderSrc from '../../Images/loading.gif';
+import './Loading.css'
 
 const Loading =()=>(
     <div>
