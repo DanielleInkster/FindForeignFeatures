@@ -1,20 +1,17 @@
 body {
   margin: 1%;
-  font-family: Questrial, sans-serif;
 }
+
+.heading{
+  font-size: calc(18px + 1vw);
+  font-family: Questrial, sans-serif
+}
+
 
 .text{
-  font-size: 20px;
+  font-size: calc(15px + .5vw);
+  font-family: Questrial, sans-serif
 }
-
-
-/* #Lobster{
-  font-family: Lobster, sans-serif;
-}
-
-#Questrial{
-  font-family: Questrial, sans-serif;
-} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

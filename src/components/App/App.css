@@ -38,10 +38,16 @@
 }
 
 .SiteTitle{
+  font-family: Lobster, sans-serif;
   font-size: calc(25px + 2vw);
   color: white;
   display:inline-block;
-  padding: 1vmin;
+  padding: 1vmin; 
+}
+
+#SiteName{
+  font-family: Lobster, sans-serif;
+  font-size: calc(18px + 1vw) !important;
 }
 
 .Icon{

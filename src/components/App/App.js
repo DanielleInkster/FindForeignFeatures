@@ -34,8 +34,8 @@ class App extends Component{
     if (this.state.mediaSelection.trim() === ''){
       return( 
       <div className="homeScreen">
-          <h2><Message text={input} /></h2>
-          <p className="text"><Message text={input2} /></p>
+          <h2 className='heading'><Message text={input} /></h2>
+          <p className='text'><Message text={input2} /></p>
           <ChooseMedia onClick ={this.onClick} />
       </div>
       )
@@ -44,7 +44,7 @@ class App extends Component{
   }
 
   render(){
-    let input = "Welcome to <u><span id='Lobster'>Find Foreign Features</span></u>, the site that recommends foreign "+
+    let input = "Welcome to <u><span id='SiteName'>Find Foreign Features</span></u>, the site that recommends foreign "+
                 "films and TV series based on the English ones you already love."
     let input2 = "What are you looking for today?" 
       
@@ -53,7 +53,7 @@ class App extends Component{
         <header className="App-header">
           <div className="Container">
           <span id="Icon"><Icon /></span>
-          <p className="SiteTitle" id="Lobster"> Find Foreign Features </p>
+          <p className="SiteTitle"> Find Foreign Features </p>
           </div>
         </header>
         <br />
