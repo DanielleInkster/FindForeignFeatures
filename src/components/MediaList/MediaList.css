@@ -13,8 +13,7 @@ body {
 
 /* Style the counter cards */
 .card {
-  min-width: 30%;
-  max-width: 30%;
+  width: 30%;
   flex-basis: 100%;
   padding: 2%;
   margin:1%;
@@ -22,6 +21,7 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
   box-sizing: border-box;
   background: rgb(179, 179, 179);
+
 }
 
 .card-content{
@@ -38,7 +38,14 @@ body {
   .column {
     width: 100%;
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 2%;
   }
+}
+
+  @media screen and (max-width: 700px) {
+  .card {
+  width: 75%;
+
+}
 
 }
