@@ -6,8 +6,10 @@ const RecommendationsList =(props) => {
         return (
                 <div id='column'> {props.list.map(item =>
                     <li style={{ listStyleType: "none" }} key={item.id} className = 'card'>
+                        <div className = 'card-content'>
                         <ListItem item={item} type = {props.type}/>
-                        <br /><br />
+                        </div>
+                        <br />
                     </li>)}
                 </div>
            

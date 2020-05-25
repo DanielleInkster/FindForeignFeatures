@@ -7,21 +7,31 @@ body {
 .column {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
   align-items: stretch;
 }
 
 
 /* Style the counter cards */
 .card {
+  min-width: 30%;
+  max-width: 30%;
   flex-basis: 100%;
+  padding: 2%;
+  margin:1%;
   display: inline-block;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
   box-sizing: border-box;
-  padding: 10px;
-  margin: 2%;
-  text-align: center;
   background: rgb(179, 179, 179);
+}
+
+.card-content{
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+}
+
+.list-content p {
+  flex: 1 0 auto;
 }
 
 @media screen and (max-width: 700px) {
@@ -30,4 +40,5 @@ body {
     display: block;
     margin-bottom: 6px;
   }
+
 }
