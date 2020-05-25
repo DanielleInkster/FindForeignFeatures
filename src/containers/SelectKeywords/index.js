@@ -73,7 +73,7 @@ class SelectKeywords extends Component {
 
     render(){
         const {showing} = this.state
-        let input = `<div className = 'heading'id='wow'>Wow!</div> <br/><div id = 'text'>There are a lot of keywords associated with this ${this.mediaType()}. `+ 
+        let input = `<span id='wow'>Wow!</span> <br/><div id='heading'>There are a lot of keywords associated with this ${this.mediaType()}. `+ 
         "In order to create the best recommendations for you, please select up to "+
         "three that are most interesting to you. </div>"
         

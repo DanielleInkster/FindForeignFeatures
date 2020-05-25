@@ -76,7 +76,7 @@ class Media extends Component{
         return (
             <div>
                 {this.state.isFetching===true && <Loading/>}
-            <div className = 'heading'><Message text={this.createMessage()}/></div>
+            <div id = 'heading'><Message text={this.createMessage()}/></div>
             <br/>
             <div style={{ display: (showing ? 'block' : 'none') }}>
                 <Input onChange={this.handleChange}/>

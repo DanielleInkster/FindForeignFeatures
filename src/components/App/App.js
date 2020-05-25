@@ -34,7 +34,7 @@ class App extends Component {
     if (this.state.mediaSelection.trim() === '') {
       return (
         <div className="homeScreen">
-          <h2 className='heading'><Message text={input} /></h2>
+          <h2 id='heading'><Message text={input} /></h2>
           <p className='text'><Message text={input2} /></p>
           <ChooseMedia onClick={this.onClick} />
         </div>
