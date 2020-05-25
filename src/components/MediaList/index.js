@@ -22,18 +22,16 @@ class MediaList extends Component {
     const { showing } = this.state;
         
         return(
-                <div style={{ display: (showing ? 'block' : 'none') }}className='row'> {this.props.list.map(item =>
-                    <li style={{ listStyleType: "none" }} key={item.id}>
-                        <div className ="column">
-                            <div className='card'>
-                                <ListItem item={item} type = {this.props.type}/>
-                                <Button value="Find more like this!" onClick={() => { this.handleMovieSubmit(item)}} />
-                                <br/>
-                            </div>
-                        </div>
-                    </li>)}
-                </div>
-            
+            <div style={{ display: (showing ? 'block' : 'none') }} className="column"> 
+                    {this.props.list.map(item =>
+                        <li style={{ listStyleType: "none" }} key={item.id} className='card'>
+                                    <ListItem item={item} type = {this.props.type}/>
+                                    <Button value="Find more like this!" onClick={() => { this.handleMovieSubmit(item)}} />
+                                    <br/>
+                        
+                        </li>)}
+             
+                </div> 
         ) 
     }
 }

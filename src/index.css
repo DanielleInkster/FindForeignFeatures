@@ -7,6 +7,12 @@ body {
   font-family: Questrial, sans-serif
 }
 
+.mediaHeading{
+  font-size: 1.7vw;
+  font-weight: bold;
+  font-family: Questrial, sans-serif
+}
+
 #wow{
     font-family: Lobster, sans-serif;
     font-size: calc(16px + 2vw) !important;
@@ -14,7 +20,7 @@ body {
 
 
 #text{
-  font-size: calc(15px + .5vw);
+  font-size: calc(14px + .5vw);
   font-family: Questrial, sans-serif
 }
 

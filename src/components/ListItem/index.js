@@ -8,13 +8,13 @@ import FindYear from '../FindYear'
 
 const ListItem =(props)=>{
     return(
-        <div id = "text">
+        <div >
             <ImageUrl item={props.item} />
-            <h2><Title item={props.item} type={props.type}/></h2>
+            <p className = 'mediaHeading'><Title item={props.item} type={props.type}/></p>
             <hr/>
-            <p><NonEnglishName item={props.item} type={props.type}/></p>
-            <p><FindYear item={props.item} type = {props.type}/></p>
-            <p><ConvertISO language={props.item.original_language} /></p>
+            <p id="text"><NonEnglishName item={props.item} type={props.type}/></p>
+            <p id="text"><FindYear item={props.item} type = {props.type}/></p>
+            <p id="text"><ConvertISO language={props.item.original_language} /></p>
         </div>
     )
 }
