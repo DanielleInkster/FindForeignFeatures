@@ -5,7 +5,7 @@
 }
 
 .mediaHeading{
-  font-size: 1.7vw;
+  font-size: calc(14px + 1vw);
   font-weight: bold;
   font-family: Questrial, sans-serif
 }
@@ -17,7 +17,7 @@
 
 
 #text{
-  font-size: calc(14px + .5vw);
+  font-size: calc(12px + .6vw);
   font-family: Questrial, sans-serif
 }
 

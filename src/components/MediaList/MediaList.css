@@ -1,6 +1,3 @@
-/* * {
-  box-sizing: border-box;
-} */
 
 body {
   font-family: Questrial, sans-serif;
@@ -17,6 +14,7 @@ body {
 
 /* Style the counter cards */
 .card {
+  flex-basis: 100%;
   display: inline-block;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
   box-sizing: border-box;
@@ -30,6 +28,6 @@ body {
   .column {
     width: 100%;
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 6px;
   }
 }

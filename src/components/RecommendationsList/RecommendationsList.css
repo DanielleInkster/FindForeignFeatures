@@ -1,53 +1,33 @@
-* {
-  box-sizing: border-box;
-}
 
 body {
   font-family: Questrial, sans-serif;
 }
 
-/* Float four columns side by side */
+
 .column {
-  float: center;
-  width: 33%;
-  padding: 0 10px;
-  /* align-items: stretch; */
- 
-}
-
-/* Remove extra left and right margins, due to padding in columns */
-.row {
-  width: 100%;
   display: flex;
-  flex-direction: row;
-  flex-wrap:wrap;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   align-items: stretch;
-  margin: 0 -5px;
-
 }
 
-Clear floats after the columns */
-/* .row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
 
 /* Style the counter cards */
 .card {
+  flex-basis: 100%;
+  display: inline-block;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
-  padding: 16px;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 2%;
   text-align: center;
-  background-color: #f1f1f1;
-  align-items: stretch;
-  
+  background: rgb(179, 179, 179);
 }
 
 @media screen and (max-width: 700px) {
   .column {
     width: 100%;
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 6px;
   }
 }

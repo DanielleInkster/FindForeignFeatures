@@ -1,16 +1,16 @@
 import React from 'react';
 import ListItem from '../ListItem';
+import './RecommendationsList.css'
 
 const RecommendationsList =(props) => {
         return (
-            <div>
-                <div> {props.list.map(item =>
-                    <li style={{ listStyleType: "none" }} key={item.id}>
+                <div id='column'> {props.list.map(item =>
+                    <li style={{ listStyleType: "none" }} key={item.id} className = 'card'>
                         <ListItem item={item} type = {props.type}/>
                         <br /><br />
                     </li>)}
                 </div>
-            </div>
+           
         )
     
 }
