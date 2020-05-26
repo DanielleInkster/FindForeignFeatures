@@ -29,6 +29,15 @@
   flex: 1 0 auto;
 }
 
+#overview{
+  overflow: auto;
+  font-size: calc(10px + .5vw);
+  font-family: Questrial, sans-serif;
+  line-height: calc(10px + .5vw);
+  height: calc(30px + 1.5vw);
+  flex: 1 0 auto;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

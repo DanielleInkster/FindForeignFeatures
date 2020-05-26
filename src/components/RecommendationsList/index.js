@@ -1,5 +1,5 @@
 import React from 'react';
-import ListItem from '../ListItem';
+import RecommendationsListItem from '../RecommendationsListItem';
 import './RecommendationsList.css'
 
 const RecommendationsList =(props) => {
@@ -7,7 +7,7 @@ const RecommendationsList =(props) => {
                 <div id='column'> {props.list.map(item =>
                     <li style={{ listStyleType: "none" }} key={item.id} className = 'card'>
                         <div className = 'card-content'>
-                        <ListItem item={item} type = {props.type}/>
+                        <RecommendationsListItem item={item} type = {props.type}/>
                         </div>
                         <br />
                     </li>)}

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ListItem from '../ListItem';
+import MediaListItem from '../MediaListItem';
 import Button from '../Button';
 import './MediaList.css'
 
@@ -26,7 +26,7 @@ class MediaList extends Component {
                     {this.props.list.map(item =>
                         <li style={{ listStyleType: "none" }} key={item.id} className='card'>
                             <div className='card-content'>
-                                <ListItem item={item} type = {this.props.type}/>
+                                <MediaListItem item={item} type = {this.props.type}/>
                             </div>
                                 <Button value="Find more like this!" onClick={() => { this.handleMovieSubmit(item)}} />
                                 <br/>
