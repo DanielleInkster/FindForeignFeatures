@@ -1,0 +1,16 @@
+#Loading{
+    border: 10px solid #f0a500;
+    width: 20em;
+    height: 10
+2em;
+}
+
+@media (max-width: 700px)  {
+  #Icon{
+    border: 5px solid #f0a500;
+    width: 8em;
+    height: 5em;
+    
+  }
+
+}
