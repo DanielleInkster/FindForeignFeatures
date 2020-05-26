@@ -5,25 +5,30 @@
 }
 
 .mediaHeading{
-  font-size: 2vw; 
-  font-weight: 1000;
+  font-size: calc(12px + 1vw); 
+  font-weight: bold;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
   display: block;
-  line-height: 2vw; /* a */
-  max-height: 2vw; 
+  line-height: calc(12px + 1vw);
+  min-height: calc(24px + 2vw);
 }
+
+
 
 #wow{
     font-family: Lobster, sans-serif;
     font-size: calc(16px + 2vw) !important;
 }
 
-
 #text{
-  font-size: calc(12px + .6vw);
-  font-family: Questrial, sans-serif
+  overflow: hidden;
+  font-size: calc(10px + 1vw);
+  font-family: Questrial, sans-serif;
+  line-height: calc(10px + 1vw);
+  min-height: calc(20px + 2vw);
+  flex: 1 0 auto;
 }
 
 code {
