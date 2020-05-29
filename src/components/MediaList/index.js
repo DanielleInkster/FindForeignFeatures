@@ -30,10 +30,9 @@ class MediaList extends Component {
                             </div>
                                 <Button value="Find more like this!" onClick={() => { this.handleMovieSubmit(item)}} />
                                 <br/>
-                        
-                        </li>)}
-             
-                </div> 
+                        </li>)
+                    }
+            </div> 
         ) 
     }
 }
