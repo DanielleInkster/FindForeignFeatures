@@ -16,6 +16,28 @@ class KeywordRecommendations extends Component {
         this.props.handleLoadState(true)
     }
 
+    fetchKeywordRecs=(data, num)=>{
+        let i;
+        let pages = data.total_pages < 100 ? data.total_pages : 100
+        for (i = 1; i <= pages; i++) {
+            fetch(`https://api.themoviedb.org/3/discover/${this.props.type}?api_key=${API_KEY}&language=en-US&` +
+                `sort_by=popularity.desc&include_adult=false&include_video=false&page=${i}&with_keywords=${num}`)
+                .then((response) => {
+                    return response.json();
+                }).then((data) => {
+                   this.pushKeywordRecs(data)
+                })
+        }
+    }
+
+    pushKeywordRecs=(data)=>{
+        data.results.forEach(movie => {
+            if (movie.original_language !== "en") this.setState(previousState => ({
+                rawKeywordRecommendations: [...previousState.rawKeywordRecommendations, movie]
+            }))
+        })
+    }
+
     createKeywordFetch =(value )=>{ 
         value.forEach(num =>{ 
             fetch(`https://api.themoviedb.org/3/keyword/${num}/${this.props.type}?api_key=${API_KEY}`+
@@ -23,21 +45,7 @@ class KeywordRecommendations extends Component {
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                let i;
-                let pages = data.total_pages < 100 ? data.total_pages : 100
-                for (i = 1; i <= pages; i++) {
-                    fetch(`https://api.themoviedb.org/3/discover/${this.props.type}?api_key=${API_KEY}&language=en-US&` +
-                        `sort_by=popularity.desc&include_adult=false&include_video=false&page=${i}&with_keywords=${num}`)
-                    .then((response) => {
-                        return response.json();
-                    }).then((data) => {
-                        data.results.forEach(movie => {
-                            if (movie.original_language !== "en") this.setState(previousState => ({
-                                rawKeywordRecommendations: [...previousState.rawKeywordRecommendations, movie]
-                            }))
-                         })
-                    })
-                }
+                this.fetchKeywordRecs(data,num)
             })
         })
     }

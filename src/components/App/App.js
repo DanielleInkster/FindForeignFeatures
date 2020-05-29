@@ -4,6 +4,12 @@ import Recommendations from '../../containers/Recommendations'
 import ChooseMedia from '../ChooseMedia';
 import Message from '../Message';
 import Icon from '../Icon';
+import {
+  BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom"
 import './App.css';
 
 
