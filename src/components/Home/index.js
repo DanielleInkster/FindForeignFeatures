@@ -7,7 +7,7 @@ import Icon from '../Icon';
 import './Home.css';
 
 
-class App extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -72,4 +72,4 @@ class App extends Component {
     );
   }
 }
-export default App;
+export default Home;

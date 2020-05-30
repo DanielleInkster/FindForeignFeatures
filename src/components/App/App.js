@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Home from '../Home'
 import {
     BrowserRouter as Router,
     Switch,
@@ -7,13 +8,15 @@ import {
 } from "react-router-dom"
 
 class App extends Component {
- 
 
     render() {
         return (
-            <div>
-                Hello
-            </div>
+            <Router>
+                <div>
+                    <Route path="/" render={
+                        ()=>{return(<Home/>)}}/>
+                </div>
+            </Router>
         );
     }
 }
