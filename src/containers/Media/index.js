@@ -74,7 +74,7 @@ class Media extends Component{
     render() {
         const { showing } = this.state;
         return (
-            <div>
+            <div className = 'body'>
                 {this.state.isFetching===true && <Loading/>}
             <div id = 'heading'><Message text={this.createMessage()}/></div>
             <br/>
