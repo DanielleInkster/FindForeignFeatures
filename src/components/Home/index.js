@@ -3,7 +3,6 @@ import Media from '../../containers/Media'
 import Recommendations from '../../containers/Recommendations'
 import ChooseMedia from '../ChooseMedia';
 import Message from '../Message';
-import Icon from '../Icon';
 import './Home.css';
 
 
@@ -49,15 +48,8 @@ class Home extends Component {
     let input2 = "<div id='text'>What are you looking for today?</text>"
 
     return (
-      <div className="App">
-        <header className="App-header">
-          <div className="Container">
-            <span id="Icon"><Icon /></span>
-            <p className="SiteTitle"> Find Foreign Features </p>
-          </div>
-        </header>
-        <br />
-        <div>
+      
+        <div className = 'body'>
           {this.homeScreen(input, input2)}
           <br />
           {this.state.mediaSelection.trim() !== '' &&
@@ -68,7 +60,7 @@ class Home extends Component {
             type={this.state.mediaSelection}
           />
         </div>
-      </div>
+  
     );
   }
 }
