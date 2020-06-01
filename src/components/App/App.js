@@ -29,8 +29,8 @@ class App extends Component {
                 <div>
                     <Switch>
                         <Route exact match path="/" render={ ()=>{return(<Home/>)}}/>
-                        <Route exact match path="/tv" render={() => { return (<Media/>) }} />
-                        <Route exact match path="/movie" render={() => { return (<Media/>) }} />
+                            <Route exact match path="/tv" render={(props) => <Media {...props} />} />
+                            <Route exact match path="/movie" render={(props) => <Media {...props} />} />
                     </Switch>
                 </div>
             </Router>

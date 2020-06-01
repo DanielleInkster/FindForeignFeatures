@@ -19,9 +19,6 @@ class Media extends Component{
         }
     }
 
-    componentDidMount(){
-        console.log('hello')
-    }
 
     determineType = (type) => {
         let searchTerm = type === 'tv' ? 'TV series' : 'film'
@@ -30,7 +27,7 @@ class Media extends Component{
 
     createMessage = ()=>{
         let input = ""
-        let type = this.determineType(this.props.type)
+        let type = this.determineType(this.props.location.state.type)
         if (this.state.options.length === 0 && this.state.inputValue.trim() === ''){
             input = `Please enter the name of an English ${type} you enjoy.`
         } else if (this.state.isFetching === true) {
@@ -44,7 +41,7 @@ class Media extends Component{
     }
 
     createFetch=(value)=>{
-        fetch(`https://api.themoviedb.org/3/search/${this.props.type}?api_key=${API_KEY}`+
+        fetch(`https://api.themoviedb.org/3/search/${this.props.location.state.type}?api_key=${API_KEY}`+
             `&language=en-US&page=1&query=${value}&include_adult=false`)
             .then((response) => {
                 return response.json();
