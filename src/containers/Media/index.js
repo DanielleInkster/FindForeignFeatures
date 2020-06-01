@@ -19,6 +19,10 @@ class Media extends Component{
         }
     }
 
+    componentDidMount(){
+        console.log('hello')
+    }
+
     determineType = (type) => {
         let searchTerm = type === 'tv' ? 'TV series' : 'film'
         return searchTerm
