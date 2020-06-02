@@ -11,13 +11,13 @@ const ChooseMedia = (props) => {
                     pathname: '/movie',
                     }}>
                 
-                <Button value="Film" onClick = {props.onClick} />
+                <Button value="Film" />
                 </Link>
 
                 <Link to={{
                     pathname: '/tv',
                 }}>
-                <Button value="TV Series" onClick={props.onClick} />
+                <Button value="TV Series" />
                 </Link>
             </div>
         );

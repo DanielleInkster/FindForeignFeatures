@@ -24,11 +24,6 @@ class Home extends Component {
     this.setState({ isFetching: results });
   }
 
-  onClick = (e) => {
-    e.target.value === 'Film' ? this.setState({ mediaSelection: 'movie' }) : this.setState({ mediaSelection: 'tv' })
-    this.setState({ showing: false })
-  }
-
   homeScreen(input, input2) {
     if (this.state.mediaSelection.trim() === '') {
       return (
@@ -51,14 +46,6 @@ class Home extends Component {
       
         <div className = 'body'>
           {this.homeScreen(input, input2)}
-          <br />
-           {/* {this.state.mediaSelection.trim() !== '' &&
-            <Media handleResults={this.handleResults} handleFetchState={this.handleFetchState} type={this.state.mediaSelection}
-            />
-          }  */}
-          {/* <Recommendations item={this.state.movieSelection} isFetching={this.state.isFetching} handleFetchState={this.handleFetchState}
-            type={this.state.mediaSelection}
-          /> */} 
         </div>
   
     );
