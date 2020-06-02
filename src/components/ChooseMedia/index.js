@@ -9,9 +9,6 @@ const ChooseMedia = (props) => {
             <div>
                 <Link to={{
                     pathname: '/movie',
-                    state:{
-                    type: 'movie'
-                    }
                     }}>
                 
                 <Button value="Film" onClick = {props.onClick} />
@@ -19,9 +16,6 @@ const ChooseMedia = (props) => {
 
                 <Link to={{
                     pathname: '/tv',
-                    state: {
-                        type: 'tv'
-                    }
                 }}>
                 <Button value="TV Series" onClick={props.onClick} />
                 </Link>

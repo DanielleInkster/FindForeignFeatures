@@ -9,7 +9,7 @@ import Loading from '../../components/Loading'
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
 class Media extends Component{
-    constructor(props) {
+    constructor(props, { match }) {
     super(props);
     this.state =  { 
         options:[],
@@ -27,7 +27,7 @@ class Media extends Component{
 
     createMessage = ()=>{
         let input = ""
-        let type = this.determineType(this.props.location.state.type)
+        let type = this.determineType(this.props.match.params.mediaType)
         if (this.state.options.length === 0 && this.state.inputValue.trim() === ''){
             input = `Please enter the name of an English ${type} you enjoy.`
         } else if (this.state.isFetching === true) {
@@ -41,7 +41,7 @@ class Media extends Component{
     }
 
     createFetch=(value)=>{
-        fetch(`https://api.themoviedb.org/3/search/${this.props.location.state.type}?api_key=${API_KEY}`+
+        fetch(`https://api.themoviedb.org/3/search/${this.props.match.params.mediaType}?api_key=${API_KEY}`+
             `&language=en-US&page=1&query=${value}&include_adult=false`)
             .then((response) => {
                 return response.json();
@@ -76,6 +76,7 @@ class Media extends Component{
         const { showing } = this.state;
         return (
             <div className = 'body'>
+                {console.log(this.props.match.params.mediaType)}
                 {this.state.isFetching===true && <Loading/>}
             <div id = 'heading'><Message text={this.createMessage()}/></div>
             <br/>
