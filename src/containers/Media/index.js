@@ -25,7 +25,6 @@ class Media extends Component{
         this.setState({ mediaType: this.props.match.params.mediaType})
     }
 
-
     determineType = (mediaType) => {
         let searchTerm = mediaType === 'tv' ? 'TV series' : 'film'
         return searchTerm
@@ -77,7 +76,8 @@ class Media extends Component{
             alert("Please enter a title.")
         } else {
             this.searchForMedia(this.state.inputValue)
-            setTimeout(() => { this.redirect(`/${this.state.mediaType}/?title=${this.state.inputValue}`,  this.state.options, this.state.mediaType) }, 500)
+            setTimeout(() => { this.redirect(`/${this.state.mediaType}/search?title=${this.state.inputValue}`,  
+                               this.state.options.slice(0,6), this.state.mediaType) }, 500)
         }
     }
 
@@ -89,13 +89,13 @@ class Media extends Component{
         const { showing } = this.state;
         return (
             <div className = 'body'>
-                {this.state.isFetching===true && <Loading/>}
-            <div id = 'heading'><Message text={this.createMessage(this.state.mediaType)}/></div>
-            <br/>
-            <div style={{ display: (showing ? 'block' : 'none') }}>
-                <Input onChange={this.handleChange}/>
-                <Button value="Search" onClick={this.handleSubmit}/>
-            </div>
+                    {this.state.isFetching===true && <Loading/>}
+                <div id = 'heading'><Message text={this.createMessage(this.state.mediaType)}/></div>
+                    <br/>
+                <div style={{ display: (showing ? 'block' : 'none') }}>
+                    <Input onChange={this.handleChange}/>
+                    <Button value="Search" onClick={this.handleSubmit}/>
+                </div>
             </div>
         )
     };

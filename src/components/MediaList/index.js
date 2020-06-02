@@ -12,7 +12,6 @@ class MediaList extends Component {
     }
 
     handleMovieSubmit = (item) => {
-        this.props.handleResults(item)
         this.setState({ isFetching: true })
         this.props.handleFetchState(true)
         this.setState({ showing: false });
