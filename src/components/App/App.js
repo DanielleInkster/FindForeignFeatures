@@ -3,6 +3,8 @@ import './App.css'
 import Icon from '../Icon';
 import Home from '../Home'
 import Media from '../../containers/Media'
+import MediaList from '../MediaList'
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -30,7 +32,7 @@ class App extends Component {
                     <Switch>
                         <Route exact match path="/" render={ ()=>{return(<Home/>)}}/>
                             <Route exact match path="/:mediaType" render={(props) => <Media {...props} />} />
-                            {/* <Route exact match path="/movie" render={(props) => <Media {...props} />} /> */}
+                            <Route exact match path="/:mediaType/?title=:name" render={(props) => <MediaList {...props} />} />
                     </Switch>
                 </div>
             </Router>

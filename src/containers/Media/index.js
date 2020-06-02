@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { BrowserRouter as Router } from "react-router-dom";
 import 'whatwg-fetch'
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -14,20 +15,25 @@ class Media extends Component{
     this.state =  { 
         options:[],
         inputValue:'',
+        mediaType: '',
         isFetching: false, 
         showing: true
         }
     }
 
+    componentDidMount(){
+        this.setState({ mediaType: this.props.match.params.mediaType})
+    }
 
-    determineType = (type) => {
-        let searchTerm = type === 'tv' ? 'TV series' : 'film'
+
+    determineType = (mediaType) => {
+        let searchTerm = mediaType === 'tv' ? 'TV series' : 'film'
         return searchTerm
     }
 
-    createMessage = ()=>{
+    createMessage = (mediaType)=>{
         let input = ""
-        let type = this.determineType(this.props.match.params.mediaType)
+        let type = this.determineType(mediaType)
         if (this.state.options.length === 0 && this.state.inputValue.trim() === ''){
             input = `Please enter the name of an English ${type} you enjoy.`
         } else if (this.state.isFetching === true) {
@@ -41,12 +47,11 @@ class Media extends Component{
     }
 
     createFetch=(value)=>{
-        fetch(`https://api.themoviedb.org/3/search/${this.props.match.params.mediaType}?api_key=${API_KEY}`+
+        fetch(`https://api.themoviedb.org/3/search/${this.state.mediaType}?api_key=${API_KEY}`+
             `&language=en-US&page=1&query=${value}&include_adult=false`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                this.setState({ isFetching: false })
                 data.results.forEach(item => {
                     if (item.original_language === "en") this.setState(previousState => ({
                         options: [...previousState.options, item]
@@ -58,14 +63,22 @@ class Media extends Component{
     }
 
     searchForMedia=(data)=>{
-        this.createFetch(data)
         this.setState({ isFetching: true })
+        this.createFetch(data)
         this.setState({ showing: false })
     }
 
+    redirect(to, list, mediaType) {
+        this.props.history.push({ pathname: to, list, mediaType })
+    }
+
     handleSubmit = (e) => {
-        e.preventDefault();
-        this.state.inputValue.trim() === '' ? alert("Please enter a title.") : this.searchForMedia(this.state.inputValue)
+        if (this.state.inputValue.trim() === '') {
+            alert("Please enter a title.")
+        } else {
+            this.searchForMedia(this.state.inputValue)
+            setTimeout(() => { this.redirect(`/${this.state.mediaType}/?title=${this.state.inputValue}`,  this.state.options, this.state.mediaType) }, 500)
+        }
     }
 
     handleChange = (e) => {
@@ -77,15 +90,12 @@ class Media extends Component{
         return (
             <div className = 'body'>
                 {this.state.isFetching===true && <Loading/>}
-            <div id = 'heading'><Message text={this.createMessage()}/></div>
+            <div id = 'heading'><Message text={this.createMessage(this.state.mediaType)}/></div>
             <br/>
             <div style={{ display: (showing ? 'block' : 'none') }}>
                 <Input onChange={this.handleChange}/>
-                <Button value="Search" onClick={this.handleSubmit} />
+                <Button value="Search" onClick={this.handleSubmit}/>
             </div>
-                <MediaList list={this.state.options.slice(0,6)} handleResults={this.props.handleResults} 
-                handleFetchState={this.props.handleFetchState} type = {this.props.type} 
-                />
             </div>
         )
     };

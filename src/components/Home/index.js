@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import Media from '../../containers/Media'
 // import Recommendations from '../../containers/Recommendations'
 import ChooseMedia from '../ChooseMedia';
 import Message from '../Message';
