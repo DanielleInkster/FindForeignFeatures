@@ -14,22 +14,20 @@ class SelectKeywords extends Component {
         }
     }
 
-    componentDidUpdate() {
-        if (this.state.options.length === 0 && this.props.keywords.length > 3 ) {
+    componentDidMount() {
+        console.log("hello from SK")
             this.createOptions()
-        } 
     }
 
     mediaType(){
-      return this.props.type === 'tv' ? 'TV series' : 'film'
+      return this.props.location.type === 'tv' ? 'TV series' : 'film'
     }
    
     createOptions = () => {
         let arr = []
-       if(this.props.keywords !== null){
-            this.props.keywords.map(entry=>
+        this.props.location.keywords.map(entry=>
             arr.push({ key: entry.id, id: entry.id, value: entry.name, isChecked: false })
-        )}
+        )
         this.setState({ options: arr }) 
     }
 
@@ -78,7 +76,7 @@ class SelectKeywords extends Component {
         "three that are most interesting to you. </div>"
         
         return (
-            this.selectKeywords(input, showing)  
+            this.selectKeywords(input, showing)  || null
         )
     };
 

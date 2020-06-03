@@ -9,12 +9,19 @@ class Keywords extends Component {
         super(props);
         this.state = {
             keywords:[],
+            selection:[],
+            id: 0,
+            mediaType: '',
             isFetching: this.props.isFetching,
         }
     }
 
     componentDidMount(){
-        console.log(this.props.location.state)
+        this.setState({ mediaType: this.props.location.state.type})
+        this.setState({ selection: this.props.location.state.selection })
+        this.setState({ id: this.props.location.state.selection.id })
+        let term = this.determineType(this.props.location.state.type)
+        this.findKeywordsFetch(this.props.location.state.type, this.props.location.state.selection.id, term )
     } 
     
 
@@ -35,14 +42,18 @@ class Keywords extends Component {
         }
     }
 
-    findKeywordsFetch = (value, searchTerm) => {
-        fetch(`https://api.themoviedb.org/3/${this.props.type}/${value}/keywords?api_key=${API_KEY}`)
+    findKeywordsFetch = (type, id, searchTerm) => {
+        fetch(`https://api.themoviedb.org/3/${type}/${id}/keywords?api_key=${API_KEY}`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
                 data[searchTerm].length > 0 ? this.setState({ keywords: this.handleData(data[searchTerm]) }) : this.props.rawKeywordHandler([])
                 this.setState({ isFetching: false })
         })
+    }
+
+    redirect(to, keywords, handler, mediaType) {
+        this.props.history.push({ pathname: to, keywords, handler, mediaType })
     }
 
     handler = (results) => {
@@ -53,8 +64,9 @@ class Keywords extends Component {
     render(){
         return(
             <div>
-                {this.state.keywords.length >= 4 && 
-                    <SelectKeywords keywords={this.state.keywords} handler={this.handler} type={this.props.type} /> 
+                {console.log(this.state.keywords)}
+                {this.state.keywords.length >= 4 && this.redirect(`/${this.state.mediaType}/${this.state.id}/keywords`,
+                this.state.keywords, this.handler, this.state.mediaType) 
                 }
 
                 {this.state.isFetching === false && this.state.keywords.length < 4 &&  
