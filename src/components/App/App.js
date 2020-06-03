@@ -3,6 +3,7 @@ import './App.css'
 import Icon from '../Icon';
 import Home from '../Home'
 import Media from '../../containers/Media'
+import Keywords from '../../containers/Keywords'
 import MediaList from '../MediaList'
 
 import {
@@ -33,6 +34,7 @@ class App extends Component {
                         <Route exact match path="/" render={ ()=>{return(<Home/>)}}/>
                             <Route exact match path="/:mediaType" render={(props) => <Media {...props} />} />
                             <Route exact match path="/:mediaType/search?title=:name" render={(props) => <MediaList {...props} />} />
+                            <Route exact match path="/:mediaType/:id" render={(props) => <Keywords {...props} />} />
                     </Switch>
                 </div>
             </Router>

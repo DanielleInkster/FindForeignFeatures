@@ -13,12 +13,10 @@ class Keywords extends Component {
         }
     }
 
-    componentDidUpdate(prevProps){
-        if (this.props.isFetching !== prevProps.isFetching){
-            let searchTerm = this.determineType(this.props.type)
-            this.findKeywordsFetch(this.props.item.id, searchTerm)
-        } 
-    }
+    componentDidMount(){
+        console.log(this.props.location.state)
+    } 
+    
 
     determineType=(type)=>{
         let searchTerm = type === 'tv' ?  'results' :  'keywords'
@@ -50,6 +48,7 @@ class Keywords extends Component {
     handler = (results) => {
         this.setState({ keywords: results });
     }
+
 
     render(){
         return(

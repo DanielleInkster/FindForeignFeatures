@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import MediaListItem from '../MediaListItem';
 import Button from '../Button';
 import './MediaList.css'
@@ -11,11 +12,6 @@ class MediaList extends Component {
         } 
     }
 
-    handleMovieSubmit = (item) => {
-        this.setState({ isFetching: true })
-        this.props.handleFetchState(true)
-        this.setState({ showing: false });
-    }
 
     render(){
     const { showing } = this.state;
@@ -26,8 +22,17 @@ class MediaList extends Component {
                         <li style={{ listStyleType: "none" }} key={item.id} className='card'>
                             <div className='card-content'>
                                 <MediaListItem item={item} type = {this.props.location.mediaType}/>
+                           
+                            <Link to={{ 
+                            pathname: `${item.id}`,
+                            state:{
+                                    selection: item,
+                                    type: this.props.location.mediaType
+                                }    
+                                }}>
+                                    <Button value="Find more like this!"/>
+                                </Link>
                             </div>
-                                <Button value="Find more like this!" onClick={() => { this.handleMovieSubmit(item)}} />
                                 <br/>
                         </li>)
                     }

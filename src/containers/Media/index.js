@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router } from "react-router-dom";
 import 'whatwg-fetch'
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-import MediaList from '../../components/MediaList'
 import Message from '../../components/Message'
 import Loading from '../../components/Loading'
 
