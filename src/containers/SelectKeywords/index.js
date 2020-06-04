@@ -15,7 +15,6 @@ class SelectKeywords extends Component {
     }
 
     componentDidMount() {
-        console.log("hello from SK")
             this.createOptions()
     }
 
@@ -57,17 +56,6 @@ class SelectKeywords extends Component {
        0 < num && num < 4 ? this.createSubmit(e) : alert("Please choose between one and three keywords")   
     }
 
-    selectKeywords =(input, showing)=>{
-        while (this.props.keywords != null && this.props.keywords.length > 3) {
-            return (
-                <div style={{ display: (showing ? 'block' : 'none') }}>
-                    <Message text={input}/>
-                    <CheckBoxList options={this.state.options} handleChildElement={this.handleCheckChildElement} />
-                    <Button value="Submit" onClick={this.handleSubmit} />
-                </div>
-            )
-        } 
-    }
 
     render(){
         const {showing} = this.state
@@ -76,7 +64,11 @@ class SelectKeywords extends Component {
         "three that are most interesting to you. </div>"
         
         return (
-            this.selectKeywords(input, showing)  || null
+            <div style={{ display: (showing ? 'block' : 'none') }}>
+                <Message text={input} />
+                <CheckBoxList options={this.state.options} handleChildElement={this.handleCheckChildElement} />
+                <Button value="Submit" onClick={this.handleSubmit} />
+            </div>
         )
     };
 
