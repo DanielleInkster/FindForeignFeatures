@@ -12,7 +12,7 @@ class Keywords extends Component {
             selection:[],
             id: 0,
             mediaType: '',
-            isFetching: this.props.isFetching,
+            isFetching: true,
         }
     }
 
@@ -47,9 +47,13 @@ class Keywords extends Component {
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                data[searchTerm].length > 0 ? this.setState({ keywords: this.handleData(data[searchTerm]) }) : this.props.rawKeywordHandler([])
+                data[searchTerm].length !== 0 ? this.setState({ keywords: this.handleData(data[searchTerm]) }) : this.noResults()
                 this.setState({ isFetching: false })
         })
+    }
+    
+    noResults(){
+        this.redirect(`/${this.state.mediaType}/${this.state.id}/noresults`)
     }
 
     redirect(to, keywords, handler, mediaType) {
@@ -64,15 +68,15 @@ class Keywords extends Component {
     render(){
         return(
             <div>
-                {console.log(this.state.keywords)}
                 {this.state.keywords.length >= 4 && this.redirect(`/${this.state.mediaType}/${this.state.id}/keywords`,
                 this.state.keywords, this.handler, this.state.mediaType) 
                 }
 
-                {this.state.isFetching === false && this.state.keywords.length < 4 &&  
+                {this.state.isFetching === false && 0 < this.state.keywords.length < 4 &&  
                     <KeywordRecommendations keywords={this.state.keywords} rawKeywordHandler={this.props.rawKeywordHandler}
                     isLoading={this.props.isLoading} handleLoadState={this.props.handleLoadState} type={this.props.type} /> 
                 }
+
             </div>
         )
     }

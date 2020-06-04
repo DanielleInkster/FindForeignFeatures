@@ -9,13 +9,13 @@ class SelectKeywords extends Component {
         super(props);
 
         this.state = {
-            options:[],
-            showing: true
+            options:[]
         }
     }
 
     componentDidMount() {
             this.createOptions()
+            console.log("HELLO from SK")
     }
 
     mediaType(){
@@ -64,7 +64,7 @@ class SelectKeywords extends Component {
         "three that are most interesting to you. </div>"
         
         return (
-            <div style={{ display: (showing ? 'block' : 'none') }}>
+            <div>
                 <Message text={input} />
                 <CheckBoxList options={this.state.options} handleChildElement={this.handleCheckChildElement} />
                 <Button value="Submit" onClick={this.handleSubmit} />

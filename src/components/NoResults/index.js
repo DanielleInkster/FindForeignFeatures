@@ -9,7 +9,7 @@ const NoResults =()=>{
     return (
         <div>
             <h1><Message text={input} /></h1>
-            <p><Message text={input2} /></p>
+               <Message text={input2} />
         </div>
     )
 }
