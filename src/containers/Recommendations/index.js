@@ -52,20 +52,20 @@ class Recommendations extends Component {
         this.setState({ isLoading: false })
     }
 
-    noMatchesFound(input, input2){
-        if(this.state.noResults === true){
-            return(
-            <div>
-                <h1><Message text={input} /></h1>
-                <p><Message text={input2} /></p>  
-            </div>
-            )
-        }
-    }
+    // noMatchesFound(input, input2){
+    //     if(this.state.noResults === true){
+    //         return(
+    //         <div>
+    //             <h1><Message text={input} /></h1>
+    //             <p><Message text={input2} /></p>  
+    //         </div>
+    //         )
+    //     }
+    // }
     
     render(){
-        let input = "<div id='wow'>Some things are one of a kind!</div>"
-        let input2 = "<div id ='text'>No matches were found.</div>"
+        // let input = "<div id='wow'>Some things are one of a kind!</div>"
+        // let input2 = "<div id ='text'>No matches were found.</div>"
 
         return(
             <div>
@@ -82,7 +82,7 @@ class Recommendations extends Component {
                 {this.state.sortedRecommendations.length !== 0 && this.state.noResults === false &&
                     <RecommendationsList list={this.state.sortedRecommendations.slice(0, 50)} type ={this.props.type} />
                     }
-                {this.noMatchesFound(input, input2)}
+                {/* {this.noMatchesFound(input, input2)} */}
             </div >  
         )
     }

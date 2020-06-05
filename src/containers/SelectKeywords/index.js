@@ -42,13 +42,17 @@ class SelectKeywords extends Component {
         arr.forEach(entry => { if (entry.isChecked === true) { i++ } })
         return i
     }
+
+    redirect(to, keywords) {
+        this.props.history.push({ pathname: to, keywords })
+    }
     
     createSubmit = (e)=>{
         e.preventDefault();
         let arr = []
         this.state.options.forEach(entry => { if (entry.isChecked === true) { arr.push(entry.id) } })
-        this.props.handler(arr)
-        this.setState({ showing: false })
+        this.redirect(`/${this.props.match.params.mediaType}/${this.props.match.params.id}/search`,
+                arr)
     }
 
     handleSubmit = (e)=>{

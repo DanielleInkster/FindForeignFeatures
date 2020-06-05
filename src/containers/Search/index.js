@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Keywords from '../Keywords';
 
 class Search extends Component {
     constructor(props) {
@@ -9,7 +10,10 @@ class Search extends Component {
     }
     render() {
         return (
-            <div>Hello, I'm the search container</div>
+            <div>
+            {console.log(this.props)}
+            <Keywords item={this.props} />
+            </div>
         )
     }
 }

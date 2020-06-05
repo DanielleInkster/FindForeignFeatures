@@ -15,8 +15,8 @@ class Keywords extends Component {
 
     componentDidMount(){
         // this.setState({ selection: this.props.location.state.selection })
-        let term = this.determineType(this.props.match.params.mediaType)
-        this.findKeywordsFetch(this.props.match.params.mediaType, this.props.match.params.id , term )
+        let term = this.determineType(this.props.item.match.params.mediaType)
+        this.findKeywordsFetch(this.props.item.match.params.mediaType, this.props.item.match.params.id , term )
     } 
     
 
@@ -48,11 +48,11 @@ class Keywords extends Component {
     }
     
     noResults(){
-        this.redirect(`/${this.props.match.params.mediaType}/${this.props.match.params.id}/noresults`)
+        this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/noresults`)
     }
 
     redirect(to, keywords ) {
-        this.props.history.push({ pathname: to, keywords })
+        this.props.item.history.push({ pathname: to, keywords })
     }
 
 
@@ -60,18 +60,22 @@ class Keywords extends Component {
         return(
             <div>
                 {this.state.keywords.length >= 4 && 
-                this.redirect(`/${this.props.match.params.mediaType}/${this.props.match.params.id}/search/keywords`,
-                this.state.keywords) 
+                this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search/keywords`,
+                    this.state.keywords) 
                 }
 
                 {this.state.isFetching === false && 0 < this.state.keywords.length < 4 &&  
-                    <KeywordRecommendations keywords={this.state.keywords} rawKeywordHandler={this.props.rawKeywordHandler}
-                    isLoading={this.props.isLoading} handleLoadState={this.props.handleLoadState} type={this.props.type} /> 
+                    this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search`,
+                        this.state.keywords)  
                 }
 
             </div>
         )
     }
 }
+
+{/* <KeywordRecommendations keywords={this.state.keywords} rawKeywordHandler={this.props.rawKeywordHandler}
+                    isLoading={this.props.isLoading} handleLoadState={this.props.handleLoadState} type={this.props.type} />  */}
+                
 
 export default Keywords
