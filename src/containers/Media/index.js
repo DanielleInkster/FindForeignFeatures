@@ -13,14 +13,9 @@ class Media extends Component{
     this.state =  { 
         options:[],
         inputValue:'',
-        mediaType: '',
         isFetching: false, 
         showing: true
         }
-    }
-
-    componentDidMount(){
-        this.setState({ mediaType: this.props.match.params.mediaType})
     }
 
     determineType = (mediaType) => {
@@ -44,7 +39,7 @@ class Media extends Component{
     }
 
     createFetch=(value)=>{
-        fetch(`https://api.themoviedb.org/3/search/${this.state.mediaType}?api_key=${API_KEY}`+
+        fetch(`https://api.themoviedb.org/3/search/${this.props.match.params.mediaType}?api_key=${API_KEY}`+
             `&language=en-US&page=1&query=${value}&include_adult=false`)
             .then((response) => {
                 return response.json();
@@ -65,8 +60,8 @@ class Media extends Component{
         this.setState({ showing: false })
     }
 
-    redirect(to, list, mediaType) {
-        this.props.history.push({ pathname: to, list, mediaType })
+    redirect(to, list) {
+        this.props.history.push({ pathname: to, list })
     }
 
     handleSubmit = (e) => {
@@ -74,8 +69,8 @@ class Media extends Component{
             alert("Please enter a title.")
         } else {
             this.searchForMedia(this.state.inputValue)
-            setTimeout(() => { this.redirect(`/${this.state.mediaType}/search/${this.state.inputValue}`,  
-                               this.state.options.slice(0,6), this.state.mediaType) }, 500)
+            setTimeout(() => { this.redirect(`/${this.props.match.params.mediaType}/search/${this.state.inputValue}`,  
+                               this.state.options.slice(0,6)) }, 500)
         }
     }
 
@@ -88,7 +83,7 @@ class Media extends Component{
         return (
             <div className = 'body'>
                     {this.state.isFetching===true && <Loading/>}
-                <div id = 'heading'><Message text={this.createMessage(this.state.mediaType)}/></div>
+                <div id = 'heading'><Message text={this.createMessage(this.props.match.params.mediaType)}/></div>
                     <br/>
                 <div style={{ display: (showing ? 'block' : 'none') }}>
                     <Input onChange={this.handleChange}/>

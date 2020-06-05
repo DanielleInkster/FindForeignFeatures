@@ -17,9 +17,7 @@ class Keywords extends Component {
     }
 
     componentDidMount(){
-        this.setState({ mediaType: this.props.match.params.mediaType})
         this.setState({ selection: this.props.location.state.selection })
-        this.setState({ id: this.props.match.params.id })
         let term = this.determineType(this.props.match.params.mediaType)
         this.findKeywordsFetch(this.props.match.params.mediaType, this.props.match.params.id , term )
     } 
@@ -53,7 +51,7 @@ class Keywords extends Component {
     }
     
     noResults(){
-        this.redirect(`/${this.state.mediaType}/${this.state.id}/noresults`)
+        this.redirect(`/${this.props.match.params.mediaType}/${this.props.match.params.id}/noresults`)
     }
 
     redirect(to, keywords, handler, mediaType) {
@@ -68,8 +66,8 @@ class Keywords extends Component {
     render(){
         return(
             <div>
-                {this.state.keywords.length >= 4 && this.redirect(`/${this.state.mediaType}/${this.state.id}/keywords`,
-                this.state.keywords, this.handler, this.state.mediaType) 
+                {this.state.keywords.length >= 4 && this.redirect(`/${this.props.match.params.mediaType}/${this.props.match.params.id}/keywords`,
+                this.state.keywords, this.handler) 
                 }
 
                 {this.state.isFetching === false && 0 < this.state.keywords.length < 4 &&  
