@@ -8,26 +8,30 @@ class MediaList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showing: true,
+           options:[]
         } 
+    }
+
+    componentDidMount(){
+        console.log(this.props)
+        if(this.state.options.length !== 0) {this.setState({options: this.props.location.list})}
     }
 
 
     render(){
-    const { showing } = this.state;
+
         
         return(
-            <div style={{ display: (showing ? 'block' : 'none') }} className="column"> 
+            <div  className="column"> 
                 {this.props.location.list.map(item =>
                         <li style={{ listStyleType: "none" }} key={item.id} className='card'>
                             <div className='card-content'>
-                                <MediaListItem item={item} type = {this.props.location.mediaType}/>
+                                <MediaListItem item={item} type = {this.props.match.params.mediaType}/>
                            
                             <Link to={{ 
-                            pathname: `${item.id}`,
+                            pathname: `/${this.props.match.params.mediaType}/${item.id}`,
                             state:{
                                     selection: item,
-                                    type: this.props.location.mediaType
                                 }    
                                 }}>
                                     <Button value="Find more like this!"/>

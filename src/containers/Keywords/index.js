@@ -17,11 +17,11 @@ class Keywords extends Component {
     }
 
     componentDidMount(){
-        this.setState({ mediaType: this.props.location.state.type})
+        this.setState({ mediaType: this.props.match.params.mediaType})
         this.setState({ selection: this.props.location.state.selection })
-        this.setState({ id: this.props.location.state.selection.id })
-        let term = this.determineType(this.props.location.state.type)
-        this.findKeywordsFetch(this.props.location.state.type, this.props.location.state.selection.id, term )
+        this.setState({ id: this.props.match.params.id })
+        let term = this.determineType(this.props.match.params.mediaType)
+        this.findKeywordsFetch(this.props.match.params.mediaType, this.props.match.params.id , term )
     } 
     
 
