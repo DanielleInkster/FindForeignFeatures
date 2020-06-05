@@ -59,7 +59,8 @@ class Keywords extends Component {
     render(){
         return(
             <div>
-                {this.state.keywords.length >= 4 && this.redirect(`/${this.props.match.params.mediaType}/${this.props.match.params.id}/keywords`,
+                {this.state.keywords.length >= 4 && 
+                this.redirect(`/${this.props.match.params.mediaType}/${this.props.match.params.id}/search/keywords`,
                 this.state.keywords) 
                 }
 

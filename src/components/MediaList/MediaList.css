@@ -7,6 +7,8 @@ body {
 .column {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  
 }
 
 /* Style the counter cards */

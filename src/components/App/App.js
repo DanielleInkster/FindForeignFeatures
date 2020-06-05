@@ -35,8 +35,8 @@ class App extends Component {
                         <Route exact match path="/" render={ ()=>{return(<Home/>)}}/>
                             <Route exact match path="/:mediaType" render={(props) => <Media {...props} />} />
                             <Route exact match path="/:mediaType/search/?title=:name" render={(props) => <MediaList {...props} />} />
-                            <Route exact match path="/:mediaType/:id" render={(props) => <Search {...props} />} />
-                            <Route exact match path="/:mediaType/:id/keywords" render={(props) => <SelectKeywords {...props} />} />
+                            <Route exact match path="/:mediaType/:id/search" render={(props) => <Search {...props} />} />
+                            <Route exact match path="/:mediaType/:id/search/keywords" render={(props) => <SelectKeywords {...props} />} />
                             <Route exact match path="/:mediaType/:id/noresults" render={() => { return (<NoResults />) }} />
                     </Switch>
                 </div>

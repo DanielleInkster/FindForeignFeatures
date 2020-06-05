@@ -29,7 +29,7 @@ class MediaList extends Component {
                                 <MediaListItem item={item} type = {this.props.match.params.mediaType}/>
                            
                             <Link to={{ 
-                            pathname: `/${this.props.match.params.mediaType}/${item.id}`,
+                            pathname: `/${this.props.match.params.mediaType}/${item.id}/search`,
                             state:{
                                     selection: item,
                                 }    
