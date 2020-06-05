@@ -4,15 +4,14 @@ import Icon from '../Icon';
 import Home from '../Home'
 import NoResults from '../NoResults'
 import Media from '../../containers/Media'
-import Keywords from '../../containers/Keywords'
+import Search from '../../containers/Search'
 import SelectKeywords from '../../containers/SelectKeywords'
 import MediaList from '../MediaList'
 
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
 } from "react-router-dom"
 
 class App extends Component {
@@ -35,8 +34,8 @@ class App extends Component {
                     <Switch>
                         <Route exact match path="/" render={ ()=>{return(<Home/>)}}/>
                             <Route exact match path="/:mediaType" render={(props) => <Media {...props} />} />
-                            <Route exact match path="/:mediaType/search/:name" render={(props) => <MediaList {...props} />} />
-                            <Route exact match path="/:mediaType/:id" render={(props) => <Keywords {...props} />} />
+                            <Route exact match path="/:mediaType/search/?title=:name" render={(props) => <MediaList {...props} />} />
+                            <Route exact match path="/:mediaType/:id" render={(props) => <Search {...props} />} />
                             <Route exact match path="/:mediaType/:id/keywords" render={(props) => <SelectKeywords {...props} />} />
                             <Route exact match path="/:mediaType/:id/noresults" render={() => { return (<NoResults />) }} />
                     </Switch>

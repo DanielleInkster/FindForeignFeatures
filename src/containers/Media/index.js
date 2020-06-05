@@ -69,7 +69,7 @@ class Media extends Component{
             alert("Please enter a title.")
         } else {
             this.searchForMedia(this.state.inputValue)
-            setTimeout(() => { this.redirect(`/${this.props.match.params.mediaType}/search/${this.state.inputValue}`,  
+            setTimeout(() => { this.redirect(`/${this.props.match.params.mediaType}/search/?title=${this.state.inputValue}`,  
                                this.state.options.slice(0,6)) }, 500)
         }
     }

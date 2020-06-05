@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import SelectKeywords from '../SelectKeywords';
 import KeywordRecommendations from '../KeywordRecommendations';
 
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
@@ -10,14 +9,12 @@ class Keywords extends Component {
         this.state = {
             keywords:[],
             selection:[],
-            id: 0,
-            mediaType: '',
             isFetching: true,
         }
     }
 
     componentDidMount(){
-        this.setState({ selection: this.props.location.state.selection })
+        // this.setState({ selection: this.props.location.state.selection })
         let term = this.determineType(this.props.match.params.mediaType)
         this.findKeywordsFetch(this.props.match.params.mediaType, this.props.match.params.id , term )
     } 
@@ -54,12 +51,8 @@ class Keywords extends Component {
         this.redirect(`/${this.props.match.params.mediaType}/${this.props.match.params.id}/noresults`)
     }
 
-    redirect(to, keywords, handler, mediaType) {
-        this.props.history.push({ pathname: to, keywords, handler, mediaType })
-    }
-
-    handler = (results) => {
-        this.setState({ keywords: results });
+    redirect(to, keywords ) {
+        this.props.history.push({ pathname: to, keywords })
     }
 
 
@@ -67,7 +60,7 @@ class Keywords extends Component {
         return(
             <div>
                 {this.state.keywords.length >= 4 && this.redirect(`/${this.props.match.params.mediaType}/${this.props.match.params.id}/keywords`,
-                this.state.keywords, this.handler) 
+                this.state.keywords) 
                 }
 
                 {this.state.isFetching === false && 0 < this.state.keywords.length < 4 &&  
