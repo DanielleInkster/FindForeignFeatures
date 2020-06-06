@@ -3,6 +3,7 @@ import Loading from '../../components/Loading';
 import Message from '../../components/Message';
 import Keywords from '../Keywords';
 import KeywordRecommendations from '../KeywordRecommendations';
+import Genres from '../Genres';
 
 
 class Search extends Component {
@@ -11,13 +12,13 @@ class Search extends Component {
         this.state = {
             selection:[],
             keywords:[],
-            rawKeywordRecommendations: []
+            rawKeywordRecommendations: [],
+            genres:[]
         
         }
     }
 
     componentDidMount(){
-        console.log(this.props)
         if (this.state.selection.length === 0 && this.props.location.selection !== undefined) {
             this.setState({ selection: this.props.location.selection })
         }
@@ -28,6 +29,10 @@ class Search extends Component {
 
     rawKeywordHandler = (results) => {
         this.setState({ rawKeywordRecommendations: results })
+    }
+
+    genreHandler = (results) => {
+        this.setState({ genres: results })
     }
 
     searching(input, input2) {
@@ -59,7 +64,12 @@ class Search extends Component {
                 <KeywordRecommendations keywords={this.state.keywords} type={this.props.match.params.mediaType} 
                         rawKeywordHandler={this.rawKeywordHandler}/>  
             }
-            {console.log(this.state.rawKeywordRecommendations)}
+            {this.state.selection.length !== 0 && this.state.genres.length === 0 &&
+                    <Genres item={this.state.selection} genreHandler={this.genreHandler}
+                    />
+            }
+
+            {console.log(this.state.genres)}
             </div>
         )
     }

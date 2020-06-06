@@ -13,7 +13,6 @@ class MediaList extends Component {
     }
 
     componentDidMount(){
-        console.log(this.props)
         if(this.state.options.length !== 0) {this.setState({options: this.props.location.list})}
     }
 

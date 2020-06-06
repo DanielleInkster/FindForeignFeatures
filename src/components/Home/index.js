@@ -15,7 +15,7 @@ const Home=()=> {
       
       <div className="homeScreen">
         <h2 id='heading'><Message text={input} /></h2>
-        <p className='text'><Message text={input2} /></p>
+        <Message text={input2} />
         <ChooseMedia />
       </div>
   

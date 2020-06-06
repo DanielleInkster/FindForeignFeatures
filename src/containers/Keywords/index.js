@@ -14,7 +14,6 @@ class Keywords extends Component {
     }
 
     componentDidMount(){
-        // this.setState({ selection: this.props.location.state.selection })
         let term = this.determineType(this.props.item.match.params.mediaType)
         this.findKeywordsFetch(this.props.item.match.params.mediaType, this.props.item.match.params.id , term )
     } 
@@ -46,15 +45,14 @@ class Keywords extends Component {
                 this.setState({ isFetching: false })
         })
     }
+
+    redirect(to, keywords, selection) {
+        this.props.item.history.push({ pathname: to, keywords, selection })
+    }
     
     noResults(){
         this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/noresults`)
     }
-
-    redirect(to, keywords, selection ) {
-        this.props.item.history.push({ pathname: to, keywords, selection })
-    }
-
 
     render(){
         return(
@@ -75,8 +73,5 @@ class Keywords extends Component {
     }
 }
 
-{/* <KeywordRecommendations keywords={this.state.keywords} rawKeywordHandler={this.props.rawKeywordHandler}
-                    isLoading={this.props.isLoading} handleLoadState={this.props.handleLoadState} type={this.props.type} />  */}
-                
 
 export default Keywords
