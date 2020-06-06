@@ -51,22 +51,23 @@ class Keywords extends Component {
         this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/noresults`)
     }
 
-    redirect(to, keywords ) {
-        this.props.item.history.push({ pathname: to, keywords })
+    redirect(to, keywords, selection ) {
+        this.props.item.history.push({ pathname: to, keywords, selection })
     }
 
 
     render(){
         return(
             <div>
+    
                 {this.state.keywords.length >= 4 && 
                 this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search/keywords`,
-                    this.state.keywords) 
-                }
+                    this.state.keywords, this.props.item.location.state.selection)
+            }
 
                 {this.state.isFetching === false && 0 < this.state.keywords.length < 4 &&  
                     this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search`,
-                        this.state.keywords)  
+                        this.state.keywords, this.props.item.location.state.selection)  
                 }
 
             </div>
