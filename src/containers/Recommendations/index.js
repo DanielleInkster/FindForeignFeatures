@@ -28,7 +28,7 @@ class Recommendations extends Component {
     }
 
     rawKeywordHandler = (results) => {
-        results.length !== 0 ? this.setState({ rawKeywordRecommendations: results }) : this.setState({ noResults: true }) 
+       this.setState({ rawKeywordRecommendations: results }) 
     }
 
     comparedHandler = (results) => {
