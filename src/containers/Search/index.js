@@ -5,6 +5,7 @@ import Keywords from '../Keywords';
 import KeywordRecommendations from '../KeywordRecommendations';
 import Genres from '../Genres';
 import Compare from '../Compare';
+import SortRecommendations from '../SortRecommendations';
 
 class Search extends Component {
     constructor(props) {
@@ -84,8 +85,10 @@ class Search extends Component {
                     <Compare genres={this.state.genres} keywordRecs={this.state.rawKeywordRecommendations} 
                             comparedHandler={this.comparedHandler} />
                 }
+                {this.state.comparedRecommendations.length !== 0 &&
+                <SortRecommendations comparedRecommendations = {this.state.comparedRecommendations} info = {this.props}/>
 
-                {console.log(this.state.comparedRecommendations)}
+                }
             </div>
         )
     }

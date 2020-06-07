@@ -7,12 +7,14 @@ import Media from '../../containers/Media'
 import Search from '../../containers/Search'
 import SelectKeywords from '../../containers/SelectKeywords'
 import MediaList from '../MediaList'
+import RecommendationsList from '../RecommendationsList'
 
 import {
     BrowserRouter as Router,
     Switch,
     Route
 } from "react-router-dom"
+
 
 class App extends Component {
 
@@ -37,6 +39,7 @@ class App extends Component {
                             <Route exact match path="/:mediaType/search/?title=:name" render={(props) => <MediaList {...props} />} />
                             <Route exact match path="/:mediaType/:id/search" render={(props) => <Search {...props} />} />
                             <Route exact match path="/:mediaType/:id/search/keywords" render={(props) => <SelectKeywords {...props} />} />
+                            <Route exact match path="/:mediaType/:id/reccomendations" render={(props) => <RecommendationsList {...props} />} />
                             <Route exact match path="/:mediaType/:id/noresults" render={() => { return (<NoResults />) }} />
                     </Switch>
                 </div>

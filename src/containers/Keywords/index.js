@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import KeywordRecommendations from '../KeywordRecommendations';
 
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
@@ -57,11 +56,11 @@ class Keywords extends Component {
     render(){
         return(
             <div>
-    
+
                 {this.state.keywords.length >= 4 && 
                 this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search/keywords`,
                     this.state.keywords, this.props.item.location.state.selection)
-            }
+                }
 
                 {this.state.isFetching === false && 0 < this.state.keywords.length < 4 &&  
                     this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search`,
