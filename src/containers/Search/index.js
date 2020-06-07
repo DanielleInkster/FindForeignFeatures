@@ -4,7 +4,7 @@ import Message from '../../components/Message';
 import Keywords from '../Keywords';
 import KeywordRecommendations from '../KeywordRecommendations';
 import Genres from '../Genres';
-
+import Compare from '../Compare';
 
 class Search extends Component {
     constructor(props) {
@@ -13,7 +13,8 @@ class Search extends Component {
             selection:[],
             keywords:[],
             rawKeywordRecommendations: [],
-            genres:[]
+            genres:[],
+            comparedRecommendations: [],
         
         }
     }
@@ -26,13 +27,24 @@ class Search extends Component {
             this.setState({ keywords: this.props.location.keywords })
         }
     }
+    redirect(to, recommendations) {
+        this.props.history.push({ pathname: to, recommendations })
+    }
+
+    noResults() {
+        this.redirect(`/${this.props.match.params.mediaType}/${this.props.match.params.id}/noresults`)
+    }
 
     rawKeywordHandler = (results) => {
-        this.setState({ rawKeywordRecommendations: results })
+        results.length !== 0 ? this.setState({ rawKeywordRecommendations: results }) : this.noResults()
     }
 
     genreHandler = (results) => {
         this.setState({ genres: results })
+    }
+
+    comparedHandler = (results) => {
+        results.length !== 0 ? this.setState({ comparedRecommendations: results }) : this.noResults()
     }
 
     searching(input, input2) {
@@ -54,22 +66,26 @@ class Search extends Component {
 
         return (
             <div>
-            {this.state.keywords.length ===0 &&
-                <Keywords item={this.props} />
-            }
-            {this.state.keywords.length !== 0 &&
-                this.searching(input, input2)}
+                {this.state.keywords.length !== 0 &&
+                    this.searching(input, input2)}
+                        
+                {this.state.keywords.length ===0 &&
+                    <Keywords item={this.props} />
+                }
+                {this.state.keywords.length !== 0 && this.state.rawKeywordRecommendations.length === 0 &&
+                    <KeywordRecommendations keywords={this.state.keywords} type={this.props.match.params.mediaType} 
+                            rawKeywordHandler={this.rawKeywordHandler}/>  
+                }
+                {this.state.selection.length !== 0 && this.state.genres.length === 0 &&
+                        <Genres item={this.state.selection} genreHandler={this.genreHandler}
+                        />
+                }
+                {this.state.rawKeywordRecommendations.length !== 0 && this.state.genres.length !== 0 &&
+                    <Compare genres={this.state.genres} keywordRecs={this.state.rawKeywordRecommendations} 
+                            comparedHandler={this.comparedHandler} />
+                }
 
-            {this.state.keywords.length !== 0 && this.state.rawKeywordRecommendations.length === 0 &&
-                <KeywordRecommendations keywords={this.state.keywords} type={this.props.match.params.mediaType} 
-                        rawKeywordHandler={this.rawKeywordHandler}/>  
-            }
-            {this.state.selection.length !== 0 && this.state.genres.length === 0 &&
-                    <Genres item={this.state.selection} genreHandler={this.genreHandler}
-                    />
-            }
-
-            {console.log(this.state.genres)}
+                {console.log(this.state.comparedRecommendations)}
             </div>
         )
     }
