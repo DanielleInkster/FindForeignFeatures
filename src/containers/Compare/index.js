@@ -9,11 +9,10 @@ class Compare extends Component {
         }
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.keywordRecs !== prevProps.keywordRecs) {
+    componentDidMount() {
             this.returnRecommendations()
-        }
-    }
+     }
+    
 
     compareWithGenres=()=>{
         let arr =[]
@@ -23,6 +22,7 @@ class Compare extends Component {
             })
         })
         return arr
+        
     }
 
     countReturns=(arr)=>{

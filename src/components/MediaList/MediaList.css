@@ -1,12 +1,14 @@
 
 body {
   font-family: Questrial, sans-serif;
-  
+  text-align: center;
 }
 
 .column {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  
 }
 
 /* Style the counter cards */
