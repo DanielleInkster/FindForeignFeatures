@@ -20,7 +20,15 @@ class Search extends Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
+        if (this.state.selection.length === 0 && this.props.location.selection !== undefined) {
+            this.setState({ selection: this.props.location.selection })
+        }
+        if (this.state.keywords.length === 0 && this.props.location.keywords !== undefined) {
+            this.setState({ keywords: this.props.location.keywords })
+        }
+    }
+    componentDidUpdate(){
         if (this.state.selection.length === 0 && this.props.location.selection !== undefined) {
             this.setState({ selection: this.props.location.selection })
         }
@@ -28,6 +36,7 @@ class Search extends Component {
             this.setState({ keywords: this.props.location.keywords })
         }
     }
+
     redirect(to, recommendations) {
         this.props.history.push({ pathname: to, recommendations })
     }
@@ -70,7 +79,7 @@ class Search extends Component {
                 {this.state.keywords.length !== 0 &&
                     this.searching(input, input2)}
                         
-                {this.state.keywords.length ===0 &&
+                {this.state.keywords.length === 0 &&
                     <Keywords item={this.props} />
                 }
                 {this.state.keywords.length !== 0 && this.state.rawKeywordRecommendations.length === 0 &&

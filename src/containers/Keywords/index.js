@@ -47,6 +47,7 @@ class Keywords extends Component {
 
     redirect(to, keywords, selection) {
         this.props.item.history.push({ pathname: to, keywords, selection })
+        this.setState({ isFetching: true })
     }
     
     noResults(){
