@@ -7,7 +7,6 @@ const RecommendationsList =(props) => {
             <div>
             {console.log(props)}
             <div id='column'> {props.location.recommendations.map(item =>
-           
                     <li style={{ listStyleType: "none" }} key={item.id} className = 'card'>
                         <div className = 'card-content'>
                         <RecommendationsListItem item={item} type = {props.match.params.mediaType}/>

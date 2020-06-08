@@ -23,10 +23,7 @@ class SortRecommendations extends Component {
 
     returnSortedResults = (arr)=>{
         let sorted = this.sortResults(arr)
-        this.setState({ sortedRecommendations: sorted });
-        console.log(this.state.sortedRecommendations)
-        this.redirect(`/${this.props.info.match.params.mediaType}/${this.props.info.match.params.id}/reccomendations`,
-            sorted.slice(0, 50))
+        this.redirect(`/${this.props.info.match.params.mediaType}/${this.props.info.match.params.id}/recommendations`, sorted.slice(0, 50))
     }
 
 

@@ -10,7 +10,6 @@ class Compare extends Component {
     }
 
     componentDidMount() {
-        console.log("compare")
             this.returnRecommendations()
      }
     

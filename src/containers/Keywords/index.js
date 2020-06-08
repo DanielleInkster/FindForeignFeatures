@@ -8,7 +8,7 @@ class Keywords extends Component {
         this.state = {
             keywords:[],
             selection:[],
-            isFetching: true,
+            fetchRun: false,
         }
     }
 
@@ -41,13 +41,13 @@ class Keywords extends Component {
                 return response.json();
             }).then((data) => {
                 data[searchTerm].length !== 0 ? this.setState({ keywords: this.handleData(data[searchTerm]) }) : this.noResults()
-                this.setState({ isFetching: false })
+                this.setState({ fetchRun: true })
         })
     }
 
     redirect(to, keywords, selection) {
         this.props.item.history.push({ pathname: to, keywords, selection })
-        this.setState({ isFetching: true })
+        this.setState({ fetchRun: false })
     }
     
     noResults(){
@@ -63,7 +63,7 @@ class Keywords extends Component {
                     this.state.keywords, this.props.item.location.state.selection)
                 }
 
-                {this.state.isFetching === false && 0 < this.state.keywords.length < 4 &&  
+                {this.state.fetchRun === true && 0 < this.state.keywords.length < 4 &&  
                     this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search`,
                         this.state.keywords, this.props.item.location.state.selection)  
                 }

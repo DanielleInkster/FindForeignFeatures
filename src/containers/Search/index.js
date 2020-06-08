@@ -16,7 +16,6 @@ class Search extends Component {
             rawKeywordRecommendations: [],
             genres:[],
             comparedRecommendations: [],
-        
         }
     }
 
@@ -84,19 +83,17 @@ class Search extends Component {
                 }
                 {this.state.keywords.length !== 0 && this.state.rawKeywordRecommendations.length === 0 &&
                     <KeywordRecommendations keywords={this.state.keywords} type={this.props.match.params.mediaType} 
-                            rawKeywordHandler={this.rawKeywordHandler}/>  
+                        rawKeywordHandler={this.rawKeywordHandler}/>  
                 }
                 {this.state.selection.length !== 0 && this.state.genres.length === 0 &&
-                        <Genres item={this.state.selection} genreHandler={this.genreHandler}
-                        />
+                    <Genres item={this.state.selection} genreHandler={this.genreHandler}/>
                 }
                 {this.state.rawKeywordRecommendations.length !== 0 && this.state.genres.length !== 0 &&
                     <Compare genres={this.state.genres} keywordRecs={this.state.rawKeywordRecommendations} 
-                            comparedHandler={this.comparedHandler} />
+                        comparedHandler={this.comparedHandler} />
                 }
                 {this.state.comparedRecommendations.length !== 0 &&
-                <SortRecommendations comparedRecommendations = {this.state.comparedRecommendations} info = {this.props}/>
-
+                    <SortRecommendations comparedRecommendations = {this.state.comparedRecommendations} info = {this.props} />
                 }
             </div>
         )
