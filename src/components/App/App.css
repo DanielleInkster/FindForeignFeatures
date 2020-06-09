@@ -45,6 +45,12 @@
   padding: 1vmin; 
 }
 
+.SiteTitle:hover{
+  color: white;
+  text-shadow: -.5px -.5px 0 #000, .5px -.5px 0 #000, -.5px .5px 0 #000, .5px .5px 0 #000;
+}
+
+
 #SiteName{
   font-family: Lobster, sans-serif;
   font-size: calc(18px + 1vw) !important;

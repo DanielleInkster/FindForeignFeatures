@@ -4,6 +4,7 @@
   min-height: 3em;
   width:calc(100px + 10vw);
   padding: .7em;
+  margin: 1%;
   font-family: Lobster, sans-serif;
   font-size:1em;
 }
