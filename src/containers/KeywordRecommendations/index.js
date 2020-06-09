@@ -13,7 +13,7 @@ class KeywordRecommendations extends Component {
 
     fetchKeywordRecs=(data, num)=>{
         let i;
-        let pages = data.total_pages < 100 ? data.total_pages : 100
+        let pages = data.total_pages < 150 ? data.total_pages : 150
         for (i = 1; i <= pages; i++) {
             fetch(`https://api.themoviedb.org/3/discover/${this.props.type}?api_key=${API_KEY}&language=en-US&` +
                 `sort_by=popularity.desc&include_adult=false&include_video=false&page=${i}&with_keywords=${num}`)
@@ -51,7 +51,7 @@ class KeywordRecommendations extends Component {
 
     returnRecommendations(){
         this.createKeywordFetch(this.props.keywords)
-        setTimeout(() => {this.getRecommendations()}, 2500);
+        setTimeout(() => {this.getRecommendations()}, 3000);
     }
 
     render(){

@@ -26,9 +26,6 @@ class SortRecommendations extends Component {
         this.redirect(`/${this.props.info.match.params.mediaType}/${this.props.info.match.params.id}/recommendations`, sorted.slice(0, 50))
     }
 
-
-
-    
     render(){
 
         return(

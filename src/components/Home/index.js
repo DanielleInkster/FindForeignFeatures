@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-// import Recommendations from '../../containers/Recommendations'
+import React from 'react';
 import ChooseMedia from '../ChooseMedia';
 import Message from '../Message';
 import './Home.css';
