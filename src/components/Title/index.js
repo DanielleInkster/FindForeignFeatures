@@ -1,6 +1,5 @@
+// eslint-disable-next-line
 import React from 'react';
-
-
 
 const Title =(props)=>{
     let searchTerm = props.type === 'tv' ? "original_name" : "original_title"

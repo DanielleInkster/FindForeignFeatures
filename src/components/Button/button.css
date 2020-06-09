@@ -2,9 +2,8 @@
   background: #f0a500;
   text-align: center;
   min-height: 3em;
+  width:calc(100px + 10vw);
   padding: .7em;
-  margin: 1em;
-  min-width: 10em;
   font-family: Lobster, sans-serif;
   font-size:1em;
 }

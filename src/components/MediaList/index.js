@@ -26,7 +26,6 @@ const MediaList =(props)=>  {
                 </li>)
             }
         </div> 
-    ) 
-    
+    )   
 }
 export default MediaList;

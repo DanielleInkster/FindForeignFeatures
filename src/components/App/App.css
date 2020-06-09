@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-@media (max-width: 700px)  {
+@media (max-width: 750px)  {
   #Icon{
     display: none;
     
@@ -10,7 +10,7 @@
 
 }
 
-@media (min-width: 701px)  {
+@media (min-width: 751px)  {
   #Icon{
     display:inline-block;
     height: inherit;

@@ -1,0 +1,4 @@
+#poster{
+    width:calc(100px + 10vw);
+    height:calc(220px + 10vw)
+}
