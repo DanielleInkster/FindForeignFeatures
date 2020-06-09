@@ -6,27 +6,27 @@ import './MediaList.css'
 
 const MediaList =(props)=>  {
 
-        return(
-            <div  className="column"> 
-                {props.location.list.map(item =>
-                        <li style={{ listStyleType: "none" }} key={item.id} className='card'>
-                            <div className='card-content'>
-                                <MediaListItem item={item} type = {props.match.params.mediaType}/>
+    return(
+        <div  className="column"> 
+            {props.location.list.map(item =>
+                <li style={{ listStyleType: "none" }} key={item.id} className='card'>
+                    <div className='card-content'>
+                        <MediaListItem item={item} type = {props.match.params.mediaType}/>
                            
-                            <Link to={{ 
-                            pathname: `/${props.match.params.mediaType}/${item.id}/search`,
-                            state:{
-                                    selection: item,
-                                }    
-                                }}>
-                                    <Button value="Find more like this!"/>
-                                </Link>
-                            </div>
-                                <br/>
-                        </li>)
-                    }
-            </div> 
-        ) 
+                        <Link to={{ 
+                        pathname: `/${props.match.params.mediaType}/${item.id}/search`,
+                        state:{
+                            selection: item,
+                            }    
+                            }}>
+                            <Button value="Find more like this!"/>
+                        </Link>
+                    </div>
+                     <br/>
+                </li>)
+            }
+        </div> 
+    ) 
     
 }
 export default MediaList;
