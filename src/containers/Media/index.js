@@ -30,11 +30,7 @@ class Media extends Component{
             input = `Please enter the name of an English ${type} you enjoy.`
         } else if (this.state.isFetching === true) {
             input = "<div id = 'wow'>Searching...</div>" 
-        } else if (this.state.options.length === 0 && this.state.inputValue.trim() !== '' && this.state.showing === false){
-            input = "No results found."
-        } else {
-            input = ""
-        }
+        } 
         return input
     }
 
@@ -63,14 +59,19 @@ class Media extends Component{
     redirect(to, list) {
         this.props.history.push({ pathname: to, list })
     }
+    
+    noResults() {
+        this.redirect(`/${this.props.match.params.mediaType}/${this.props.match.params.id}/noresults`)
+    }
 
     handleSubmit = (e) => {
         if (this.state.inputValue.trim() === '') {
             alert("Please enter a title.")
         } else {
             this.searchForMedia(this.state.inputValue)
-            setTimeout(() => { this.redirect(`/${this.props.match.params.mediaType}/search/?title=${this.state.inputValue}`,  
-                               this.state.options.slice(0,6)) }, 500)
+            setTimeout(() => {
+                this.state.options.length > 0 ? this.redirect(`/${this.props.match.params.mediaType}/search/?title=${this.state.inputValue}`,  
+                    this.state.options.slice(0, 6)) : this.noResults() }, 500) 
         }
     }
 
