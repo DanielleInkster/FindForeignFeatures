@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Icon from '../Icon';
 import Home from '../Home'
 import NoResults from '../NoResults'
+import PageNotFound from '../PageNotFound'
 import Media from '../../containers/Media'
 import Search from '../../containers/Search'
 import SelectKeywords from '../../containers/SelectKeywords'
@@ -41,6 +42,7 @@ class Routes extends Component {
                             <Route exact match path="/:mediaType/:id/search/keywords" render={(props) => <SelectKeywords {...props} />} />
                             <Route exact match path="/:mediaType/:id/recommendations" render={(props) => <RecommendationsList {...props} />} />
                             <Route exact match path="/:mediaType/:id/noresults" render={() => { return (<NoResults />) }} />
+                        <Route path="*" render={() => { return (<PageNotFound />) }} />
                         </Switch>
                     </div>
             </div>
