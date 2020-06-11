@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import Message from '../../components/Message';
 import CheckBoxList from '../../components/CheckBoxList';
 import Button from '../../components/Button';
@@ -26,11 +27,12 @@ class SelectKeywords extends Component {
         this.props.location.keywords.map(entry=>
             arr.push({ key: entry.id, id: entry.id, value: entry.name, isChecked: false })
         )
-        this.setState({ options: arr }) 
+        this.props.storeOptions(arr)
     }
 
     handleCheckChildElement = (e) => { 
-        this.state.options.forEach(entry => {
+        console.log(this.props.options)
+        this.props.options.forEach(entry => {
             if (entry.value === e.target.value) {entry.isChecked = e.target.checked}
         })
         this.setState({ options: this.state.options })
@@ -69,7 +71,7 @@ class SelectKeywords extends Component {
         return (
             <div>
                 <Message text={input} />
-                <CheckBoxList options={this.state.options} handleChildElement={this.handleCheckChildElement} />
+                <CheckBoxList options={this.props.options} handleChildElement={this.handleCheckChildElement} />
                 <Button value="Submit" onClick={this.handleSubmit} />
             </div>
         )
@@ -77,4 +79,16 @@ class SelectKeywords extends Component {
 
 }
 
-export default SelectKeywords;
+const mapStateToProps = (state) => {
+    return {
+    options: state.options
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        storeOptions: (list) => dispatch({ type: 'OPTIONS', val: list })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectKeywords)

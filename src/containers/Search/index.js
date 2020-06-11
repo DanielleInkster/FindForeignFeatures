@@ -72,10 +72,10 @@ class Search extends Component {
         return (
             <div>
                 {console.log(this.props.selection)}
-                {this.props.allKeywords.length !== 0 &&
+                {this.state.keywords.length !== 0 &&
                     this.searching(input, input2)}
                         
-                {this.props.allKeywords.length === 0 &&
+                {this.state.keywords.length === 0 &&
                     <Keywords item={this.props} />
                 }
                 {/* {this.state.keywords.length !== 0 && this.state.rawKeywordRecommendations.length === 0 &&

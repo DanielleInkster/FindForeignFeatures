@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
@@ -40,9 +40,7 @@ class Keywords extends Component {
                 return response.json();
             }).then((data) => {
                 //mutates state?
-                let arr = []
-                data[searchTerm].length !== 0 ? arr.push(this.handleData(data[searchTerm])) : this.noResults()
-                this.props.storeKeywords(arr)
+                data[searchTerm].length !== 0 ? this.setState({ keywords: data[searchTerm] }) : this.noResults()
                 this.setState({ fetchRun: true })
         })
     }
@@ -75,10 +73,10 @@ class Keywords extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        storeKeywords: (list) => dispatch({ type: 'KEYWORDS', val: list })
-    }
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         storeKeywords: (list) => dispatch({ type: 'KEYWORDS', val: list })
+//     }
+// }
 
-export default connect(null, mapDispatchToProps)(Keywords)
+export default Keywords
