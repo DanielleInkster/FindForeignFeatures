@@ -62,7 +62,7 @@ class Media extends Component{
     }
 
     mediaList(list){
-        this.props.moveToStore(list) 
+        this.props.storeList(list) 
         this.redirect(`/${this.props.match.params.mediaType}/search/${this.state.inputValue}`) 
         
     }
@@ -105,7 +105,7 @@ class Media extends Component{
 
 const mapDispatchToProps =(dispatch)=>{
     return {
-        moveToStore: (list)=> dispatch({type: 'MEDIA_LIST', val: list})
+        storeList: (list)=> dispatch({type: 'MEDIA_LIST', val: list})
     }
 }
 

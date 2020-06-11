@@ -9,19 +9,13 @@ const MediaList =(props)=>  {
 
     return(
         <div  className="column"> 
-            {console.log(props.list)}
             {props.list.map(item =>
                 <li style={{ listStyleType: "none" }} key={item.id} className='card'>
                     <div className='card-content'>
                         <MediaListItem item={item} type = {props.match.params.mediaType}/>
                            
-                        <Link to={{ 
-                        pathname: `/${props.match.params.mediaType}/${item.id}/search`,
-                        state:{
-                            selection: item,
-                            }    
-                            }}>
-                            <Button value="Find more like this!"/>
+                        <Link to={{ pathname: `/${props.match.params.mediaType}/${item.id}/search`}}>
+                            <Button value="Find more like this!" onClick={() => { props.storeSelection(item)}}/>
                         </Link>
                     </div>
                      <br/>
@@ -30,10 +24,18 @@ const MediaList =(props)=>  {
         </div> 
     )   
 }
+
+
 const mapStateToProps = (state) => {
     return {
         list: state.list
     }
 }
 
-export default connect(mapStateToProps)(MediaList)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        storeSelection: (selection) => dispatch({ type: 'SELECTION', val: selection })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MediaList)

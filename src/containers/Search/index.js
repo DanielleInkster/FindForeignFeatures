@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import Loading from '../../components/Loading';
 import Message from '../../components/Message';
 import Keywords from '../Keywords';
@@ -11,7 +12,6 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selection:[],
             keywords:[],
             rawKeywordRecommendations: [],
             genres:[],
@@ -20,17 +20,17 @@ class Search extends Component {
     }
 
     componentDidMount() {
-        if (this.state.selection.length === 0 && this.props.location.selection !== undefined) {
-            this.setState({ selection: this.props.location.selection })
-        }
+        // if (this.state.selection.length === 0 && this.props.location.selection !== undefined) {
+        //     this.setState({ selection: this.props.location.selection })
+        // }
         if (this.state.keywords.length === 0 && this.props.location.keywords !== undefined) {
             this.setState({ keywords: this.props.location.keywords })
         }
     }
     componentDidUpdate(){
-        if (this.state.selection.length === 0 && this.props.location.selection !== undefined) {
-            this.setState({ selection: this.props.location.selection })
-        }
+        // if (this.state.selection.length === 0 && this.props.location.selection !== undefined) {
+        //     this.setState({ selection: this.props.location.selection })
+        // }
         if (this.state.keywords.length === 0 && this.props.location.keywords !== undefined) { 
             this.setState({ keywords: this.props.location.keywords })
         }
@@ -75,18 +75,19 @@ class Search extends Component {
 
         return (
             <div>
-                {this.state.keywords.length !== 0 &&
+                {console.log(this.props.selection)}
+                {/* {this.state.keywords.length !== 0 &&
                     this.searching(input, input2)}
                         
                 {this.state.keywords.length === 0 &&
                     <Keywords item={this.props} />
-                }
-                {this.state.keywords.length !== 0 && this.state.rawKeywordRecommendations.length === 0 &&
+                } */}
+                {/* {this.state.keywords.length !== 0 && this.state.rawKeywordRecommendations.length === 0 &&
                     <KeywordRecommendations keywords={this.state.keywords} type={this.props.match.params.mediaType} 
                         rawKeywordHandler={this.rawKeywordHandler}/>  
                 }
                 {this.state.selection.length !== 0 && this.state.genres.length === 0 &&
-                    <Genres item={this.state.selection} genreHandler={this.genreHandler}/>
+                    <Genres item={this.props.selection} genreHandler={this.genreHandler}/>
                 }
                 {this.state.rawKeywordRecommendations.length !== 0 && this.state.genres.length !== 0 &&
                     <Compare genres={this.state.genres} keywordRecs={this.state.rawKeywordRecommendations} 
@@ -94,10 +95,22 @@ class Search extends Component {
                 }
                 {this.state.comparedRecommendations.length !== 0 &&
                     <SortRecommendations comparedRecommendations = {this.state.comparedRecommendations} info = {this.props} />
-                }
+                } */}
             </div>
         )
     }
 }
 
-export default Search
+const mapStateToProps = (state) => {
+    return {
+        selection: state.selection
+    }
+}
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         storeSelection: (selection) => dispatch({ type: 'SELCTION', val: selection })
+//     }
+// }
+
+export default connect(mapStateToProps, null)(Search)
