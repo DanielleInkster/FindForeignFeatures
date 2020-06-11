@@ -63,7 +63,7 @@ class Media extends Component{
 
     mediaList(list){
         this.props.moveToStore(list) 
-        this.redirect(`/${this.props.match.params.mediaType}/search/?title=${this.state.inputValue}`) 
+        this.redirect(`/${this.props.match.params.mediaType}/search/${this.state.inputValue}`) 
         
     }
     
