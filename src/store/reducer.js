@@ -5,6 +5,9 @@ const initialState = {
 const reducer = (state = initialState, action) =>{
     const newState = {...state}
 
+    if (action.type === 'MEDIA_LIST'){
+        newState.list = action.val 
+    }
     return newState
 }
 

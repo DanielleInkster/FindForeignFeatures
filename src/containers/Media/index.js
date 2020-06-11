@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux'
 import 'whatwg-fetch'
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -59,6 +60,12 @@ class Media extends Component{
     redirect(to, list) {
         this.props.history.push({ pathname: to, list })
     }
+
+    mediaList(list){
+        this.props.moveToStore(list) 
+        this.redirect(`/${this.props.match.params.mediaType}/search/?title=${this.state.inputValue}`) 
+        
+    }
     
     noResults() {
         this.redirect(`/${this.props.match.params.mediaType}/${this.props.match.params.id}/noresults`)
@@ -70,8 +77,8 @@ class Media extends Component{
         } else {
             this.searchForMedia(this.state.inputValue)
             setTimeout(() => {
-                this.state.options.length > 0 ? this.redirect(`/${this.props.match.params.mediaType}/search/?title=${this.state.inputValue}`,  
-                    this.state.options.slice(0, 6)) : this.noResults() }, 500) 
+                this.state.options.length > 0 ? this.mediaList(this.state.options.slice(0,6)) 
+                     : this.noResults() }, 500) 
         }
     }
 
@@ -96,4 +103,10 @@ class Media extends Component{
     
 }
 
-export default Media;
+const mapDispatchToProps =(dispatch)=>{
+    return {
+        moveToStore: (list)=> dispatch({type: 'MEDIA_LIST', val: list})
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Media);
