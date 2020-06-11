@@ -40,6 +40,7 @@ class Keywords extends Component {
             .then((response) => {
                 return response.json();
             }).then((data) => {
+                //mutates state?
                 data[searchTerm].length !== 0 ? this.setState({ keywords: this.handleData(data[searchTerm]) }) : this.noResults()
                 this.setState({ fetchRun: true })
         })
