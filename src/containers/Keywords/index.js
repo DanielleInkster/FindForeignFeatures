@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
+<<<<<<< HEAD
 // import { connect } from 'react-redux'
+=======
+>>>>>>> parent of 65db223... Keywords moved to store
 
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
@@ -8,6 +11,7 @@ class Keywords extends Component {
         super(props);
         this.state = {
             keywords:[],
+            selection:[],
             fetchRun: false,
         }
     }
@@ -17,6 +21,7 @@ class Keywords extends Component {
         this.findKeywordsFetch(this.props.item.match.params.mediaType, this.props.item.match.params.id , term )
     } 
     
+
     determineType=(type)=>{
         let searchTerm = type === 'tv' ?  'results' :  'keywords'
         return searchTerm
@@ -40,13 +45,17 @@ class Keywords extends Component {
                 return response.json();
             }).then((data) => {
                 //mutates state?
+<<<<<<< HEAD
                 data[searchTerm].length !== 0 ? this.setState({ keywords: data[searchTerm] }) : this.noResults()
+=======
+                data[searchTerm].length !== 0 ? this.setState({ keywords: this.handleData(data[searchTerm]) }) : this.noResults()
+>>>>>>> parent of 65db223... Keywords moved to store
                 this.setState({ fetchRun: true })
         })
     }
 
-    redirect(to, keywords) {
-        this.props.item.history.push({ pathname: to, keywords })
+    redirect(to, keywords, selection) {
+        this.props.item.history.push({ pathname: to, keywords, selection })
         this.setState({ fetchRun: false })
     }
     
@@ -60,12 +69,12 @@ class Keywords extends Component {
 
                 {this.state.keywords.length >= 4 && 
                 this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search/keywords`,
-                    this.state.keywords)
+                    this.state.keywords, this.props.item.location.state.selection)
                 }
 
                 {this.state.fetchRun === true && 0 < this.state.keywords.length < 4 &&  
                     this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search`,
-                        this.state.keywords)  
+                        this.state.keywords, this.props.item.location.state.selection)  
                 }
 
             </div>
@@ -73,10 +82,13 @@ class Keywords extends Component {
     }
 }
 
+<<<<<<< HEAD
 // const mapDispatchToProps = (dispatch) => {
 //     return {
 //         storeKeywords: (list) => dispatch({ type: 'KEYWORDS', val: list })
 //     }
 // }
+=======
+>>>>>>> parent of 65db223... Keywords moved to store
 
 export default Keywords
