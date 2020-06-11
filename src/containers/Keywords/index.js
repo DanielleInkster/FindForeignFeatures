@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux'
 
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
@@ -7,7 +8,6 @@ class Keywords extends Component {
         super(props);
         this.state = {
             keywords:[],
-            selection:[],
             fetchRun: false,
         }
     }
@@ -17,7 +17,6 @@ class Keywords extends Component {
         this.findKeywordsFetch(this.props.item.match.params.mediaType, this.props.item.match.params.id , term )
     } 
     
-
     determineType=(type)=>{
         let searchTerm = type === 'tv' ?  'results' :  'keywords'
         return searchTerm
@@ -41,13 +40,15 @@ class Keywords extends Component {
                 return response.json();
             }).then((data) => {
                 //mutates state?
-                data[searchTerm].length !== 0 ? this.setState({ keywords: this.handleData(data[searchTerm]) }) : this.noResults()
+                let arr = []
+                data[searchTerm].length !== 0 ? arr.push(this.handleData(data[searchTerm])) : this.noResults()
+                this.props.storeKeywords(arr)
                 this.setState({ fetchRun: true })
         })
     }
 
-    redirect(to, keywords, selection) {
-        this.props.item.history.push({ pathname: to, keywords, selection })
+    redirect(to, keywords) {
+        this.props.item.history.push({ pathname: to, keywords })
         this.setState({ fetchRun: false })
     }
     
@@ -61,12 +62,12 @@ class Keywords extends Component {
 
                 {this.state.keywords.length >= 4 && 
                 this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search/keywords`,
-                    this.state.keywords, this.props.item.location.state.selection)
+                    this.state.keywords)
                 }
 
                 {this.state.fetchRun === true && 0 < this.state.keywords.length < 4 &&  
                     this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search`,
-                        this.state.keywords, this.props.item.location.state.selection)  
+                        this.state.keywords)  
                 }
 
             </div>
@@ -74,5 +75,10 @@ class Keywords extends Component {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        storeKeywords: (list) => dispatch({ type: 'KEYWORDS', val: list })
+    }
+}
 
-export default Keywords
+export default connect(null, mapDispatchToProps)(Keywords)
