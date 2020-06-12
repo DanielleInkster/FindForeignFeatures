@@ -1,7 +1,14 @@
 #NotFound{
     border: 10px solid #f0a500;
     width: 20em;
-    height: 10
-    2em;
+    height: 10em;
 
+}
+
+@media screen and (max-width: 500px) {
+  #NotFound {
+   border: 10px solid #f0a500;
+    width: 15em;
+    height: 8em
+  }
 }

@@ -1,7 +1,8 @@
 const initialState = {
     list: [], 
     selection:'',
-    allKeywords:[]
+    allKeywords:[],
+    recommendations:[]
 }
 
 const reducer = (state = initialState, action) =>{
@@ -11,7 +12,6 @@ const reducer = (state = initialState, action) =>{
         newState.list = action.val 
     }
     if (action.type === 'SELECTION') {
-        console.log(action.val)
         newState.selection = action.val  
     }
 
