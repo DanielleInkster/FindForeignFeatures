@@ -91,10 +91,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//     // return {
-//     //     storeSelection: (selection) => dispatch({ type: 'SELECTION', val: selection })
-//     // }
-// }
-
 export default connect(mapStateToProps, null)(SelectKeywords);

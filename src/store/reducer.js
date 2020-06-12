@@ -11,11 +11,16 @@ const reducer = (state = initialState, action) =>{
         newState.list = action.val 
     }
     if (action.type === 'SELECTION') {
+        console.log(action.val)
         newState.selection = action.val  
     }
 
     if (action.type === 'KEYWORDS') {
         newState.allKeywords = action.val[0]
+    }
+
+    if (action.type === 'RECOMMENDATIONS') {
+        newState.recommendations = action.val
     }
 
     return newState

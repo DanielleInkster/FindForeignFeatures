@@ -1,11 +1,12 @@
 import React from 'react';
+import {connect} from 'react-redux'
 import RecommendationsListItem from '../RecommendationsListItem';
 import './RecommendationsList.css'
 
 const RecommendationsList =(props) => {
         return (
             <div>
-            <div id='column'> {props.location.recommendations.map(item =>
+                <div id='column'> {props.recommendations.map(item =>
                     <li style={{ listStyleType: "none" }} key={item.id} className = 'card'>
                         <div className = 'card-content'>
                         <RecommendationsListItem item={item} type = {props.match.params.mediaType}/>
@@ -18,4 +19,10 @@ const RecommendationsList =(props) => {
         )
     
 }
-export default RecommendationsList;
+
+const mapStateToProps = (state) => {
+    return {
+        recommendations: state.recommendations
+    }
+}
+export default connect(mapStateToProps, null)(RecommendationsList);

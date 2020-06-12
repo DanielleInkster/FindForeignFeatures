@@ -71,17 +71,17 @@ class Search extends Component {
 
         return (
             <div>
-                {this.props.allKeywords.length !== 0 &&
+                {this.state.keywords.length !== 0 &&
                     this.searching(input, input2)}
 
-                {this.props.allKeywords.length === 0 &&
+                {this.state.keywords.length === 0 &&
                     <Keywords item={this.props} />
                 }
-                {/* {this.state.keywords.length !== 0 && this.state.rawKeywordRecommendations.length === 0 &&
+                {this.state.keywords.length !== 0 && this.state.rawKeywordRecommendations.length === 0 &&
                     <KeywordRecommendations keywords={this.state.keywords} type={this.props.match.params.mediaType} 
                         rawKeywordHandler={this.rawKeywordHandler}/>  
                 }
-                {this.state.selection.length !== 0 && this.state.genres.length === 0 &&
+                {this.props.selection.length !== 0 && this.state.genres.length === 0 &&
                     <Genres item={this.props.selection} genreHandler={this.genreHandler}/>
                 }
                 {this.state.rawKeywordRecommendations.length !== 0 && this.state.genres.length !== 0 &&
@@ -90,7 +90,7 @@ class Search extends Component {
                 }
                 {this.state.comparedRecommendations.length !== 0 &&
                     <SortRecommendations comparedRecommendations = {this.state.comparedRecommendations} info = {this.props} />
-                } */}
+                }
             </div>
         )
     }
@@ -102,11 +102,5 @@ const mapStateToProps = (state) => {
         allKeywords: state.allKeywords
     }
 }
-
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         storeSelection: (selection) => dispatch({ type: 'SELCTION', val: selection })
-//     }
-// }
 
 export default connect(mapStateToProps, null)(Search)

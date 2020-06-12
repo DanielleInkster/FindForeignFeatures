@@ -17,12 +17,6 @@ class Keywords extends Component {
         this.findKeywordsFetch(this.props.item.match.params.mediaType, this.props.item.match.params.id, term)
     }
 
-    // componentDidUpdate(prevProps) {
-    //     { console.log("HELLO") }
-    //     let term = this.determineType(this.props.item.match.params.mediaType)
-    //     this.findKeywordsFetch(this.props.item.match.params.mediaType, this.props.item.match.params.id, term)
-    // }
-
     determineType = (type) => {
         let searchTerm = type === 'tv' ? 'results' : 'keywords'
         return searchTerm
@@ -53,8 +47,8 @@ class Keywords extends Component {
             })
     }
 
-    redirect(to) {
-        this.props.item.history.push({ pathname: to })
+    redirect(to, keywords) {
+        this.props.item.history.push({ pathname: to, keywords })
         this.setState({ fetchRun: false })
     }
 
@@ -70,7 +64,8 @@ class Keywords extends Component {
                 }
 
                 {this.state.fetchRun === true && 0 < this.state.amount < 4 &&
-                    this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search`)
+                    this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search`,
+                    this.props.allKeywords)
                 }
             </div>
         )
