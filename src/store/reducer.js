@@ -1,11 +1,8 @@
 const initialState = {
     list: [], 
-<<<<<<< HEAD
     selection:'',
-    options:[]
-=======
-    selection:''
->>>>>>> parent of 65db223... Keywords moved to store
+    allKeywords:[]
+
 }
 
 const reducer = (state = initialState, action) =>{
@@ -15,16 +12,12 @@ const reducer = (state = initialState, action) =>{
         newState.list = action.val 
     }
     if (action.type === 'SELECTION') {
-<<<<<<< HEAD
         newState.selection = action.val  
     }
 
-    if (action.type === 'OPTIONS') {
-        newState.options = action.val
-=======
-        newState.selection = action.val
->>>>>>> parent of 65db223... Keywords moved to store
-        console.log(action.val)
+    if (action.type === 'KEYWORDS') {
+        console.log(action.val[0])
+        newState.allKeywords = action.val[0]
     }
     return newState
 }

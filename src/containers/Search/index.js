@@ -12,26 +12,22 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            keywords:[],
+            keywords: [],
             rawKeywordRecommendations: [],
-            genres:[],
+            genres: [],
             comparedRecommendations: [],
         }
     }
 
     componentDidMount() {
-        // if (this.state.selection.length === 0 && this.props.location.selection !== undefined) {
-        //     this.setState({ selection: this.props.location.selection })
-        // }
+
         if (this.state.keywords.length === 0 && this.props.location.keywords !== undefined) {
             this.setState({ keywords: this.props.location.keywords })
         }
     }
-    componentDidUpdate(){
-        // if (this.state.selection.length === 0 && this.props.location.selection !== undefined) {
-        //     this.setState({ selection: this.props.location.selection })
-        // }
-        if (this.state.keywords.length === 0 && this.props.location.keywords !== undefined) { 
+    componentDidUpdate() {
+
+        if (this.state.keywords.length === 0 && this.props.location.keywords !== undefined) {
             this.setState({ keywords: this.props.location.keywords })
         }
     }
@@ -62,7 +58,7 @@ class Search extends Component {
                 <div>
                     <Loading />
                     <h2><Message text={input} /></h2>
-                        <Message text={input2} />
+                    <Message text={input2} />
                 </div>
             )
         }
@@ -76,16 +72,12 @@ class Search extends Component {
         return (
             <div>
                 {console.log(this.props.selection)}
-<<<<<<< HEAD
-                {this.state.keywords.length !== 0 &&
-=======
-                {/* {this.state.keywords.length !== 0 &&
->>>>>>> parent of 65db223... Keywords moved to store
+                {this.props.allKeywords.length !== 0 &&
                     this.searching(input, input2)}
-                        
-                {this.state.keywords.length === 0 &&
+
+                {this.props.allKeywords.length === 0 &&
                     <Keywords item={this.props} />
-                } */}
+                }
                 {/* {this.state.keywords.length !== 0 && this.state.rawKeywordRecommendations.length === 0 &&
                     <KeywordRecommendations keywords={this.state.keywords} type={this.props.match.params.mediaType} 
                         rawKeywordHandler={this.rawKeywordHandler}/>  
@@ -107,7 +99,8 @@ class Search extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        selection: state.selection
+        selection: state.selection,
+        allKeywords: state.allKeywords
     }
 }
 
