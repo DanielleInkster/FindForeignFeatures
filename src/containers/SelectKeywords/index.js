@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
 import Message from '../../components/Message';
 import CheckBoxList from '../../components/CheckBoxList';
 import Button from '../../components/Button';
@@ -14,6 +15,7 @@ class SelectKeywords extends Component {
     }
 
     componentDidMount() {
+        console.log("hello")
         this.createOptions()
     }
 
@@ -23,7 +25,7 @@ class SelectKeywords extends Component {
 
     createOptions = () => {
         let arr = []
-        this.props.location.keywords.map(entry =>
+        this.props.allKeywords.map(entry =>
             arr.push({ key: entry.id, id: entry.id, value: entry.name, isChecked: false })
         )
         this.setState({ options: arr })
@@ -77,4 +79,16 @@ class SelectKeywords extends Component {
 
 }
 
-export default SelectKeywords;
+const mapStateToProps = (state) => {
+    return {
+        allKeywords: state.allKeywords
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        storeSelection: (selection) => dispatch({ type: 'SELECTION', val: selection })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectKeywords);

@@ -7,7 +7,7 @@ class Keywords extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            keywords: [],
+            amount: 0,
             fetchRun: false,
         }
     }
@@ -16,6 +16,12 @@ class Keywords extends Component {
         let term = this.determineType(this.props.item.match.params.mediaType)
         this.findKeywordsFetch(this.props.item.match.params.mediaType, this.props.item.match.params.id, term)
     }
+
+    // componentDidUpdate(prevProps) {
+    //     { console.log("HELLO") }
+    //     let term = this.determineType(this.props.item.match.params.mediaType)
+    //     this.findKeywordsFetch(this.props.item.match.params.mediaType, this.props.item.match.params.id, term)
+    // }
 
     determineType = (type) => {
         let searchTerm = type === 'tv' ? 'results' : 'keywords'
@@ -39,8 +45,8 @@ class Keywords extends Component {
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                //mutates state?
                 let arr = []
+                this.setState({ amount: data[searchTerm].length })
                 data[searchTerm].length !== 0 ? arr.push(this.handleData(data[searchTerm])) : this.noResults()
                 this.props.storeKeywords(arr)
                 this.setState({ fetchRun: true })
@@ -59,19 +65,23 @@ class Keywords extends Component {
     render() {
         return (
             <div>
-
-                {this.state.keywords.length >= 4 &&
+                {this.state.amount >= 4 &&
                     this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search/keywords`,
                         this.state.keywords)
                 }
 
-                {this.state.fetchRun === true && 0 < this.state.keywords.length < 4 &&
+                {this.state.fetchRun === true && 0 < this.state.amount < 4 &&
                     this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search`,
                         this.state.keywords)
                 }
-
             </div>
         )
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        allKeywords: state.allKeywords
     }
 }
 
@@ -81,4 +91,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Keywords)
+export default connect(mapStateToProps, mapDispatchToProps)(Keywords)
