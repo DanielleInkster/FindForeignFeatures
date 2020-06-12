@@ -15,8 +15,14 @@ class SelectKeywords extends Component {
     }
 
     componentDidMount() {
-        console.log("hello")
+            this.createOptions()
+    }
+    
+
+    componentDidUpdate(prevProps) {
+        if(this.props.allKeywords !== prevProps.allKeywords){
         this.createOptions()
+        }
     }
 
     mediaType() {
@@ -85,10 +91,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        storeSelection: (selection) => dispatch({ type: 'SELECTION', val: selection })
-    }
-}
+// const mapDispatchToProps = (dispatch) => {
+//     // return {
+//     //     storeSelection: (selection) => dispatch({ type: 'SELECTION', val: selection })
+//     // }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SelectKeywords);
+export default connect(mapStateToProps, null)(SelectKeywords);

@@ -53,8 +53,8 @@ class Keywords extends Component {
             })
     }
 
-    redirect(to, keywords) {
-        this.props.item.history.push({ pathname: to, keywords })
+    redirect(to) {
+        this.props.item.history.push({ pathname: to })
         this.setState({ fetchRun: false })
     }
 
@@ -66,13 +66,11 @@ class Keywords extends Component {
         return (
             <div>
                 {this.state.amount >= 4 &&
-                    this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search/keywords`,
-                        this.state.keywords)
+                    this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search/keywords`)
                 }
 
                 {this.state.fetchRun === true && 0 < this.state.amount < 4 &&
-                    this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search`,
-                        this.state.keywords)
+                    this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search`)
                 }
             </div>
         )

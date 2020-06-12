@@ -15,7 +15,6 @@ const reducer = (state = initialState, action) =>{
     }
 
     if (action.type === 'KEYWORDS') {
-        console.log(action.val[0])
         newState.allKeywords = action.val[0]
     }
 
