@@ -1,6 +1,22 @@
 #Loading{
     border: 10px solid #f0a500;
+    width: 25em;
+    height: 15em
+
+}
+
+@media screen and (min-width:501px) and (max-width:675px) {
+  #Loading {  
+    border: 10px solid #f0a500;
     width: 20em;
-    height: 10
-2em;
+    height: 12em
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #Loading {
+   border: 10px solid #f0a500;
+    width: 15em;
+    height: 10em
+  }
 }

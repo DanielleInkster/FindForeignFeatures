@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
@@ -6,29 +7,27 @@ class Keywords extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            keywords:[],
-            selection:[],
+            amount: 0,
             fetchRun: false,
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         let term = this.determineType(this.props.item.match.params.mediaType)
-        this.findKeywordsFetch(this.props.item.match.params.mediaType, this.props.item.match.params.id , term )
-    } 
-    
+        this.findKeywordsFetch(this.props.item.match.params.mediaType, this.props.item.match.params.id, term)
+    }
 
-    determineType=(type)=>{
-        let searchTerm = type === 'tv' ?  'results' :  'keywords'
+    determineType = (type) => {
+        let searchTerm = type === 'tv' ? 'results' : 'keywords'
         return searchTerm
     }
 
     handleData = (data) => {
-        if (data=== null) {
+        if (data === null) {
             return []
         } else if (data.length < 4) {
             let arr = []
-            data.forEach(entry => {arr.push(entry.id) })
+            data.forEach(entry => { arr.push(entry.id) })
             return arr
         } else {
             return data
@@ -40,39 +39,49 @@ class Keywords extends Component {
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                //mutates state?
-                data[searchTerm].length !== 0 ? this.setState({ keywords: this.handleData(data[searchTerm]) }) : this.noResults()
+                let arr = []
+                this.setState({ amount: data[searchTerm].length })
+                data[searchTerm].length !== 0 ? arr.push(this.handleData(data[searchTerm])) : this.noResults()
+                this.props.storeKeywords(arr)
                 this.setState({ fetchRun: true })
-        })
+            })
     }
 
-    redirect(to, keywords, selection) {
-        this.props.item.history.push({ pathname: to, keywords, selection })
+    redirect(to, keywords) {
+        this.props.item.history.push({ pathname: to, keywords })
         this.setState({ fetchRun: false })
     }
-    
-    noResults(){
+
+    noResults() {
         this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/noresults`)
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
-
-                {this.state.keywords.length >= 4 && 
-                this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search/keywords`,
-                    this.state.keywords, this.props.item.location.state.selection)
+                {this.state.amount >= 4 &&
+                    this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search/keywords`)
                 }
 
-                {this.state.fetchRun === true && 0 < this.state.keywords.length < 4 &&  
+                {this.state.fetchRun === true && 0 < this.state.amount < 4 &&
                     this.redirect(`/${this.props.item.match.params.mediaType}/${this.props.item.match.params.id}/search`,
-                        this.state.keywords, this.props.item.location.state.selection)  
+                    this.props.allKeywords)
                 }
-
             </div>
         )
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        allKeywords: state.allKeywords
+    }
+}
 
-export default Keywords
+const mapDispatchToProps = (dispatch) => {
+    return {
+        storeKeywords: (list) => dispatch({ type: 'KEYWORDS', val: list })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Keywords)

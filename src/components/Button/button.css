@@ -8,3 +8,10 @@
   font-family: Lobster, sans-serif;
   font-size:1em;
 }
+
+
+@media screen and (max-width: 500px) {
+  #Button {
+   font-size:.75em;
+  }
+}
