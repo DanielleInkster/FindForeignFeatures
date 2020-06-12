@@ -13,7 +13,7 @@ class App extends Component {
             <Router>
                <Routes/>
             </Router>
-                <ScrollButton />
+                <ScrollButton scrollStepInPx='50' delayInMs='16.66'/>
             </div>
             
         );
