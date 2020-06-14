@@ -42,7 +42,7 @@ class Routes extends Component {
                             <Route exact match path="/:mediaType/:id/search/keywords" render={(props) => <SelectKeywords {...props} />} />
                             <Route exact match path="/:mediaType/:id/recommendations" render={(props) => <RecommendationsList {...props} />} />
                             <Route exact match path="/:mediaType/:id/noresults" render={() => { return (<NoResults />) }} />
-                        <Route path="*" render={() => { return (<PageNotFound />) }} />
+                            <Route path="*" render={() => { return (<PageNotFound />) }} />
                         </Switch>
                     </div>
             </div>
