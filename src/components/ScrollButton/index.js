@@ -1,6 +1,7 @@
 //button created by Qbrid on Codepen
 
 import React, {Component} from 'react';
+import upButton from '../../Images/up.png';
 import './ScrollButton.css'
 
 class ScrollButton extends Component {
@@ -31,7 +32,7 @@ class ScrollButton extends Component {
                 event.preventDefault();
                 this.scroll();
             }}>
-            <span id='arrow'>^</span>
+            <span id='arrow'><img src={upButton} alt="Scroll to Top" id="up" /></span>
         </button>;
     }
 }
