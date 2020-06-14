@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ScrollButton from '../ScrollButton';
+
 import './App.css'
 import Routes from '../Routes';
 import {BrowserRouter as Router} from "react-router-dom"
@@ -13,7 +14,7 @@ class App extends Component {
             <Router>
                <Routes/>
             </Router>
-                <ScrollButton />
+                <ScrollButton scrollStepInPx='100' delayInMs='16.66'/>
             </div>
             
         );

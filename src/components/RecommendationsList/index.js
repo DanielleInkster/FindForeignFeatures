@@ -1,9 +1,11 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux'
 import RecommendationsListItem from '../RecommendationsListItem';
-import './RecommendationsList.css'
+
 
 const RecommendationsList =(props) => {
+    if(props.recommendations.length !== 0){
         return (
             <div>
                 <div id='column'> {props.recommendations.map(item =>
@@ -14,10 +16,14 @@ const RecommendationsList =(props) => {
                         <br />
                     </li>)}  
                 </div>
-            </div>
-           
+            </div> 
         )
     
+    } else {
+        return(
+            <Redirect to='error/404' />
+        )   
+    }
 }
 
 const mapStateToProps = (state) => {

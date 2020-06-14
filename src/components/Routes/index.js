@@ -36,13 +36,13 @@ class Routes extends Component {
                     <div>
                         <Switch>
                             <Route exact match path="/" render={() => { return (<Home />) }} />
-                            <Route exact match path="/:mediaType" render={(props) => <Media {...props} />} />
+                            <Route exact match path="/:mediaType(tv|movie)" render={(props) => <Media {...props} />} />
                             <Route exact match path="/:mediaType/search/:name" render={(props) => <MediaList {...props} />} />
                             <Route exact match path="/:mediaType/:id/search" render={(props) => <Search {...props} />} />
                             <Route exact match path="/:mediaType/:id/search/keywords" render={(props) => <SelectKeywords {...props} />} />
                             <Route exact match path="/:mediaType/:id/recommendations" render={(props) => <RecommendationsList {...props} />} />
                             <Route exact match path="/:mediaType/:id/noresults" render={() => { return (<NoResults />) }} />
-                        <Route path="*" render={() => { return (<PageNotFound />) }} />
+                            <Route path="*" render={() => { return (<PageNotFound />) }} />
                         </Switch>
                     </div>
             </div>

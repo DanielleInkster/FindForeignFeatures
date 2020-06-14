@@ -6,8 +6,7 @@
   #Icon{
     display: none;
     
-  }
-
+  } 
 }
 
 @media (min-width: 751px)  {
@@ -29,13 +28,13 @@
 
 .App-header {
   background-color: #f0a500;
-  min-height: 8vw;
-  max-height:20vw;
+  height: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
 
 .SiteTitle{
   font-family: Lobster, sans-serif;

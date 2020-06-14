@@ -1,9 +1,10 @@
 //button created by Qbrid on Codepen
 
 import React, {Component} from 'react';
+import upButton from '../../Images/up.png';
 import './ScrollButton.css'
 
-class ScrollButton extends React.Component {
+class ScrollButton extends Component {
     constructor() {
         super();
 
@@ -20,9 +21,7 @@ class ScrollButton extends React.Component {
     }
 
     scroll() {
-        let intervalId = setInterval(this.scrollStep.bind(this));
-        //store the intervalId inside the state, 
-        //so we can use it later to cancel the scrolling
+        let intervalId = setInterval(this.scrollStep.bind(this), this.props.delayInMs);
         this.setState({ intervalId: intervalId });
     }
 
@@ -33,9 +32,8 @@ class ScrollButton extends React.Component {
                 event.preventDefault();
                 this.scroll();
             }}>
-            <span id='arrow'>^</span>
+            <span id='arrow'><img src={upButton} alt="Scroll to Top" id="up" /></span>
         </button>;
     }
 }
-
 export default ScrollButton
