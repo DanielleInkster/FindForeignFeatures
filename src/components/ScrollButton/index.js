@@ -16,13 +16,11 @@ class ScrollButton extends Component {
         if (window.scrollY === 0) {
             clearInterval(this.state.intervalId);
         }
-        window.scroll(0,window.scrollY - this.props.scrollStepInPx);
+        window.scroll(0, window.scrollY - this.props.scrollStepInPx);
     }
 
     scroll() {
         let intervalId = setInterval(this.scrollStep.bind(this), this.props.delayInMs);
-        //store the intervalId inside the state, 
-        //so we can use it later to cancel the scrolling
         this.setState({ intervalId: intervalId });
     }
 
