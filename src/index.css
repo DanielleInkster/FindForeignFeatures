@@ -30,7 +30,7 @@
 
 #text{
   overflow: hidden;
-  font-size: calc(10px + 1vw);
+  font-size: calc(10px + .75vw);
   font-family: Questrial, sans-serif;
   line-height: calc(10px + 1vw);
   flex: 1 0 auto;
@@ -45,7 +45,14 @@
   flex: 1 0 auto;
 }
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
+@media screen and (max-width:675px){
+  #overview{
+  overflow-y: scroll;
+  font-size: calc(10px + 1vw);
+  font-family: Questrial, sans-serif;
+  line-height: calc(10px + .5vw);
+  height: calc(30px + 3.5vw);
+  flex: 1 0 auto;
+  margin: 1%
+  }
+}
