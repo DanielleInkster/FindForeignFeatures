@@ -20,7 +20,8 @@ class MoreInfo extends Component {
     }
 
     slugify(text) {
-    return text.toString().toLowerCase()
+    let input = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    return input.toString().toLowerCase()
         .replace(/œ/, 'oe')
         .replace(/\s+/g, '-')
         .replace(/[^\w\-]+/g, '')
