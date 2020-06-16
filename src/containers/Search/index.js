@@ -25,13 +25,7 @@ class Search extends Component {
             this.setState({ keywords: this.props.location.keywords })
         }
     }
-    componentDidUpdate() {
-
-        if (this.state.keywords.length === 0 && this.props.location.keywords !== undefined) {
-            this.setState({ keywords: this.props.location.keywords })
-        }
-    }
-
+  
     redirect(to, recommendations) {
         this.props.history.push({ pathname: to, recommendations })
     }
@@ -71,12 +65,8 @@ class Search extends Component {
 
         return (
             <div>
-                {this.state.keywords.length !== 0 &&
-                    this.searching(input, input2)}
+                {this.searching(input, input2)}
 
-                {this.state.keywords.length === 0 &&
-                    <Keywords item={this.props} />
-                }
                 {this.state.keywords.length !== 0 && this.state.rawKeywordRecommendations.length === 0 &&
                     <KeywordRecommendations keywords={this.state.keywords} type={this.props.match.params.mediaType} 
                         rawKeywordHandler={this.rawKeywordHandler}/>  

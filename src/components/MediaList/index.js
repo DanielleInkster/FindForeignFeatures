@@ -14,7 +14,7 @@ const MediaList =(props)=>  {
                         <div className='card-content'>
                             <MediaListItem item={item} type = {props.match.params.mediaType}/>
                             
-                            <Link to={{ pathname: `/${props.match.params.mediaType}/${item.id}/search`}}>
+                            <Link to={{ pathname: `/${props.match.params.mediaType}/${item.id}`}}>
                                 <Button value="Find more like this!" onClick={() => { props.storeSelection(item)}}/>
                             </Link>
                         </div>
