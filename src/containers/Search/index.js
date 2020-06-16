@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Loading from '../../components/Loading';
 import Message from '../../components/Message';
-import Keywords from '../Keywords';
 import KeywordRecommendations from '../KeywordRecommendations';
 import Genres from '../Genres';
 import Compare from '../Compare';
@@ -20,13 +19,6 @@ class Search extends Component {
     }
 
     componentDidMount() {
-
-        if (this.state.keywords.length === 0 && this.props.location.keywords !== undefined) {
-            this.setState({ keywords: this.props.location.keywords })
-        }
-    }
-    componentDidUpdate() {
-
         if (this.state.keywords.length === 0 && this.props.location.keywords !== undefined) {
             this.setState({ keywords: this.props.location.keywords })
         }
@@ -74,9 +66,6 @@ class Search extends Component {
                 {this.state.keywords.length !== 0 &&
                     this.searching(input, input2)}
 
-                {this.state.keywords.length === 0 &&
-                    <Keywords item={this.props} />
-                }
                 {this.state.keywords.length !== 0 && this.state.rawKeywordRecommendations.length === 0 &&
                     <KeywordRecommendations keywords={this.state.keywords} type={this.props.match.params.mediaType} 
                         rawKeywordHandler={this.rawKeywordHandler}/>  
