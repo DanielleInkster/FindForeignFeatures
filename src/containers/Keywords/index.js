@@ -13,7 +13,6 @@ class Keywords extends Component {
     }
 
     componentDidMount() {
-        console.log("Hello from Keywords")
         let term = this.determineType(this.props.match.params.mediaType)
         this.findKeywordsFetch(this.props.match.params.mediaType, this.props.match.params.id, term)
     }

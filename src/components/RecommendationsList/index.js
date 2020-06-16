@@ -15,7 +15,8 @@ const RecommendationsList =(props) => {
                         <RecommendationsListItem item={item} type = {props.match.params.mediaType}/>
                             <Link to={{
                                 pathname: `/${props.match.params.mediaType}/${props.match.params.id}/`+
-                            `recommendations/${item.id}` }}>
+                                `recommendations/${item.id}`, 
+                                selection:{ item }}}>
                                 <Button value="More Information" />
                             </Link>
                         </div>
