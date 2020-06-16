@@ -17,5 +17,4 @@ class MoreInfo extends Component {
 }
 
 
-
 export default MoreInfo;

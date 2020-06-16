@@ -1,7 +1,8 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux'
 import RecommendationsListItem from '../RecommendationsListItem';
+import Button from '../Button';
 
 
 const RecommendationsList =(props) => {
@@ -12,6 +13,11 @@ const RecommendationsList =(props) => {
                     <li style={{ listStyleType: "none" }} key={item.id} className = 'card'>
                         <div className = 'card-content'>
                         <RecommendationsListItem item={item} type = {props.match.params.mediaType}/>
+                            <Link to={{
+                                pathname: `/${props.match.params.mediaType}/${props.match.params.id}/`+
+                            `recommendations/${item.id}` }}>
+                                <Button value="More Information" />
+                            </Link>
                         </div>
                         <br />
                     </li>)}  
