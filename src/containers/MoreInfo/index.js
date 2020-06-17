@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import MoreInfoItem from '../../components/MoreInfoItem';
+
 import 'whatwg-fetch'
 
 const API_KEY2 = `${process.env.REACT_APP_DB_API_KEY2}`
@@ -7,42 +9,26 @@ class MoreInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selection:[]
+            tmdbInfo:[],
+            omdbInfo:[]
         }
     }
 
     componentDidMount(){
-        let title = this.props.location.type==='tv' ? this.chooseTVTitle(): this.chooseMovieTitle()
-        let r_a_title = this.slugify(title)
+        this.setState({ tmdbInfo: this.props.location.item })
         let year = this.findYear()
-        this.createFetch(r_a_title, year)
+        this.createFetch(year)
     }
 
     slugify(text) {
-    let input = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-    return input.toString().toLowerCase()
-        .replace(/œ/, 'oe')
-        .replace(/\s+/g, '-')
-        .replace(/[^\w\-]+/g, '')
-        .replace(/\-\-+/g, '-')
-        .replace(/^-+/, '')
-        .replace(/-+$/, '');
-}
-
-    chooseMovieTitle(){
-       if(/[a-z]/i.test(this.props.location.item.original_title)=== true){
-           return this.props.location.item.original_title
-       } else{
-           return this.props.location.item.title
-       }
-    }
-
-    chooseTVTitle() {
-        if (/[a-z]/i.test(this.props.location.item.original_name) === true) {
-            return this.props.location.item.original_name
-        } else {
-            return this.props.location.item.name
-        }
+        let input = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        return input.toString().toLowerCase()
+            .replace(/œ/, 'oe')
+            .replace(/\s+/g, '-')
+            .replace(/[^\w\-]+/g, '')
+            .replace(/\-\-+/g, '-')
+            .replace(/^-+/, '')
+            .replace(/-+$/, '');
     }
 
     findYear() {
@@ -50,42 +36,44 @@ class MoreInfo extends Component {
 
         let year = (this.props.location.item.hasOwnProperty(searchTerm) && this.props.location.item[searchTerm] !== "") ?
             this.props.location.item[searchTerm].slice(0, 4) : "[Unknown]" 
-        
+
         return year
     }
 
-    createFetch = (r_a_title, year) => {
-        fetch(`http://www.omdbapi.com/?apikey=${API_KEY2}&t=${r_a_title}&y=${year}&plot=full`)
+    createFetch = (year) => {
+        let firstTitle = this.props.location.type === 'tv' ? 
+        this.props.location.item.original_name : this.props.location.item.original_title
+
+        fetch(`http://www.omdbapi.com/?apikey=${API_KEY2}&t=${firstTitle}&y=${year}&plot=full`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
-               (data.Response==="True") ? this.setState({selection: data}) : this.secondFetch(year)
-                   console.log('first fetch run')
-               
+                (data.Response === "True") ? this.setState({ omdbInfo: data}) : this.secondFetch(year)  
         })
-
     }
 
     secondFetch = (year) => {
-        let secondTitle = this.props.location.type === 'tv' ? this.props.location.item.name :  this.props.location.item.title
+        let secondTitle = this.props.location.type === 'tv' ? 
+        this.props.location.item.name :  this.props.location.item.title
+
         fetch(`http://www.omdbapi.com/?apikey=${API_KEY2}&t=${secondTitle}&y=${year}&plot=full`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                (data.Response === "True") ? this.setState({ selection: data }) : console.log('booooooo!')  
-                console.log('second fetch run') 
-                console.log(data)            
+                (data.Response === "True") ? this.setState({ omdbInfo: data }) : this.setState({ omdbInfo: 0 })            
         })
-
     }
   
-
 
     render() {
        
         return (
-            <div className='body'>
-                HELLO FROM HELL
+            <div>
+                HELLO
+                {console.log(this.state.omdbInfo.length)}
+                {this.state.omdbInfo.length !== 0 &&
+                    <MoreInfoItem tmdb={this.state.tmdbInfo} omdb={this.state.omdbInfo}/>
+                }
             </div>
         )
     };
