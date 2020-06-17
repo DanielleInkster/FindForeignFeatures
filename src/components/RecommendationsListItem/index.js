@@ -15,7 +15,7 @@ const RecommendationsListItem = (props) => {
             <p id="nonEnglishHeading"><NonEnglishName item={props.item} type={props.type} /></p>
             <p id="text"><FindYear item={props.item} type={props.type} /></p>
             <p id="text"><ConvertISO language={props.item.original_language} /></p>
-            <p id="overview">{props.item.overview}</p>
+            <p id="overview">{props.item.overview.length > 0 ? props.item.overview.slice(0,75)+'...':''}</p>
         </div>
     )
 }

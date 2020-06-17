@@ -41,7 +41,7 @@
   font-size: calc(10px + .5vw);
   font-family: Questrial, sans-serif;
   line-height: calc(10px + .5vw);
-  height: calc(30px + 1.5vw);
+  height: calc(20px + 1.5vw);
   flex: 1 0 auto;
 }
 
@@ -50,8 +50,8 @@
   overflow-y: scroll;
   font-size: calc(10px + 1vw);
   font-family: Questrial, sans-serif;
-  line-height: calc(10px + .5vw);
-  height: calc(30px + 3.5vw);
+  line-height: calc(10px + 1vw);
+  height: calc(20px + 1.5vw);
   flex: 1 0 auto;
   margin: 1%
   }

@@ -15,7 +15,6 @@ class MoreInfo extends Component {
         let title = this.props.location.type==='tv' ? this.chooseTVTitle(): this.chooseMovieTitle()
         let r_a_title = this.slugify(title)
         let year = this.findYear()
-        console.log(r_a_title)
         this.createFetch(r_a_title, year)
     }
 
@@ -60,8 +59,23 @@ class MoreInfo extends Component {
             .then((response) => {
                 return response.json();
             }).then((data) => {
-               console.log(data)
-            })
+               (data.Response==="True") ? this.setState({selection: data}) : this.secondFetch(year)
+                   console.log('first fetch run')
+               
+        })
+
+    }
+
+    secondFetch = (year) => {
+        let secondTitle = this.props.location.type === 'tv' ? this.props.location.item.name :  this.props.location.item.title
+        fetch(`http://www.omdbapi.com/?apikey=${API_KEY2}&t=${secondTitle}&y=${year}&plot=full`)
+            .then((response) => {
+                return response.json();
+            }).then((data) => {
+                (data.Response === "True") ? this.setState({ selection: data }) : console.log('booooooo!')  
+                console.log('second fetch run') 
+                console.log(data)            
+        })
 
     }
   
