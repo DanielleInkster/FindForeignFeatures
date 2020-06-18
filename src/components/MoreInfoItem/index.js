@@ -1,6 +1,6 @@
 import React from 'react';
 import ConvertISO from '../ConvertISO';
-import ImageUrl from '../ImageUrl';
+import RecommendationImage from '../RecommendationImage';
 import Title from '../Title';
 import NonEnglishName from '../NonEnglishName'
 import DisplayPlot from '../DisplayPlot';
@@ -15,7 +15,8 @@ const MoreInfoItem=(props)=>{
     return(
             <div className="flex-container">
             <div className="flex-child image">
-                <ImageUrl item={props.tmdb} type={props.type} />
+                {console.log(props.omdb)}
+                <RecommendationImage tmdb={props.tmdb} omdb={props.omdb} />
             </div>
             <div class="flex-child data">
                 <h1 className='mediaHeading'><Title item={props.tmdb} type={props.type} /></h1>
@@ -34,7 +35,7 @@ const MoreInfoItem=(props)=>{
                 <b><u>IMDB Rating:</u></b> <CheckForUndefined omdb={props.omdb.imdbRating}/>
                 <br />
                 <br />
-                <b><u>Original Release Data:</u></b>  <CheckForUndefined omdb={props.omdb.Released}/>
+                <b><u>Original Release Date:</u></b>  <CheckForUndefined omdb={props.omdb.Released}/>
                 <br />
                 {props.type ==='movie' &&
                     <b><u>Rating: </u></b> } 
@@ -49,7 +50,6 @@ const MoreInfoItem=(props)=>{
                 <br />
                 <b><u>Runtime:</u></b>  <CheckForUndefined omdb={props.omdb.Runtime}/>
                 <br />
-                {console.log(props.url)}
                 <a target="_blank" href= {props.url}>
                 <Button value={'Find more at IMDB'}/>
                 </a>

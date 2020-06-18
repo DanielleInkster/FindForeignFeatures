@@ -109,7 +109,7 @@ class MoreInfo extends Component {
                 {this.state.omdbInfo.length !== 0 &&
                     <MoreInfoItem tmdb={this.state.tmdbInfo} omdb={this.state.omdbInfo} type={this.props.location.type}
                                 url = {this.state.url} />
-            }
+                }
             </div>
         )
     };
