@@ -69,11 +69,9 @@ class MoreInfo extends Component {
        
         return (
             <div>
-                HELLO
-                {console.log(this.state.omdbInfo.length)}
                 {this.state.omdbInfo.length !== 0 &&
-                    <MoreInfoItem tmdb={this.state.tmdbInfo} omdb={this.state.omdbInfo}/>
-                }
+                    <MoreInfoItem tmdb={this.state.tmdbInfo} omdb={this.state.omdbInfo} type={this.props.location.type} />
+            }
             </div>
         )
     };
