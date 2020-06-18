@@ -2,7 +2,8 @@ const initialState = {
     list: [], 
     selection:'',
     allKeywords:[],
-    recommendations:[]
+    recommendations:[],
+    more_info:[]
 }
 
 const reducer = (state = initialState, action) =>{
@@ -21,6 +22,10 @@ const reducer = (state = initialState, action) =>{
 
     if (action.type === 'RECOMMENDATIONS') {
         newState.recommendations = action.val
+    }
+
+    if (action.type === 'MORE_INFO') {
+        newState.more_info = action.val
     }
 
     return newState

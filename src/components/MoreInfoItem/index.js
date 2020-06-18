@@ -57,4 +57,5 @@ const MoreInfoItem=(props)=>{
     )
 }
 
+
 export default MoreInfoItem

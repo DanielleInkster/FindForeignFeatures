@@ -1,5 +1,7 @@
 // eslint-disable-next-line
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
 import * as _ from "lodash";
 import ISO6391 from 'iso-639-1';
 import MoreInfoItem from '../../components/MoreInfoItem';
@@ -18,7 +20,7 @@ class MoreInfo extends Component {
     }
 
     componentDidMount(){
-        this.setState({ tmdbInfo: this.props.location.item })
+        this.setState({ tmdbInfo: this.props.more_info })
         let year = this.findYear()
         if (this.state.omdbInfo.length ===0) this.createFetch(year)
     }
@@ -39,15 +41,15 @@ class MoreInfo extends Component {
     findYear() {
         let searchTerm = this.props.location.type === 'tv' ? "first_air_date" : "release_date"
 
-        let year = (this.props.location.item.hasOwnProperty(searchTerm) && this.props.location.item[searchTerm] !== "") ?
-            this.props.location.item[searchTerm].slice(0, 4) : "[Unknown]" 
+        let year = (this.props.more_info.hasOwnProperty(searchTerm) && this.props.more_info[searchTerm] !== "") ?
+            this.props.more_info[searchTerm].slice(0, 4) : "[Unknown]" 
 
         return year
     }
 
     createFetch = (year) => {
         let firstTitle = this.props.location.type === 'tv' ? 
-        this.slugify(this.props.location.item.name) : this.slugify(this.props.location.item.title)
+            this.slugify(this.props.more_info.name) : this.slugify(this.props.more_info.title)
     
         fetch(`http://www.omdbapi.com/?apikey=${API_KEY2}&t=${firstTitle}&y=${year}&plot=full`)
             .then((response) => {
@@ -65,7 +67,7 @@ class MoreInfo extends Component {
 
     secondFetch = (year) => {
         let secondTitle = this.props.location.type === 'tv' ? 
-        this.slugify(this.props.location.item.original_name) : this.slugify(this.props.location.item.original_title)
+            this.slugify(this.props.more_info.original_name) : this.slugify(this.props.more_info.original_title)
 
         fetch(`http://www.omdbapi.com/?apikey=${API_KEY2}&t=${secondTitle}&y=${year}&plot=full`)
             .then((response) => {
@@ -98,13 +100,13 @@ class MoreInfo extends Component {
 
     createSearchURL=()=>{
         let title = this.props.location.type === 'tv' ?
-            this.searchTerm(this.props.location.item.name) : this.searchTerm(this.props.location.item.title)
+            this.searchTerm(this.props.more_info.name) : this.searchTerm(this.props.more_info.title)
         let year = this.findYear()
         return `https://www.imdb.com/find?q=${title}+${year}&ref_=nv_sr_sm`
     }
 
     render() {
-       
+       if(this.props.more_info.length !== 0){
         return (
             <div>
                 {this.state.omdbInfo.length !== 0 &&
@@ -113,9 +115,20 @@ class MoreInfo extends Component {
                 }
             </div>
         )
+        }else{
+           return (
+               <Redirect to='error/404' />
+           )
+        }
     };
 
 }
 
+const mapStateToProps = (state) => {
+    return {
+        more_info: state.more_info
+    }
+}
 
-export default MoreInfo;
+
+export default connect(mapStateToProps, null)(MoreInfo);
