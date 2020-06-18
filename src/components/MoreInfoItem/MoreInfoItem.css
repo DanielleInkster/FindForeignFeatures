@@ -15,3 +15,12 @@
 .image {
     background: white
 } 
+
+@media screen and (max-width: 600px) {
+  .flex-container {
+    width: 100%;
+    display: block;
+    margin-bottom: 2%;
+  }
+
+}

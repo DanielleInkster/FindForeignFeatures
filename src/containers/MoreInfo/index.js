@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React, { Component } from 'react';
 import * as _ from "lodash";
 import ISO6391 from 'iso-639-1';
