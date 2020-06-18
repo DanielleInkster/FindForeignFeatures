@@ -16,6 +16,14 @@
     background: white
 } 
 
+.title{
+    font-size: calc(30px + 2vw);
+}
+
+.nonEng{
+    font-size: calc(20px + 1vw);
+}
+
 @media screen and (max-width: 600px) {
   .flex-container {
     width: 100%;

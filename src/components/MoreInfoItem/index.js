@@ -18,8 +18,8 @@ const MoreInfoItem=(props)=>{
                 <RecommendationImage tmdb={props.tmdb} omdb={props.omdb} />
             </div>
             <div className="flex-child data">
-                <h1 className='mediaHeading'><RecTitle item={props.tmdb} type={props.type} /></h1>
-                <h2 className='mediaHeading'><RecNonEnglishName item={props.tmdb} type={props.type} /></h2>
+                <h1 className='title'><RecTitle item={props.tmdb} type={props.type} /></h1>
+                <h2 className='nonEng'><RecNonEnglishName item={props.tmdb} type={props.type} /></h2>
                 <p id="text"><ConvertISO language={props.tmdb.original_language} /></p>
                 <h3><u>Plot</u></h3>
                 <DisplayPlot omdb={props.omdb.Plot} tmdb={props.tmdb.overview}/>
