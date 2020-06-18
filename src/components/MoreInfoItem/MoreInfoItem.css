@@ -5,6 +5,7 @@
 .flex-child {
     flex: 1;
     border: 2px solid yellow;
+    padding: 2%;
 }  
 
 .flex-child:first-child {
