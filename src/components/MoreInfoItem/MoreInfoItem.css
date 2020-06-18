@@ -1,0 +1,34 @@
+.flex-container {
+    display: flex;
+    border: 2px solid rgb(88, 87, 87);
+}
+
+.flex-child {
+    flex: 1;
+    padding: 2%; 
+}  
+
+.data{
+    background: rgb(179, 179, 179);
+    border-left: 2px solid rgb(88, 87, 87);
+}
+.image {
+    background: white
+} 
+
+.title{
+    font-size: calc(30px + 2vw);
+}
+
+.nonEng{
+    font-size: calc(20px + 1vw);
+}
+
+@media screen and (max-width: 600px) {
+  .flex-container {
+    width: 100%;
+    display: block;
+    margin-bottom: 2%;
+  }
+
+}

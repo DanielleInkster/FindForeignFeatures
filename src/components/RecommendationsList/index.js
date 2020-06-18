@@ -6,6 +6,7 @@ import Button from '../Button';
 
 
 const RecommendationsList =(props) => {
+    let type = props.match.params.mediaType
     if(props.recommendations.length !== 0){
         return (
             <div>
@@ -15,7 +16,9 @@ const RecommendationsList =(props) => {
                         <RecommendationsListItem item={item} type = {props.match.params.mediaType}/>
                             <Link to={{
                                 pathname: `/${props.match.params.mediaType}/${props.match.params.id}/`+
-                            `recommendations/${item.id}` }}>
+                                `recommendations/${item.id}`, 
+                                 item, 
+                                 type}}>
                                 <Button value="More Information" />
                             </Link>
                         </div>
