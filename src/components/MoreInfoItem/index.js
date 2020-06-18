@@ -1,7 +1,7 @@
 import React from 'react';
 import ConvertISO from '../ConvertISO';
 import RecommendationImage from '../RecommendationImage';
-import Title from '../Title';
+import RecTitle from '../RecTitle';
 import NonEnglishName from '../NonEnglishName'
 import DisplayPlot from '../DisplayPlot';
 import CheckForUndefined from '../CheckForUndefined';
@@ -15,11 +15,10 @@ const MoreInfoItem=(props)=>{
     return(
             <div className="flex-container">
             <div className="flex-child image">
-                {console.log(props.omdb)}
                 <RecommendationImage tmdb={props.tmdb} omdb={props.omdb} />
             </div>
             <div class="flex-child data">
-                <h1 className='mediaHeading'><Title item={props.tmdb} type={props.type} /></h1>
+                <h1 className='mediaHeading'><RecTitle item={props.tmdb} type={props.type} /></h1>
                 <h2 className='mediaHeading'><NonEnglishName item={props.tmdb} type={props.type} /></h2>
                 <p id="text"><ConvertISO language={props.tmdb.original_language} /></p>
                 <h3><u>Plot</u></h3>
