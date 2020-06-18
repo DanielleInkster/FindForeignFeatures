@@ -4,9 +4,9 @@
 }
 
 .mediaHeading{
+  overflow: hidden;
   font-size: calc(12px + 1vw); 
   font-weight: bold;
-  overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
   display: block;
@@ -15,8 +15,8 @@
 }
 
 #wow{
-    font-family: Lobster, sans-serif;
-    font-size: calc(16px + 2vw) !important;
+  font-family: Lobster, sans-serif;
+  font-size: calc(16px + 2vw) !important;
 }
 
 #nonEnglishHeading{

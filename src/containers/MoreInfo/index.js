@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ISO6391 from 'iso-639-1';
 import MoreInfoItem from '../../components/MoreInfoItem';
 
 import 'whatwg-fetch'
@@ -20,13 +21,12 @@ class MoreInfo extends Component {
         this.createFetch(year)
     }
 
+    
     slugify(text) {
         let input = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
         return input.toString().toLowerCase()
             .replace(/œ/, 'oe')
             .replace(/\s+/g, '-')
-            .replace(/[^\w\-]+/g, '')
-            .replace(/\-\-+/g, '-')
             .replace(/^-+/, '')
             .replace(/-+$/, '');
     }
@@ -42,26 +42,33 @@ class MoreInfo extends Component {
 
     createFetch = (year) => {
         let firstTitle = this.props.location.type === 'tv' ? 
-        this.props.location.item.original_name : this.props.location.item.original_title
-
+        this.slugify(this.props.location.item.name) : this.slugify(this.props.location.item.title)
+    
         fetch(`http://www.omdbapi.com/?apikey=${API_KEY2}&t=${firstTitle}&y=${year}&plot=full`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                (data.Response === "True") ? this.setState({ omdbInfo: data}) : this.secondFetch(year)  
+                (data.Response === "True" && this.compareLanguage(data)===true) ? this.setState({ omdbInfo: data}) : this.secondFetch(year)  
         })
     }
 
     secondFetch = (year) => {
         let secondTitle = this.props.location.type === 'tv' ? 
-        this.props.location.item.name :  this.props.location.item.title
+        this.slugify(this.props.location.item.original_name) : this.slugify(this.props.location.item.original_title)
 
         fetch(`http://www.omdbapi.com/?apikey=${API_KEY2}&t=${secondTitle}&y=${year}&plot=full`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                (data.Response === "True") ? this.setState({ omdbInfo: data }) : this.setState({ omdbInfo: 0 })            
+                (data.Response === "True" && this.compareLanguage(data)===true) ? this.setState({ omdbInfo: data }) : this.setState({ omdbInfo: 0 })            
         })
+    }
+
+    compareLanguage=(data)=>{
+        let lang1 = this.state.tmdbInfo.original_language === "cn" ? "Chinese" : ISO6391.getName(this.state.tmdbInfo.original_language)
+        let lang2= data.Language
+        console.log(lang2)
+        return lang1 === lang2|| lang2.includes(lang1) ? true : false
     }
   
 

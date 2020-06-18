@@ -20,33 +20,33 @@ const MoreInfoItem=(props)=>{
                 <h1 className='mediaHeading'><Title item={props.tmdb} type={props.type} /></h1>
                 <h2 className='mediaHeading'><NonEnglishName item={props.tmdb} type={props.type} /></h2>
                 <p id="text"><ConvertISO language={props.tmdb.original_language} /></p>
-                <p id="text">{props.omdb.Country}</p>
+                <h3><u>Plot</u></h3>
                 <DisplayPlot omdb={props.omdb.Plot} tmdb={props.tmdb.overview}/>
                 <br />
                 <br/>
-                <u>Actors:</u> <CheckForUndefined omdb={props.omdb.Actors}/>
+                <b><u>Cast:</u></b> <CheckForUndefined omdb={props.omdb.Actors}/>
                 <br />
-                <u>Writer(s):</u> <CheckForUndefined omdb={props.omdb.Writer}/>
+                <b><u>Writers:</u></b> <CheckForUndefined omdb={props.omdb.Writer}/>
                 <br />
-                <u>Nominations and Awards:</u> <CheckForUndefined omdb={props.omdb.Awards}/>
+                <b><u>Awards and Nominations:</u></b> <CheckForUndefined omdb={props.omdb.Awards}/>
                 <br />
-                <u>IMDB rating:</u> <CheckForUndefined omdb={props.omdb.imdbRating}/>
+                <b><u>IMDB Rating:</u></b> <CheckForUndefined omdb={props.omdb.imdbRating}/>
                 <br />
                 <br />
-                <u>Original Realease Date:</u> <CheckForUndefined omdb={props.omdb.Released}/>
+                <b><u>Original Release Data:</u></b>  <CheckForUndefined omdb={props.omdb.Released}/>
                 <br />
                 {props.type ==='movie' &&
-                    <u>Rating: </u>} 
+                    <b><u>Rating: </u></b> } 
                 {props.type === 'movie' &&
                     <CheckForUndefined omdb={props.omdb.Rated}/>
                 }
                 {props.type === 'tv' &&
-                    <u>Number of Seasons: </u>}
+                    <b><u>Number of Seasons: </u></b> }
                 {props.type === 'tv' &&
                      <CheckForUndefined omdb={props.omdb.totalSeasons}/>
                 }
                 <br />
-                <u> Runtime:</u> <CheckForUndefined omdb={props.omdb.Runtime}/>
+                <b><u>Runtime:</u></b>  <CheckForUndefined omdb={props.omdb.Runtime}/>
                 <br />
             </div>
         </div>
