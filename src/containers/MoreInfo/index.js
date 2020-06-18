@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as _ from "lodash";
 import ISO6391 from 'iso-639-1';
 import MoreInfoItem from '../../components/MoreInfoItem';
 
@@ -65,10 +66,11 @@ class MoreInfo extends Component {
     }
 
     compareLanguage=(data)=>{
-        let lang1 = this.state.tmdbInfo.original_language === "cn" ? "Chinese" : ISO6391.getName(this.state.tmdbInfo.original_language)
-        let lang2= data.Language
-        console.log(lang2)
-        return lang1 === lang2|| lang2.includes(lang1) ? true : false
+        let lang1 = this.state.tmdbInfo.original_language === "cn" || this.state.tmdbInfo.original_language === "zh" ? 
+            ["Chinese", "Cantonese", "Mandarin", "MinNan"] : ISO6391.getName(this.state.tmdbInfo.original_language)
+        let lang2 = data.Language.replace(/\s+/g, '').split(',')
+        const result = _.intersection(lang1, lang2);
+        return lang1 === lang2|| lang2.includes(lang1) || result.length > 0 ? true : false
     }
   
 

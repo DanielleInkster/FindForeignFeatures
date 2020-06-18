@@ -12,8 +12,8 @@ import './MoreInfoItem.css'
 
 const MoreInfoItem=(props)=>{
     return(
-            <div class="flex-container">
-            <div class="flex-child image">
+            <div className="flex-container">
+            <div className="flex-child image">
                 <ImageUrl item={props.tmdb} type={props.type} />
             </div>
             <div class="flex-child data">
