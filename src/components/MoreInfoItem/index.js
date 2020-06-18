@@ -6,6 +6,7 @@ import NonEnglishName from '../NonEnglishName'
 import DisplayPlot from '../DisplayPlot';
 import CheckForUndefined from '../CheckForUndefined';
 
+
 import './MoreInfoItem.css'
 
 
@@ -34,7 +35,16 @@ const MoreInfoItem=(props)=>{
                 <br />
                 <u>Original Realease Date:</u> <CheckForUndefined omdb={props.omdb.Released}/>
                 <br />
-                <u>Rating:</u> <CheckForUndefined omdb={props.omdb.Rated}/>
+                {props.type ==='movie' &&
+                    <u>Rating: </u>} 
+                {props.type === 'movie' &&
+                    <CheckForUndefined omdb={props.omdb.Rated}/>
+                }
+                {props.type === 'tv' &&
+                    <u>Number of Seasons: </u>}
+                {props.type === 'tv' &&
+                     <CheckForUndefined omdb={props.omdb.totalSeasons}/>
+                }
                 <br />
                 <u> Runtime:</u> <CheckForUndefined omdb={props.omdb.Runtime}/>
                 <br />
