@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import * as _ from "lodash";
 import ISO6391 from 'iso-639-1';
 import MoreInfoItem from '../../components/MoreInfoItem';
-
 import 'whatwg-fetch'
 
 const API_KEY2 = `${process.env.REACT_APP_DB_API_KEY2}`
@@ -12,17 +11,21 @@ class MoreInfo extends Component {
         super(props);
         this.state = {
             tmdbInfo:[],
-            omdbInfo:[]
+            omdbInfo:[],
+            url: ''
         }
     }
 
     componentDidMount(){
         this.setState({ tmdbInfo: this.props.location.item })
         let year = this.findYear()
-        this.createFetch(year)
+        if (this.state.omdbInfo.length ===0) this.createFetch(year)
     }
 
-    
+    searchTerm(title){
+        return title.toString().toLowerCase().replace(/\s+/g, '+')
+    }
+
     slugify(text) {
         let input = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
         return input.toString().toLowerCase()
@@ -49,7 +52,13 @@ class MoreInfo extends Component {
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                (data.Response === "True" && this.compareLanguage(data)===true) ? this.setState({ omdbInfo: data}) : this.secondFetch(year)  
+                if (data.Response === "True" && this.compareLanguage(data) === true) {
+                    this.setState({ omdbInfo: data })
+                    let url = this.createSpecificURL(data)
+                    this.setState({ url: url })
+                } else {
+                    this.secondFetch(year)
+                }   
         })
     }
 
@@ -61,7 +70,15 @@ class MoreInfo extends Component {
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                (data.Response === "True" && this.compareLanguage(data)===true) ? this.setState({ omdbInfo: data }) : this.setState({ omdbInfo: 0 })            
+                if(data.Response === "True" && this.compareLanguage(data)===true){
+                    this.setState({ omdbInfo: data })
+                    let url = this.createSpecificURL(data) 
+                    this.setState({ url: url })
+                } else {
+                     this.setState({ omdbInfo: 0 }) 
+                    let url = this.createSearchURL()
+                    this.setState({ url: url })
+                }           
         })
     }
 
@@ -72,14 +89,26 @@ class MoreInfo extends Component {
         const result = _.intersection(lang1, lang2);
         return lang1 === lang2|| lang2.includes(lang1) || result.length > 0 ? true : false
     }
-  
+
+    createSpecificURL(data){
+        let url = `https://www.imdb.com/title/${data.imdbID}`
+        return url
+    }
+
+    createSearchURL=()=>{
+        let title = this.props.location.type === 'tv' ?
+            this.searchTerm(this.props.location.item.name) : this.searchTerm(this.props.location.item.title)
+        let year = this.findYear()
+        return `https://www.imdb.com/find?q=${title}+${year}&ref_=nv_sr_sm`
+    }
 
     render() {
        
         return (
             <div>
                 {this.state.omdbInfo.length !== 0 &&
-                    <MoreInfoItem tmdb={this.state.tmdbInfo} omdb={this.state.omdbInfo} type={this.props.location.type} />
+                    <MoreInfoItem tmdb={this.state.tmdbInfo} omdb={this.state.omdbInfo} type={this.props.location.type}
+                                url = {this.state.url} />
             }
             </div>
         )

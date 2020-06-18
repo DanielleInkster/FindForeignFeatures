@@ -5,6 +5,7 @@ import Title from '../Title';
 import NonEnglishName from '../NonEnglishName'
 import DisplayPlot from '../DisplayPlot';
 import CheckForUndefined from '../CheckForUndefined';
+import Button from '../Button';
 
 
 import './MoreInfoItem.css'
@@ -48,6 +49,10 @@ const MoreInfoItem=(props)=>{
                 <br />
                 <b><u>Runtime:</u></b>  <CheckForUndefined omdb={props.omdb.Runtime}/>
                 <br />
+                {console.log(props.url)}
+                <a target="_blank" href= {props.url}>
+                <Button value={'Find more at IMDB'}/>
+                </a>
             </div>
         </div>
     )
