@@ -1,13 +1,19 @@
+
 .flex-container {
     display: flex;
+    border: 2px solid rgb(88, 87, 87);
 }
 
 .flex-child {
     flex: 1;
-    border: 2px solid yellow;
     padding: 2%;
+    
 }  
 
-.flex-child:first-child {
-    margin-right: 20px;
+.data{
+    background: rgb(179, 179, 179);
+    border-left: 2px solid rgb(88, 87, 87);
+}
+.image {
+    background: white
 } 
