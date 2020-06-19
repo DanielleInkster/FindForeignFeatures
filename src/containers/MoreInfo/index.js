@@ -107,19 +107,20 @@ class MoreInfo extends Component {
     }
 
     render() {
-       if(this.props.more_info.length !== 0){
-        return (
-            <div>
-                {this.state.omdbInfo.length !== 0 &&
-                    <MoreInfoItem tmdb={this.state.tmdbInfo} omdb={this.state.omdbInfo} type={this.props.location.type}
-                                url = {this.state.url} history = {this.props.history}/>
-                }
-            </div>
-        )
-        }else{
+       if(this.props.more_info.length === 0){
            return (
                <Redirect to='error/404' />
            )
+        } else {
+           return (
+               <div>
+                   {this.state.omdbInfo.length !== 0 &&
+                       <MoreInfoItem tmdb={this.state.tmdbInfo} omdb={this.state.omdbInfo} type={this.props.location.type}
+                           url={this.state.url} history={this.props.history} />
+                   }
+               </div>
+           )
+           
         }
     };
 

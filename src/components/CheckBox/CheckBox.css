@@ -1,6 +1,11 @@
 #CheckBox{
     text-transform: capitalize;
     font-size: calc(14px + .5vw);
-    font-family: Questrial, sans-serif;
-    
+    font-family: Questrial, sans-serif; 
+}
+
+@media screen and (max-width: 1000px) {
+  #CheckBox {
+    font-size: calc(14px + 1vw);
+  }
 }

@@ -2,3 +2,9 @@ ul{
     vertical-align: left;
     list-style-type: none;
 }
+
+@media screen and (max-width: 1000px) {
+  li {
+    padding: 1%
+  }
+}
