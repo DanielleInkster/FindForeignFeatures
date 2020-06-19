@@ -1,5 +1,5 @@
 import React from 'react';
-import HtmlParser from '../HtmlParser';
+import HtmlParser from './HtmlParser';
 import ISO6391 from 'iso-639-1';
 
 

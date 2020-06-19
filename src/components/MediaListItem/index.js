@@ -1,8 +1,8 @@
 import React from 'react';
-import ConvertISO from '../ConvertISO';
+import ConvertISO from '../Assets/ConvertISO';
 import ImageUrl from '../ImageUrl';
 import Title from '../Title';
-import FindYear from '../FindYear'
+import FindYear from '../Assets/FindYear'
 
 
 const MediaListItem =(props)=>{

@@ -1,5 +1,5 @@
 import React from 'react';
-import HtmlParser from '../HtmlParser';
+import HtmlParser from './HtmlParser';
 
 const FindYear =(props) =>{
     let searchTerm =props.type === 'tv' ?  "first_air_date" :  "release_date"
