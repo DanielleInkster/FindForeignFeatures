@@ -1,7 +1,7 @@
 import React from 'react';
 import HtmlParser from '../HtmlParser';
 
-const RecNonEnglishName = (props) => {
+const MoreInfoNonEnglishName = (props) => {
     let searchTerm = ''
     let searchTerm2 = ''
     props.type === 'tv' ? searchTerm = "name" : searchTerm = "title"
@@ -15,4 +15,4 @@ const RecNonEnglishName = (props) => {
 }
 
 
-export default RecNonEnglishName;
+export default MoreInfoNonEnglishName;

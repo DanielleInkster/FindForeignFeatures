@@ -1,8 +1,8 @@
 import React from 'react';
 import ConvertISO from '../ConvertISO';
 import RecommendationImage from '../RecommendationImage';
-import RecTitle from '../MoreInfoTitle';
-import RecNonEnglishName from '../RecNonEnglishName'
+import RecTitle from './MoreInfoTitle';
+import MoreInfoNonEnglishName from './MoreInfoNonEnglishName'
 import DisplayPlot from '../DisplayPlot';
 import CheckForUndefined from '../CheckForUndefined';
 import Button from '../Assets/Button';
@@ -19,7 +19,7 @@ const MoreInfoItem=(props)=>{
             </div>
             <div className="flex-child data">
                 <h1 className='title'><RecTitle item={props.tmdb} type={props.type} /></h1>
-                <h2 className='nonEng'><RecNonEnglishName item={props.tmdb} type={props.type} /></h2>
+                <h2 className='nonEng'><MoreInfoNonEnglishName item={props.tmdb} type={props.type} /></h2>
                 <h3><ConvertISO language={props.tmdb.original_language} /></h3>
                 <h3><u>Plot</u></h3>
                 <DisplayPlot omdb={props.omdb.Plot} tmdb={props.tmdb.overview}/>

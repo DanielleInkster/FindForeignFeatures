@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import * as _ from "lodash";
 import ISO6391 from 'iso-639-1';
-import MoreInfoItem from '../../components/MoreInfoItem';
+import MoreInfoItem from '../../components/MoreInfoItem/Item';
 import 'whatwg-fetch'
 
 const API_KEY2 = `${process.env.REACT_APP_DB_API_KEY2}`
