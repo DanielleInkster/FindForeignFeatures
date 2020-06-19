@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import Button from '../Assets/Button'
 import NotFound from '../../Images/404.gif';
-import './PageNotFound.css'
+import '../../stylesheets/SimplePages/PageNotFound.css'
 
 const PageNotFound = () => (
     <div>

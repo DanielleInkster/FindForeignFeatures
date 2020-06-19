@@ -1,9 +1,9 @@
 import React from 'react'
-import './FAQ1.css'
-import './FAQ2.css'
-import './FAQ3.css'
-import './FAQ4.css'
-import './FAQ5.css'
+import '../../stylesheets/SimplePages/FAQ1.css'
+import '../../stylesheets/SimplePages/FAQ2.css'
+import '../../stylesheets/SimplePages/FAQ3.css'
+import '../../stylesheets/SimplePages/FAQ4.css'
+import '../../stylesheets/SimplePages/FAQ5.css'
 
 const FAQ = () => {
     return (
