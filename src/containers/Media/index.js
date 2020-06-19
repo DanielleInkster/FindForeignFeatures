@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import 'whatwg-fetch'
 import Button from '../../components/Assets/Button';
-import Input from '../../components/Input';
+import Input from '../../components/Assets/Input';
 import Message from '../../components/Message'
 import Loading from '../../components/Loading'
 
