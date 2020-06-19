@@ -4,7 +4,8 @@
 }
 
 a{
-   color: #f0a500
+   color: #f0a500;
+   font-weight:bold
 }
 
 .toggle {

@@ -23,19 +23,19 @@ const MoreInfoItem=(props)=>{
                 <p id="text"><ConvertISO language={props.tmdb.original_language} /></p>
                 <h3><u>Plot</u></h3>
                 <DisplayPlot omdb={props.omdb.Plot} tmdb={props.tmdb.overview}/>
-                <br />
-                <br/>
+                    <br />
+                    <br/>
                 <b><u>Cast:</u></b> <CheckForUndefined omdb={props.omdb.Actors}/>
-                <br />
+                    <br />
                 <b><u>Writers:</u></b> <CheckForUndefined omdb={props.omdb.Writer}/>
-                <br />
+                    <br />
                 <b><u>Awards and Nominations:</u></b> <CheckForUndefined omdb={props.omdb.Awards}/>
-                <br />
+                    <br />
                 <b><u>IMDB Rating:</u></b> <CheckForUndefined omdb={props.omdb.imdbRating}/>
-                <br />
-                <br />
+                    <br />
+                    <br />
                 <b><u>Original Release Date:</u></b>  <CheckForUndefined omdb={props.omdb.Released}/>
-                <br />
+                    <br />
                 {props.type ==='movie' &&
                     <b><u>Rating: </u></b> } 
                 {props.type === 'movie' &&
@@ -46,13 +46,16 @@ const MoreInfoItem=(props)=>{
                 {props.type === 'tv' &&
                      <CheckForUndefined omdb={props.omdb.totalSeasons}/>
                 }
-                <br />
+                    <br />
                 <b><u>Runtime:</u></b>  <CheckForUndefined omdb={props.omdb.Runtime}/>
-                <br />
-                <br />
-                <a target="_blank" href= {props.url}>
-                <Button value={'Find more at IMDB'}/>
+                    <br />
+                    <br />
+                <a target="_blank" href={props.url} alt='Find more at IMDB'>
+                    <Button value={'Find more at IMDB'} />
                 </a>
+                <span id='Back' alt='Go Back'>
+                    <Button value={'Back'} onClick={() => props.history.goBack()} alt='Go Back'/>
+               </span>
             </div>
         </div>
     )

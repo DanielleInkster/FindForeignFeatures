@@ -24,6 +24,12 @@
     font-size: calc(20px + 1vw);
 }
 
+#Back{
+    display: none;
+}
+
+
+
 @media screen and (max-width: 600px) {
   .flex-container {
     width: 100%;
@@ -36,5 +42,12 @@
     border-top: 2px solid rgb(88, 87, 87);
     border-left: 0px 
     }
-
 }
+
+
+@media screen and (max-width: 1000px) {
+ #Back{
+    display: block; 
+    }
+}
+
