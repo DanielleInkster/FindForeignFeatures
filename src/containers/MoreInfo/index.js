@@ -23,6 +23,7 @@ class MoreInfo extends Component {
         this.setState({ tmdbInfo: this.props.more_info })
         let year = this.findYear()
         if (this.state.omdbInfo.length ===0) this.createFetch(year)
+        window.scrollTo(0, 0)
     }
 
     searchTerm(title){

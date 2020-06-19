@@ -11,7 +11,8 @@ class SortRecommendations extends Component {
     }
 
     componentDidMount() {
-            this.returnSortedResults(this.props.comparedRecommendations)
+        this.returnSortedResults(this.props.comparedRecommendations)
+        window.scrollTo(0, 0)
     }
 
     redirect(to) {

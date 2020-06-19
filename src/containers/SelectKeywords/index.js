@@ -15,7 +15,8 @@ class SelectKeywords extends Component {
     }
 
     componentDidMount() {
-            this.createOptions()
+        this.createOptions()
+        window.scrollTo(0, 0)
     }
     
 

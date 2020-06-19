@@ -22,6 +22,7 @@ class Search extends Component {
         if (this.state.keywords.length === 0 && this.props.location.keywords !== undefined) {
             this.setState({ keywords: this.props.location.keywords })
         }
+        window.scrollTo(0, 0)
     }
 
     redirect(to, recommendations) {

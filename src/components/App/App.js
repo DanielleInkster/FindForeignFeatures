@@ -11,7 +11,7 @@ class App extends Component {
     render() {
         return (
             <div>
-            <Router>
+            <Router onUpdate={() => window.scrollTo(0, 0)}>
                <Routes/>
             </Router>
                 <ScrollButton scrollStepInPx='100' delayInMs='16.66'/>
