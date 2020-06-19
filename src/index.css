@@ -30,10 +30,11 @@
 
 #text{
   overflow: hidden;
-  font-size: calc(10px + .8vw);
+  font-size: calc(14px + .8vw);
   font-family: Questrial, sans-serif;
   line-height: calc(10px + 1vw);
   flex: 1 0 auto;
+  padding-bottom: .5%;
 }
 
 #overview{
