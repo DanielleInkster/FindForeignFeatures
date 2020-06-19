@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import Loading from '../../components/Loading';
+import Loading from '../../components/Assets/Loading';
 import Message from '../../components/Message';
 import KeywordRecommendations from '../KeywordRecommendations';
 import Genres from '../Genres';

@@ -4,7 +4,7 @@ import 'whatwg-fetch'
 import Button from '../../components/Assets/Button';
 import Input from '../../components/Assets/Input';
 import Message from '../../components/Message'
-import Loading from '../../components/Loading'
+import Loading from '../../components/Assets/Loading'
 
 const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
