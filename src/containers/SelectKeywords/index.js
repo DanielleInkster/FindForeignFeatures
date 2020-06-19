@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import Message from '../../components/Assets/Message';
 import CheckBoxList from '../../components/Assets/CheckBoxList';
 import Button from '../../components/Assets/Button';
-import './SelectKeywords.css'
+import '../../stylesheets/Keywords/SelectKeywords.css'
 
 class SelectKeywords extends Component {
     constructor(props) {

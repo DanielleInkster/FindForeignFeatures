@@ -1,5 +1,5 @@
 import React from 'react';
-import HtmlParser from '../Assets/HtmlParser';
+import HtmlParser from './HtmlParser';
 
 const NonEnglishName = (props)=>{
     let searchTerm = ''

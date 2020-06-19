@@ -1,9 +1,9 @@
 import React from 'react';
-import ConvertISO from '../Assets/ConvertISO';
+import ConvertISO from '../ConvertISO';
 import ImageUrl from '../ImageUrl';
 import Title from '../Title';
 import NonEnglishName from '../NonEnglishName';
-import FindYear from '../Assets/FindYear'
+import FindYear from '../FindYear'
 
 
 const RecommendationsListItem = (props) => {

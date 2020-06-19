@@ -1,5 +1,5 @@
 import React from 'react';
-import ConvertISO from '../Assets/ConvertISO';
+import ConvertISO from '../Lists/ConvertISO';
 import MoreInfoImage from '../MoreInfoItem/MoreInfoImage';
 import RecTitle from './MoreInfoTitle';
 import MoreInfoNonEnglishName from './MoreInfoNonEnglishName'
