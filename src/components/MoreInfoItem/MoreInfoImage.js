@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import NoImage from '../../Images/NoImage.png'
-import './recImage.css'
+import '../../stylesheets/MoreInfo/MoreInfoImage.css'
 
-class RecommendationImage extends Component {
+class MoreInfoImage extends Component {
    choosePicSource(){
      if(this.props.tmdb.poster_path !== null) {
          return `https://image.tmdb.org/t/p/w500/${this.props.tmdb.poster_path}`
@@ -18,4 +18,4 @@ class RecommendationImage extends Component {
         return <img src={this.choosePicSource()} alt={"Media Poster"} id="recPoster" />
     }
 }
-export default RecommendationImage;
+export default MoreInfoImage;

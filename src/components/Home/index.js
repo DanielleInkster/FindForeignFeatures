@@ -1,6 +1,6 @@
 import React from 'react';
 import ChooseMedia from '../ChooseMedia';
-import Message from '../Message';
+import Message from '../Assets/Message';
 import './Home.css';
 
 

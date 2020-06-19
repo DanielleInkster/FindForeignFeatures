@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Loading from '../../components/Assets/Loading';
-import Message from '../../components/Message';
+import Message from '../../components/Assets/Message';
 import KeywordRecommendations from '../KeywordRecommendations';
 import Genres from '../Genres';
 import Compare from '../Compare';

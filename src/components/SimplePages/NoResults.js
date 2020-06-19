@@ -1,5 +1,5 @@
 import React from 'react'
-import Message from '../Message'
+import Message from '../Assets/Message';
 import Button from '../Assets/Button'
 import {Link} from 'react-router-dom'
 

@@ -1,21 +1,21 @@
 import React from 'react';
 import ConvertISO from '../ConvertISO';
-import RecommendationImage from '../RecommendationImage';
+import MoreInfoImage from '../MoreInfoItem/MoreInfoImage';
 import RecTitle from './MoreInfoTitle';
 import MoreInfoNonEnglishName from './MoreInfoNonEnglishName'
-import DisplayPlot from '../DisplayPlot';
-import CheckForUndefined from '../CheckForUndefined';
+import DisplayPlot from './DisplayPlot';
+import CheckForUndefined from './CheckForUndefined';
 import Button from '../Assets/Button';
 
 
-import './MoreInfoItem.css'
+import '../../stylesheets/MoreInfo/MoreInfoItem.css'
 
 
 const MoreInfoItem=(props)=>{
     return(
             <div className="flex-container">
             <div className="flex-child image">
-                <RecommendationImage tmdb={props.tmdb} omdb={props.omdb} />
+                <MoreInfoImage tmdb={props.tmdb} omdb={props.omdb} />
             </div>
             <div className="flex-child data">
                 <h1 className='title'><RecTitle item={props.tmdb} type={props.type} /></h1>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import Message from '../../components/Message';
+import Message from '../../components/Assets/Message';
 import CheckBoxList from '../../components/Assets/CheckBoxList';
 import Button from '../../components/Assets/Button';
 import './SelectKeywords.css'
