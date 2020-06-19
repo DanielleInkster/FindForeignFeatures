@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom';
 import MediaListItem from '../MediaListItem';
-import Button from '../Button';
+import Button from '../Assets/Button';
 import './MediaList.css'
 
 const MediaList =(props)=>  {

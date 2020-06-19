@@ -2,7 +2,7 @@ import React from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux'
 import RecommendationsListItem from '../RecommendationsListItem';
-import Button from '../Button';
+import Button from '../Assets/Button';
 
 
 const RecommendationsList =(props) => {

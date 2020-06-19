@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import Message from '../../components/Message';
 import CheckBoxList from '../../components/CheckBoxList';
-import Button from '../../components/Button';
+import Button from '../../components/Assets/Button';
 import './SelectKeywords.css'
 
 class SelectKeywords extends Component {

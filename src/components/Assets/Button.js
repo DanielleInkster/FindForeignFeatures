@@ -1,5 +1,5 @@
 import React from 'react';
-import './button.css';
+import '../../stylesheets/Assets/Button.css';
 
 const Button = (props) => {
     return <input id="Button" type="submit" value={props.value} onClick={ props.onClick } />

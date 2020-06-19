@@ -1,6 +1,6 @@
 import React from 'react'
 import Message from '../Message'
-import Button from '../Button'
+import Button from '../Assets/Button'
 import {Link} from 'react-router-dom'
 
 const NoResults =()=>{

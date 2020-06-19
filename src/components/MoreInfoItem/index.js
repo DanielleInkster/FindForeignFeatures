@@ -5,7 +5,7 @@ import RecTitle from '../RecTitle';
 import RecNonEnglishName from '../RecNonEnglishName'
 import DisplayPlot from '../DisplayPlot';
 import CheckForUndefined from '../CheckForUndefined';
-import Button from '../Button';
+import Button from '../Assets/Button';
 
 
 import './MoreInfoItem.css'
