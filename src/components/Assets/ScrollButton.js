@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import upButton from '../../Images/up.png';
-import './ScrollButton.css'
+import '../../stylesheets/Assets/ScrollButton.css'
 
 class ScrollButton extends Component {
     constructor() {

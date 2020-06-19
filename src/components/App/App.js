@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ScrollButton from '../ScrollButton';
+import ScrollButton from '../Assets/ScrollButton';
 
 import './App.css'
 import Routes from '../Routes';

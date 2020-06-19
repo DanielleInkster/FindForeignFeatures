@@ -8,11 +8,11 @@ import './FAQ5.css'
 const FAQ = () => {
     return (
         <div>
-            <div class="wrap-collabsible">
-                <input id="collapsible" class="toggle" type="checkbox" />
-                    <label for="collapsible" class="lbl-toggle" id="label">Why can't I find my favorite English feature?</label>
-                    <div class="collapsible-content">
-                        <div class="content-inner">
+            <div className="wrap-collabsible">
+                <input id="collapsible" className="toggle" type="checkbox" />
+                    <label for="collapsible" className="lbl-toggle" id="label">Why can't I find my favorite English feature?</label>
+                    <div className="collapsible-content">
+                        <div className="content-inner">
                             
                                 <p>
                                     ‣ First, check your spelling. You'll have much better luck searching for 'Sherlock Holmes' than 'Sherlock Homes.'
@@ -32,11 +32,11 @@ const FAQ = () => {
                     </div>
                 </div>
             <br/>
-              <div class="wrap-collabsible">
-                <input id="collapsible2" class="toggle2" type="checkbox" />
-                    <label for="collapsible2" class="lbl-toggle2" id="label2">Where do you get your feature information from?</label>
-                    <div class="collapsible-content2">
-                        <div class="content-inner2">
+              <div className="wrap-collabsible">
+                <input id="collapsible2" className="toggle2" type="checkbox" />
+                    <label for="collapsible2" className="lbl-toggle2" id="label2">Where do you get your feature information from?</label>
+                    <div className="collapsible-content2">
+                        <div className="content-inner2">
                          
                                 <p>
                                 Find Foreign Features makes use of two APIs:
@@ -58,11 +58,11 @@ const FAQ = () => {
                     </div>
                 </div>
             <br/>
-                <div class="wrap-collabsible">
-                  <input id="collapsible3" class="toggle3" type="checkbox" />
-                    <label for="collapsible3" class="lbl-toggle3" id="label3">Why is the language described as 'Chinese' rather than 'Mandarin', 'Cantonese', etc.?</label>
-                    <div class="collapsible-content3">
-                        <div class="content-inner3">
+                <div className="wrap-collabsible">
+                  <input id="collapsible3" className="toggle3" type="checkbox" />
+                    <label for="collapsible3" className="lbl-toggle3" id="label3">Why is the language described as 'Chinese' rather than 'Mandarin', 'Cantonese', etc.?</label>
+                    <div className="collapsible-content3">
+                        <div className="content-inner3">
                             <p>
                                 This is an unfortunate sacrifice that has been made in order to get the TMDb and OMDb APIs to work together to bring our users 
                                 the most complete information about a film or series. 
@@ -72,11 +72,11 @@ const FAQ = () => {
                     </div>
                 </div>
             <br />
-                <div class="wrap-collabsible">
-                  <input id="collapsible4" class="toggle4" type="checkbox" />
-                    <label for="collapsible4" class="lbl-toggle4" id="label4">What if I find information I know is incorrect?</label>
-                    <div class="collapsible-content4">
-                        <div class="content-inner4">
+                <div className="wrap-collabsible">
+                  <input id="collapsible4" className="toggle4" type="checkbox" />
+                    <label for="collapsible4" className="lbl-toggle4" id="label4">What if I find information I know is incorrect?</label>
+                    <div className="collapsible-content4">
+                        <div className="content-inner4">
                 
                                 <p>
                                     As most of the information is provided by the public, sometimes mistakes will happen. 
@@ -93,11 +93,11 @@ const FAQ = () => {
                     </div>
                 </div>
             <br/>
-                <div class="wrap-collabsible">
-                    <input id="collapsible5" class="toggle5" type="checkbox" />
-                      <label for="collapsible5" class="lbl-toggle5" id="label5">Why haven't you answered my question yet?</label>
-                        <div class="collapsible-content5">
-                            <div class="content-inner5">
+                <div className="wrap-collabsible">
+                    <input id="collapsible5" className="toggle5" type="checkbox" />
+                      <label for="collapsible5" className="lbl-toggle5" id="label5">Why haven't you answered my question yet?</label>
+                        <div className="collapsible-content5">
+                            <div className="content-inner5">
                                 
                                     <p>
                                         ‣ Do you still have questions or concerns? 
