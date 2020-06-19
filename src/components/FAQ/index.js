@@ -108,11 +108,11 @@ const FAQ = () => {
                             <div class="content-inner5">
                                 <ul>
                                     <li>
-                                        Do you still have questions or concerns? 
+                                        ‣ Do you still have questions or concerns? 
                                      </li>
                                     <br/>
                                     <li>
-                                        Is there a feature you'd like to see?
+                                        ‣ Is there a feature you'd like to see added to the site?
                                     </li>
                                     <br />
                                     <li>
