@@ -4,10 +4,8 @@
 }
 
 .content-container {
- padding-bottom: 2.5%;
+ padding-bottom: 3rem;
 }
-
-
 
 .App {
   text-align: center;
@@ -47,11 +45,10 @@
 }
 
 .App-footer {
-/* display: flex; */
 position: absolute;
   left: 0;
   bottom: 0;
-  height: 1%;
+  height: 1.5rem;
   width: 100%;
   color: #f0a500;
   text-align: left;
