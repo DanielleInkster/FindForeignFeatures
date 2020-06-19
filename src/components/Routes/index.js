@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import Icon from '../Icon';
-import Home from '../Home'
-import NoResults from '../NoResults'
-import PageNotFound from '../PageNotFound'
+import Icon from '../Assets/Icon';
+import Home from '../Home/Home'
+import NoResults from '../SimplePages/NoResults'
+import PageNotFound from '../SimplePages/PageNotFound'
 import Media from '../../containers/Media'
 import Keywords from '../../containers/Keywords'
 import Search from '../../containers/Search'
 import SelectKeywords from '../../containers/SelectKeywords'
 import MoreInfo from '../../containers/MoreInfo'
-import MediaList from '../MediaList'
-import FAQ from '../FAQ'
-import Contact from '../Contact'
-import RecommendationsList from '../RecommendationsList'
+import MediaList from '../Lists/MediaList/MediaList'
+import FAQ from '../SimplePages/FAQ'
+import Contact from '../SimplePages/Contact'
+import RecommendationsList from '../Lists/RecommendationsList/RecommendationsList'
 
 import {
     Link,

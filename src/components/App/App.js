@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ScrollButton from '../ScrollButton';
+import ScrollButton from '../Assets/ScrollButton';
 
-import './App.css'
+import '../../stylesheets/App/App.css'
 import Routes from '../Routes';
 import {BrowserRouter as Router} from "react-router-dom"
 

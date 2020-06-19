@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import * as _ from "lodash";
 import ISO6391 from 'iso-639-1';
-import MoreInfoItem from '../../components/MoreInfoItem';
+import MoreInfoItem from '../../components/MoreInfoItem/Item';
 import 'whatwg-fetch'
 
 const API_KEY2 = `${process.env.REACT_APP_DB_API_KEY2}`
@@ -40,7 +40,7 @@ class MoreInfo extends Component {
     }
 
     findYear() {
-        let searchTerm = this.props.location.type === 'tv' ? "first_air_date" : "release_date"
+        let searchTerm = this.props.match.params.mediaType === 'tv' ? "first_air_date" : "release_date"
 
         let year = (this.props.more_info.hasOwnProperty(searchTerm) && this.props.more_info[searchTerm] !== "") ?
             this.props.more_info[searchTerm].slice(0, 4) : "[Unknown]" 
@@ -49,7 +49,7 @@ class MoreInfo extends Component {
     }
 
     createFetch = (year) => {
-        let firstTitle = this.props.location.type === 'tv' ? 
+        let firstTitle = this.props.match.params.mediaType === 'tv' ? 
             this.slugify(this.props.more_info.name) : this.slugify(this.props.more_info.title)
     
         fetch(`http://www.omdbapi.com/?apikey=${API_KEY2}&t=${firstTitle}&y=${year}&plot=full`)
@@ -67,7 +67,7 @@ class MoreInfo extends Component {
     }
 
     secondFetch = (year) => {
-        let secondTitle = this.props.location.type === 'tv' ? 
+        let secondTitle = this.props.match.params.mediaType === 'tv' ? 
             this.slugify(this.props.more_info.original_name) : this.slugify(this.props.more_info.original_title)
 
         fetch(`http://www.omdbapi.com/?apikey=${API_KEY2}&t=${secondTitle}&y=${year}&plot=full`)
@@ -100,7 +100,7 @@ class MoreInfo extends Component {
     }
 
     createSearchURL=()=>{
-        let title = this.props.location.type === 'tv' ?
+        let title = this.props.match.params.mediaType === 'tv' ?
             this.searchTerm(this.props.more_info.name) : this.searchTerm(this.props.more_info.title)
         let year = this.findYear()
         return `https://www.imdb.com/find?q=${title}+${year}&ref_=nv_sr_sm`
@@ -115,7 +115,7 @@ class MoreInfo extends Component {
            return (
                <div>
                    {this.state.omdbInfo.length !== 0 &&
-                       <MoreInfoItem tmdb={this.state.tmdbInfo} omdb={this.state.omdbInfo} type={this.props.location.type}
+                       <MoreInfoItem tmdb={this.state.tmdbInfo} omdb={this.state.omdbInfo} type={this.props.match.params.mediaType}
                            url={this.state.url} history={this.props.history} />
                    }
                </div>
