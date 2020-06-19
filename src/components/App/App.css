@@ -1,3 +1,14 @@
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.content-container {
+ padding-bottom: 2.5%;
+}
+
+
+
 .App {
   text-align: center;
 }
@@ -35,6 +46,38 @@
   justify-content: center;
 }
 
+.App-footer {
+/* display: flex; */
+position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1%;
+  width: 100%;
+  color: #f0a500;
+  text-align: left;
+  margin-left:1%;
+  margin-top:.5%;
+}
+
+.FAQ{
+  margin-right: 1%;
+}
+
+.FAQ:link {
+  color:#f0a500;
+}
+
+.FAQ:visited {
+  color: rgb(88, 87, 87);
+}
+
+.Contact:link {
+  color:#f0a500;
+}
+
+.Contact:visited {
+  color: rgb(88, 87, 87);
+}
 
 .SiteTitle{
   font-family: Lobster, sans-serif;

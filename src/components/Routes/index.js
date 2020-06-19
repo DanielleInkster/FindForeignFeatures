@@ -22,7 +22,8 @@ class Routes extends Component {
 
     render() {
         return (
-            <div>
+            <div className = 'page-container'>
+                <div className='content-container'>
                 <div className="App">
                     <header className="App-header">
                         <div className="Container">
@@ -49,6 +50,11 @@ class Routes extends Component {
                             <Route path="*" render={() => { return (<PageNotFound />) }} />
                         </Switch>
                     </div>
+                </div>
+                <footer className = 'App-footer'>
+                <Link to={{ pathname: '/FAQ' }} className='FAQ'>FAQ</Link> 
+                <Link to={{ pathname: '/contact' }} className ='Contact'>Contact Us</Link>
+                </footer>
             </div>
         );
     }
