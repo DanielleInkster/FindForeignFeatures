@@ -1,6 +1,6 @@
 import React from 'react';
-import CheckBox from '../CheckBox';
-import './CheckBoxList.css';
+import CheckBox from './CheckBox';
+import '../../stylesheets/Assets/CheckBoxList.css';
 
 const CheckBoxList = (props) =>{
     return(

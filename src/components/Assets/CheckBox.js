@@ -1,5 +1,5 @@
 import React from 'react'
-import './CheckBox.css'
+import '../../stylesheets/Assets/CheckBox.css'
 
 export const CheckBox = props => {
     return (

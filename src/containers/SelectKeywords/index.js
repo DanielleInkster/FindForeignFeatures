@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import Message from '../../components/Message';
-import CheckBoxList from '../../components/CheckBoxList';
+import CheckBoxList from '../../components/Assets/CheckBoxList';
 import Button from '../../components/Assets/Button';
 import './SelectKeywords.css'
 
