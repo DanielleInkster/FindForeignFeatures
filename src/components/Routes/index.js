@@ -9,6 +9,8 @@ import Search from '../../containers/Search'
 import SelectKeywords from '../../containers/SelectKeywords'
 import MoreInfo from '../../containers/MoreInfo'
 import MediaList from '../MediaList'
+import FAQ from '../FAQ'
+import Contact from '../Contact'
 import RecommendationsList from '../RecommendationsList'
 
 import {
@@ -47,6 +49,8 @@ class Routes extends Component {
                             <Route exact match path="/:mediaType/:id/recommendations" render={(props) => <RecommendationsList {...props} />} />
                             <Route exact match path="/:mediaType/:id/recommendations/:recId" render={(props) => <MoreInfo {...props} />} />
                             <Route exact match path="/:mediaType/:id/noresults" render={() => { return (<NoResults />) }} />
+                            <Route exact match path="/FAQ" render={() => { return (<FAQ />) }} />
+                            <Route exact match path="/contact" render={() => { return (<Contact />) }} />
                             <Route path="*" render={() => { return (<PageNotFound />) }} />
                         </Switch>
                     </div>
