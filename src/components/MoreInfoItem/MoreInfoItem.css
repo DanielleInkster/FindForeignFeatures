@@ -31,4 +31,10 @@
     margin-bottom: 2%;
   }
 
+  .data{
+    background: rgb(179, 179, 179);
+    border-top: 2px solid rgb(88, 87, 87);
+    border-left: 0px 
+}
+
 }

@@ -49,6 +49,7 @@ const MoreInfoItem=(props)=>{
                 <br />
                 <b><u>Runtime:</u></b>  <CheckForUndefined omdb={props.omdb.Runtime}/>
                 <br />
+                <br />
                 <a target="_blank" href= {props.url}>
                 <Button value={'Find more at IMDB'}/>
                 </a>
