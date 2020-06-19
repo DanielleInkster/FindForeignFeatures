@@ -79,7 +79,7 @@ const FAQ = () => {
                         <div class="content-inner4">
                 
                                 <p>
-                                    As some of the information is provided by the public, some mistakes will happen. 
+                                    As most of the information is provided by the public, sometimes mistakes will happen. 
                                 </p>
                                 <p>
                                     If you find information about a feature you know to be incorrect, you can fix it yourself if you so choose by 
