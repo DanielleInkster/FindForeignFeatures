@@ -13,24 +13,21 @@ const FAQ = () => {
                     <label for="collapsible" class="lbl-toggle" id="label">Why can't I find my favorite English feature?</label>
                     <div class="collapsible-content">
                         <div class="content-inner">
-                            <ul>
-                                <li>
+                            
+                                <p>
                                     ‣ First, check your spelling. You'll have much better luck searching for 'Sherlock Holmes' than 'Sherlock Homes.'
-                                </li>
-                                <br/>
-                                <li>
+                                </p>
+                                <p>
                                     ‣ Next, check your spacing. Again, you'll be far more successful searching for 'The Birdcage' rather than 'The Bird Cage.'
-                                </li>
-                                <br />
-                                <li>
+                                </p>
+                                <p>
                                     ‣ Finally, it could be that your favorite feature hasn't yet been entered into the API. You can 
                                 add a movie or series to this API by joining The Movie Database (it's free!) 
-                                </li>
-                                <br />
-                                <li>
+                                </p>
+                                <p>
                                     More information can be found <a href='https://www.themoviedb.org/faq/website'> here.</a>
-                                </li>
-                            </ul>
+                                </p>
+        
                         </div>
                     </div>
                 </div>
@@ -40,26 +37,23 @@ const FAQ = () => {
                     <label for="collapsible2" class="lbl-toggle2" id="label2">Where do you get your feature information from?</label>
                     <div class="collapsible-content2">
                         <div class="content-inner2">
-                            <ul>
-                                <li>
+                         
+                                <p>
                                 Find Foreign Features makes use of two APIs:
-                                </li>
-                                <li>
-                                <br />
+                                </p>
+                                <p>
                                 <a href='https://developers.themoviedb.org/3/getting-started/introduction'>TMDb API</a> 
-                                </li>
-                                <br />
+                                </p>
                                 and 
                                 <br />
-                                <br />
-                                <li>
+                                <p>
                                 <a href='http://www.omdbapi.com/'>OMDb API</a>
-                                </li>
-                                <li>
+                                </p>
+                                <p>
                                 <br/>
                                 ✺We are not affiliated with nor endorsed by IMDb.✺
-                                </li>
-                            </ul>
+                                </p>
+                          
                         </div>
                     </div>
                 </div>
@@ -83,20 +77,18 @@ const FAQ = () => {
                     <label for="collapsible4" class="lbl-toggle4" id="label4">What if I find information I know is incorrect?</label>
                     <div class="collapsible-content4">
                         <div class="content-inner4">
-                            <ul>
-                                <li>
+                
+                                <p>
                                     As some of the information is provided by the public, some mistakes will happen. 
-                                </li>
-                                <br/>
-                                <li>
+                                </p>
+                                <p>
                                     If you find information about a feature you know to be incorrect, you can fix it yourself if you so choose by 
                                     joining The Movie Database (it's free!) 
-                                </li>
-                                <br/>
-                                <li>
+                                </p>
+                                <p>
                                     More information can be found <a href='https://www.themoviedb.org/faq/website'> here.</a>
-                                </li>
-                            </ul>
+                                </p>
+                  
                         </div>
                     </div>
                 </div>
@@ -106,21 +98,19 @@ const FAQ = () => {
                       <label for="collapsible5" class="lbl-toggle5" id="label5">Why haven't you answered my question yet?</label>
                         <div class="collapsible-content5">
                             <div class="content-inner5">
-                                <ul>
-                                    <li>
+                                
+                                    <p>
                                         ‣ Do you still have questions or concerns? 
-                                     </li>
-                                    <br/>
-                                    <li>
+                                     </p>
+                                    <p>
                                         ‣ Is there a feature you'd like to see added to the site?
-                                    </li>
-                                    <br />
-                                    <li>
+                                    </p>
+                                    <p>
                                         We'd love to hear from you! 
-                                    </li>
-                                    <br />
+                                    </p>
                                         <a href="mailto:admin@findforeignfeatures.com">Contact us</a>
-                                    </ul>
+                                    <br/>
+                                    <br />
                             </div>
                         </div>
                 </div>
