@@ -1,5 +1,5 @@
 import React from 'react';
-import HtmlParser from '../Lists/HtmlParser';
+import HtmlParser from './HtmlParser';
 
 const Message = (props) => {
    return <HtmlParser text ={props.text}/>
