@@ -1,6 +1,10 @@
 a{
-   color: #f0a500;
+   color: rgb(88, 87, 87);
    font-weight:bold
+}
+
+a:hover{
+   color: #f0a500;
 }
 
 .toggle5{
