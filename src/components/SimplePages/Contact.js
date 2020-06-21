@@ -1,23 +1,25 @@
 import React from 'react'
+import '../../stylesheets/SimplePages/Contact.css'
 
 const Contact =()=>{
     return(
         <div>
-            <ul>
-            <li>
                 ‣ Do you have questions or concerns?
-                                     </li>
+                                  
             <br />
-            <li>
+            <br />
+    
                 ‣ Is there a feature you'd like to see added to this site?
-                                    </li>
+                                  
             <br />
-            <li>
+            <br />
+            
                 We'd love to hear from you!
-                                    </li>
+                                  
+            <br />
             <br />
             <a href="mailto:admin@findforeignfeatures.com">Contact us</a>
-            </ul>
+          
         </div>
     )
 
