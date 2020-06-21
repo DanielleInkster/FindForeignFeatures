@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import ScrollButton from '../Assets/ScrollButton';
+import ScrollButton from './components/Assets/ScrollButton';
 
 import './App.css'
-import Routes from '../Routes';
+import Routes from './components/Routes';
 import {BrowserRouter as Router} from "react-router-dom"
 
 
