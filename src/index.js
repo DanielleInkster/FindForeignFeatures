@@ -1,8 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+<<<<<<< HEAD
 import App from './src/components/App/App.js';
 import * as serviceWorker from '../src/serviceWorker';
+=======
+import App from './components/App/App';
+import * as serviceWorker from './serviceWorker';
+>>>>>>> parent of b28178b... all containers sorted
 
 import { Provider } from 'react-redux';
 import {createStore} from 'redux';
