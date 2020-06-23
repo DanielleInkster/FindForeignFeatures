@@ -7,8 +7,6 @@ import ISO6391 from 'iso-639-1';
 import MoreInfoItem from '../../components/MoreInfoItem/Item';
 import 'whatwg-fetch'
 
-// const API_KEY2 = `${process.env.REACT_APP_DB_API_KEY2}`
-
 class MoreInfo extends Component {
     constructor(props) {
         super(props);
@@ -94,16 +92,16 @@ class MoreInfo extends Component {
         return lang1 === lang2|| lang2.includes(lang1) || result.length > 0 ? true : false
     }
 
-    createSpecificURL(data){
-        let url = `https://www.imdb.com/title/${data.imdbID}`
-        return url
-    }
-
-    createSearchURL=()=>{
+    createSearchURL = () => {
         let title = this.props.match.params.mediaType === 'tv' ?
             this.searchTerm(this.props.more_info.name) : this.searchTerm(this.props.more_info.title)
         let year = this.findYear()
         return `https://www.imdb.com/find?q=${title}+${year}&ref_=nv_sr_sm`
+    }
+
+    createSpecificURL(data){
+        let url = `https://www.imdb.com/title/${data.imdbID}`
+        return url
     }
 
     render() {

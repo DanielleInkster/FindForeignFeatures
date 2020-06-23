@@ -1,0 +1,18 @@
+#plot{
+    font-size: calc(10px + .6vw);
+    line-height: calc(10px + .7vw);
+}
+
+@media screen and (max-width: 500px) {
+  #plot {
+    font-size: calc(10px + 2vw);
+    line-height: calc(10px + 2.1vw);
+  }
+}
+
+@media screen and (min-width: 501px) and (max-width: 675px) {
+  #plot {
+    font-size: calc(12px + .8vw);
+    line-height: calc(12px + .9vw);
+  }
+}
