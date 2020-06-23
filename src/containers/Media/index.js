@@ -6,7 +6,7 @@ import Input from '../../components/Assets/Input';
 import Message from '../../components/Assets/Message'
 import Loading from '../../components/Assets/Loading'
 
-const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
+// const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
 class Media extends Component{
     constructor(props, { match }) {
@@ -36,7 +36,7 @@ class Media extends Component{
     }
 
     createFetch=(value)=>{
-        fetch(`https://api.themoviedb.org/3/search/${this.props.match.params.mediaType}?api_key=${API_KEY}`+
+        fetch(`https://api.themoviedb.org/3/search/${this.props.match.params.mediaType}?api_key=${process.env.REACT_APP_DB_API_KEY}`+
             `&language=en-US&page=1&query=${value}&include_adult=false`)
             .then((response) => {
                 return response.json();

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
+// const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
 class Keywords extends Component {
     constructor(props) {
@@ -35,7 +35,7 @@ class Keywords extends Component {
     }
 
     findKeywordsFetch = (type, id, searchTerm) => {
-        fetch(`https://api.themoviedb.org/3/${type}/${id}/keywords?api_key=${API_KEY}`)
+        fetch(`https://api.themoviedb.org/3/${type}/${id}/keywords?api_key=${process.env.REACT_APP_DB_API_KEY}`)
             .then((response) => {
                 return response.json();
             }).then((data) => {

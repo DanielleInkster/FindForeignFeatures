@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
+// const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
 class KeywordRecommendations extends Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class KeywordRecommendations extends Component {
         let i;
         let pages = data.total_pages < 150 ? data.total_pages : 150
         for (i = 1; i <= pages; i++) {
-            fetch(`https://api.themoviedb.org/3/discover/${this.props.type}?api_key=${API_KEY}&language=en-US&` +
+            fetch(`https://api.themoviedb.org/3/discover/${this.props.type}?api_key=${process.env.REACT_APP_DB_API_KEY}&language=en-US&` +
                 `sort_by=popularity.desc&include_adult=false&include_video=false&page=${i}&with_keywords=${num}`)
                 .then((response) => {
                     return response.json();
