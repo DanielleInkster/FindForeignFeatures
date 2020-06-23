@@ -10,7 +10,7 @@ const NonEnglishName = (props)=>{
     if (props.item[searchTerm] !== props.item[searchTerm2] && props.item[searchTerm].length <40){
        return <HtmlParser text ={`English Title: <b>${props.item[searchTerm]}</b>`}/>
     } else if (props.item[searchTerm] !== props.item[searchTerm2] && props.item[searchTerm].length > 40) {
-        return <HtmlParser text={`English Title: <b>${props.item[searchTerm].slice(0,40)}...</b>`} />
+        return <HtmlParser text={`English Title: <b>${props.item[searchTerm].slice(0,35)}...</b>`} />
     } else {
        return <HtmlParser text={`English Title: <b>N/A</b>`}/>
    }

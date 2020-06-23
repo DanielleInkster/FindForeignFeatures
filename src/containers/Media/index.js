@@ -6,8 +6,6 @@ import Input from '../../components/Assets/Input';
 import Message from '../../components/Assets/Message'
 import Loading from '../../components/Assets/Loading'
 
-// const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
-
 class Media extends Component{
     constructor(props, { match }) {
     super(props);

@@ -5,57 +5,85 @@
 
 .mediaHeading{
   overflow: hidden;
-  font-size: calc(12px + 1vw); 
+  font-size: calc(16px + 1vw); 
   font-weight: bold;
   text-overflow: ellipsis;
   word-wrap: break-word;
   display: block;
-  line-height: calc(12px + 1vw);
-  min-height: calc(24px + 2vw);
+  line-height: calc(16px + 1vw);
+  min-height: calc(32px + 2vw);
 }
 
 #wow{
   font-family: Lobster, sans-serif;
-  font-size: calc(16px + 2vw) !important;
+  font-size: calc(20px + 2vw) !important;
 }
 
 #nonEnglishHeading{
   overflow: hidden;
-  font-size: calc(10px + 1vw);
+  font-size: calc(14px + 1vw);
   font-family: Questrial, sans-serif;
-  line-height: calc(10px + 1vw);
-  min-height: calc(20px + 2vw);
+  line-height: calc(16px + 1vw);
+  min-height: calc(32px + 2vw);
   flex: 1 0 auto;
 }
 
 #text{
   overflow: hidden;
-  font-size: calc(14px + .8vw);
+  font-size: calc(10px + .75vw);
   font-family: Questrial, sans-serif;
-  line-height: calc(10px + 1vw);
+  line-height: calc(12px + .9vw);
   flex: 1 0 auto;
   padding-bottom: .5%;
 }
 
 #overview{
-  overflow-y: scroll;
-  font-size: calc(10px + .5vw);
+  overflow-y: hidden;
+  font-size: calc(10px + .6vw);
   font-family: Questrial, sans-serif;
-  line-height: calc(10px + .5vw);
-  height: calc(20px + 1.5vw);
+  line-height: calc(10px + 1.1vw);
+  height: calc(20px + 2.1vw);
   flex: 1 0 auto;
 }
 
-@media screen and (max-width:675px){
+@media screen and (max-width:500px){
+  #text{
+    overflow: hidden;
+    font-size: calc(14px + .8vw);
+    font-family: Questrial, sans-serif;
+    line-height: calc(14px + .9vw);
+    flex: 1 0 auto;
+    padding-bottom: .5%;
+  }
+
   #overview{
-  overflow-y: scroll;
-  font-size: calc(10px + 1vw);
+  overflow-y: hidden;
+  font-size: calc(12px + 1vw);
   font-family: Questrial, sans-serif;
-  line-height: calc(10px + 1vw);
-  height: calc(20px + 1.5vw);
+  line-height: calc(12px + 1.1vw);
+  height: calc(24px + 2.1vw);
   flex: 1 0 auto;
   margin: 1%
   }
 }
 
+@media screen and (max-width:675px){
+  #text{
+    overflow: hidden;
+    font-size: calc(12px + .8vw);
+    font-family: Questrial, sans-serif;
+    line-height: calc(14px + .9vw);
+    flex: 1 0 auto;
+    padding-bottom: .5%;
+  }
 
+  #overview{
+  overflow-y: hidden;
+  font-size: calc(12px + .5vw);
+  font-family: Questrial, sans-serif;
+  line-height: calc(12px + 1.1vw);
+  height: calc(24px + 2.1vw);
+  flex: 1 0 auto;
+  margin: 1%
+  }
+}

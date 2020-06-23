@@ -11,30 +11,6 @@
   text-align: center;
 }
 
-@media (max-width: 750px)  {
-  #Icon{
-    display: none;
-    
-  } 
-}
-
-@media (min-width: 751px)  {
-  #Icon{
-    display:inline-block;
-    height: inherit;
-    width:auto;
-    padding:1vmin;
-  
-  }
-
-  .SiteTitle{
-    display:inline-block;
-    padding:1vmin;
-  }
-
-}
-
-
 .App-header {
   background-color: #f0a500;
   height: 40%;
@@ -45,7 +21,7 @@
 }
 
 .App-footer {
-position: absolute;
+  position: absolute;
   left: 0;
   bottom: 0;
   height: 1.5rem;
@@ -94,7 +70,6 @@ position: absolute;
   text-shadow: -.5px -.5px 0 #000, .5px -.5px 0 #000, -.5px .5px 0 #000, .5px .5px 0 #000;
 }
 
-
 #SiteName{
   font-family: Lobster, sans-serif;
   font-size: calc(18px + 1vw) !important;
@@ -103,4 +78,38 @@ position: absolute;
 .Icon{
   display:inline-block;
   padding:1vmin;
+}
+
+@media (max-width: 750px)  {
+   #Icon{
+    display: none;
+    
+  } 
+
+  .App-footer{
+    text-align: center;
+  }
+
+  .FAQ{
+    margin-right: 0%;
+  }
+  .Contact{
+    margin-left: 8%;
+  }
+}
+
+@media (min-width: 751px)  {
+  #Icon{
+    display:inline-block;
+    height: inherit;
+    width:auto;
+    padding:1vmin;
+  
+  }
+
+  .SiteTitle{
+    display:inline-block;
+    padding:1vmin;
+  }
+
 }
