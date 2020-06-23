@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-const API_KEY = `${process.env.API_KEY}`
+const API_KEY = `${process.env.REACT_APP_DB_API_KEY}`
 
 class Keywords extends Component {
     constructor(props) {
