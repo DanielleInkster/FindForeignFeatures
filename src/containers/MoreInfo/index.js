@@ -52,7 +52,7 @@ class MoreInfo extends Component {
         let firstTitle = this.props.match.params.mediaType === 'tv' ? 
             this.slugify(this.props.more_info.name) : this.slugify(this.props.more_info.title)
     
-        fetch(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_DB_API_KEY2}&t=${firstTitle}&y=${year}&plot=full`)
+        fetch(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_DB_API_KEY2}&t=${firstTitle}&y=${year}&plot=full`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
@@ -70,7 +70,7 @@ class MoreInfo extends Component {
         let secondTitle = this.props.match.params.mediaType === 'tv' ? 
             this.slugify(this.props.more_info.original_name) : this.slugify(this.props.more_info.original_title)
 
-        fetch(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_DB_API_KEY2}&t=${secondTitle}&y=${year}&plot=full`)
+        fetch(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_DB_API_KEY2}&t=${secondTitle}&y=${year}&plot=full`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
