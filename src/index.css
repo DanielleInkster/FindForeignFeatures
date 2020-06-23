@@ -5,26 +5,26 @@
 
 .mediaHeading{
   overflow: hidden;
-  font-size: calc(12px + 1vw); 
+  font-size: calc(16px + 1vw); 
   font-weight: bold;
   text-overflow: ellipsis;
   word-wrap: break-word;
   display: block;
-  line-height: calc(12px + 1vw);
-  min-height: calc(24px + 2vw);
+  line-height: calc(16px + 1vw);
+  min-height: calc(32px + 2vw);
 }
 
 #wow{
   font-family: Lobster, sans-serif;
-  font-size: calc(16px + 2vw) !important;
+  font-size: calc(18px + 2vw) !important;
 }
 
 #nonEnglishHeading{
   overflow: hidden;
-  font-size: calc(10px + 1vw);
+  font-size: calc(16px + 1vw);
   font-family: Questrial, sans-serif;
-  line-height: calc(10px + 1vw);
-  min-height: calc(20px + 2vw);
+  line-height: calc(16px + 1vw);
+  min-height: calc(32px + 2vw);
   flex: 1 0 auto;
 }
 
@@ -38,21 +38,21 @@
 }
 
 #overview{
-  overflow-y: scroll;
-  font-size: calc(10px + .5vw);
+  overflow-y: hidden;
+  font-size: calc(12px + 1vw);
   font-family: Questrial, sans-serif;
-  line-height: calc(10px + .5vw);
-  height: calc(20px + 1.5vw);
+  line-height: calc(12px + 1vw);
+  height: calc(20px + 2vw);
   flex: 1 0 auto;
 }
 
 @media screen and (max-width:675px){
   #overview{
-  overflow-y: scroll;
-  font-size: calc(10px + 1vw);
+  overflow-y: hidden;
+  font-size: calc(12px + 1vw);
   font-family: Questrial, sans-serif;
-  line-height: calc(10px + 1vw);
-  height: calc(20px + 1.5vw);
+  line-height: calc(12px + 1vw);
+  height: calc(24px + 2vw);
   flex: 1 0 auto;
   margin: 1%
   }
