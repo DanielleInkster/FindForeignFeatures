@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import * as _ from "lodash";
 import ISO6391 from 'iso-639-1';
 import MoreInfoItem from '../../components/MoreInfoItem/Item';
+import Loading from '../../components/Assets/Loading';
 import 'whatwg-fetch'
 
 class MoreInfo extends Component {
@@ -13,6 +14,7 @@ class MoreInfo extends Component {
         this.state = {
             tmdbInfo:[],
             omdbInfo:[],
+            isFetching: true,
             url: ''
         }
     }
@@ -58,6 +60,7 @@ class MoreInfo extends Component {
                     this.setState({ omdbInfo: data })
                     let url = this.createSpecificURL(data)
                     this.setState({ url: url })
+                    this.setState({ isFetching: false })
                 } else {
                     this.secondFetch(year)
                 }   
@@ -76,10 +79,12 @@ class MoreInfo extends Component {
                     this.setState({ omdbInfo: data })
                     let url = this.createSpecificURL(data) 
                     this.setState({ url: url })
+                    this.setState({ isFetching: false })
                 } else {
                      this.setState({ omdbInfo: 0 }) 
                     let url = this.createSearchURL()
                     this.setState({ url: url })
+                    this.setState({ isFetching: false })
                 }           
         })
     }
@@ -112,7 +117,11 @@ class MoreInfo extends Component {
         } else {
            return (
                <div>
-                   {this.state.omdbInfo.length !== 0 &&
+                   {this.state.isFetching === true &&<Loading/>}
+                   {this.state.isFetching===true &&
+                   <span id="wow">Loading...</span>
+                   }
+                   {this.state.isFetching === false &&
                        <MoreInfoItem tmdb={this.state.tmdbInfo} omdb={this.state.omdbInfo} type={this.props.match.params.mediaType}
                            url={this.state.url} history={this.props.history} />
                    }

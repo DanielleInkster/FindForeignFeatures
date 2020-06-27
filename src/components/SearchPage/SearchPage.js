@@ -9,7 +9,6 @@ let input = "<div id='wow'>Searching...</div>"
 let input2 = "<div id = 'text'>This can take up to 10 seconds.</div>"
 
 const SearchPage = (props) => {
-    { console.log(props.allKeywords) }
   
     if(props.allKeywords.length !== 0) {
         return(
