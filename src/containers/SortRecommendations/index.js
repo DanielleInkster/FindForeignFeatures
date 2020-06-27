@@ -16,7 +16,7 @@ class SortRecommendations extends Component {
     }
 
     redirect(to) {
-        this.props.info.history.push({ pathname: to })
+        this.props.info.props.history.push({ pathname: to })
     }
 
     sortResults=(arr)=>{
@@ -25,9 +25,10 @@ class SortRecommendations extends Component {
     }
 
     returnSortedResults = (arr)=>{
+        console.log(this.props)
         let sorted = this.sortResults(arr)
         this.props.storeRecommendations(sorted.slice(0, 50))
-        this.redirect(`/${this.props.info.match.params.mediaType}/${this.props.info.match.params.id}/recommendations` )
+        this.redirect(`/${this.props.info.props.match.params.mediaType}/${this.props.info.props.match.params.id}/recommendations` )
     }
 
     render(){

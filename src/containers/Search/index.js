@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import Loading from '../../components/Assets/Loading';
-import Message from '../../components/Assets/Message';
 import KeywordRecommendations from '../KeywordRecommendations';
 import Genres from '../Genres';
 import Compare from '../Compare';
@@ -19,18 +17,19 @@ class Search extends Component {
     }
 
     componentDidMount() {
-        if (this.state.keywords.length === 0 && this.props.location.keywords !== undefined) {
-            this.setState({ keywords: this.props.location.keywords })
+        {console.log(this.props)}
+        if (this.state.keywords.length === 0 && this.props.props.location.keywords !== undefined) {
+            this.setState({ keywords: this.props.props.location.keywords })
         }
         window.scrollTo(0, 0)
     }
 
     redirect(to, recommendations) {
-        this.props.history.push({ pathname: to, recommendations })
+        this.props.props.history.push({ pathname: to, recommendations })
     }
 
     noResults() {
-        this.redirect(`/${this.props.match.params.mediaType}/${this.props.match.params.id}/noresults`)
+        this.redirect(`/${this.props.props.match.params.mediaType}/${this.props.props.match.params.id}/noresults`)
     }
 
     rawKeywordHandler = (results) => {
@@ -45,30 +44,12 @@ class Search extends Component {
         results.length !== 0 ? this.setState({ comparedRecommendations: results }) : this.noResults()
     }
 
-    searching(input, input2) {
-        if (this.state.keywords.length > 0) {
-            return (
-                <div>
-                    <Loading />
-                    <h2><Message text={input} /></h2>
-                    <Message text={input2} />
-                </div>
-            )
-        }
-    }
-
     render() {
-
-        let input = "<div id='wow'>Searching...</div>"
-        let input2 = "<div id = 'text'>This can take up to 10 seconds.</div>"
 
         return (
             <div>
-                {this.state.keywords.length !== 0 &&
-                    this.searching(input, input2)}
-
                 {this.state.keywords.length !== 0 && this.state.rawKeywordRecommendations.length === 0 &&
-                    <KeywordRecommendations keywords={this.state.keywords} type={this.props.match.params.mediaType} 
+                    <KeywordRecommendations keywords={this.state.keywords} type={this.props.props.match.params.mediaType} 
                         rawKeywordHandler={this.rawKeywordHandler}/>  
                 }
                 {this.props.selection.length !== 0 && this.state.genres.length === 0 &&
