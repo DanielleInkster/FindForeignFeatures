@@ -34,7 +34,7 @@ class Media extends Component{
     }
 
     createFetch=(value)=>{
-        fetch(`/searchEnglish/${this.props.match.params.mediaType}/${value}`)
+        fetch(`/fetchMedia/${this.props.match.params.mediaType}/${value}`)
             .then((response) => {
                 return response.json();
             }).then((data) => {

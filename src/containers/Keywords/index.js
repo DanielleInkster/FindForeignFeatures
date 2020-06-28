@@ -34,8 +34,8 @@ class Keywords extends Component {
         }
     }
 
-    findKeywordsFetch = (type, id, searchTerm) => {
-        fetch(`https://api.themoviedb.org/3/${type}/${id}/keywords?api_key=${process.env.REACT_APP_DB_API_KEY}`)
+    findKeywordsFetch = (mediaType, id, searchTerm) => {
+        fetch(`/fetchKeywords/${mediaType}/${id}`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
