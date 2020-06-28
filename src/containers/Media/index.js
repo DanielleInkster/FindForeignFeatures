@@ -34,18 +34,24 @@ class Media extends Component{
     }
 
     createFetch=(value)=>{
-        fetch(`https://api.themoviedb.org/3/search/${this.props.match.params.mediaType}?api_key=${process.env.REACT_APP_DB_API_KEY}`+
-            `&language=en-US&page=1&query=${value}&include_adult=false`)
+        fetch('/searchEnglish')
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                data.results.forEach(item => {
-                    if (item.original_language === "en") this.setState(previousState => ({
-                        options: [...previousState.options, item]
-                    }) 
-                ) 
+                console.log(data)
             })
-        })
+        // fetch(`https://api.themoviedb.org/3/search/${this.props.match.params.mediaType}?api_key=${process.env.REACT_APP_DB_API_KEY}`+
+        //     `&language=en-US&page=1&query=${value}&include_adult=false`)
+        //     .then((response) => {
+        //         return response.json();
+        //     }).then((data) => {
+        //         data.results.forEach(item => {
+        //             if (item.original_language === "en") this.setState(previousState => ({
+        //                 options: [...previousState.options, item]
+        //             }) 
+        //         ) 
+        //     })
+        // })
 
     }
 
