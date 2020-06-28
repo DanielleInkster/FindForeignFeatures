@@ -11,8 +11,10 @@ app.use(express.static(__dirname));
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('/searchEnglish',  async (req, res) => {
-    const url = `https://api.themoviedb.org/3/search/tv?api_key=d844b16c966a9e26944e63b71435e547&language=en-US&page=1&query=sherlock&include_adult=false`
+app.get('/searchEnglish/:mediaType/:value',  async (req, res) => {
+    const mediaType = req.params.mediaType
+    const value = req.params.value
+    const url = `https://api.themoviedb.org/3/search/${mediaType}?api_key=d844b16c966a9e26944e63b71435e547&language=en-US&page=1&query=${value}&include_adult=false`
     const ans = await fetch(url)
     const jayson = await ans.json()
     return res.json(jayson);
