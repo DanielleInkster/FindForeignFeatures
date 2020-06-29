@@ -50,22 +50,30 @@ app.get('/fetchKeywordRecs/:mediaType/:keywordId/:pageNumber', async (req, res) 
     return res.json(returnData);
 });
 
-app.get('/fetchMoreInfo/:title/:year', async (req, res) => {
+app.get('/fetchMoreInfo/:title/:year', async (req, res, next) => {
+    try {
     const title = req.params.title
     const year = req.params.year
     const moreInfoUrl = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_DB_API_KEY2}&t=${title}&y=${year}&plot=full`
     const data = await fetch(moreInfoUrl)
     const returnData = await data.json()
     return res.json(returnData);
+    } catch (err) {
+        next(err);
+    }
 });
 
-app.get('/fetchTMDBInfo/:mediaType/:itemId', async (req, res) => {
+app.get('/fetchTMDBInfo/:mediaType/:itemId', async (req, res, next) => {
+    try{
     const mediaType = req.params.mediaType
     const itemId = req.params.itemId
     const tmdbUrl = `https://api.themoviedb.org/3/${mediaType}/${itemId}?api_key=${process.env.REACT_APP_DB_API_KEY}&language=en-US`
     const data = await fetch(tmdbUrl)
     const returnData = await data.json()
     return res.json(returnData);
+    } catch (err) {
+            next(err);
+        }
 });
 
 
