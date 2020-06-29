@@ -36,7 +36,7 @@ class MoreInfo extends Component {
         return title.toString().toLowerCase().replace(/\s+/g, '+')
     }
 
-    slugify(text) {
+    slugify=(text)=> {
         let input = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
         let title = input.toString().toLowerCase()
             .replace(/[?,¿¡:]/, '')
@@ -45,19 +45,19 @@ class MoreInfo extends Component {
             .replace(/\s+/g, '-')
             .replace(/^-+/, '')
             .replace(/-+$/, '');
-            
-        
-        console.log(title)
+        return this.validSearchTitle(title)
+    }
 
+    validSearchTitle(title){
         let english = /^[a-zA-Z0-9]+$/
         let i = title.length;
         while (--i) {
-            if ((english.test(title[i]))=== false) {
-            return "InvalidSearchTitle"
-        } else {
-            return title
+            if ((english.test(title[i])) === false) {
+                return "InvalidSearchTitle"
+            } else {
+                return title
+            }
         }
-    }
     }
 
     findYear() {
