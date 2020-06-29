@@ -96,7 +96,6 @@ class MoreInfo extends Component {
     secondFetch = (year) => {
         let title = this.props.match.params.mediaType === 'tv' ? 
             this.slugify(this.state.tmdbInfo.original_name) : this.slugify(this.state.tmdbInfo.original_title)
-            console.log(title)
         fetch(`/fetchMoreInfo/${title}/${year}`)
             .then((response) => {
                 return response.json();   
