@@ -7,6 +7,7 @@ import ISO6391 from 'iso-639-1';
 import MoreInfoItem from '../../components/MoreInfoItem/Item';
 import Loading from '../../components/Assets/Loading';
 import 'whatwg-fetch'
+import fetch from 'node-fetch';
 
 class MoreInfo extends Component {
     constructor(props) {
@@ -19,11 +20,18 @@ class MoreInfo extends Component {
         }
     }
 
-    componentDidMount(){
-        this.setState({ tmdbInfo: this.props.more_info })
-        let year = this.findYear()
-        if (this.state.omdbInfo.length ===0) this.createFetch(year)
+    componentDidMount(){       
+        if(this.props.more_info.length === 0){
+            this.fetchMissingData(this.props.match.params.mediaType, this.props.match.params.recId)
+        } else {
+            this.setState({ tmdbInfo: this.props.more_info })
+        }
         window.scrollTo(0, 0)
+    }
+
+    componentDidUpdate(prevState) {
+        let year = this.findYear() 
+        if (this.state.tmdbInfo !== prevState.tmdbInfo) {this.createFetch(year)}
     }
 
     searchTerm(title){
@@ -48,9 +56,19 @@ class MoreInfo extends Component {
         return year
     }
 
+    fetchMissingData(mediaType, itemId){
+        fetch(`/fetchTMDBInfo/${mediaType}/${itemId}`)
+            .then((response) => {
+                return response.json();
+            }).then((data) => {
+                this.setState({ tmdbInfo: data })
+                console.log(this.state.tmdbInfo)
+        })
+    }
+
     createFetch = (year) => {
         let title = this.props.match.params.mediaType === 'tv' ? 
-            this.slugify(this.props.more_info.name) : this.slugify(this.props.more_info.title)
+            this.slugify(this.state.tmdbInfo.name) : this.slugify(this.state.tmdbInfo.title)
     
         fetch(`/fetchMoreInfo/${title}/${year}`)
             .then((response) => {
@@ -69,7 +87,7 @@ class MoreInfo extends Component {
 
     secondFetch = (year) => {
         let title = this.props.match.params.mediaType === 'tv' ? 
-            this.slugify(this.props.more_info.original_name) : this.slugify(this.props.more_info.original_title)
+            this.slugify(this.state.tmdbInfo.original_name) : this.slugify(this.state.tmdbInfo.original_title)
 
         fetch(`/fetchMoreInfo/${title}/${year}`)
             .then((response) => {
@@ -99,7 +117,7 @@ class MoreInfo extends Component {
 
     createSearchURL = () => {
         let title = this.props.match.params.mediaType === 'tv' ?
-            this.searchTerm(this.props.more_info.name) : this.searchTerm(this.props.more_info.title)
+            this.searchTerm(this.state.tmdbInfo.name) : this.searchTerm(this.state.tmdbInfo.title)
         let year = this.findYear()
         return `https://www.imdb.com/find?q=${title}+${year}&ref_=nv_sr_sm`
     }
@@ -110,11 +128,6 @@ class MoreInfo extends Component {
     }
 
     render() {
-       if(this.props.more_info.length === 0){
-           return (
-               <Redirect to='error/404' />
-           )
-        } else {
            return (
                <div>
                    {this.state.isFetching === true &&<Loading/>}
@@ -128,7 +141,6 @@ class MoreInfo extends Component {
                </div>
            )
            
-        }
     };
 
 }

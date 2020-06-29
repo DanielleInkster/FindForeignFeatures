@@ -17,7 +17,6 @@ class Search extends Component {
     }
 
     componentDidMount() {
-        {console.log(this.props)}
         if (this.state.keywords.length === 0 && this.props.props.location.keywords !== undefined) {
             this.setState({ keywords: this.props.props.location.keywords })
         }

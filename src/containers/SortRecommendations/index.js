@@ -25,7 +25,6 @@ class SortRecommendations extends Component {
     }
 
     returnSortedResults = (arr)=>{
-        console.log(this.props)
         let sorted = this.sortResults(arr)
         this.props.storeRecommendations(sorted.slice(0, 50))
         this.redirect(`/${this.props.info.props.match.params.mediaType}/${this.props.info.props.match.params.id}/recommendations` )
