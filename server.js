@@ -76,7 +76,6 @@ app.get('/fetchTMDBInfo/:mediaType/:itemId', async (req, res, next) => {
         }
 });
 
-
 app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
