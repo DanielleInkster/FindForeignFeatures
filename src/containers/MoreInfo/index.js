@@ -41,6 +41,7 @@ class MoreInfo extends Component {
         let title = input.toString().toLowerCase()
             .replace(/[?,¿¡:]/, '')
             .replace(/!/, '') 
+            .replace(/æ/, 'ae')
             .replace(/œ/, 'oe')
             .replace(/\s+/g, '-')
             .replace(/^-+/, '')
