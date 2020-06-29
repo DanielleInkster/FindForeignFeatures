@@ -40,6 +40,27 @@ app.get('/fetchKeywordRecNumber/:mediaType/:keywordId', async (req, res) => {
     return res.json(returnData);
 });
 
+app.get('/fetchKeywordRecs/:mediaType/:keywordId/:pageNumber', async (req, res) => {
+    const mediaType = req.params.mediaType
+    const keywordId = req.params.keywordId
+    const pageNumber = req.params.pageNumber
+    const keywordRecsUrl = `https://api.themoviedb.org/3/discover/${mediaType}?api_key=${process.env.REACT_APP_DB_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNumber}&with_keywords=${keywordId}`
+    const data = await fetch(keywordRecsUrl)
+    const returnData = await data.json()
+    return res.json(returnData);
+});
+
+app.get('/fetchMoreInfo/:title/:year', async (req, res) => {
+    const title = req.params.title
+    const year = req.params.year
+    const moreInfoFirstUrl = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_DB_API_KEY2}&t=${title}&y=${year}&plot=full`
+    const data = await fetch(moreInfoFirstUrl)
+    const returnData = await data.json()
+    return res.json(returnData);
+});
+
+
+
 app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
