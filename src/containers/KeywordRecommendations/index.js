@@ -47,7 +47,7 @@ class KeywordRecommendations extends Component {
 
     returnRecommendations(){
         this.createKeywordFetch(this.props.keywords)
-        setTimeout(() => {this.getRecommendations()}, 8000);
+        setTimeout(() => {this.getRecommendations()}, 7000);
     }
 
     render(){
