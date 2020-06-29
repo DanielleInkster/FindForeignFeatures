@@ -1,13 +1,12 @@
 // eslint-disable-next-line
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import * as _ from "lodash";
 import ISO6391 from 'iso-639-1';
 import MoreInfoItem from '../../components/MoreInfoItem/Item';
 import Loading from '../../components/Assets/Loading';
 import 'whatwg-fetch'
-import fetch from 'node-fetch';
+
 
 class MoreInfo extends Component {
     constructor(props) {
@@ -31,7 +30,7 @@ class MoreInfo extends Component {
 
     componentDidUpdate(prevState) {
         let year = this.findYear() 
-        if (this.state.tmdbInfo !== prevState.tmdbInfo) {this.createFetch(year)}
+        if (this.state.tmdbInfo !== prevState.tmdbInfo && this.state.omdbInfo.length === 0) {this.createFetch(year)}
     }
 
     searchTerm(title){
@@ -49,10 +48,8 @@ class MoreInfo extends Component {
 
     findYear() {
         let searchTerm = this.props.match.params.mediaType === 'tv' ? "first_air_date" : "release_date"
-
         let year = (this.props.more_info.hasOwnProperty(searchTerm) && this.props.more_info[searchTerm] !== "") ?
             this.props.more_info[searchTerm].slice(0, 4) : "[Unknown]" 
-
         return year
     }
 
@@ -75,10 +72,7 @@ class MoreInfo extends Component {
                 return response.json();
             }).then((data) => {
                 if (data.Response === "True" && this.compareLanguage(data) === true) {
-                    this.setState({ omdbInfo: data })
-                    let url = this.createSpecificURL(data)
-                    this.setState({ url: url })
-                    this.setState({ isFetching: false })
+                    this.setOmdb(data)
                 } else {
                     this.secondFetch(year)
                 }   
@@ -94,10 +88,7 @@ class MoreInfo extends Component {
                 return response.json();
             }).then((data) => {
                 if(data.Response === "True" && this.compareLanguage(data)===true){
-                    this.setState({ omdbInfo: data })
-                    let url = this.createSpecificURL(data) 
-                    this.setState({ url: url })
-                    this.setState({ isFetching: false })
+                   this.setOmdb(data)
                 } else {
                      this.setState({ omdbInfo: 0 }) 
                     let url = this.createSearchURL()
@@ -105,6 +96,13 @@ class MoreInfo extends Component {
                     this.setState({ isFetching: false })
                 }           
         })
+    }
+
+    setOmdb=(data)=>{
+        this.setState({ omdbInfo: data })
+        let url = this.createSpecificURL(data)
+        this.setState({ url: url })
+        this.setState({ isFetching: false })
     }
 
     compareLanguage=(data)=>{
