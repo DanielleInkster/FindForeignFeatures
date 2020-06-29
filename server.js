@@ -31,6 +31,15 @@ app.get('/fetchKeywords/:mediaType/:id', async (req, res) => {
     return res.json(returnData);
 });
 
+app.get('/fetchKeywordRecNumber/:mediaType/:keywordId', async (req, res) => {
+    const mediaType = req.params.mediaType
+    const keywordId = req.params.keywordId
+    const keywordRecNumUrl = `https://api.themoviedb.org/3/keyword/${keywordId}/${mediaType}?api_key=${process.env.REACT_APP_DB_API_KEY}&language=en-US&include_adult=false`
+    const data = await fetch(keywordRecNumUrl)
+    const returnData = await data.json()
+    return res.json(returnData);
+});
+
 app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });

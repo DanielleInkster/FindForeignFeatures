@@ -9,6 +9,17 @@ class KeywordRecommendations extends Component {
         }
     }
 
+    createKeywordFetch = (value) => {
+        value.forEach(num => {
+            fetch(`/fetchKeywordRecNumber/${this.props.type}/${num}`)
+                .then((response) => {
+                    return response.json();
+                }).then((data) => {
+                    this.fetchKeywordRecs(data, num)
+                })
+        })
+    }
+
     fetchKeywordRecs=(data, num)=>{
         let i;
         let pages = data.total_pages < 150 ? data.total_pages : 150
@@ -28,18 +39,6 @@ class KeywordRecommendations extends Component {
             if (movie.original_language !== "en") this.setState(previousState => ({
                 rawKeywordRecommendations: [...previousState.rawKeywordRecommendations, movie]
             }))
-        })
-    }
-
-    createKeywordFetch =(value )=>{ 
-        value.forEach(num =>{ 
-            fetch(`https://api.themoviedb.org/3/keyword/${num}/${this.props.type}?api_key=${process.env.REACT_APP_DB_API_KEY}`+
-            `&language=en-US&include_adult=false`)
-            .then((response) => {
-                return response.json();
-            }).then((data) => {
-                this.fetchKeywordRecs(data,num)
-            })
         })
     }
 
