@@ -54,9 +54,6 @@ const MoreInfoItem=(props)=>{
                 <a target="_blank" href={props.url} alt='Find more at IMDB'>
                     <Button value={'Find more at IMDB'} />
                 </a>
-                <span id='Back' alt='Go Back'>
-                    <Button value={'Back'} onClick={() => props.history.goBack()} alt='Go Back'/>
-               </span>
             </div>
         </div>
     )
