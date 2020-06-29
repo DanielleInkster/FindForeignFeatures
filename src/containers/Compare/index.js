@@ -37,16 +37,11 @@ class Compare extends Component {
         return arr.filter((t = {}, a => !(t[a.id] = a.id in t)))
     }
 
-    getRecommendations() {
-        this.props.comparedHandler(this.state.comparedRecommendations)
-    }
-
-    returnRecommendations() {
-        let arr = this.compareWithGenres()
-        let returnArr = this.countReturns(arr)
-        let filteredArr = this.returnUnique(returnArr)
-        this.setState({ comparedRecommendations: filteredArr })
-        setTimeout(() => { this.getRecommendations() }, 2000);
+    async returnRecommendations() {
+        let arr = await this.compareWithGenres()
+        let returnArr = await this.countReturns(arr)
+        let filteredArr = await this.returnUnique(returnArr)
+        this.props.comparedHandler( await filteredArr)
     }
 
     render() {

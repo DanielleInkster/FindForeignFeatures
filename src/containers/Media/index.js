@@ -34,8 +34,7 @@ class Media extends Component{
     }
 
     createFetch=(value)=>{
-        fetch(`https://api.themoviedb.org/3/search/${this.props.match.params.mediaType}?api_key=${process.env.REACT_APP_DB_API_KEY}`+
-            `&language=en-US&page=1&query=${value}&include_adult=false`)
+        fetch(`/fetchMedia/${this.props.match.params.mediaType}/${value}`)
             .then((response) => {
                 return response.json();
             }).then((data) => {

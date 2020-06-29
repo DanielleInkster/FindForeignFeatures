@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom';
 import MediaListItem from '../MediaListItem';
 import Button from '../Assets/Button';
-import './MediaList.css'
+import '../../stylesheets/MediaList/MediaList.css'
 
 const MediaList =(props)=>  {
     if(props.list.length !==0){
