@@ -11,21 +11,20 @@ class MoreInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tmdbInfo:[],
-            omdbInfo:[],
             isFetching: true,
             url: ''
         }
     }
 
-    componentDidMount(){       
-       this.fetchMissingData(this.props.match.params.mediaType, this.props.match.params.recId)
-        window.scrollTo(0, 0)
+    async componentDidMount(){ 
+        console.log('mounted')   
+         this.fetchMissingData(this.props.match.params.mediaType, this.props.match.params.recId) 
+       window.scrollTo(0, 0)
     }
 
-    componentDidUpdate(prevState) {
-        let year = this.findYear() 
-        if (this.state.tmdbInfo !== prevState.tmdbInfo && this.state.omdbInfo.length === 0) {this.createFetch(year)}
+    componentDidUpdate(prevProps) {
+        let year = this.findYear()
+        if (this.props.tmdb_info.length !== 0 && this.props.omdb_info.length===0) { this.createFetch(year)}
     }
 
     searchTerm(title){
@@ -55,17 +54,19 @@ class MoreInfo extends Component {
     }
 
     fetchMissingData(mediaType, itemId){
+        console.log('missingdata')
         fetch(`/fetchTMDBInfo/${mediaType}/${itemId}`)
             .then((response) => {
                 return response.json();
             }).then((data) => {
-                this.setState({ tmdbInfo: data })
+                this.props.storeTmdbInfo(data)
         })
     }
 
     createFetch = (year) => {
+        console.log('first fetch')
         let title = this.props.match.params.mediaType === 'tv' ? 
-            this.slugify(this.state.tmdbInfo.name) : this.slugify(this.state.tmdbInfo.title)
+            this.slugify(this.props.tmdb_info.name) : this.slugify(this.props.tmdb_info.title)
         fetch(`/fetchMoreInfo/${title}/${year}`)
             .then((response) => {
                 return response.json();
@@ -79,8 +80,9 @@ class MoreInfo extends Component {
     }
 
     secondFetch = (year) => {
+        console.log('second fetch')
         let title = this.props.match.params.mediaType === 'tv' ? 
-            this.slugify(this.state.tmdbInfo.original_name) : this.slugify(this.state.tmdbInfo.original_title)
+            this.slugify(this.props.tmdb_info.original_name) : this.slugify(this.props.tmdb_info.original_title)
         fetch(`/fetchMoreInfo/${title}/${year}`)
             .then((response) => {
                 return response.json();   
@@ -95,15 +97,15 @@ class MoreInfo extends Component {
     }
 
     setOmdb=(data)=>{
-        this.setState({ omdbInfo: data })
+        this.props.storeOmdbInfo(data)
         let url = this.createSearchURL(data)
         this.setState({ url: url })
         this.setState({ isFetching: false })
     }
 
     compareLanguage=(data)=>{
-        let lang1 = this.state.tmdbInfo.original_language === "cn" || this.state.tmdbInfo.original_language === "zh" ? 
-            ["Chinese", "Cantonese", "Mandarin", "MinNan"] : ISO6391.getName(this.state.tmdbInfo.original_language)
+        let lang1 = this.props.tmdb_info.original_language === "cn" || this.props.tmdb_info.original_language === "zh" ? 
+            ["Chinese", "Cantonese", "Mandarin", "MinNan"] : ISO6391.getName(this.props.tmdb_info.original_language)
         let lang2 = data.Language.replace(/\s+/g, '').split(',')
         const result = _.intersection(lang1, lang2);
         return lang1 === lang2|| lang2.includes(lang1) || result.length > 0 ? true : false
@@ -111,12 +113,12 @@ class MoreInfo extends Component {
 
     createSearchURL = (data) => {
         let title = this.props.match.params.mediaType === 'tv' ?
-            this.searchTerm(this.state.tmdbInfo.name) : this.searchTerm(this.state.tmdbInfo.title)
+            this.searchTerm(this.props.tmdb_info.name) : this.searchTerm(this.props.tmdb_info.title)
         let year = this.findYear()
         if(data.imdbID !== undefined){
             return `https://www.imdb.com/title/${data.imdbID}`
-        } else if (this.state.tmdbInfo.imdb_id !== undefined && this.state.tmdbInfo.imdb_id !== null){
-            return `https://www.imdb.com/title/${this.state.tmdbInfo.imdb_id}`
+        } else if (this.props.tmdbInfo.imdb_id !== undefined && this.props.tmdb_info.imdb_id !== null){
+            return `https://www.imdb.com/title/${this.props.tmdb_info.imdb_id}`
         } else {
             return `https://www.imdb.com/find?q=${title}+${year}&ref_=nv_sr_sm`
         }
@@ -130,7 +132,7 @@ class MoreInfo extends Component {
                 <span id="wow">Loading...</span>
                 }
                 {this.state.isFetching === false &&
-                    <MoreInfoItem tmdb={this.state.tmdbInfo} omdb={this.state.omdbInfo} type={this.props.match.params.mediaType}
+                    <MoreInfoItem type={this.props.match.params.mediaType}
                         url={this.state.url} history={this.props.history} />
                 }
             </div>
@@ -140,8 +142,17 @@ class MoreInfo extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        more_info: state.more_info
+        more_info: state.more_info,
+        tmdb_info: state.tmdb_info,
+        omdb_info: state.omdb_info
     }
 }
 
-export default connect(mapStateToProps, null)(MoreInfo);
+const mapDispatchToProps =(dispatch)=>{
+    return {
+        storeTmdbInfo: (data) => dispatch({ type: 'TMDB_INFO', val: data }),
+        storeOmdbInfo: (data)=> dispatch({type: 'OMDB_INFO', val: data})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MoreInfo);
