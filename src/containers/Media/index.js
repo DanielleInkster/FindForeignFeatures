@@ -75,7 +75,7 @@ class Media extends Component{
             this.searchForMedia(this.state.inputValue)
             setTimeout(() => {
                 this.state.options.length > 0 ? this.mediaList(this.state.options.slice(0,6)) 
-                     : this.noResults() }, 500) 
+                     : this.noResults() }, 800) 
         }
     }
 
