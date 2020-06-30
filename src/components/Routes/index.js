@@ -56,6 +56,7 @@ class Routes extends Component {
                     </div>
                 </div>
                 <footer className = 'App-footer'>
+                <Link to={{ pathname: '/' }} className='Home'>Home</Link> 
                 <Link to={{ pathname: '/FAQ' }} className='FAQ'>FAQ</Link> 
                 <Link to={{ pathname: '/contact' }} className ='Contact'>Contact Us</Link>
                 </footer>
