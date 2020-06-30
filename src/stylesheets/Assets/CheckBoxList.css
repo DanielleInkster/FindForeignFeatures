@@ -3,10 +3,18 @@ ul{
     list-style-type: none;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 750px) {
   li {
     padding-top: 1.5%;
     padding-bottom: 1.5%;
     margin-left: -9.5%;
+  }
+}
+
+@media screen and (min-width: 751px) and (max-width: 1000px) {
+  li {
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    margin-left: -7.5%;
   }
 }

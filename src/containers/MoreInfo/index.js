@@ -39,27 +39,16 @@ class MoreInfo extends Component {
     slugify=(text)=> {
         let input = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
         let title = input.toString().toLowerCase()
-            .replace(/[,¿¡:]/, '')
+            .replace(/[,¿¡:.]/, '')
             .replace(/[?]/, '')
             .replace(/!/, '') 
             .replace(/æ/, 'ae')
             .replace(/œ/, 'oe')
             .replace(/\s+/g, '-')
             .replace(/^-+/, '')
-            .replace(/-+$/, '');
-        return this.validSearchTitle(title)
-    }
-
-    validSearchTitle(title){
-        let english = /^[a-zA-Z0-9]+$/
-        let i = title.length;
-        while (--i) {
-            if ((english.test(title[i])) === false) {
-                return "InvalidSearchTitle"
-            } else {
-                return title
-            }
-        }
+            .replace(/-+$/, '')
+            .replace(/[^\x00-\x7F]/g, "");
+       return title.length > 0 ?  title : 'InvalidSearchTitle'
     }
 
     findYear() {
