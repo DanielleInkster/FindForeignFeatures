@@ -4,8 +4,6 @@ const initialState = {
     allKeywords:[],
     recommendations:[],
     more_info:[],
-    omdb_info: [],
-    tmdb_info: []
 }
 
 const reducer = (state = initialState, action) =>{
@@ -30,13 +28,6 @@ const reducer = (state = initialState, action) =>{
         newState.more_info = action.val
     }
 
-    if (action.type === 'OMDB_INFO') {
-        newState.omdb_info = action.val
-    }
-
-    if (action.type === 'TMDB_INFO') {
-        newState.tmdb_info = action.val
-    }
 
     return newState
 }
