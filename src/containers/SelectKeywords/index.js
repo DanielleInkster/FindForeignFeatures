@@ -19,15 +19,8 @@ class SelectKeywords extends Component {
         window.scrollTo(0, 0)
     }
     
-
-    componentDidUpdate(prevProps) {
-        if(this.props.allKeywords !== prevProps.allKeywords){
-        this.createOptions()
-        }
-    }
-
     mediaType() {
-        return this.props.location.type === 'tv' ? 'TV series' : 'film'
+        return this.props.type === 'tv' ? 'TV series' : 'film'
     }
 
     createOptions = () => {
@@ -59,7 +52,7 @@ class SelectKeywords extends Component {
         e.preventDefault();
         let arr = []
         this.state.options.forEach(entry => { if (entry.isChecked === true) { arr.push(entry.id) } })
-        this.redirect(`/${this.props.match.params.mediaType}/${this.props.match.params.id}/search`,
+        this.redirect(`/${this.props.type}/${this.props.id}/search`,
             arr)
 
     }

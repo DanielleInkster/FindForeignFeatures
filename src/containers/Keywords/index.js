@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-
-
+import SelectKeywords from '../SelectKeywords';
 
 class Keywords extends Component {
     constructor(props) {
@@ -13,8 +12,19 @@ class Keywords extends Component {
     }
 
     componentDidMount() {
-        let term = this.determineType(this.props.match.params.mediaType)
-        this.findKeywordsFetch(this.props.match.params.mediaType, this.props.match.params.id, term)
+        if(this.props.selection ===''){
+            this.fetchMissingData(this.props.match.params.mediaType, this.props.match.params.id)
+        }
+
+        if (this.props.selection !== ''&& this.state.amount === 0){
+            this.runKeywordFetch()
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.selection !== prevProps.selection && this.state.amount === 0 ){
+            this.runKeywordFetch()
+        }
     }
 
     determineType = (type) => {
@@ -34,6 +44,15 @@ class Keywords extends Component {
         }
     }
 
+    fetchMissingData(mediaType, itemId) {
+        fetch(`/fetchTMDBInfo/${mediaType}/${itemId}`)
+            .then((response) => {
+                return response.json();
+            }).then((data) => {
+                this.props.storeSelection(data)
+            })
+    }
+
     findKeywordsFetch = (mediaType, id, searchTerm) => {
         fetch(`/fetchKeywords/${mediaType}/${id}`)
             .then((response) => {
@@ -45,6 +64,11 @@ class Keywords extends Component {
                 this.props.storeKeywords(arr)
                 this.setState({ fetchRun: true })
             })
+    }
+
+    runKeywordFetch=()=>{
+        let term = this.determineType(this.props.match.params.mediaType)
+        this.findKeywordsFetch(this.props.match.params.mediaType, this.props.match.params.id, term)
     }
 
     redirect(to, keywords) {
@@ -59,11 +83,11 @@ class Keywords extends Component {
     render() {
         return (
             <div>
-                {this.state.amount >= 4 &&
-                    this.redirect(`/${this.props.match.params.mediaType}/${this.props.match.params.id}/search/keywords`)
+                {this.state.fetchRun === true && this.state.amount >= 4  &&
+                    <SelectKeywords type={this.props.match.params.mediaType} id={this.props.match.params.id}
+                        history={this.props.history}/>
                 }
-
-                {this.state.fetchRun === true && 0 < this.state.amount < 4 &&
+                {0 < this.state.amount && this.state.amount < 4 && this.state.fetchRun === true &&
                     this.redirect(`/${this.props.match.params.mediaType}/${this.props.match.params.id}/search`,
                     this.props.allKeywords)
                 }
@@ -74,13 +98,15 @@ class Keywords extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        allKeywords: state.allKeywords
+        allKeywords: state.allKeywords,
+        selection: state.selection
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        storeKeywords: (list) => dispatch({ type: 'KEYWORDS', val: list })
+        storeKeywords: (list) => dispatch({ type: 'KEYWORDS', val: list }),
+        storeSelection: (selection) => dispatch({ type: 'SELECTION', val: selection })
     }
 }
 

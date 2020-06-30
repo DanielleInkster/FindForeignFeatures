@@ -9,8 +9,6 @@ const ReleaseDate = (props) => {
     if(props.omdb !== undefined ){
         data = props.omdb
     } else if(props.tmdb[searchTerm] !== undefined){
-        console.log(props.tmdb)
-        console.log(props.tmdb[searchTerm])
         data = props.tmdb[searchTerm]
     } else{
         data = 'N/A'
