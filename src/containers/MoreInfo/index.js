@@ -19,11 +19,7 @@ class MoreInfo extends Component {
     }
 
     componentDidMount(){       
-        if(this.props.more_info.length === 0){
-            this.fetchMissingData(this.props.match.params.mediaType, this.props.match.params.recId)
-        } else {
-            this.setState({ tmdbInfo: this.props.more_info })
-        }
+       this.fetchMissingData(this.props.match.params.mediaType, this.props.match.params.recId)
         window.scrollTo(0, 0)
     }
 
@@ -119,6 +115,8 @@ class MoreInfo extends Component {
         let year = this.findYear()
         if(data.imdbID !== undefined){
             return `https://www.imdb.com/title/${data.imdbID}`
+        } else if (this.state.tmdbInfo.imdb_id !== undefined && this.state.tmdbInfo.imdb_id !== null){
+            return `https://www.imdb.com/title/${this.state.tmdbInfo.imdb_id}`
         } else {
             return `https://www.imdb.com/find?q=${title}+${year}&ref_=nv_sr_sm`
         }
