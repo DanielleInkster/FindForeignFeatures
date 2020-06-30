@@ -5,6 +5,7 @@ import RecTitle from './MoreInfoTitle';
 import MoreInfoNonEnglishName from './MoreInfoNonEnglishName'
 import DisplayPlot from './DisplayPlot';
 import CheckForUndefined from './CheckForUndefined';
+import ReleaseDate from './ReleaseDate';
 import Button from '../Assets/Button';
 
 
@@ -15,6 +16,7 @@ import '../../stylesheets/MoreInfo/MoreInfoItem.css'
 const MoreInfoItem=(props)=>{
     return(
             <div className="flex-container">
+                {console.log(props)}
             <div className="flex-child image">
                 <MoreInfoImage tmdb={props.tmdb} omdb={props.omdb} />
             </div>
@@ -35,7 +37,7 @@ const MoreInfoItem=(props)=>{
                 <b><u>IMDB Rating:</u></b> <CheckForUndefined omdb={props.omdb.imdbRating}/>
                     <br />
                     <br />
-                <b><u>Original Release Date:</u></b>  <CheckForUndefined omdb={props.omdb.Released}/>
+                <b><u>Original Release Date:</u></b>  <ReleaseDate omdb={props.omdb.Released} tmdb={props.tmdb} type={props.type}/>
                     <br />
                 {props.type ==='movie' &&
                     <b><u>Rating: </u></b> } 
