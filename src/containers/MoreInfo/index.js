@@ -16,10 +16,20 @@ class MoreInfo extends Component {
         }
     }
 
+<<<<<<< HEAD
     async componentDidMount(){ 
         console.log('mounted')   
          this.fetchMissingData(this.props.match.params.mediaType, this.props.match.params.recId) 
        window.scrollTo(0, 0)
+=======
+    componentDidMount(){       
+        if(this.props.more_info.length === 0){
+            this.fetchMissingData(this.props.match.params.mediaType, this.props.match.params.recId)
+        } else {
+            this.setState({ tmdbInfo: this.props.more_info })
+        }
+        window.scrollTo(0, 0)
+>>>>>>> parent of 49444bc... Added tmdb imdb info to url
     }
 
     componentDidUpdate(prevProps) {
@@ -117,8 +127,11 @@ class MoreInfo extends Component {
         let year = this.findYear()
         if(data.imdbID !== undefined){
             return `https://www.imdb.com/title/${data.imdbID}`
+<<<<<<< HEAD
         } else if (this.props.tmdbInfo.imdb_id !== undefined && this.props.tmdb_info.imdb_id !== null){
             return `https://www.imdb.com/title/${this.props.tmdb_info.imdb_id}`
+=======
+>>>>>>> parent of 49444bc... Added tmdb imdb info to url
         } else {
             return `https://www.imdb.com/find?q=${title}+${year}&ref_=nv_sr_sm`
         }
