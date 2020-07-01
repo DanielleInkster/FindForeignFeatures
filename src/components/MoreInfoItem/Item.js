@@ -17,7 +17,6 @@ import '../../stylesheets/MoreInfo/MoreInfoItem.css'
 const MoreInfoItem = (props) => {
     return (
         <div className="flex-container">
-            {console.log(props.tmdb)}
             <div className="flex-child image">
                 <MoreInfoImage tmdb={props.tmdb} omdb={props.omdb} />
             </div>
