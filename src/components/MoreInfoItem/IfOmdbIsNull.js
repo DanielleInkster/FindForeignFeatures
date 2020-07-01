@@ -1,7 +1,6 @@
 import React from 'react'
 
 const IfOmdbIsNull = (props) => {
-    console.log(props.omdb, props.tmdb)
     let data =''
     if(props.omdb !== undefined && props.omdb !=='N/A'){
          data = props.omdb
