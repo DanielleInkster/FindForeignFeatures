@@ -18,7 +18,7 @@ const RecommendationsList =(props) => {
                                 pathname: `/${props.match.params.mediaType}/${props.match.params.id}/`+
                                 `recommendations/${item.id}`,  
                                  type}}>
-                                <Button value="More Information" onClick={() => { props.storeItem(item) }}/>
+                                <Button value="More Information"/>
                             </Link>
                         </div>
                         <br />
@@ -40,10 +40,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        storeItem: (item) => dispatch({ type: 'MORE_INFO', val: item })
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(RecommendationsList);
+export default connect(mapStateToProps, null)(RecommendationsList);

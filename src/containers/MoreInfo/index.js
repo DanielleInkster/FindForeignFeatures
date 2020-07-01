@@ -1,6 +1,5 @@
 // eslint-disable-next-line
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
 import * as _ from "lodash";
 import ISO6391 from 'iso-639-1';
 import MoreInfoItem from '../../components/MoreInfoItem/Item';
@@ -24,8 +23,7 @@ class MoreInfo extends Component {
     }
 
     componentDidUpdate(prevState) {
-        let year = this.findYear()
-        if (this.state.tmdbInfo !== prevState.tmdbInfo && this.state.omdbInfo.length === 0) { this.createFetch(year) }
+        if (this.state.tmdbInfo !== prevState.tmdbInfo && this.state.omdbInfo.length === 0) { this.createFetch() }
     }
 
     searchTerm(title) {
@@ -49,8 +47,8 @@ class MoreInfo extends Component {
 
     findYear() {
         let searchTerm = this.props.match.params.mediaType === 'tv' ? "first_air_date" : "release_date"
-        let year = (this.props.more_info.hasOwnProperty(searchTerm) && this.props.more_info[searchTerm] !== "") ?
-            this.props.more_info[searchTerm].slice(0, 4) : "[Unknown]"
+        let year = (this.state.tmdbInfo.hasOwnProperty(searchTerm) && this.state.tmdbInfo[searchTerm] !== "") ?
+            this.state.tmdbInfo[searchTerm].slice(0, 4) : "[Unknown]"
         return year
     }
 
@@ -61,9 +59,11 @@ class MoreInfo extends Component {
             }).then((data) => {
                 this.setState({ tmdbInfo: data })
             })
+        
     }
 
-    createFetch = (year) => {
+    createFetch = () => {
+        let year = this.findYear()
         let title = this.props.match.params.mediaType === 'tv' ?
             this.slugify(this.state.tmdbInfo.name) : this.slugify(this.state.tmdbInfo.title)
         fetch(`/fetchMoreInfo/${title}/${year}`)
@@ -138,10 +138,5 @@ class MoreInfo extends Component {
     };
 }
 
-const mapStateToProps = (state) => {
-    return {
-        more_info: state.more_info
-    }
-}
 
-export default connect(mapStateToProps, null)(MoreInfo);
+export default MoreInfo;
