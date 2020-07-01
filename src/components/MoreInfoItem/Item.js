@@ -44,7 +44,12 @@ const MoreInfoItem = (props) => {
                 {props.type === 'tv' &&
                     <IfOmdbIsNull omdb={props.omdb.totalSeasons} tmdb={props.tmdb.number_of_seasons}/>
                 }
-                <b><u>Runtime:</u></b>  <IfOmdbIsNull omdb={props.omdb.Runtime} tmdb={props.tmdb.episode_run_time+" min"} />
+                
+                <b><u>Runtime:</u></b>  
+                {props.type === 'tv' &&<IfOmdbIsNull omdb={props.omdb.Runtime} tmdb={props.tmdb.episode_run_time+" min"} />
+                }
+                {props.type === 'movie' && <IfOmdbIsNull omdb={props.omdb.Runtime} tmdb={props.tmdb.runtime + " min"} />
+                }
                 <br />
                 <a target="_blank" href={props.url} alt='Find more at IMDB'>
                     <Button value={'Find more at IMDB'} />
