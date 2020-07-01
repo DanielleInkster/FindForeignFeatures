@@ -51,10 +51,10 @@ class Search extends Component {
                     <KeywordRecommendations keywords={this.state.keywords} type={this.props.props.match.params.mediaType} 
                         rawKeywordHandler={this.rawKeywordHandler}/>  
                 }
-                {this.props.selection.length !== 0 && this.state.genres.length === 0 &&
+                {this.props.selection !== '' && this.state.genres.length === 0 &&
                     <Genres item={this.props.selection} genreHandler={this.genreHandler}/>
                 }
-                {this.state.rawKeywordRecommendations.length !== 0 && this.state.genres.length !== 0 &&
+                {this.state.rawKeywordRecommendations.length !== 0 && this.state.genres.length !== 0  &&
                     <Compare genres={this.state.genres} keywordRecs={this.state.rawKeywordRecommendations} 
                         comparedHandler={this.comparedHandler} />
                 }

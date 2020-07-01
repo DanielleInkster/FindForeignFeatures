@@ -3,7 +3,9 @@ import React from 'react'
 
 const CheckForUndefined=(props)=>{
    let data = props.omdb !== undefined ? props.omdb : 'N/A'
-   return data
+   return (
+      <span>{data}<br/></span>
+   )
 }
 
 export default CheckForUndefined
