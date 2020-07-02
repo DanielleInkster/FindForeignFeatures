@@ -12,12 +12,12 @@ function initializeReactGA() {
     ReactGA.pageview('/');
 }
 
-
 class App extends Component {
 
     render() {
         return (
             <div>
+                {initializeReactGA()}
                 {initializeReactGA()}
         
             <Router onUpdate={() => window.scrollTo(0, 0)}>
