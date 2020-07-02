@@ -18,7 +18,6 @@ class App extends Component {
         return (
             <div>
                 {initializeReactGA()}
-                {initializeReactGA()}
         
             <Router onUpdate={() => window.scrollTo(0, 0)}>
                <Routes/>
