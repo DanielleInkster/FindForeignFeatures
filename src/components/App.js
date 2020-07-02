@@ -2,14 +2,22 @@ import React, { Component } from 'react';
 import ReactGA from 'react-ga';
 import Routes from './Routes';
 import { BrowserRouter as Router } from "react-router-dom"
+import { createBrowserHistory } from 'history';
 
 import ScrollButton from './Assets/ScrollButton';
 
 import '../stylesheets/App.css'
 
-function initializeReactGA() {
+
+const history = createBrowserHistory();
+
+function initializeReactGA(){
     ReactGA.initialize("UA-171500069-1");
-    ReactGA.pageview('/');
+
+    history.listen(location => {
+        ReactGA.set({ page: location.pathname });
+        ReactGA.pageview(location.pathname);
+    })
 }
 
 class App extends Component {
@@ -19,7 +27,7 @@ class App extends Component {
             <div>
                 {initializeReactGA()}
         
-            <Router onUpdate={() => window.scrollTo(0, 0)}>
+            <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
                <Routes/>
             </Router>
                 <ScrollButton scrollStepInPx='100' delayInMs='16.66'/>
