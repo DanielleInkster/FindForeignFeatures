@@ -47,7 +47,7 @@ class MoreInfo extends Component {
 
     findYear() {
         let searchTerm = this.props.match.params.mediaType === 'tv' ? "first_air_date" : "release_date"
-        let year = (this.state.tmdbInfo.hasOwnProperty(searchTerm) && this.state.tmdbInfo[searchTerm] !== "") ?
+        let year = (this.state.tmdbInfo.hasOwnProperty(searchTerm) && this.state.tmdbInfo[searchTerm] !== "" && this.state.tmdbInfo[searchTerm] !== null) ?
             this.state.tmdbInfo[searchTerm].slice(0, 4) : "[Unknown]"
         return year
     }
