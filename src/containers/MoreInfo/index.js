@@ -4,7 +4,6 @@ import * as _ from "lodash";
 import ISO6391 from 'iso-639-1';
 import MoreInfoItem from '../../components/MoreInfoItem/Item';
 import Loading from '../../components/Assets/Loading';
-import 'whatwg-fetch'
 
 class MoreInfo extends Component {
     constructor(props) {
