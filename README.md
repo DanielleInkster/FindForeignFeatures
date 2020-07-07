@@ -2,7 +2,7 @@
 
 An application used to recommend tv programmes and films in languages other than English based on English programs that the user enjoys. 
 
-<center><img src="./src/Images/3F.gif" alt="Gif of FindForeign Features site in use" width="250px" height="400px"></center>
+<div align="center"><img src="./src/Images/3F.gif" alt="Gif of FindForeign Features site in use" width="300px" height="400px"></div>
 
 ### FindForeignFeatures is live! 
 [Check it out here!](http://www.findforeignfeatures.com/)
