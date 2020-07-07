@@ -1,53 +1,36 @@
-Project Name & Pitch
-Example:
-TweetWorld
+# FindForeignFeatures
 
-An application used to filter data form Twitter based on user preference, built with React, Redux, JavaScript, and CSS.
+An application used to recommend tv programmes and films in languages other than English based on English programs that the user enjoys. 
 
-Project Status
-(only necessary if incomplete)
+![Gif of FindForeign Features site in use](./src/Images/3F.gif)
 
-Example:
-This project is currently in development. Users can filter tweets by username and keyword and see visual data representation. Functionality to sort by additional parameters is in progress.
+###FindForeignFeatures is live! 
+[Check it out here!](http://www.findforeignfeatures.com/)
 
-Project Screen Shot(s)
-Example:
-[ PRETEND SCREEN SHOT IS HERE ]
+##Installation and Setup Instructions:
 
-[ PRETEND OTHER SCREEN SHOT IS HERE ]
-
-Installation and Setup Instructions
-Example:
 Clone down this repository. You will need node and npm installed globally on your machine.
 
-Installation:
+##Installation:
 
 npm install
 
-To Run Test Suite:
-
-npm test
-
-To Start Server:
+##To Start Server:
 
 npm start
 
 To Visit App:
 
-localhost:3000/ideas
+localhost:3000
 
-Reflection
-What was the context for this project? (ie: was this a side project? was this for Turing? was this for an experiment?)
-What did you set out to build?
-Why was this project challenging and therefore a really good learning experience?
-What were some unexpected obstacles?
-What tools did you use to implement this project?
-This might seem obvious because you are IN this codebase, but to all other humans now is the time to talk about why you chose webpack instead of create react app, or D3, or vanilla JS instead of a framework etc. Brag about your choices and justify them here.
-Example:
-This was a 3 week long project built during my third module at Turing School of Software and Design. Project goals included using technologies learned up until this point and familiarizing myself with documentation for new features.
+##Reflection
 
-Originally I wanted to build an application that allowed users to pull data from the Twitter API based on what they were interested in, such as 'most tagged users'. I started this process by using the create-react-app boilerplate, then adding react-router-4.0 and redux.
+This project was a spin-off of a tutorial in React that created a simple search of the TVmaze API by title. Very quickly, I decided I already knew what series I enjoyed in English and I was more interested in building something that would recommend foreign series. I switched to TMDB API as it offered more search functionality, such as searching by keywords and by genre. Once I began using TMDB API, it was fairly straight-forward to extend to search for films as well. I also included the OMDB API for finding more information about a series or film, as the OMDB API enteries tend to have more complete and curated information when searching by title. 
 
-One of the main challenges I ran into was Authentication. This lead me to spend a few days on a research spike into OAuth, Auth0, and two-factor authentication using Firebase or other third parties. Due to project time constraints, I had to table authentication and focus more on data visualization from parts of the API that weren't restricted to authenticated users.
+This project provided me with a significant amount of learning opportunites. This is my first solo React project, so I learned a lot about separating my work into containers with state and logic, and components, which are generally stateless and use only logic concerned with presentation. I also had a lot of opportunities to review simplifying components so they could be re-used. 
 
-At the end of the day, the technologies implemented in this project are React, React-Router 4.0, Redux, LoDash, D3, and a significant amount of VanillaJS, JSX, and CSS. I chose to use the create-react-app boilerplate to minimize initial setup and invest more time in diving into weird technological rabbit holes. In the next iteration I plan on handrolling a webpack.config.js file to more fully understand the build process.
+As the project progressed, I decided to add React-Router to create more RESTful routes that would allow a user to move forward and back between pages. Once this was implemented, the next logical step was to use Redux in order to hold certain values in the store to improve speed by eliminating repetitive API calls,  as well user experience by streamlining the search process. Finally, I added an Express server to move the API calls to the backend, thus hiding the API keys. THe Express server also allowed for me to take my project live on Heroku. 
+
+There were some challenges moving the calls to the backend, as some of them began to return far more slowly or even fail due to delay. I resolved this by installing 'fetch-retry' that would repeat the call at set intervals should the previous call not return a timely response. 
+
+At the end of the day, the major technologies implemented in this project are React, React-Router 4.0, Redux, Express, as well as a significant amount of VanillaJS, JSX, and CSS.  Additionally, I added a Google Analytics tracker to get information such as site hits, user demographics and response times. 
