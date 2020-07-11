@@ -1,6 +1,6 @@
 # FindForeignFeatures
 
-An application used to recommend tv programmes and films in languages other than English based on English programs that the user enjoys. 
+An application used to recommend tv programmes and films in languages other than English based on English features that the user enjoys. 
 
 <div align="center"><img src="./src/Images/3F.gif" alt="Gif of FindForeign Features site in use" width="300px" height="400px"></div>
 
@@ -33,4 +33,4 @@ As the project progressed, I decided to add React-Router to create more RESTful 
 
 There were some challenges moving the calls to the backend, as some of them began to return far more slowly or even fail due to delay. I resolved this by installing 'fetch-retry' that would repeat the call at set intervals should the previous call not return a timely response. 
 
-At the end of the day, the major technologies implemented in this project are React, React-Router 4.0, Redux, Express, as well as a significant amount of VanillaJS, JSX, and CSS.  Additionally, I added a Google Analytics tracker to get information such as site hits, user demographics and response times.
+At the end of the day, the major technologies implemented in this project are React, React-Router, Redux, Express, as well as a significant amount of VanillaJS, JSX, and CSS.  Additionally, I added a Google Analytics tracker to get information such as site hits, user demographics and response times.
