@@ -8,20 +8,24 @@ import '../../stylesheets/MediaList/MediaList.css'
 const MediaList =(props)=>  {
     if(props.list.length !==0){
         return(
-            <div  className="column"> 
-                {props.list.map(item =>
-                    <li style={{ listStyleType: "none" }} key={item.id} className='card'>
-                        <div className='card-content'>
-                            <MediaListItem item={item} type = {props.match.params.mediaType}/>
-                            
-                            <Link to={{ pathname: `/${props.match.params.mediaType}/${item.id}/search/keywords`}}>
-                                <Button value="Find more like this!" onClick={() => { props.storeSelection(item)}}/>
-                            </Link>
-                        </div>
-                        <br/>
-                    </li>)
-                }
-            </div> 
+        <div>
+            <div id='wow'>Do you mean...</div>
+                <br/>
+                <div  className="column"> 
+                    {props.list.map(item =>
+                        <li style={{ listStyleType: "none" }} key={item.id} className='card'>
+                            <div className='card-content'>
+                                <MediaListItem item={item} type = {props.match.params.mediaType}/>
+                                
+                                <Link to={{ pathname: `/${props.match.params.mediaType}/${item.id}/search/keywords`}}>
+                                    <Button value="Find more like this!" onClick={() => { props.storeSelection(item)}}/>
+                                </Link>
+                            </div>
+                            <br/>
+                        </li>)
+                    }
+                </div> 
+            </div>
         ) 
     } else {
         return (
