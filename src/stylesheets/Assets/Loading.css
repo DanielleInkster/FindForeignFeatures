@@ -1,12 +1,12 @@
 #Loading{
-    border: 10px solid #f0a500;
+    border: 10px solid #FFD300;
     width: 25em;
     height: 15em;
 }
 
 @media screen and (max-width: 500px) {
   #Loading {
-   border: 8px solid #f0a500;
+   border: 8px solid #FFD300;
     width: 15em;
     height: 10em
   }
@@ -14,7 +14,7 @@
 
 @media screen and (min-width:501px) and (max-width:675px) {
   #Loading {  
-    border: 10px solid #f0a500;
+    border: 10px solid #FFD300;
     width: 20em;
     height: 12em
   }

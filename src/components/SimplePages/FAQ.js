@@ -34,7 +34,7 @@ const FAQ = () => {
             <br/>
               <div className="wrap-collabsible">
                 <input id="collapsible2" className="toggle2" type="checkbox" />
-                    <label for="collapsible2" className="lbl-toggle2" id="label2">Where do you get your feature information from?</label>
+                    <label for="collapsible2" className="lbl-toggle2" id="label2">Where do you get your content from?</label>
                     <div className="collapsible-content2">
                         <div className="content-inner2">
                          
@@ -50,7 +50,10 @@ const FAQ = () => {
                                 <a href='http://www.omdbapi.com/'>OMDb API</a>
                                 </p>
                                 <p>
-                                <br/>
+                                Our background image is from  
+                                <a href='https://www.freepik.com/free-photo/overhead-view-film-reel-vintage-camcorder-film-reels-popcorn_4806870.htm'> Freepik.com</a>
+                                </p>
+                                <p>
                                 ✺We are not affiliated with nor endorsed by IMDb.✺
                                 </p>
                           

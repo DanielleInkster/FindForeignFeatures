@@ -4,7 +4,7 @@ a{
 }
 
 a:hover{
-   color: #f0a500;
+   color: #FFD300;
 }
 
 .toggle5{
@@ -30,11 +30,11 @@ a:hover{
 
 
 .lbl-toggle5:hover {
-   background: #f0a500
+   background: #FFD300
 }
 
 .toggle5:checked+ .lbl-toggle5{
-    background: #f0a500
+    background: #FFD300
 }
 
 .lbl-toggle5::before {
@@ -71,7 +71,7 @@ a:hover{
 }
 
 .collapsible-content5 .content-inner5 {
-  background:  rgb(179, 179, 179);
+  background:  rgb(179, 179, 179, 0.8);
   border-bottom: 1px solid  rgb(88, 87, 87);
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;

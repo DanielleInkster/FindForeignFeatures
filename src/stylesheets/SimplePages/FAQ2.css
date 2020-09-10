@@ -4,7 +4,7 @@ a{
 }
 
 a:hover{
-   color: #f0a500;
+   color: #FFD300;
 }
 
 .toggle2{
@@ -29,12 +29,12 @@ a:hover{
 }
 
 .lbl-toggle2:hover {
-   background: #f0a500
+   background: #FFD300
 }
 
 
 .toggle2:checked+ .lbl-toggle2{
-    background: #f0a500
+    background: #FFD300
 }
 
 .lbl-toggle2::before {
@@ -71,7 +71,7 @@ a:hover{
 }
 
 .collapsible-content2 .content-inner2 {
-  background:  rgb(179, 179, 179);
+  background:  rgb(179, 179, 179, 0.8);
   border-bottom: 1px solid  rgb(88, 87, 87);
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
