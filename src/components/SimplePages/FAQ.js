@@ -50,7 +50,7 @@ const FAQ = () => {
                                 <a href='http://www.omdbapi.com/'>OMDb API</a>
                                 </p>
                                 <p>
-                                Our backgtround image is from  
+                                Our background image is from  
                                 <a href='https://www.freepik.com/free-photo/overhead-view-film-reel-vintage-camcorder-film-reels-popcorn_4806870.htm'> Freepik.com</a>
                                 </p>
                                 <p>
