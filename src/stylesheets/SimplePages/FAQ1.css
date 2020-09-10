@@ -73,7 +73,7 @@ a:hover{
 }
 
 .collapsible-content .content-inner {
-  background:  rgb(179, 179, 179);
+  background:  rgb(179, 179, 179, 0.8);
   border-bottom: 1px solid  rgb(88, 87, 87);
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
