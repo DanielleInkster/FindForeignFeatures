@@ -9,12 +9,12 @@
 }  
 
 .data{
-    background: rgb(179, 179, 179);
+    background: rgb(179, 179, 179, 0.8);
     border-left: 2px solid rgb(88, 87, 87);
 }
 .image {
-    background: white
-} 
+    background: rgb(255,255,255, 0.8);
+}
 
 .title{
     font-size: calc(30px + 2vw);
