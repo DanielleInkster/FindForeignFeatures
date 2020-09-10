@@ -35,42 +35,44 @@
 }
 
 .FAQ{
-  color:#FFD300;
+  color: rgb(88, 87, 87);
   margin-left: 1%;
 }
 
 .FAQ:link {
-  color:#FFD300;
+  color: rgb(88, 87, 87);
+  
 }
 
 .FAQ:hover {
-  color: rgb(88, 87, 87);
+  color:#FFD300;
 }
 
 .Contact {
-  color:#FFD300;
+  color: rgb(88, 87, 87);
   margin-left: 1%;
 }
 
 .Contact:link {
-  color:#FFD300;
+  color: rgb(88, 87, 87);
+  
 }
 
 .Contact:hover {
-  color: rgb(88, 87, 87);
+  color:#FFD300;
 }
 
 .Home {
-  color:#FFD300;
+  color: rgb(88, 87, 87);
   margin-left: 1%;
 }
 
 .Home:link {
-  color:#FFD300;
+  color: rgb(88, 87, 87);
 }
 
 .Home:hover {
-  color: rgb(88, 87, 87);
+  color:#FFD300;
 }
 
 .SiteTitle{
