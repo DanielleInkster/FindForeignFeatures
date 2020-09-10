@@ -15,7 +15,7 @@
 
 .App-header {
   opacity: 1;
-  background-color: #f0a500;
+  background-color: #FFD300;
   height: 40%;
   display: flex;
   flex-direction: column;
@@ -35,12 +35,12 @@
 }
 
 .FAQ{
-  color:#f0a500;
+  color:#FFD300;
   margin-left: 1%;
 }
 
 .FAQ:link {
-  color:#f0a500;
+  color:#FFD300;
 }
 
 .FAQ:hover {
@@ -48,12 +48,12 @@
 }
 
 .Contact {
-  color:#f0a500;
+  color:#FFD300;
   margin-left: 1%;
 }
 
 .Contact:link {
-  color:#f0a500;
+  color:#FFD300;
 }
 
 .Contact:hover {
@@ -61,12 +61,12 @@
 }
 
 .Home {
-  color:#f0a500;
+  color:#FFD300;
   margin-left: 1%;
 }
 
 .Home:link {
-  color:#f0a500;
+  color:#FFD300;
 }
 
 .Home:hover {

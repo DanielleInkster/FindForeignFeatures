@@ -4,7 +4,7 @@ a{
 }
 
 a:hover{
-   color: #f0a500;
+   color: #FFD300;
 }
 
 .toggle5{
@@ -30,11 +30,11 @@ a:hover{
 
 
 .lbl-toggle5:hover {
-   background: #f0a500
+   background: #FFD300
 }
 
 .toggle5:checked+ .lbl-toggle5{
-    background: #f0a500
+    background: #FFD300
 }
 
 .lbl-toggle5::before {
