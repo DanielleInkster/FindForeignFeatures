@@ -1,6 +1,6 @@
 # FindForeignFeatures
 
-An application used to recommend tv programmes and films in languages other than English based on English features that the user enjoys. 
+An application used to recommend tv programs and films in languages other than English based on English features that the user enjoys. 
 
 <div align="center"><img src="./src/Images/3F.gif" alt="Gif of FindForeign Features site in use" width="300px" height="400px"></div>
 
