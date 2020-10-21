@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import ReactGA from "react-ga";
-import Routes from "../Routes";
+import Routes from "./Routes";
 import { BrowserRouter as Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
-import ScrollButton from "./Assets/ScrollButton";
+import ScrollButton from "./components/Assets/ScrollButton";
 
-import "../stylesheets/App.css";
+import "./stylesheets/App.css";
 
 const history = createBrowserHistory();
 
