@@ -1,6 +1,6 @@
 import React from "react";
-import Message from "./Assets/Message";
-import Loading from "./Assets/Loading";
+import Message from "../components/Assets/Message";
+import Loading from "../components/Assets/Loading";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Search from "../containers/Search";

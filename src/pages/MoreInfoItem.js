@@ -1,15 +1,15 @@
 import React from "react";
-import ConvertISO from "../Assets/ConvertISO";
-import MoreInfoImage from "../MoreInfoItem/MoreInfoImage";
-import RecTitle from "./MoreInfoTitle";
-import MoreInfoNonEnglishName from "./MoreInfoNonEnglishName";
-import DisplayPlot from "./DisplayPlot";
-import CheckForUndefined from "./CheckForUndefined";
-import ReleaseDate from "./ReleaseDate";
-import IfOmdbIsNull from "./IfOmdbIsNull";
-import Button from "../Assets/Button";
+import ConvertISO from "../components/Assets/ConvertISO";
+import MoreInfoImage from "../components/MoreInfoItem/MoreInfoImage";
+import RecTitle from "../components/MoreInfoItem/MoreInfoTitle";
+import MoreInfoNonEnglishName from "../components/MoreInfoItem/MoreInfoNonEnglishName";
+import DisplayPlot from "../components/MoreInfoItem/DisplayPlot";
+import CheckForUndefined from "../components/MoreInfoItem/CheckForUndefined";
+import ReleaseDate from "../components/MoreInfoItem/ReleaseDate";
+import IfOmdbIsNull from "../components/MoreInfoItem/IfOmdbIsNull";
+import Button from "../components/Assets/Button";
 
-import "../../stylesheets/MoreInfo/MoreInfoItem.css";
+import "../stylesheets/MoreInfo/MoreInfoItem.css";
 
 const MoreInfoItem = (props) => {
   return (

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import RecommendationsListItem from "./RecommendationsListItem";
-import Button from "./Assets/Button";
+import RecommendationsListItem from "../components/RecommendationsListItem";
+import Button from "../components/Assets/Button";
 
 const RecommendationsList = (props) => {
   let type = props.match.params.mediaType;

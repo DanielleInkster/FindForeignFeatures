@@ -1,6 +1,6 @@
 import React from "react";
-import Message from "../Assets/Message";
-import Button from "../Assets/Button";
+import Message from "../../components/Assets/Message";
+import Button from "../../components/Assets/Button";
 import { Link } from "react-router-dom";
 
 const NoResults = () => {

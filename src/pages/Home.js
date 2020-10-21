@@ -1,6 +1,6 @@
 import React from "react";
-import ChooseMedia from "./ChooseMedia";
-import Message from "./Assets/Message";
+import ChooseMedia from "../components/ChooseMedia";
+import Message from "../components/Assets/Message";
 import "./../stylesheets/Home/Home.css";
 
 const Home = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../Assets/Button";
+import Button from "../../components/Assets/Button";
 import NotFound from "../../Images/404.gif";
 import "../../stylesheets/SimplePages/PageNotFound.css";
 

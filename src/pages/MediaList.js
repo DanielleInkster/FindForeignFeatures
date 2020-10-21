@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
-import MediaListItem from "./MediaListItem";
-import Button from "./Assets/Button";
+import MediaListItem from "../components/MediaListItem";
+import Button from "../components/Assets/Button";
 import "./../stylesheets/MediaList/MediaList.css";
 
 const MediaList = (props) => {

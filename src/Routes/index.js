@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import Icon from "../components/Assets/Icon";
-import Home from "../components/Home";
-import NoResults from "../components/SimplePages/NoResults";
-import PageNotFound from "../components/SimplePages/PageNotFound";
+import Home from "../pages/Home";
+import NoResults from "../pages/SimplePages/NoResults";
+import PageNotFound from "../pages/SimplePages/PageNotFound";
 import Media from "../containers/Media";
 import Keywords from "../containers/Keywords";
-import SearchPage from "../components/SearchPage";
+import SearchPage from "../pages/SearchPage";
 import MoreInfo from "../containers/MoreInfo";
-import MediaList from "../components/MediaList";
-import FAQ from "../components/SimplePages/FAQ";
-import Contact from "../components/SimplePages/Contact";
-import RecommendationsList from "../components/RecommendationsList";
+import MediaList from "../pages/MediaList";
+import FAQ from "../pages/SimplePages/FAQ";
+import Contact from "../pages/SimplePages/Contact";
+import RecommendationsList from "../pages/RecommendationsList";
 
 import { Link, Switch, Route } from "react-router-dom";
 

@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import * as _ from "lodash";
 import ISO6391 from 'iso-639-1';
-import MoreInfoItem from '../../components/MoreInfoItem/Item';
+import MoreInfoItem from '../../pages/MoreInfoItem';
 import Loading from '../../components/Assets/Loading';
 
 class MoreInfo extends Component {
