@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import Message from '../../components/Assets/Message';
-import CheckBoxList from '../../components/Assets/CheckBoxList';
-import Button from '../../components/Assets/Button';
-import '../../stylesheets/SelectKeywords/SelectKeywords.css'
+import Message from '../components/Assets/Message';
+import CheckBoxList from '../components/Assets/CheckBoxList';
+import Button from '../components/Assets/Button';
+import '../stylesheets/SelectKeywords/SelectKeywords.css'
 
 class SelectKeywords extends Component {
     constructor(props) {

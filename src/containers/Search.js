@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import KeywordRecommendations from '../KeywordRecommendations';
-import Genres from '../Genres';
-import Compare from '../Compare';
-import SortRecommendations from '../SortRecommendations';
+import KeywordRecommendations from './KeywordRecommendations';
+import Genres from './Genres';
+import Compare from './Compare';
+import SortRecommendations from './SortRecommendations';
 
 class Search extends Component {
     constructor(props) {

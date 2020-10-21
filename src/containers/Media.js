@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
-import Button from '../../components/Assets/Button';
-import Input from '../../components/Assets/Input';
-import Message from '../../components/Assets/Message'
-import Loading from '../../components/Assets/Loading'
+import Button from '../components/Assets/Button';
+import Input from '../components/Assets/Input';
+import Message from '../components/Assets/Message'
+import Loading from '../components/Assets/Loading'
 
 class Media extends Component{
     constructor(props, { match }) {
