@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
-import Routes from './Routes';
+import Routes from '../Routes';
 import { BrowserRouter as Router } from "react-router-dom"
 import { createBrowserHistory } from 'history';
 

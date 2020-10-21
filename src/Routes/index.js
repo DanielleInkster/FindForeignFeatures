@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import Icon from '../Assets/Icon';
-import Home from '../Home'
-import NoResults from '../SimplePages/NoResults'
-import PageNotFound from '../SimplePages/PageNotFound'
-import Media from '../../containers/Media'
-import Keywords from '../../containers/Keywords'
-import SearchPage from '../SearchPage/SearchPage'
-import SelectKeywords from '../../containers/SelectKeywords'
-import MoreInfo from '../../containers/MoreInfo'
-import MediaList from '../MediaList'
-import FAQ from '../SimplePages/FAQ'
-import Contact from '../SimplePages/Contact'
-import RecommendationsList from '../RecommendationsList'
+import Icon from '../components/Assets/Icon';
+import Home from '../components/Home'
+import NoResults from '../components/SimplePages/NoResults'
+import PageNotFound from '../components/SimplePages/PageNotFound'
+import Media from '../containers/Media'
+import Keywords from '../containers/Keywords'
+import SearchPage from "../components/SearchPage";
+import MoreInfo from '../containers/MoreInfo'
+import MediaList from '../components/MediaList'
+import FAQ from '../components/SimplePages/FAQ'
+import Contact from '../components/SimplePages/Contact'
+import RecommendationsList from '../components/RecommendationsList'
 
 import {
     Link,
