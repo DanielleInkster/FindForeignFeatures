@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom';
-import MediaListItem from '../MediaListItem';
-import Button from '../Assets/Button';
-import '../../stylesheets/MediaList/MediaList.css'
+import MediaListItem from './MediaListItem';
+import Button from './Assets/Button';
+import './../stylesheets/MediaList/MediaList.css'
 
 const MediaList =(props)=>  {
     if(props.list.length !==0){
