@@ -1,6 +1,7 @@
 body{
     background-image: url('./src/Images/reelImage.jpg'); 
     background-size: 100vw 100vh; 
-    background-repeat: repeat-y;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
