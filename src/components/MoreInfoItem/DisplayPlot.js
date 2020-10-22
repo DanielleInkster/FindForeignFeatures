@@ -2,11 +2,11 @@
 import React from "react";
 import "../../stylesheets/MoreInfo/MoreInfoPlot.css";
 
-const DisplayPlot = (props) => {
+const DisplayPlot = ({omdb, tmdb}) => {
   let plot =
-    props.omdb !== undefined && props.omdb.length > props.tmdb.length
-      ? props.omdb
-      : props.tmdb;
+   omdb !== undefined && omdb.length > tmdb.length
+      ? omdb
+      :tmdb;
   return (
     <div id="plot">
       {plot} <br />

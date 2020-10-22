@@ -1,15 +1,15 @@
 import React from "react";
 
-const IfOmdbIsNull = (props) => {
+const IfOmdbIsNull = ({tmdb, omdb}) => {
   let data = "";
-  if (props.omdb !== undefined && props.omdb !== "N/A") {
-    data = props.omdb;
+  if (omdb !== undefined && omdb !== "N/A") {
+    data = omdb;
   } else if (
-    (props.omdb === undefined || props.omdb === "N/A") &&
-    props.tmdb !== undefined &&
-    props.tmdb !== " min"
+    (omdb === undefined || omdb === "N/A") &&
+    tmdb !== undefined &&
+    tmdb !== " min"
   ) {
-    data = props.tmdb.toString();
+    data = tmdb.toString();
   } else {
     data = "N/A";
   }
