@@ -1,14 +1,9 @@
 import React from "react";
 import "../../stylesheets/Assets/Input.css";
 
-const Input = (props) => {
+const Input = ({ value, onChange }) => {
   return (
-    <input
-      className="Input"
-      type="text"
-      value={props.value}
-      onChange={props.onChange}
-    />
+    <input className="Input" type="text" value={value} onChange={onChange} />
   );
 };
 
