@@ -1,6 +1,6 @@
 import React from "react";
 
-const IfOmdbIsNull = ({tmdb, omdb}) => {
+const IfOmdbIsNull = ({ tmdb, omdb }) => {
   let data = "";
   if (omdb !== undefined && omdb !== "N/A") {
     data = omdb;
