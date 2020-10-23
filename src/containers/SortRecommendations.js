@@ -10,7 +10,7 @@ function SortRecommendations({comparedRecommendations, storeRecommendations,  in
   });
 
   function redirect(to) {
-    info.props.history.push({ pathname: to });
+    info.history.push({ pathname: to });
   }
 
   function sortResults(arr){
@@ -24,7 +24,7 @@ function SortRecommendations({comparedRecommendations, storeRecommendations,  in
     let sorted = sortResults(arr);
     storeRecommendations(sorted.slice(0, 50));
     redirect(
-      `/${info.props.match.params.mediaType}/${info.props.match.params.id}/recommendations`
+      `/${info.match.params.mediaType}/${info.match.params.id}/recommendations`
     );
   };
 
