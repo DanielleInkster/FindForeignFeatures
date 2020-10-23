@@ -5,27 +5,25 @@ import Title from "./Title";
 import NonEnglishName from "./NonEnglishName";
 import FindYear from "./Assets/FindYear";
 
-const RecommendationsListItem = (props) => {
+const RecommendationsListItem = ({ item, type }) => {
   return (
     <div>
-      <ImageUrl item={props.item} />
+      <ImageUrl item={item} />
       <p className="mediaHeading">
-        <Title item={props.item} type={props.type} />
+        <Title item={item} type={type} />
       </p>
       <hr />
       <p id="nonEnglishHeading">
-        <NonEnglishName item={props.item} type={props.type} />
+        <NonEnglishName item={item} type={type} />
       </p>
       <p id="text">
-        <FindYear item={props.item} type={props.type} />
+        <FindYear item={item} type={type} />
       </p>
       <p id="text">
-        <ConvertISO language={props.item.original_language} />
+        <ConvertISO language={item.original_language} />
       </p>
       <p id="overview">
-        {props.item.overview.length > 0
-          ? props.item.overview.slice(0, 75) + "..."
-          : ""}
+        {item.overview.length > 0 ? item.overview.slice(0, 75) + "..." : ""}
       </p>
     </div>
   );

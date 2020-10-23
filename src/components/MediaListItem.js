@@ -4,19 +4,19 @@ import ImageUrl from "./ImageUrl";
 import Title from "./Title";
 import FindYear from "./Assets/FindYear";
 
-const MediaListItem = (props) => {
+const MediaListItem = ({item, type}) => {
   return (
     <div>
-      <ImageUrl item={props.item} />
+      <ImageUrl item={item} />
       <p className="mediaHeading">
-        <Title item={props.item} type={props.type} />
+        <Title item={item} type={type} />
       </p>
       <hr />
       <p id="text">
-        <FindYear item={props.item} type={props.type} />
+        <FindYear item={item} type={type} />
       </p>
       <p id="text">
-        <ConvertISO language={props.item.original_language} />
+        <ConvertISO language={item.original_language} />
       </p>
     </div>
   );

@@ -2,8 +2,8 @@
 import React from "react";
 import ReactHtmlParser from "react-html-parser";
 
-const HtmlParser = (props) => {
-  return ReactHtmlParser(props.text);
+const HtmlParser = ({ text }) => {
+  return ReactHtmlParser(text);
 };
 
 export default HtmlParser;

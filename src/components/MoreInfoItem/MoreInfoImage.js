@@ -1,26 +1,21 @@
-import React, { Component } from "react";
+import React from "react";
 import NoImage from "../../Images/NoImage.png";
 import "../../stylesheets/MoreInfo/MoreInfoImage.css";
 
-class MoreInfoImage extends Component {
-  choosePicSource() {
-    if (this.props.tmdb.poster_path !== null) {
-      return `https://image.tmdb.org/t/p/w500/${this.props.tmdb.poster_path}`;
+export default function MoreInfoImage({ omdb, tmdb }) {
+  function choosePicSource() {
+    if (tmdb.poster_path !== null) {
+      return `https://image.tmdb.org/t/p/w500/${tmdb.poster_path}`;
     } else if (
-      this.props.omdb.Poster !== null &&
-      this.props.omdb.Poster !== "N/A" &&
-      this.props.omdb.Poster !== undefined
+      omdb.Poster !== null &&
+      omdb.Poster !== "N/A" &&
+      omdb.Poster !== undefined
     ) {
-      return this.props.omdb.Poster;
+      return omdb.Poster;
     } else {
       return NoImage;
     }
   }
 
-  render() {
-    return (
-      <img src={this.choosePicSource()} alt={"Media Poster"} id="recPoster" />
-    );
-  }
+  return <img src={choosePicSource()} alt={"Media Poster"} id="recPoster" />;
 }
-export default MoreInfoImage;

@@ -1,9 +1,9 @@
 // eslint-disable-next-line
 import React from "react";
 
-const RecTitle = (props) => {
-  let searchTerm = props.type === "tv" ? "original_name" : "original_title";
-  return props.item[searchTerm];
+const RecTitle = ({ type, item }) => {
+  let searchTerm = type === "tv" ? "original_name" : "original_title";
+  return item[searchTerm];
 };
 
 export default RecTitle;

@@ -1,19 +1,19 @@
 import React from "react";
 import "../../stylesheets/Assets/CheckBox.css";
 
-export const CheckBox = (props) => {
+export const CheckBox = ({ id, value, handleCheckChildElement, isChecked }) => {
   return (
     <li>
       <input
-        key={props.id}
-        onChange={props.handleCheckChildElement}
+        key={id}
+        onChange={handleCheckChildElement}
         type="checkbox"
-        checked={props.isChecked}
-        value={props.value}
+        checked={isChecked}
+        value={value}
       />{" "}
       <span className="text" id="CheckBox">
         {" "}
-        {props.value}
+        {value}
       </span>
     </li>
   );

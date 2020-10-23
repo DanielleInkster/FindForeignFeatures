@@ -1,28 +1,23 @@
 import React from "react";
 import HtmlParser from "./Assets/HtmlParser";
 
-const NonEnglishName = (props) => {
+const NonEnglishName = ({ item, type }) => {
   let searchTerm = "";
   let searchTerm2 = "";
-  props.type === "tv" ? (searchTerm = "name") : (searchTerm = "title");
-  props.type === "tv"
+  type === "tv" ? (searchTerm = "name") : (searchTerm = "title");
+  type === "tv"
     ? (searchTerm2 = "original_name")
     : (searchTerm2 = "original_title");
 
-  if (
-    props.item[searchTerm] !== props.item[searchTerm2] &&
-    props.item[searchTerm].length < 40
-  ) {
-    return (
-      <HtmlParser text={`English Title: <b>${props.item[searchTerm]}</b>`} />
-    );
+  if (item[searchTerm] !== item[searchTerm2] && item[searchTerm].length < 40) {
+    return <HtmlParser text={`English Title: <b>${item[searchTerm]}</b>`} />;
   } else if (
-    props.item[searchTerm] !== props.item[searchTerm2] &&
-    props.item[searchTerm].length > 40
+    item[searchTerm] !== item[searchTerm2] &&
+    item[searchTerm].length > 40
   ) {
     return (
       <HtmlParser
-        text={`English Title: <b>${props.item[searchTerm].slice(0, 35)}...</b>`}
+        text={`English Title: <b>${item[searchTerm].slice(0, 35)}...</b>`}
       />
     );
   } else {
