@@ -7,7 +7,7 @@ body:before {
   width: 101vw;
   height: 101vh;
   z-index: -10;
-  background: url('./src/Images/reelImage.jpg') no-repeat center center;
+  background: url('./reelImage.jpg') no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
