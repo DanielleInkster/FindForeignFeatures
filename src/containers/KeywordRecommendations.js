@@ -11,7 +11,7 @@ class KeywordRecommendations extends Component {
 
   createKeywordFetch = (value) => {
     value.forEach((num) => {
-      fetch(`/fetchKeywordRecNumber/${this.props.type}/${num}`)
+      fetch(`/fetchKeywordRecs/${this.props.type}/${num}/1`)
         .then((response) => {
           return response.json();
         })
@@ -22,16 +22,20 @@ class KeywordRecommendations extends Component {
   };
 
   fetchKeywordRecs = (data, num) => {
-    let i;
-    let pages = data.total_pages < 150 ? data.total_pages : 150;
-    for (i = 1; i <= pages; i++) {
-      fetch(`/fetchKeywordRecs/${this.props.type}/${num}/${i}`)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          this.pushKeywordRecs(data);
-        });
+    if (data.total_pages === 1) {
+      this.pushKeywordRecs(data);
+    } else {
+      let i;
+      let pages = data.total_pages < 75 ? data.total_pages : 75;
+      for (i = 1; i <= pages; i++) {
+        fetch(`/fetchKeywordRecs/${this.props.type}/${num}/${i}`)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            this.pushKeywordRecs(data);
+          });
+      }
     }
   };
 
@@ -55,7 +59,7 @@ class KeywordRecommendations extends Component {
     this.createKeywordFetch(this.props.keywords);
     setTimeout(() => {
       this.getRecommendations();
-    }, 7000);
+    }, 3500);
   }
 
   render() {

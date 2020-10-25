@@ -1,91 +1,72 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import KeywordRecommendations from "./KeywordRecommendations";
 import Genres from "./Genres";
 import Compare from "./Compare";
 import SortRecommendations from "./SortRecommendations";
 
-class Search extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      keywords: [],
-      rawKeywordRecommendations: [],
-      genres: [],
-      comparedRecommendations: [],
-    };
-  }
+function Search({ props, selection }) {
+  const [keywords, setKeywords] = useState([]);
+  const [rawKeywordRecommendations, setrawKeywordRecommendations] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [comparedRecommendations, setComparedRecommendations] = useState([]);
 
-  componentDidMount() {
-    if (
-      this.state.keywords.length === 0 &&
-      this.props.props.location.keywords !== undefined
-    ) {
-      this.setState({ keywords: this.props.props.location.keywords });
+  useEffect(() => {
+    if (keywords.length === 0 && props.location.keywords !== undefined) {
+      setKeywords(props.location.keywords);
     }
     window.scrollTo(0, 0);
+  }, [keywords.length, props.location.keywords]);
+
+  function redirect(to, recommendations) {
+    props.history.push({ pathname: to, recommendations });
   }
 
-  redirect(to, recommendations) {
-    this.props.props.history.push({ pathname: to, recommendations });
-  }
-
-  noResults() {
-    this.redirect(
-      `/${this.props.props.match.params.mediaType}/${this.props.props.match.params.id}/noresults`
+  function noResults() {
+    redirect(
+      `/${props.match.params.mediaType}/${props.match.params.id}/noresults`
     );
   }
 
-  rawKeywordHandler = (results) => {
-    results.length !== 0
-      ? this.setState({ rawKeywordRecommendations: results })
-      : this.noResults();
-  };
-
-  genreHandler = (results) => {
-    this.setState({ genres: results });
-  };
-
-  comparedHandler = (results) => {
-    results.length !== 0
-      ? this.setState({ comparedRecommendations: results })
-      : this.noResults();
-  };
-
-  render() {
-    return (
-      <div>
-        {this.state.keywords.length !== 0 &&
-          this.state.rawKeywordRecommendations.length === 0 && (
-            <KeywordRecommendations
-              keywords={this.state.keywords}
-              type={this.props.props.match.params.mediaType}
-              rawKeywordHandler={this.rawKeywordHandler}
-            />
-          )}
-        {this.props.selection !== "" && this.state.genres.length === 0 && (
-          <Genres
-            item={this.props.selection}
-            genreHandler={this.genreHandler}
-          />
-        )}
-        {this.state.rawKeywordRecommendations.length !== 0 &&
-          this.state.genres.length !== 0 && (
-            <Compare
-              genres={this.state.genres}
-              keywordRecs={this.state.rawKeywordRecommendations}
-              comparedHandler={this.comparedHandler}
-            />
-          )}
-        {this.state.comparedRecommendations.length !== 0 && (
-          <SortRecommendations
-            comparedRecommendations={this.state.comparedRecommendations}
-            info={this.props}
-          />
-        )}
-      </div>
-    );
+  function rawKeywordHandler(results) {
+    results.length !== 0 ? setrawKeywordRecommendations(results) : noResults();
   }
+
+  function genreHandler(results) {
+    setGenres(results);
+  }
+
+  function comparedHandler(results) {
+    results.length !== 0 ? setComparedRecommendations(results) : noResults();
+  }
+
+  return (
+    <div>
+      {keywords.length !== 0 && rawKeywordRecommendations.length === 0 && (
+        <KeywordRecommendations
+          keywords={keywords}
+          type={props.match.params.mediaType}
+          rawKeywordHandler={rawKeywordHandler}
+        />
+      )}
+      {selection !== "" && genres.length === 0 && (
+        <Genres item={selection} genreHandler={genreHandler} />
+      )}
+      {rawKeywordRecommendations.length !== 0 && genres.length !== 0 && (
+        <Compare
+          genres={genres}
+          keywordRecs={rawKeywordRecommendations}
+          comparedHandler={comparedHandler}
+        />
+      )}
+      {comparedRecommendations.length !== 0 && (
+        <SortRecommendations
+          comparedRecommendations={comparedRecommendations}
+          info={props}
+        />
+      )}
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => {

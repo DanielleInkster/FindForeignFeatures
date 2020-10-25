@@ -1,27 +1,25 @@
 // eslint-disable-next-line
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 
-class Genres extends Component {
-  async componentDidMount() {
-    if (this.props.item.genre_ids !== undefined) {
-      this.props.genreHandler(this.props.item.genre_ids);
+function Genres({ item, genreHandler }) {
+  useEffect(() => {
+    if (item.genre_ids !== undefined) {
+      genreHandler(item.genre_ids);
     } else {
-      let ids = await this.getIds();
-      this.props.genreHandler(ids);
+      let ids = getIds();
+      genreHandler(ids);
     }
-  }
+  });
 
-  getIds = () => {
+  const getIds = () => {
     let arr = [];
-    this.props.item.genres.forEach((entry) => {
+    item.genres.forEach((entry) => {
       arr.push(entry.id);
     });
     return arr;
   };
 
-  render() {
-    return null;
-  }
+  return null;
 }
 
 export default Genres;
