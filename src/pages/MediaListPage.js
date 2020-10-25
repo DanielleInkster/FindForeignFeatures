@@ -5,14 +5,14 @@ import MediaListItem from "../components/MediaListItem";
 import Button from "../components/Assets/Button";
 import "./../stylesheets/MediaList/MediaList.css";
 
-const MediaList = (props) => {
-  if (props.list.length !== 0) {
+const MediaList = ({list, match, storeSelection}) => {
+  if (list.length !== 0) {
     return (
       <div>
         <div id="wow">Do you mean...</div>
         <br />
         <div className="column">
-          {props.list.map((item) => (
+          {list.map((item) => (
             <li
               style={{ listStyleType: "none" }}
               key={item.id}
@@ -21,18 +21,18 @@ const MediaList = (props) => {
               <div className="card-content">
                 <MediaListItem
                   item={item}
-                  type={props.match.params.mediaType}
+                  type={match.params.mediaType}
                 />
 
                 <Link
                   to={{
-                    pathname: `/${props.match.params.mediaType}/${item.id}/search/keywords`,
+                    pathname: `/${match.params.mediaType}/${item.id}/search/keywords`,
                   }}
                 >
                   <Button
                     value="Find more like this!"
                     onClick={() => {
-                      props.storeSelection(item);
+                      storeSelection(item);
                     }}
                   />
                 </Link>
