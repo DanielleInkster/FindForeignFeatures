@@ -16,7 +16,6 @@ class KeywordRecommendations extends Component {
           return response.json();
         })
         .then((data) => {
-          console.log("data", data);
           this.fetchKeywordRecs(data, num);
         });
     });
