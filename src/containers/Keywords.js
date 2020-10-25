@@ -52,30 +52,22 @@ class Keywords extends Component {
     }
   };
 
-  fetchMissingData(mediaType, itemId) {
-    fetch(`/fetchTMDBInfo/${mediaType}/${itemId}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        this.props.storeSelection(data);
-      });
+  async fetchMissingData(mediaType, itemId) {
+    const data = await fetch(`/fetchTMDBInfo/${mediaType}/${itemId}`);
+    const parsedData = await data.json();
+    this.props.storeSelection(await parsedData);
   }
 
-  findKeywordsFetch = (mediaType, id, searchTerm) => {
-    fetch(`/fetchKeywords/${mediaType}/${id}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        let arr = [];
-        this.setState({ amount: data[searchTerm].length });
-        data[searchTerm].length !== 0
-          ? arr.push(this.handleData(data[searchTerm]))
-          : this.noResults();
-        this.props.storeKeywords(arr);
-        this.setState({ fetchRun: true });
-      });
+  findKeywordsFetch = async (mediaType, id, searchTerm) => {
+    const data = await fetch(`/fetchKeywords/${mediaType}/${id}`);
+    const parsedData = await data.json();
+    let arr = [];
+    this.setState({ amount: parsedData[searchTerm].length });
+    parsedData[searchTerm].length !== 0
+      ? arr.push(this.handleData(parsedData[searchTerm]))
+      : this.noResults();
+    this.props.storeKeywords(arr);
+    this.setState({ fetchRun: true });
   };
 
   runKeywordFetch = () => {
