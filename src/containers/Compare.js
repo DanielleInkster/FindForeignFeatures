@@ -2,7 +2,6 @@
 import React, { useEffect } from "react";
 
 function Compare({ keywordRecs, genres, comparedHandler }) {
-  // const [comparedRecommendations, getComparedRecs] = useState([])
 
   useEffect(() => {
     returnRecommendations();

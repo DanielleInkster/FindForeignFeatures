@@ -5,22 +5,18 @@ import Genres from "./Genres";
 import Compare from "./Compare";
 import SortRecommendations from "./SortRecommendations";
 
-function Search({props, selection}) {
-  const [keywords, setKeywords] = useState([])
-  const [rawKeywordRecommendations, setrawKeywordRecommendations] = useState([])
-  const [genres, setGenres] = useState([])
-   const [comparedRecommendations, setComparedRecommendations] = useState([])
+function Search({ props, selection }) {
+  const [keywords, setKeywords] = useState([]);
+  const [rawKeywordRecommendations, setrawKeywordRecommendations] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [comparedRecommendations, setComparedRecommendations] = useState([]);
 
-   useEffect(() => {
-     if (
-      keywords.length === 0 &&
-      props.location.keywords !== undefined
-    ) {
+  useEffect(() => {
+    if (keywords.length === 0 && props.location.keywords !== undefined) {
       setKeywords(props.location.keywords);
     }
     window.scrollTo(0, 0);
-  });
-
+  }, [keywords.length, props.location.keywords]);
 
   function redirect(to, recommendations) {
     props.history.push({ pathname: to, recommendations });
@@ -32,55 +28,46 @@ function Search({props, selection}) {
     );
   }
 
-  function rawKeywordHandler(results){
-    results.length !== 0
-      ? setrawKeywordRecommendations(results)
-      : noResults();
-  };
-
-  function genreHandler(results){
-    setGenres(results);
-  };
-
-  function comparedHandler(results){
-    results.length !== 0
-      ? setComparedRecommendations(results)
-      : noResults();
-  };
-
-    return (
-      <div>
-        {keywords.length !== 0 &&
-          rawKeywordRecommendations.length === 0 && (
-            <KeywordRecommendations
-              keywords={keywords}
-              type={props.match.params.mediaType}
-              rawKeywordHandler={rawKeywordHandler}
-            />
-          )}
-        {selection !== "" && genres.length === 0 && (
-          <Genres
-            item={selection}
-            genreHandler={genreHandler}
-          />
-        )}
-        {rawKeywordRecommendations.length !== 0 &&
-          genres.length !== 0 && (
-            <Compare
-              genres={genres}
-              keywordRecs={rawKeywordRecommendations}
-              comparedHandler={comparedHandler}
-            />
-          )}
-        {comparedRecommendations.length !== 0 && (
-          <SortRecommendations
-            comparedRecommendations={comparedRecommendations}
-            info={props}
-          />
-        )}
-      </div>
-    );
+  function rawKeywordHandler(results) {
+    results.length !== 0 ? setrawKeywordRecommendations(results) : noResults();
   }
+
+  function genreHandler(results) {
+    setGenres(results);
+  }
+
+  function comparedHandler(results) {
+    results.length !== 0 ? setComparedRecommendations(results) : noResults();
+  }
+
+  return (
+    <div>
+      {keywords.length !== 0 && rawKeywordRecommendations.length === 0 && (
+        <KeywordRecommendations
+          keywords={keywords}
+          type={props.match.params.mediaType}
+          rawKeywordHandler={rawKeywordHandler}
+        />
+      )}
+      {selection !== "" && genres.length === 0 && (
+        <Genres item={selection} genreHandler={genreHandler} />
+      )}
+      {rawKeywordRecommendations.length !== 0 && genres.length !== 0 && (
+        <Compare
+          genres={genres}
+          keywordRecs={rawKeywordRecommendations}
+          comparedHandler={comparedHandler}
+        />
+      )}
+      {comparedRecommendations.length !== 0 && (
+        <SortRecommendations
+          comparedRecommendations={comparedRecommendations}
+          info={props}
+        />
+      )}
+    </div>
+  );
+}
 
 const mapStateToProps = (state) => {
   return {
