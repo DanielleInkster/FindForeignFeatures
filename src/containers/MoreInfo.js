@@ -68,52 +68,46 @@ class MoreInfo extends Component {
     return year;
   }
 
-  fetchMissingData(mediaType, itemId) {
-    fetch(`/fetchTMDBInfo/${mediaType}/${itemId}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        this.setState({ tmdbInfo: data });
-      });
+  async fetchMissingData(mediaType, itemId) {
+    const data = await fetch(`/fetchTMDBInfo/${mediaType}/${itemId}`);
+    const parsedData = await data.json();
+    this.setState({ tmdbInfo: parsedData });
   }
 
-  createFetch = () => {
+  createFetch = async () => {
     let year = this.findYear();
     let title =
       this.props.match.params.mediaType === "tv"
         ? this.slugify(this.state.tmdbInfo.name)
         : this.slugify(this.state.tmdbInfo.title);
-    fetch(`/fetchMoreInfo/${title}/${year}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        if (data.Response === "True" && this.compareLanguage(data) === true) {
-          this.setOmdb(data);
-        } else {
-          this.secondFetch(year);
-        }
-      });
+    const data = await fetch(`/fetchMoreInfo/${title}/${year}`);
+    const parsedData = await data.json();
+    if (
+      (await parsedData.Response) === "True" &&
+      this.compareLanguage(data) === true
+    ) {
+      this.setOmdb(data);
+    } else {
+      this.secondFetch(year);
+    }
   };
 
-  secondFetch = (year) => {
+  secondFetch = async (year) => {
     let title =
       this.props.match.params.mediaType === "tv"
         ? this.slugify(this.state.tmdbInfo.original_name)
         : this.slugify(this.state.tmdbInfo.original_title);
-    fetch(`/fetchMoreInfo/${title}/${year}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        if (data.Response === "True" && this.compareLanguage(data) === true) {
-          this.setOmdb(data);
-        } else {
-          let response = 0;
-          this.setOmdb(response);
-        }
-      });
+    const data = await fetch(`/fetchMoreInfo/${title}/${year}`);
+    const parsedData = await data.json();
+    if (
+      (await parsedData.Response) === "True" &&
+      this.compareLanguage(data) === true
+    ) {
+      this.setOmdb(data);
+    } else {
+      let response = 0;
+      this.setOmdb(response);
+    }
   };
 
   setOmdb = (data) => {

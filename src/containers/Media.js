@@ -35,19 +35,17 @@ class Media extends Component {
     return input;
   };
 
-  createFetch = (value) => {
-    fetch(`/fetchMedia/${this.props.match.params.mediaType}/${value}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        data.results.forEach((item) => {
-          if (item.original_language === "en")
-            this.setState((previousState) => ({
-              options: [...previousState.options, item],
-            }));
-        });
-      });
+  createFetch = async (value) => {
+    const data = await fetch(
+      `/fetchMedia/${this.props.match.params.mediaType}/${value}`
+    );
+    const returnData = await data.json();
+    await returnData.results.forEach((item) => {
+      if (item.original_language === "en")
+        this.setState((previousState) => ({
+          options: [...previousState.options, item],
+        }));
+    });
   };
 
   searchForMedia = (data) => {

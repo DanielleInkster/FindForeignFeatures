@@ -10,31 +10,25 @@ class KeywordRecommendations extends Component {
   }
 
   createKeywordFetch = (value) => {
-    value.forEach((num) => {
-      fetch(`/fetchKeywordRecs/${this.props.type}/${num}/1`)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          this.fetchKeywordRecs(data, num);
-        });
+    value.forEach(async (num) => {
+      const data = await fetch(`/fetchKeywordRecs/${this.props.type}/${num}/1`);
+      const parsedData = await data.json();
+      this.fetchKeywordRecs(await parsedData, num);
     });
   };
 
-  fetchKeywordRecs = (data, num) => {
-    if (data.total_pages === 1) {
-      this.pushKeywordRecs(data);
+  fetchKeywordRecs = async (info, num) => {
+    if (info.total_pages === 1) {
+      this.pushKeywordRecs(info);
     } else {
       let i;
-      let pages = data.total_pages < 75 ? data.total_pages : 75;
+      let pages = info.total_pages < 75 ? info.total_pages : 75;
       for (i = 1; i <= pages; i++) {
-        fetch(`/fetchKeywordRecs/${this.props.type}/${num}/${i}`)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            this.pushKeywordRecs(data);
-          });
+        const data = await fetch(
+          `/fetchKeywordRecs/${this.props.type}/${num}/${i}`
+        );
+        const parsedData = await data.json();
+        this.pushKeywordRecs(await parsedData);
       }
     }
   };
