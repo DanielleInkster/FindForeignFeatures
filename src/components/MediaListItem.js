@@ -4,7 +4,7 @@ import ImageUrl from "./ImageUrl";
 import Title from "./Title";
 import FindYear from "./Assets/FindYear";
 
-const MediaListItem = ({item, type}) => {
+const MediaListItem = ({ item, type }) => {
   return (
     <div>
       <ImageUrl item={item} />

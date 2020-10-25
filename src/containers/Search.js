@@ -7,7 +7,9 @@ import SortRecommendations from "./SortRecommendations";
 
 function Search({ props, selection }) {
   const [keywords, setKeywords] = useState([]);
-  const [rawKeywordRecommendations, setrawKeywordRecommendations] = useState([]);
+  const [rawKeywordRecommendations, setrawKeywordRecommendations] = useState(
+    []
+  );
   const [genres, setGenres] = useState([]);
   const [comparedRecommendations, setComparedRecommendations] = useState([]);
 
