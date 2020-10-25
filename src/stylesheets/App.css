@@ -78,13 +78,13 @@
   font-family: Lobster, sans-serif;
   font-size: calc(25px + 2vw);
   color: white;
+  text-shadow: -.75px -.75px 0 #000, .75px -.75px 0 #000, -.75px .75px 0 #000, .75px .75px 0 #000;
   display:inline-block;
   padding: 1vmin; 
 }
 
 .SiteTitle:hover{
-  color: white;
-  text-shadow: -.5px -.5px 0 #000, .5px -.5px 0 #000, -.5px .5px 0 #000, .5px .5px 0 #000;
+  text-shadow: -1.5px -1.5px 0 #000, 1.5px 1.5px 0 #000, -1.5px 1.5px 0 #000, 1.5px 1.5px 0 #000;
 }
 
 #SiteName{
