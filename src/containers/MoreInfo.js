@@ -84,9 +84,9 @@ class MoreInfo extends Component {
     const parsedData = await data.json();
     if (
       (await parsedData.Response) === "True" &&
-      this.compareLanguage(data) === true
+      this.compareLanguage(parsedData) === true
     ) {
-      this.setOmdb(data);
+      this.setOmdb(parsedData);
     } else {
       this.secondFetch(year);
     }
@@ -101,9 +101,9 @@ class MoreInfo extends Component {
     const parsedData = await data.json();
     if (
       (await parsedData.Response) === "True" &&
-      this.compareLanguage(data) === true
+      this.compareLanguage(parsedData) === true
     ) {
-      this.setOmdb(data);
+      this.setOmdb(parsedData);
     } else {
       let response = 0;
       this.setOmdb(response);
